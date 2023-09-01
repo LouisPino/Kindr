@@ -22,10 +22,12 @@ function App() {
           Learn React
             </a>
           {!isLoading && !user && (
-            <button onClick={()=> loginWithRedirect()}>FUCK YOU</button>
+            <button onClick={()=> loginWithRedirect()}>LOGIN</button>
             )}
-          {!isLoading && user &&(
-            <button onClick={()=> logout()}> FUCK ME</button>
+          {!isLoading && user &&(<>
+            <h2>Hey, fuck you {user.given_name}</h2>
+            <button onClick={()=> logout()}> LOGOUT</button>
+            </>
             )}
       </header>
     </div>
