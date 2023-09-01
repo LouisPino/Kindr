@@ -1,7 +1,11 @@
 import logo from './logo.svg';
 import './App.css';
+import { useAuth0 } from '@auth0/auth0-react';
+
+
 
 function App() {
+  const {loginWithRedirect, logout, user, isLoading} = useAuth0()
   return (
     <div className="App">
       <header className="App-header">
@@ -16,7 +20,13 @@ function App() {
           rel="noopener noreferrer"
         >
           Learn React
-        </a>
+            </a>
+          {!isLoading && !user && (
+            <button onClick={()=> loginWithRedirect()}>FUCK YOU</button>
+            )}
+          {!isLoading && user &&(
+            <button onClick={()=> logout()}> FUCK ME</button>
+            )}
       </header>
     </div>
   );
