@@ -15,6 +15,7 @@ export default function Nav() {
           <Link to={'/dashboard'}> <button>DASHBOARD</button> </Link>
           <Link to={'/profile'}> <button>PROFILE</button> </Link>
           <Link to={'/challenge/1234'}> <button>CHALLENGE</button> </Link>
+          <Link to={'/users'}> <button>USERS</button> </Link>
         </>
       )}
     </header>
