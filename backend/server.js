@@ -9,9 +9,6 @@ require("dotenv").config();
 require('./config/database.js')
 
 
-
-
-
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
