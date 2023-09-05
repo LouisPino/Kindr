@@ -10,6 +10,8 @@ console.log(user)
     <h2>PROFILE PAGE</h2>
     <img src={user.picture}/>
     <p>{user.given_name} {user.family_name} is a loser.</p>
+    <p>Active Challenges:</p>
+    <p>Completed Challenges:</p>
     </>
   );
 }
