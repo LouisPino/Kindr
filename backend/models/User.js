@@ -8,7 +8,7 @@ const userSchema = new Schema({
   family_name: String,
   given_name: String,
   name: String,
-  picutre: String
+  picture: String
 }, {
   timestamps: true
 });
