@@ -1,5 +1,6 @@
 const { Challenge } = require("../models");
 
+
 module.exports = {
   create,
   index,
