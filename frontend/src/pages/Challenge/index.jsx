@@ -22,7 +22,7 @@ export default function Challenge() {
   console.log({id})
   return(
     <>
-<h1>{challenge.title}</h1>
+{/* <h1>{challenge.title}</h1> */}
 <p>Challenge Details</p>
 <h2>Image Gallery</h2>
       </>
