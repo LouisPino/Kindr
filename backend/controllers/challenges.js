@@ -1,4 +1,5 @@
-const Challenge = require("../models/Challenge");
+const { Challenge } = require("../models");
+console.log(Challenge)
 
 module.exports = {
   create,  

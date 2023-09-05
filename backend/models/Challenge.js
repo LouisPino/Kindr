@@ -19,5 +19,5 @@ const challengeSchema = new Schema({
   timestamps: true
 });
 
-module.exports = mongoose.model('Challenge', userSchema);
+module.exports = mongoose.model('Challenge', challengeSchema);
 
