@@ -9,7 +9,7 @@ console.log(user)
   return (<>
     <h2>PROFILE PAGE</h2>
     <img src={user.picture}/>
-    <p>{user.given_name} {user.family_name} is a loser.</p>
+    <p>{user.given_name} {user.family_name || user.email.split("@")[0]} is a loser.</p>
     </>
   );
 }

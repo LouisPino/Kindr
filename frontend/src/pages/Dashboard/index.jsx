@@ -9,9 +9,7 @@ export default function Dashboard() {
     <>
     {!isLoading && user && (
         <>
-        <h1>{user.given_name}'s DASHBOARD</h1> 
-        <Link to={'/'}> <button>GO TO WELCOME</button> </Link>
-        <Link to={'/profile'}> <button>GO TO PROFILE</button> </Link>
+        <h1>{user.given_name || user.email.split("@")[0]}'s DASHBOARD</h1> 
       </>
       )}
       </>
