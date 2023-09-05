@@ -3,6 +3,6 @@ var router = express.Router();
 const challengeCtrl = require("../controllers/challenges")
 
 /* GET home page. */
-router.get('/', challengeCtrl.create);
+router.post('/', challengeCtrl.create);
 
 module.exports = router;
