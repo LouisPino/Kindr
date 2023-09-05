@@ -1,5 +1,4 @@
 const { Challenge } = require("../models");
-console.log(Challenge)
 
 module.exports = {
   create,  
