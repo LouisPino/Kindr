@@ -11,6 +11,7 @@ require('./config/database.js')
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var challengesRouter = require('./routes/challenges');
 
 var app = express();
 
