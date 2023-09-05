@@ -1,5 +1,6 @@
 import { useAuth0 } from '@auth0/auth0-react';
 import { Link } from 'react-router-dom';
+import ('./nav.css')
 
 export default function Nav() {
   const { loginWithRedirect, logout, user, isLoading } = useAuth0();
