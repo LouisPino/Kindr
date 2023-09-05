@@ -1,4 +1,4 @@
-const { Challenge } = require("../models/Challenge");
+const { Challenge } = require("../models");
 
 module.exports = {
   create,
@@ -10,7 +10,8 @@ module.exports = {
 
 async function create(req, res) {
   try {
-    res.status(201).json(await Challenge.create(req.body));
+    // res.status(201).json(await Challenge.create(req.body));
+    res.send('hit me')
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
