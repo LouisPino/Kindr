@@ -11,11 +11,14 @@ const imagesSchema = new Schema({
 
 
 const challengeSchema = new Schema({
-  text: String,
-  images: {type:[Schema.Types.ObjectId], ref: "Image"}
+  title: String,
+  description: String,
+  images: {type:[Schema.Types.ObjectId], ref: "Image"},
+  startDate: Date,
+  endDate: Date
 }, {
   timestamps: true
 });
 
-module.exports = mongoose.model('Challenge', userSchema);
+module.exports = mongoose.model('Challenge', challengeSchema);
 
