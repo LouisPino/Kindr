@@ -6,10 +6,11 @@ const initState = {
   text: "",
   image: [],
   challengeStart: "",
+  challengeEnd: "",
 };
 
 // define the function boilerplate with export
-export default function NewPersonForm({updatePeople}) {
+export default function NewChallengeForm() {
   const [newForm, setNewForm] = useState(initState);
 
 
