@@ -1,9 +1,10 @@
 
 import { useState } from "react";
-// import { createPerson } from "../../utilities/people-service";
+import { createChallenge } from "../../utilities/challenge-service";
 
 const initState = {
-  text: "",
+  title: "",
+  description: "",
   image: [],
   challengeStart: "",
   challengeEnd: "",
@@ -21,20 +22,11 @@ export default function NewChallengeForm() {
     e.preventDefault() //  prevent the page from sending a get request to the current page (queryParams: x-www-url-encoded data)
     console.log(newForm)
 
-    await createPerson(newForm)
-    updatePeople()
+    await createChallenge(newForm)
+    // updatePeople()
     setNewForm(initState)
-    // createPerson service function
-        // peopleApi.create()
-            // data from API is returned and we use it!
-  }
-
-  // value prop -> state (DONE)
-  // onChange -> f(){}
 
   function handleChange(e){
-    // e -> synthetic event -> generated when react detects a form input on a controlled form field. 
-    // console.log(e.target, e.target.name, e.target.value)
     const updatedData = { ...newForm, [e.target.name]: e.target.value }
     setNewForm(updatedData)
   }
@@ -42,48 +34,32 @@ export default function NewChallengeForm() {
   return (
     <section className="NewPersonForm-section">
       <form onSubmit={handleSubmit}>
-        {/* iterator that will process some data from init state and for each key create an input field with props provided for type, id, value, onChange */}
-        {/* custom hook opportunity for reusing or package formState */}
         <label htmlFor="name">
-          People Name*
+          Challenge Title
           <input
             type="text"
-            name="name"
-            id="name"
-            placeholder="add a name"
+            name="title"
+            id="title"
+            placeholder="add a title"
             value={newForm.name}
             onChange={handleChange}
             required
           />
         </label>
-        <label htmlFor="image">
+        <label htmlFor="description">
           Profile Image
           <input
             type="text"
-            name="image"
-            id="image"
+            name="description"
+            id="description"
             value={newForm.image}
             onChange={handleChange}
-            placeholder="add an image for the new person"
+            placeholder="add challenge description"
           />
         </label>
-        <label htmlFor="title">
-          Title
-          <input
-            type="text"
-            name="title"
-            id="title"
-            value={newForm.title}
-            onChange={handleChange}
-            placeholder="add a person title"
-          />
-        </label>
-        <input type="submit" value="Create Person" />
+        <input type="submit" value="Create Challenge" />
       </form>
     </section>
   );
 }
-
-// populate state
-
-// return some JSX
+}
