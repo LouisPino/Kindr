@@ -1,12 +1,12 @@
 import { useAuth0 } from "@auth0/auth0-react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { findUserByEmail, updateUser } from "../../utilities/user-service";
 import("./profile.css");
 
 export default function Profile() {
-  const { loginWithRedirect, logout, user, isLoading } = useAuth0();
-
+  const { loginWithRedirect, logout, user} = useAuth0();
+const [isLoading, setIsLoading] = useState(true)
 const navigate = useNavigate()
 
   useEffect(()=>{
@@ -15,13 +15,14 @@ const navigate = useNavigate()
       const userData = await findUserByEmail(user.email)
     }
     fillUserObj()
+    setIsLoading(false)
   }
 else{
   navigate('/')
 }
   }, [])
 
-console.log('user', user)
+if(user && !isLoading){
   return (
     <>
       <section className="profile-page">
@@ -48,6 +49,8 @@ console.log('user', user)
         {/* <p>{user.given_name} {user.family_name || user.email.split("@")[0]} is a loser.</p> */}
       </section>
     </>
-  );
+  );}else{
+    return <h1>LOADING</h1>
+  }
 
 }

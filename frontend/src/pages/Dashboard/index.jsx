@@ -5,10 +5,10 @@ import { Link, useNavigate } from 'react-router-dom';
 import { findUserByEmail, updateUser } from "../../utilities/user-service";
 
 export default function Dashboard() {
-  const { user, isLoading } = useAuth0();
+  const { user } = useAuth0();
   const {userId} = useParams()
+  const [isLoading, setIsLoading] = useState(true)
 const navigate = useNavigate()
-const [userData, setUserData] = useState({})
 
   useEffect(()=>{
     if(user){
@@ -16,6 +16,7 @@ const [userData, setUserData] = useState({})
     const userData = await findUserByEmail(user.email)
     }  
     fillUserObj()
+    setIsLoading(false)
   }
     else{
       navigate('/')}
@@ -25,6 +26,11 @@ const [userData, setUserData] = useState({})
   
   return(
     <>
+        {isLoading && (
+      <>
+      <h1>LOADING</h1> 
+    </>
+    )}
     {!isLoading && user && (
         <>
         <h1>{user.name || user.email.split("@")[0]}'s DASHBOARD</h1> 

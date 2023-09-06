@@ -6,8 +6,9 @@ import("./newuser.css");
 
 export default function NewUser() {
   let initState = {}
-  const { loginWithRedirect, logout, user, isLoading } = useAuth0();
+  const { loginWithRedirect, logout, user } = useAuth0();
   const [newForm, setNewForm] = useState(initState);
+  const [isLoading, setIsLoading] = useState(true)
   const navigate = useNavigate()
   useEffect(()=>{
     if(user){
@@ -16,6 +17,7 @@ export default function NewUser() {
       setNewForm(userData)
     }  
     fillUserObj()
+    setIsLoading(false)
   }
     else{
       navigate('/')}
@@ -42,7 +44,12 @@ export default function NewUser() {
     const updatedData = { ...newForm, [e.target.name]: e.target.value }
     setNewForm(updatedData)
   }
-  return (
+  return isLoading ? (
+<>
+<h1>LOADING</h1>
+</>
+  ) : 
+  (
     <>
       <section className="profile-page">
         <img
