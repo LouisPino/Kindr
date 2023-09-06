@@ -34,6 +34,10 @@ export default function Nav() {
             {" "}
             <button>USERS</button>{" "}
           </Link>
+          <Link to={"/newuser"}>
+            {" "}
+            <button>NEW USER FORM</button>{" "}
+          </Link>
         </>
       )}
     </header>
