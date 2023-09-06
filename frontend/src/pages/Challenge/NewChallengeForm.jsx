@@ -4,7 +4,7 @@ import { createChallenge } from "../../utilities/challenge-service";
 import("./challenge.css");
 
 // define the function boilerplate with export
-export default function NewChallengeForm() {
+export default function NewChallengeForm({updateChallenges}) {
   const initState = {
     title: "",
     description: "",
@@ -13,9 +13,11 @@ export default function NewChallengeForm() {
     // endDate: Date.now(),
   };
   const [newForm, setNewForm] = useState(initState);
+  console.log('newform', newForm)
   async function handleSubmit(e){
     e.preventDefault()
     console.log(newForm)
+    updateChallenges()
     await createChallenge(newForm)
     setNewForm(initState)
   }
@@ -30,6 +32,7 @@ export default function NewChallengeForm() {
 
   return (
     <section>
+      <h2 className="kindr-header h2-header">Submit a New Challenge</h2>
       <form className="new-challenge-form" onSubmit={handleSubmit}>
         <label htmlFor="title">
           Challenge Title
@@ -44,6 +47,17 @@ export default function NewChallengeForm() {
           />
         </label>
         <label htmlFor="description">
+          Description
+          <input
+            type="text"
+            name="description"
+            id="description"
+            value={newForm.description}
+            onChange={handleChange}
+            placeholder="add challenge description"
+          />
+        </label>
+                <label htmlFor="description">
           Description
           <input
             type="text"

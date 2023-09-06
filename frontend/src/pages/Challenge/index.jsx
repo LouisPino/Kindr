@@ -2,25 +2,38 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import NewChallengeForm from "./NewChallengeForm";
-import { getChallenge } from "../../utilities/challenge-service";
+import { getChallenges } from "../../utilities/challenge-service";
 import { useEffect, useState } from "react";
+import ChallengeList from "./ChallengeList";
 
 export default function Challenge() {
   const { user, isLoading } = useAuth0();
   const { id } = useParams();
 
-  const [challenge, setChallenge] = useState(null);
+  const [challenges, setChallenges] = useState(null);
+console.log(challenges)
+  async function handleRequest() {
+    const challengeResponse = await getChallenges();
 
-
+    if (challengeResponse.length) {
+      setChallenges(challengeResponse);
+    } else {
+      console.log(challengeResponse);
+      // context update for error handling might be called
+    }
+  }
 
   useEffect(() => {
+    handleRequest();
   }, []);
 
   return (
     <>
-      <h2>SHOW PAGE FOR CHALLENGE {id}</h2>
-
-      <NewChallengeForm />
+      <section className="find-challenge">
+        <h2 className="kindr-header h2-header">Find a Challenge</h2>
+      </section>
+      <ChallengeList challenges={challenges} />
+      <NewChallengeForm updateChallenges={handleRequest} />
     </>
   );
 }

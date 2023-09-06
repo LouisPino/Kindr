@@ -11,11 +11,11 @@ export async function createChallenge(challengeData) {
     }
   }
 
-//   export async function getChallenge(){
-//     try {
-//         const data = await challengeAPI.index()
-//         return data
-//     }catch(err){
-//         return err
-//     }
-// }
+  export async function getChallenges(){
+    try {
+        const data = await challengeAPI.index()
+        return data
+    }catch(err){
+        return err
+    }
+}
