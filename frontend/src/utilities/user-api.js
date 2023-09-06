@@ -34,7 +34,11 @@ export async function updateUser(data){
     console.log('api', data)
     const response = await fetch(`${BASE_URL}/users`, {
         method: "PUT",
-        headers: {"Content-Type": "application/json"},
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": true,
+          },
         body: JSON.stringify(data)
     })
     if(response.ok){
