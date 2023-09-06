@@ -7,7 +7,6 @@ export async function create(data){
     headers: {"Content-Type": "application/json"},
     body: JSON.stringify(data)
   })
-  console.log(response)
     if(response.ok){
         return response.json()
     }else{

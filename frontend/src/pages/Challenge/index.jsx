@@ -6,17 +6,20 @@ import { getChallenges } from "../../utilities/challenge-service";
 import { useEffect, useState } from "react";
 import ChallengeList from "./ChallengeList";
 
+
 export default function Challenge() {
-  const { user, isLoading } = useAuth0();
+
   const { id } = useParams();
 
   const [challenges, setChallenges] = useState(null);
-console.log(challenges)
+  const [isLoading, setIsLoading] = useState(true);
+
   async function handleRequest() {
     const challengeResponse = await getChallenges();
 
     if (challengeResponse.length) {
       setChallenges(challengeResponse);
+      setIsLoading(false);
     } else {
       console.log(challengeResponse);
       // context update for error handling might be called
@@ -27,13 +30,21 @@ console.log(challenges)
     handleRequest();
   }, []);
 
-  return (
+  return isLoading ? (
+    <>
+      <section className="find-challenge">
+        <h2 className="kindr-header h2-header">Find a Challenge</h2>
+      </section>
+      <NewChallengeForm updateChallenges={handleRequest} />
+    </>
+  ) : (
     <>
       <section className="find-challenge">
         <h2 className="kindr-header h2-header">Find a Challenge</h2>
       </section>
       <ChallengeList challenges={challenges} />
       <NewChallengeForm updateChallenges={handleRequest} />
+
     </>
   );
 }

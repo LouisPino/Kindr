@@ -4,7 +4,7 @@ import { createChallenge } from "../../utilities/challenge-service";
 import("./challenge.css");
 
 // define the function boilerplate with export
-export default function NewChallengeForm({updateChallenges}) {
+export default function NewChallengeForm({ updateChallenges }) {
   const initState = {
     title: "",
     description: "",
@@ -13,22 +13,17 @@ export default function NewChallengeForm({updateChallenges}) {
     // endDate: Date.now(),
   };
   const [newForm, setNewForm] = useState(initState);
-  console.log('newform', newForm)
-  async function handleSubmit(e){
-    e.preventDefault()
-    console.log(newForm)
-    updateChallenges()
-    await createChallenge(newForm)
-    setNewForm(initState)
+  async function handleSubmit(e) {
+    e.preventDefault();
+    updateChallenges();
+    await createChallenge(newForm);
+    setNewForm(initState);
   }
 
-
-  function handleChange(e){
-    const updatedData = { ...newForm, [e.target.name]: e.target.value }
-    setNewForm(updatedData)
+  function handleChange(e) {
+    const updatedData = { ...newForm, [e.target.name]: e.target.value };
+    setNewForm(updatedData);
   }
-
-
 
   return (
     <section>
@@ -57,16 +52,17 @@ export default function NewChallengeForm({updateChallenges}) {
             placeholder="add challenge description"
           />
         </label>
-                <label htmlFor="description">
-          Description
+        <label id="add-photo-btn" class="photo-submit">
           <input
-            type="text"
-            name="description"
-            id="description"
-            value={newForm.description}
+          type="file"
+            id="images"
+            name="images"
+            required
+            accept="image/*, pdf"
             onChange={handleChange}
-            placeholder="add challenge description"
+            value={newForm.images}
           />
+          {/* <p id="photo-btn" class='details openbtn'>UPLOAD PHOTO</p> */}
         </label>
         <input
           className="new-challenge-button"
