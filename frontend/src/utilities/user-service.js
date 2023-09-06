@@ -10,3 +10,13 @@ export async function createUser(userData) {
       return err;
     }
   }
+
+
+  export async function getUser(){
+    try {
+        const data = await userAPI.index()
+        return data
+    }catch(err){
+        return err
+    }
+}
