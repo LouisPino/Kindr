@@ -1,23 +1,40 @@
 import { useAuth0 } from "@auth0/auth0-react";
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { findUserByEmail, updateUser } from "../../utilities/user-service";
 import("./newuser.css");
 
 export default function NewUser() {
-  const { loginWithRedirect, logout, user, isLoading } = useAuth0();
-  const initState = {
-    title: "",
-    description: "",
-    // images: [],
-    // startDate: Date.now(),
-    // endDate: Date.now(),
-  };
+  let initState = {
+
+  }
+  const { loginWithRedirect, logout, user } = useAuth0();
   const [newForm, setNewForm] = useState(initState);
-  console.log('newform', newForm)
+  const [isLoading, setIsLoading] = useState(true)
+  const navigate = useNavigate()
+const [userData, setUserData] = useState({})
+  useEffect(()=>{
+    if(user){
+    async function fillUserObj(){
+       const retrievedUserData = await findUserByEmail(user.email)
+      setNewForm(retrievedUserData)
+      setUserData(retrievedUserData)
+    }  
+    fillUserObj()
+  }
+    else{
+      navigate('/')}
+  }, [])
+
+useEffect(()=>{
+setIsLoading(false)
+}, [userData])
+
+
   async function handleSubmit(e){
     e.preventDefault()
-    console.log(newForm)
-    setNewForm(initState)
+    updateUser(newForm)
+    navigate('/profile')
   }
 
 
@@ -25,49 +42,52 @@ export default function NewUser() {
     const updatedData = { ...newForm, [e.target.name]: e.target.value }
     setNewForm(updatedData)
   }
-  return (
+  return isLoading ? (
+<>
+<h1>LOADING</h1>
+</>
+  ) : 
+  (
     <>
       <section className="profile-page">
         <img
-          src="https://res.cloudinary.com/dpsymdmyi/image/upload/v1693252945/Laurie_xewfk0.jpg"
+          src={userData.picture}
           className="user-picture"
         />
-        <h2 className="h2-header kindr-header">USER's Deeds</h2>
+        <h2 className="h2-header kindr-header">Edit Profile Info</h2>
 
-        return (
     <section>
-      <h2 className="kindr-header h2-header">Submit a New Challenge</h2>
       <form className="new-challenge-form" onSubmit={handleSubmit}>
-        <label htmlFor="title">
-          Challenge Title
+        <label htmlFor="name">
+          NAME
           <input
             type="text"
-            name="title"
+            name="name"
             id="title"
             placeholder="add a title"
-            value={newForm.title}
+            value={newForm.name}
             onChange={handleChange}
             required
           />
         </label>
-        <label htmlFor="description">
-          Description
+        <label htmlFor="username">
+          USERNAME
           <input
             type="text"
-            name="description"
+            name="username"
             id="description"
-            value={newForm.description}
+            value={newForm.username}
             onChange={handleChange}
             placeholder="add challenge description"
           />
         </label>
-                <label htmlFor="description">
-          Description
+                <label htmlFor="picture">
+          Photo (cloudinary later)
           <input
             type="text"
-            name="description"
+            name="picture"
             id="description"
-            value={newForm.description}
+            value={newForm.picture}
             onChange={handleChange}
             placeholder="add challenge description"
           />
@@ -75,17 +95,14 @@ export default function NewUser() {
         <input
           className="new-challenge-button"
           type="submit"
-          value="Create Challenge"
+          value="Update Profile"
         />
       </form>
     </section>
-  );
-
-
-      
-        {/* <img src={user.picture}/> */}
-        {/* <p>{user.given_name} {user.family_name || user.email.split("@")[0]} is a loser.</p> */}
       </section>
     </>
   );
 }
+
+
+//update user info after form is submitted and redirect to profile
