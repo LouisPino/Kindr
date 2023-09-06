@@ -31,6 +31,7 @@ export async function findUserByEmail(userEmail){
 }
 
 export async function updateUser(data){
+    console.log('api', data)
     const response = await fetch(`${BASE_URL}/users`, {
         method: "PUT",
         headers: {"Content-Type": "application/json"},
