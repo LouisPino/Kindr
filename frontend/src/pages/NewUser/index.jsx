@@ -46,7 +46,7 @@ export default function NewUser() {
     <>
       <section className="profile-page">
         <img
-          src="https://res.cloudinary.com/dpsymdmyi/image/upload/v1693252945/Laurie_xewfk0.jpg"
+          src={user.picture}
           className="user-picture"
         />
         <h2 className="h2-header kindr-header">Edit Profile Info</h2>
