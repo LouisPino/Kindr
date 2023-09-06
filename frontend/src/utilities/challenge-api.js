@@ -2,7 +2,7 @@ const BASE_URL= process.env.REACT_APP_BASE_URL
 console.log(BASE_URL)
 
 export async function create(data){
-  const response = await fetch(`${BASE_URL}`, {
+  const response = await fetch(`${BASE_URL}/challenges`, {
     method: "POST",
     headers: {"Content-Type": "application/json"},
     body: JSON.stringify(data)
@@ -16,7 +16,7 @@ export async function create(data){
 }
 
 export async function index() {
-    const res = await fetch(`${BASE_URL}`, {
+    const res = await fetch(`${BASE_URL}/challenges`, {
       method: "GET",
     });
   
