@@ -8,3 +8,8 @@ a {
   font-size: 4rem;
   letter-spacing: 0.1rem;
 }
+
+.cloud-nav{
+min-width: 100vw;
+max-height: 100px;
+}
