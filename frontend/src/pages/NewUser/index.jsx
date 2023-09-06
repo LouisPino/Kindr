@@ -1,7 +1,7 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { findUserByEmail } from "../../utilities/user-service";
+import { findUserByEmail, updateUser } from "../../utilities/user-service";
 import("./newuser.css");
 
 export default function NewUser() {
@@ -20,8 +20,8 @@ fillUserObj()
 
   async function handleSubmit(e){
     e.preventDefault()
+    updateUser(newForm)
     setNewForm(initState)
-//update user
   }
 
 
@@ -87,8 +87,4 @@ fillUserObj()
 }
 
 
-
-
-
-//Get user info to prepopulate form
 //update user info after form is submitted and redirect to profile

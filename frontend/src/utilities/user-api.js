@@ -28,7 +28,17 @@ export async function findUserByEmail(userEmail){
       } else {
         return new Error("Invalid Request");
       }
+}
 
-
-
+export async function updateUser(data){
+    const response = await fetch(`${BASE_URL}/users`, {
+        method: "PUT",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(data)
+    })
+    if(response.ok){
+        return response.json()
+    }else{
+        return new Error("Invalid Request")
+    }
 }
