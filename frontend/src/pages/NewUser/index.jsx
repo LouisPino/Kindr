@@ -12,7 +12,6 @@ export default function NewUser() {
   useEffect(()=>{
     async function fillUserObj(){
       const userData = await findUserByEmail(user.email)
-      console.log('userData', userData)
       setNewForm(userData)
     }
 fillUserObj()
