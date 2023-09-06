@@ -10,12 +10,26 @@ export default function NewUser() {
   const [newForm, setNewForm] = useState(initState);
   const navigate = useNavigate()
   useEffect(()=>{
+    if(user){
     async function fillUserObj(){
       const userData = await findUserByEmail(user.email)
       setNewForm(userData)
-    }
-fillUserObj()
+    }  
+    fillUserObj()
+  }
+    else{
+      navigate('/')}
   }, [])
+
+
+  
+    async function fillUserObj(){
+      const userData = await findUserByEmail(user?.email)
+    }
+    fillUserObj()
+
+
+
 
   async function handleSubmit(e){
     e.preventDefault()
