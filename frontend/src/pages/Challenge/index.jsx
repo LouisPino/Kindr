@@ -6,7 +6,6 @@ import { getChallenges } from "../../utilities/challenge-service";
 import { useEffect, useState } from "react";
 import ChallengeList from "./ChallengeList";
 
-
 export default function Challenge() {
 
   const { id } = useParams();
@@ -18,7 +17,6 @@ export default function Challenge() {
     const challengeResponse = await getChallenges();
 
     if (challengeResponse.length) {
-      console.log('challengeresponse workin', challengeResponse)
       setChallenges(challengeResponse);
       setIsLoading(false);
     } else {
@@ -45,7 +43,6 @@ export default function Challenge() {
       </section>
       <ChallengeList challenges={challenges} />
       <NewChallengeForm updateChallenges={handleRequest} />
-
     </>
   );
 }
