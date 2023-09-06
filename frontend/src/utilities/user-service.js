@@ -23,7 +23,6 @@ export async function createUser(userData) {
   export async function updateUser(formData) {
     try {
       const data = await userAPI.updateUser(formData);
-      console.log('updateuserdata', data)
       return data;
     } catch (err) {
       console.log(err);

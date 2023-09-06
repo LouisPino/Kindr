@@ -1,6 +1,6 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { findUserByEmail, updateUser } from "../../utilities/user-service";
 import("./newuser.css");
 
@@ -8,7 +8,7 @@ export default function NewUser() {
   let initState = {}
   const { loginWithRedirect, logout, user, isLoading } = useAuth0();
   const [newForm, setNewForm] = useState(initState);
-  
+  const navigate = useNavigate()
   useEffect(()=>{
     async function fillUserObj(){
       const userData = await findUserByEmail(user.email)
@@ -21,7 +21,7 @@ fillUserObj()
   async function handleSubmit(e){
     e.preventDefault()
     updateUser(newForm)
-    setNewForm(initState)
+    navigate('/profile')
   }
 
 
