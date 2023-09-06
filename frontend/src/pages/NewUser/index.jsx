@@ -1,23 +1,23 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { findUserByEmail } from "../../utilities/user-service";
 import("./newuser.css");
 
 export default function NewUser() {
   let initState = {}
   const { loginWithRedirect, logout, user, isLoading } = useAuth0();
   const [newForm, setNewForm] = useState(initState);
-  console.log(user)
-  useEffect(()=>{
-    
-    
-    initState = 
-    
-    setNewForm(initState)
-
-  }, [])
   
-  console.log('newform', newForm)
+  useEffect(()=>{
+    async function fillUserObj(){
+      const userData = await findUserByEmail(user.email)
+      console.log('userData', userData)
+      setNewForm(userData)
+    }
+fillUserObj()
+  }, [])
+
   async function handleSubmit(e){
     e.preventDefault()
     setNewForm(initState)
@@ -40,36 +40,36 @@ export default function NewUser() {
 
     <section>
       <form className="new-challenge-form" onSubmit={handleSubmit}>
-        <label htmlFor="title">
-          Challenge Title
+        <label htmlFor="name">
+          NAME
           <input
             type="text"
-            name="title"
+            name="name"
             id="title"
             placeholder="add a title"
-            value={newForm.title}
+            value={newForm.name}
             onChange={handleChange}
             required
           />
         </label>
-        <label htmlFor="description">
-          Description
+        <label htmlFor="username">
+          USERNAME
           <input
             type="text"
-            name="description"
+            name="username"
             id="description"
-            value={newForm.description}
+            value={newForm.username}
             onChange={handleChange}
             placeholder="add challenge description"
           />
         </label>
-                <label htmlFor="description">
-          Description
+                <label htmlFor="picture">
+          Photo (cloudinary later)
           <input
             type="text"
-            name="description"
+            name="picture"
             id="description"
-            value={newForm.description}
+            value={newForm.picture}
             onChange={handleChange}
             placeholder="add challenge description"
           />
@@ -77,7 +77,7 @@ export default function NewUser() {
         <input
           className="new-challenge-button"
           type="submit"
-          value="Create Challenge"
+          value="Update Profile"
         />
       </form>
     </section>

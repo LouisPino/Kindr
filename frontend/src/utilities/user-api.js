@@ -23,9 +23,6 @@ export async function findUserByEmail(userEmail){
           "Access-Control-Allow-Origin": true,
         },
       });
-    
-      console.log(res);
-    
       if (res.ok) {
         return res.json();
       } else {
