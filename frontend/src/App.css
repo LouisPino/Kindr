@@ -4,7 +4,9 @@
   width: 100vw;
   border: none;
   text-align: center;
-  /* display: flex; */
+  padding: none;
+  display: flex;
+  flex-direction: column;
 }
 
 @import url("https://use.typekit.net/tnt5bwz.css");
@@ -20,15 +22,3 @@
 }
 
 
-/* path {
-  fill: white;
-  width: 100vw;
-  stroke: black;
-  stroke-width: 2;
-  stroke-linejoin: round;
-  z-index: -5;
-} */
-/* path:hover {
-  fill: aliceblue;
-  stroke: lightskyblue;
-} */

@@ -11,17 +11,6 @@ import _404 from "./pages/404";
 function App() {
   return (
     <div className="App">
-      {/* <svg viewBox="0 0 105 105">
-        <path
-          d="M 25,60 
-           a 20,20 1 0,0 0,40 
-           h 50 
-           a 20,20 1 0,0 0,-40 
-           a 10,10 1 0,0 -15,-10 
-           a 15,15 1 0,0 -35,10  
-           z"
-        />
-      </svg> */}
       <Nav />
       <Routes>
         <Route exact path="/" element={<Welcome />} />
