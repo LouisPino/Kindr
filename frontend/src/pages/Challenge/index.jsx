@@ -11,11 +11,16 @@ export default function Challenge() {
 
   const [challenge, setChallenge] = useState(null);
 
+
+
+  useEffect(() => {
+  }, []);
+
   return (
     <>
       <h2>SHOW PAGE FOR CHALLENGE {id}</h2>
 
-      <NewChallengeForm  />
+      <NewChallengeForm />
     </>
   );
 }
