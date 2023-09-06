@@ -16,7 +16,6 @@ export default function Challenge() {
 
   async function handleRequest() {
     const challengeResponse = await getChallenges();
-
     if (challengeResponse.length) {
       setChallenges(challengeResponse);
       setIsLoading(false);
