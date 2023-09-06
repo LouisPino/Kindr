@@ -13,22 +13,36 @@ export async function create(data){
     }
 }
 
-export async function index() {
-    const res = await fetch(`${BASE_URL}/profile`, {
-      method: "GET",
-      credentials: "include",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": true,
-      },
-    });
-  
-    console.log(res);
-  
-    if (res.ok) {
-      return res.json();
-    } else {
-      return new Error("Invalid Request");
+export async function findUserByEmail(userEmail){
+    const res = await fetch(`${BASE_URL}/users/${userEmail}`, {
+        method: "GET",
+        credentials: "include",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": true,
+        },
+      });
+      if (res.ok) {
+        return res.json();
+      } else {
+        return new Error("Invalid Request");
+      }
+}
+
+export async function updateUser(data){
+    const response = await fetch(`${BASE_URL}/users`, {
+        method: "PUT",
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": true,
+          },
+        body: JSON.stringify(data)
+    })
+    if(response.ok){
+        return response.json()
+    }else{
+        return new Error("Invalid Request")
     }
-  }
+}

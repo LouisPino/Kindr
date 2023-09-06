@@ -1,17 +1,34 @@
 import { useAuth0 } from "@auth0/auth0-react";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { findUserByEmail, updateUser } from "../../utilities/user-service";
 import("./profile.css");
 
-export default function Welcome() {
-  const { loginWithRedirect, logout, user, isLoading } = useAuth0();
-  console.log(user);
+export default function Profile() {
+  const { loginWithRedirect, logout, user} = useAuth0();
+const [isLoading, setIsLoading] = useState(true)
+const navigate = useNavigate()
 
+  useEffect(()=>{
+    if(user){
+    async function fillUserObj(){
+      const userData = await findUserByEmail(user.email)
+    }
+    fillUserObj()
+    setIsLoading(false)
+  }
+else{
+  navigate('/')
+}
+  }, [])
+
+if(user && !isLoading){
   return (
     <>
     {!isLoading && user.given_name && (
       <section className="profile-page">
         <img
-          src="https://res.cloudinary.com/dpsymdmyi/image/upload/v1693252945/Laurie_xewfk0.jpg"
+          src={user?.picture}
           className="user-picture"
         />
         <h2 className="h2-header kindr-header">{user.given_name}'s Deeds</h2>
@@ -61,5 +78,8 @@ export default function Welcome() {
     )
 }
     </>
-  );
+  );}else{
+    return <h1>LOADING</h1>
+  }
+
 }

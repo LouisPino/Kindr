@@ -2,12 +2,14 @@ const BASE_URL= process.env.REACT_APP_BASE_URL
 console.log(BASE_URL)
 
 export async function create(data){
-  const response = await fetch(`${BASE_URL}`, {
+  const response = await fetch(`${BASE_URL}/challenges`, {
     method: "POST",
-    headers: {"Content-Type": "application/json"},
+    credentials: "include",
+    headers: { Accept: "application/json",
+    "Content-Type": "application/json",
+    "Access-Control-Allow-Credentials": true,},
     body: JSON.stringify(data)
   })
-  console.log(response)
     if(response.ok){
         return response.json()
     }else{
@@ -16,8 +18,14 @@ export async function create(data){
 }
 
 export async function index() {
-    const res = await fetch(`${BASE_URL}`, {
+    const res = await fetch(`${BASE_URL}/challenges`, {
       method: "GET",
+      credentials: "include",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": true,
+      },
     });
   
     console.log(res);
