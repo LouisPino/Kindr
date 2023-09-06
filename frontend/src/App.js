@@ -15,7 +15,7 @@ function App() {
       <Routes>
         <Route exact path="/" element={<Welcome />}/>
         <Route  path="/dashboard" element={<Dashboard />}/>
-        <Route  path="/challenge/:id" element={<Challenge />}/>
+        <Route  path="/challenges/:id" element={<Challenge />}/>
         <Route  path="/profile" element={<Profile />}/>
         <Route  path="/*" element={<_404 />}/>
       </Routes>

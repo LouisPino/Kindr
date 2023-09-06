@@ -11,11 +11,12 @@ export default function Nav() {
       )}
       {!isLoading && user && (
         <>
+        <h1 className="kindr-header kindr-nav">Kindr</h1>
           <button onClick={() => logout()}> LOGOUT</button>
           <Link to={'/'}> <button>WELCOME</button> </Link>
           <Link to={'/dashboard'}> <button>DASHBOARD</button> </Link>
           <Link to={'/profile'}> <button>PROFILE</button> </Link>
-          <Link to={'/challenge/1234'}> <button>CHALLENGE</button> </Link>
+          <Link to={'/challenges/1234'}> <button>CHALLENGE</button> </Link>
           <Link to={'/users'}> <button>USERS</button> </Link>
         </>
       )}

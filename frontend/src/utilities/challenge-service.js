@@ -1,4 +1,4 @@
-import * as challengeAPI from "./challenge-api";
+import * as challengeAPI from './challenge-api';
 
 export async function createChallenge(challengeData) {
     try {
@@ -10,3 +10,12 @@ export async function createChallenge(challengeData) {
       return err;
     }
   }
+
+  export async function getChallenge(){
+    try {
+        const data = await challengeAPI.index()
+        return data
+    }catch(err){
+        return err
+    }
+}

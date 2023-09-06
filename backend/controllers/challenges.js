@@ -12,6 +12,7 @@ module.exports = {
 async function create(req, res) {
   try {
     res.status(201).json(await Challenge.create(req.body));
+    console.log(req.body)
   } catch (error) {
     res.status(400).json({ error: error.message });
   }

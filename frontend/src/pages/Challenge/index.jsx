@@ -1,16 +1,35 @@
-import { useAuth0 } from '@auth0/auth0-react';
-import { useParams } from 'react-router';
-import { Link } from 'react-router-dom';
-import NewChallengeForm from './NewChallengeForm';
-
+import { useAuth0 } from "@auth0/auth0-react";
+import { useParams } from "react-router";
+import { Link } from "react-router-dom";
+import NewChallengeForm from "./NewChallengeForm";
+import { getChallenge } from "../../utilities/challenge-service";
+import { useEffect, useState } from "react";
 
 export default function Challenge() {
   const { user, isLoading } = useAuth0();
-  const {id} = useParams()
-  return(
+  const { id } = useParams();
+
+  const [challenge, setChallenge] = useState(null);
+
+  async function handleRequest() {
+    const challengeResponse = await getChallenge();
+
+    if (challengeResponse.length) {
+      setChallenge(challengeResponse);
+    } else {
+      console.log("hi");
+    }
+  }
+
+  useEffect(() => {
+    handleRequest();
+  }, []);
+
+  return (
     <>
-<h2>SHOW PAGE FOR CHALLENGE {id}</h2>
-<p><NewChallengeForm /></p>
-      </>
-    )
+      <h2>SHOW PAGE FOR CHALLENGE {id}</h2>
+
+      <NewChallengeForm updateChallenge={handleRequest} />
+    </>
+  );
 }

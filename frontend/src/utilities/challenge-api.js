@@ -12,3 +12,17 @@ export async function create(data){
         return new Error("Invalid Request")
     }
 }
+
+export async function index() {
+    const res = await fetch(`${BASE_URL}/challenges`, {
+      method: "GET",
+    });
+  
+    console.log(res);
+  
+    if (res.ok) {
+      return res.json();
+    } else {
+      return new Error("Invalid Request");
+    }
+  }
