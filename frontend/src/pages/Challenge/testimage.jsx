@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-export default function App() {
+export default function TestImage() {
     const [image, setImage] = useState({ preview: '', data: '' })
     const [status, setStatus] = useState('')
     const handleSubmit = async (e) => {

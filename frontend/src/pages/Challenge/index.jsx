@@ -5,6 +5,7 @@ import NewChallengeForm from "./NewChallengeForm";
 import { getChallenges } from "../../utilities/challenge-service";
 import { useEffect, useState } from "react";
 import ChallengeList from "./ChallengeList";
+import TestImage from "./TestImage";
 
 
 export default function Challenge() {
@@ -43,6 +44,7 @@ export default function Challenge() {
         <h2 className="kindr-header h2-header">Find a Challenge</h2>
       </section>
       <ChallengeList challenges={challenges} />
+      <TestImage />
       <NewChallengeForm updateChallenges={handleRequest} />
 
     </>
