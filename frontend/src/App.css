@@ -1,38 +1,21 @@
 .App {
+  background: linear-gradient(45deg, #fad95d, #ef4036);
+  height: 100%;
+  width: 100%;
+  border: none;
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  padding: none;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+}
+
+@import url("https://use.typekit.net/tnt5bwz.css");
+.kindr-header {
+  font-family: "asphalt", sans-serif;
+  font-weight: 800;
+  font-style: normal;
   color: white;
+  font-stretch: extra-expanded;
 }
 
-.App-link {
-  color: #61dafb;
-}
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}

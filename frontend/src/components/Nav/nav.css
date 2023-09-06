@@ -1,0 +1,10 @@
+a {
+    text-decoration: none;
+}
+
+
+@import url("https://use.typekit.net/tnt5bwz.css");
+.kindr-nav {
+  font-size: 4rem;
+  letter-spacing: 0.1rem;
+}
