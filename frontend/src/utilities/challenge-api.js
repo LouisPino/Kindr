@@ -4,7 +4,10 @@ console.log(BASE_URL)
 export async function create(data){
   const response = await fetch(`${BASE_URL}`, {
     method: "POST",
-    headers: {"Content-Type": "application/json"},
+    credentials: "include",
+    headers: { Accept: "application/json",
+    "Content-Type": "application/json",
+    "Access-Control-Allow-Credentials": true,},
     body: JSON.stringify(data)
   })
     if(response.ok){
