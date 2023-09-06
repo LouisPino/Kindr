@@ -5,32 +5,30 @@ import { findUserByEmail, updateUser } from "../../utilities/user-service";
 import("./newuser.css");
 
 export default function NewUser() {
-  let initState = {}
+  let initState = {
+
+  }
   const { loginWithRedirect, logout, user } = useAuth0();
   const [newForm, setNewForm] = useState(initState);
   const [isLoading, setIsLoading] = useState(true)
   const navigate = useNavigate()
+const [userData, setUserData] = useState({})
   useEffect(()=>{
     if(user){
     async function fillUserObj(){
-      const userData = await findUserByEmail(user.email)
-      setNewForm(userData)
+       const retrievedUserData = await findUserByEmail(user.email)
+      setNewForm(retrievedUserData)
+      setUserData(retrievedUserData)
     }  
     fillUserObj()
-    setIsLoading(false)
   }
     else{
       navigate('/')}
   }, [])
 
-
-  
-    async function fillUserObj(){
-      const userData = await findUserByEmail(user?.email)
-    }
-    fillUserObj()
-
-
+useEffect(()=>{
+setIsLoading(false)
+}, [userData])
 
 
   async function handleSubmit(e){
@@ -53,7 +51,7 @@ export default function NewUser() {
     <>
       <section className="profile-page">
         <img
-          src={user.picture}
+          src={userData.picture}
           className="user-picture"
         />
         <h2 className="h2-header kindr-header">Edit Profile Info</h2>

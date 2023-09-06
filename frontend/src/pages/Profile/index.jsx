@@ -8,26 +8,32 @@ export default function Profile() {
   const { loginWithRedirect, logout, user} = useAuth0();
 const [isLoading, setIsLoading] = useState(true)
 const navigate = useNavigate()
-
+const [userData, setUserData] = useState({})
   useEffect(()=>{
     if(user){
     async function fillUserObj(){
-      const userData = await findUserByEmail(user.email)
+      const retrievedUserData = await findUserByEmail(user.email)
+      setUserData(retrievedUserData)
     }
     fillUserObj()
-    setIsLoading(false)
   }
 else{
   navigate('/')
 }
   }, [])
 
+
+  useEffect(()=>{
+    setIsLoading(false)
+    }, [userData])
+    
+
 if(user && !isLoading){
   return (
     <>
       <section className="profile-page">
         <img
-          src={user?.picture}
+          src={userData?.picture}
           className="user-picture"
         />
         <h2 className="h2-header kindr-header">USER's Deeds</h2>
