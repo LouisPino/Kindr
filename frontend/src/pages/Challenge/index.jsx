@@ -11,25 +11,11 @@ export default function Challenge() {
 
   const [challenge, setChallenge] = useState(null);
 
-  async function handleRequest() {
-    const challengeResponse = await getChallenge();
-
-    if (challengeResponse.length) {
-      setChallenge(challengeResponse);
-    } else {
-      console.log("hi");
-    }
-  }
-
-  useEffect(() => {
-    handleRequest();
-  }, []);
-
   return (
     <>
       <h2>SHOW PAGE FOR CHALLENGE {id}</h2>
 
-      <NewChallengeForm updateChallenge={handleRequest} />
+      <NewChallengeForm  />
     </>
   );
 }

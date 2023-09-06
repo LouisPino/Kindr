@@ -3,7 +3,7 @@ import * as challengeAPI from './challenge-api';
 export async function createChallenge(challengeData) {
     try {
       const data = await challengeAPI.create(challengeData);
-      console.log(data);
+      console.log('data',data);
       return data;
     } catch (err) {
       console.log(err);
@@ -11,11 +11,11 @@ export async function createChallenge(challengeData) {
     }
   }
 
-  export async function getChallenge(){
-    try {
-        const data = await challengeAPI.index()
-        return data
-    }catch(err){
-        return err
-    }
-}
+//   export async function getChallenge(){
+//     try {
+//         const data = await challengeAPI.index()
+//         return data
+//     }catch(err){
+//         return err
+//     }
+// }

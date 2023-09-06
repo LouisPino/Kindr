@@ -4,7 +4,7 @@ import { createChallenge } from "../../utilities/challenge-service";
 import("./challenge.css");
 
 // define the function boilerplate with export
-export default function NewChallengeForm({updateChallenge}) {
+export default function NewChallengeForm() {
   const initState = {
     title: "",
     description: "",
@@ -16,15 +16,12 @@ export default function NewChallengeForm({updateChallenge}) {
   async function handleSubmit(e){
     e.preventDefault()
     console.log(newForm)
-
     await createChallenge(newForm)
-    updateChallenge()
     setNewForm(initState)
   }
 
 
   function handleChange(e){
-    // console.log(e.target, e.target.name, e.target.value)
     const updatedData = { ...newForm, [e.target.name]: e.target.value }
     setNewForm(updatedData)
   }
@@ -34,7 +31,7 @@ export default function NewChallengeForm({updateChallenge}) {
   return (
     <section>
       <form className="new-challenge-form" onSubmit={handleSubmit}>
-        <label htmlFor="name">
+        <label htmlFor="title">
           Challenge Title
           <input
             type="text"
