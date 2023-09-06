@@ -1,25 +1,32 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { findUserByEmail, updateUser } from "../../utilities/user-service";
 import("./profile.css");
 
 export default function Profile() {
   const { loginWithRedirect, logout, user, isLoading } = useAuth0();
-  console.log(user);
+
+const navigate = useNavigate()
 
   useEffect(()=>{
+    if(user){
     async function fillUserObj(){
       const userData = await findUserByEmail(user.email)
     }
-fillUserObj()
+    fillUserObj()
+  }
+else{
+  navigate('/')
+}
   }, [])
 
+console.log('user', user)
   return (
     <>
       <section className="profile-page">
         <img
-          src={user.picture}
+          src={user?.picture}
           className="user-picture"
         />
         <h2 className="h2-header kindr-header">USER's Deeds</h2>
@@ -42,4 +49,5 @@ fillUserObj()
       </section>
     </>
   );
+
 }
