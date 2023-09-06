@@ -52,18 +52,6 @@ export default function NewChallengeForm({ updateChallenges }) {
             placeholder="add challenge description"
           />
         </label>
-        {/* <label id="add-photo-btn" class="photo-submit">
-          <input
-          type="file"
-            id="images"
-            name="images"
-            required
-            accept="image/*, pdf"
-            onChange={handleChange}
-            value={newForm.images}
-          /> */}
-          {/* <p id="photo-btn" class='details openbtn'>UPLOAD PHOTO</p> */}
-        {/* </label> */}
         <input
           className="new-challenge-button"
           type="submit"

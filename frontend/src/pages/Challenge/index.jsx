@@ -6,6 +6,7 @@ import { getChallenges } from "../../utilities/challenge-service";
 import { useEffect, useState } from "react";
 import ChallengeList from "./ChallengeList";
 
+
 export default function Challenge() {
 
   const { id } = useParams();
