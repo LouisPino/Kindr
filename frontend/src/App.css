@@ -1,16 +1,34 @@
 .App {
-  background: linear-gradient(45deg, #FAD95D, #EF4036);
+  background: linear-gradient(45deg, #fad95d, #ef4036);
   height: 100vh;
   width: 100vw;
   border: none;
   text-align: center;
+  /* display: flex; */
 }
 
+@import url("https://use.typekit.net/tnt5bwz.css");
 .kindr-header {
-  font-family: "asphalt-condensed", sans-serif;
-font-weight: 800;
-font-style: normal;
-color: white;
-font-size: 4rem;
-letter-spacing: .1rem;
+  font-family: "asphalt", sans-serif;
+  font-weight: 800;
+  font-style: normal;
+  /* color: white; */
+  font-size: 4rem;
+  letter-spacing: 0.1rem;
+  font-stretch: extra-expanded;
+  
 }
+
+
+/* path {
+  fill: white;
+  width: 100vw;
+  stroke: black;
+  stroke-width: 2;
+  stroke-linejoin: round;
+  z-index: -5;
+} */
+/* path:hover {
+  fill: aliceblue;
+  stroke: lightskyblue;
+} */
