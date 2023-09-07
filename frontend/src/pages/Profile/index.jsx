@@ -33,8 +33,7 @@ export default function Profile() {
         <section className="profile-page">
           <img src={userData?.picture} className="user-picture" />
           <h2 className="h2-header kindr-header">
-            {userData.username ? userData.name.split(" ")[0] : userData?.name}'s
-            Deeds
+          {userData.username ? `${userData.username}'s` : 'Your'}  Deeds
           </h2>
           <h3 className="h3-header kindr-header">Completed</h3>
           {/* <ChallengeList challenges={userData.completedChallenges}/> */}
