@@ -4,9 +4,7 @@ const challengeCtrl = require("../controllers/challenges")
 
 /* GET home page. */
 router.get('/', challengeCtrl.index);
-router.get('/daily', (req, res) => {
-  res.send('hi')
-});
+router.get('/daily', challengeCtrl.createDailyChallenge);
 router.post('/', challengeCtrl.create);
 
 
