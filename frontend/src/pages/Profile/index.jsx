@@ -37,7 +37,7 @@ if(userData && !isLoading){
           className="user-picture"
         />
         {console.log('userdatea', userData.name)}
-        <h2 className="h2-header kindr-header">{userData.name ? userData.name.split(' ')[0] : userData?.name}'s Deeds</h2>
+        <h2 className="h2-header kindr-header">{userData.username ? `${userData.username}'s` : 'Your'} Deeds</h2>
         <h3 className="h3-header kindr-header">Completed</h3>
         <ul className="user-deed-list">
           <li>lafjkawe</li>

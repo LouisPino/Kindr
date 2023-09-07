@@ -71,7 +71,7 @@ export default function Dashboard() {
     </>
   ) : (
     <>
-      <h1>{userData.username}'s DASHBOARD</h1>
+      <h1>{userData.username ? `${userData.username}'s` : 'Your'} Dashboard</h1>
       <DailyChallenge />
       <ChallengeList challenges={challenges} />
     </>
