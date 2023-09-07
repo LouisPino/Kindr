@@ -32,17 +32,10 @@ export default function Challenge() {
 
   return isLoading ? (
     <>
-      <section className="find-challenge">
-        <h2 className="kindr-header h2-header">Find a Challenge</h2>
-      </section>
       <NewChallengeForm updateChallenges={handleRequest} />
     </>
   ) : (
     <>
-      <section className="find-challenge">
-        <h2 className="kindr-header h2-header">Find a Challenge</h2>
-      </section>
-      <ChallengeList challenges={challenges} />
       <NewChallengeForm updateChallenges={handleRequest} />
 
     </>

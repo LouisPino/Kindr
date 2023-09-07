@@ -20,6 +20,8 @@ export default function NewChallengeForm({ updateChallenges }) {
     setNewForm(initState);
   }
 
+  
+
   function handleChange(e) {
     const updatedData = { ...newForm, [e.target.name]: e.target.value };
     setNewForm(updatedData);

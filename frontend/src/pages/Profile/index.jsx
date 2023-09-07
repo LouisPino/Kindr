@@ -22,13 +22,13 @@ else{
 }
   }, [])
 
-
+console.log('uuuser', userData)
   useEffect(()=>{
     setIsLoading(false)
     }, [userData])
     
 
-if(user && !isLoading){
+if(userData && !isLoading){
   return (
     <>
       <section className="profile-page">
@@ -36,7 +36,8 @@ if(user && !isLoading){
           src={userData?.picture}
           className="user-picture"
         />
-        <h2 className="h2-header kindr-header">USER's Deeds</h2>
+        {console.log('userdatea', userData.name)}
+        <h2 className="h2-header kindr-header">{userData.name ? userData.name.split(' ')[0] : userData?.name}'s Deeds</h2>
         <h3 className="h3-header kindr-header">Completed</h3>
         <ul className="user-deed-list">
           <li>lafjkawe</li>
