@@ -40,7 +40,7 @@ async function updateUser(req, res) {
 }
 
 async function findChallengesById(req, res) {
-  console.log(req.body);
+  console.log('req.body', req.body);
   try {
     res.status(201).json(
       await User.find({
