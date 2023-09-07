@@ -21,8 +21,22 @@ export async function createUser(userData) {
   }
   
   export async function updateUser(formData) {
+    console.log(formData)
     try {
       const data = await userAPI.updateUser(formData);
+      console.log(data)
+      return data;
+    } catch (err) {
+      console.log(err);
+      return err;
+    }
+  }
+
+  export async function findChallengesById(challengeIds) {
+    console.log('challengeIds', challengeIds)
+    try {
+      const data = await userAPI.findChallengesById(challengeIds);
+      console.log('challengeIds', data)
       return data;
     } catch (err) {
       console.log(err);

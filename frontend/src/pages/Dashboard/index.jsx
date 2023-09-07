@@ -26,13 +26,12 @@ export default function Dashboard() {
       navigate('/')}
   }, [])
 
-
+  // createDailyChallenge()
 
   async function handleRequest() {
     const challengeResponse = await getChallenges();
 
     if (challengeResponse.length) {
-      console.log("challengersp", challengeResponse);
       setChallenges(challengeResponse);
     } else {
       console.log(challengeResponse);
@@ -64,8 +63,12 @@ export default function Dashboard() {
     </>
   ) : (
     <>
-      <h1>{userData.username}'s DASHBOARD</h1>
+
+
+
+      <h1>{userData.username ? `${userData.username}'s` : 'Your'} Dashboard</h1>
       <ChallengeList challenges={challenges} />
+      {/* <button onClick={createDailyChallenge}>daily challenge</button> */}
     </>
   );
 }
