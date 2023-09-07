@@ -22,17 +22,14 @@ export default function ChallengeList({ challenges }) {
     }
   }, []);
   async function addComplete(e) {
-    // console.log(e.target.id)
     e.preventDefault()
     let userChallenges = userData.completedChallenges
-    // console.log('userChallenges', userChallenges)
 
     userChallenges.push(e.target.id)
 
     const newUserData = {...userData, [e.target.name]: userChallenges}
     console.log('newUserData', newUserData)
 
-    // setUserData(newUserData)
     updateUser(newUserData)
     console.log('user', user)
   }
