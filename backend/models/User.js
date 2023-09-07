@@ -6,7 +6,8 @@ const userSchema = new Schema({
   email: String,
   user_id: String,
   name: String,
-  picture: String
+  picture: String,
+  completedChallenges: {type:[Schema.Types.ObjectId], ref: "Challenge"}
 }, {
   timestamps: true
 });

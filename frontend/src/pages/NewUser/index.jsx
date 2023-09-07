@@ -26,6 +26,7 @@ const [userData, setUserData] = useState({})
       navigate('/')}
   }, [])
 
+
 useEffect(()=>{
 setIsLoading(false)
 }, [userData])
