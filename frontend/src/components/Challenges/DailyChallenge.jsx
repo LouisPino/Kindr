@@ -16,7 +16,7 @@ export default function DailyChallenge() {
 
   async function createNewDaily(e) {
     e.preventDefault();
-    // createDailyChallenge();
+    createDailyChallenge();
     console.log('button clicked')
   }
 
