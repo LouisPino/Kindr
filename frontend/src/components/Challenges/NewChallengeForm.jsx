@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { createChallenge } from "../../utilities/challenge-service";
 
-import("./challenge.css");
 
 // define the function boilerplate with export
 export default function NewChallengeForm({ updateChallenges }) {

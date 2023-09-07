@@ -4,7 +4,9 @@ import { useParams } from "react-router";
 import { Link, useNavigate } from "react-router-dom";
 import { findUserByEmail, updateUser } from "../../utilities/user-service";
 import { getChallenges } from "../../utilities/challenge-service";
-import ChallengeList from "../Challenge/ChallengeList";
+import ChallengeList from "../../components/Challenges/ChallengeList";
+
+import "./dashboard.css"
 
 export default function Dashboard() {
   const { user } = useAuth0();
