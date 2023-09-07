@@ -48,6 +48,7 @@ export async function updateUser(data){
 }
 
 export async function findChallengesById(challengeIds) {
+    
     const res = await fetch(`${BASE_URL}/users/challenges`, {
         method: "GET",
         credentials: "include",
