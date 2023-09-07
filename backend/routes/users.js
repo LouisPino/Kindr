@@ -6,8 +6,8 @@ const userCtrl = require("../controllers/users")
 router.post('/', userCtrl.addUser);
 router.put('/', userCtrl.updateUser);
 // router.get('/challenges/*', userCtrl.findChallengesById);
-router.get('/challenges/:*', (req,res) => {
-    res.send(req.params)
+router.get('/challenges/:ids', (req,res) => {
+    res.send(req.params.ids)
 });
 router.get('/:email', userCtrl.findUserByEmail);
 
