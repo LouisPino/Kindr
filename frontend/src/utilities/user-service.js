@@ -31,3 +31,15 @@ export async function createUser(userData) {
       return err;
     }
   }
+
+  export async function findChallengesById(challengeIds) {
+    console.log('challengeIds', challengeIds)
+    try {
+      const data = await userAPI.findChallengesById(challengeIds);
+      console.log(data)
+      return data;
+    } catch (err) {
+      console.log(err);
+      return err;
+    }
+  }
