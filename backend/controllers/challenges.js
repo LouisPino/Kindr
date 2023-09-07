@@ -1,10 +1,9 @@
 const { Challenge } = require("../models");
-const { Configuration, OpenAIApi } = require("openai");
+const OpenAIApi = require("openai");
 
-const configuration = new Configuration({
+const openai = new OpenAIApi({
   apiKey: process.env.REACT_APP_OPENAI_API_KEY,
 });
-const openai = new OpenAIApi(configuration);
 
 module.exports = {
   create,
