@@ -10,7 +10,7 @@ export default function ChallengeList({ challenges }) {
           <h3 className="h3-challenge h3-header kindr-header">
             {challenge.title}
           </h3>
-          <p className="challenge-descr">{challenge.description}</p>
+          <p className="challenge-descr body-font">{challenge.description}</p>
         </div>
       ))}
     </section>
