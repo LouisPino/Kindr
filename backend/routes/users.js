@@ -5,7 +5,10 @@ const userCtrl = require("../controllers/users")
 /* GET users listing. */
 router.post('/', userCtrl.addUser);
 router.put('/', userCtrl.updateUser);
-router.get('/challenges', userCtrl.findChallengesById);
+// router.get('/challenges', userCtrl.findChallengesById);
+router.get('/challenges', (req, res) => {
+    res.send('hit)')
+});
 router.get('/:email', userCtrl.findUserByEmail);
 
 router.get("/test", (req, res)=>{

@@ -28,10 +28,8 @@ export default function ChallengeList({ challenges }) {
     userChallenges.push(e.target.id)
 
     const newUserData = {...userData, [e.target.name]: userChallenges}
-    console.log('newUserData', newUserData)
 
     updateUser(newUserData)
-    console.log('user', user)
   }
   
   useEffect(() => {

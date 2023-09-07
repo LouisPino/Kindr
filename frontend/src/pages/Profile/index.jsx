@@ -23,7 +23,6 @@ export default function Profile() {
     }
   }, []);
 
-  console.log("uuuser", userData);
   useEffect(() => {
     setIsLoading(false);
   }, [userData]);
@@ -33,7 +32,6 @@ export default function Profile() {
       <>
         <section className="profile-page">
           <img src={userData?.picture} className="user-picture" />
-          {console.log("userdatea", userData.name)}
           <h2 className="h2-header kindr-header">
             {userData.username ? userData.name.split(" ")[0] : userData?.name}'s
             Deeds

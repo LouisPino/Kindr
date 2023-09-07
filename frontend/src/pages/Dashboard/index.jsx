@@ -36,7 +36,6 @@ export default function Dashboard() {
     const challengeResponse = await getChallenges();
 
     if (challengeResponse.length) {
-      console.log("challengersp", challengeResponse);
       setChallenges(challengeResponse);
     } else {
       console.log(challengeResponse);
