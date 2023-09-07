@@ -36,3 +36,23 @@ export async function index() {
       return new Error("Invalid Request");
     }
   }
+
+  export async function createDailyChallenge() {
+    const res = await fetch(`${BASE_URL}/challenges/daily`, {
+      method: "GET",
+      credentials: "include",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": true,
+      },
+    });
+  
+    console.log(res);
+  
+    if (res.ok) {
+      return res.json();
+    } else {
+      return new Error("Invalid Request");
+    }
+  }

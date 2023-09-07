@@ -6,7 +6,9 @@ import { findUserByEmail, updateUser } from "../../utilities/user-service";
 import { getChallenges } from "../../utilities/challenge-service";
 import ChallengeList from "../../components/Challenges/ChallengeList";
 
+
 import "./dashboard.css"
+import DailyChallenge from "../../components/Challenges/DailyChallenge";
 
 export default function Dashboard() {
   const { user } = useAuth0();
@@ -71,6 +73,7 @@ export default function Dashboard() {
   ) : (
     <>
       <h1>{userData.username}'s DASHBOARD</h1>
+      <DailyChallenge />
       <ChallengeList challenges={challenges} />
     </>
   );
