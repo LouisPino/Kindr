@@ -58,6 +58,7 @@ export async function findChallengesById(challengeIds) {
         },
         body: JSON.stringify(challengeIds)
       });
+      console.log('user-api res', res)
       if (res.ok) {
         return res.json();
       } else {

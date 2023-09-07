@@ -36,7 +36,7 @@ export async function createUser(userData) {
     console.log('challengeIds', challengeIds)
     try {
       const data = await userAPI.findChallengesById(challengeIds);
-      console.log(data)
+      console.log('challengeIds', data)
       return data;
     } catch (err) {
       console.log(err);

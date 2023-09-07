@@ -48,7 +48,7 @@ async function findChallengesById(req, res) {
       })
     );
 
-    console.log("reqbody", req.body);
+    console.log("reqbody challengesIds", req.body);
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
