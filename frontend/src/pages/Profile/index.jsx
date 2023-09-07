@@ -45,7 +45,7 @@ if(userData && !isLoading){
           <li>lafjkawe</li>
           <li>lafjkawe</li>
         </ul>
-        <h3 className="user-h3 kindr-header">Saved</h3>
+        <h3 className="h3-header kindr-header">Saved</h3>
         <ul className="user-deed-list">
           <li>lafjkawe</li>
           <li>lafjkawe</li>
