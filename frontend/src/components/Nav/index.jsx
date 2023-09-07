@@ -28,7 +28,7 @@ export default function Nav() {
           </Link>
           <Link to={"/challenges/1234"}>
             {" "}
-            <button>CHALLENGE</button>{" "}
+            <button>ADD CHALLENGE</button>{" "}
           </Link>
           <Link to={"/users"}>
             {" "}

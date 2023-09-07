@@ -9,8 +9,6 @@ export default function NewChallengeForm({ updateChallenges }) {
     title: "",
     description: "",
     images: [],
-    startDate: Date.now(),
-    endDate: Date.now(),
   };
   const [newForm, setNewForm] = useState(initState);
   async function handleSubmit(e) {
