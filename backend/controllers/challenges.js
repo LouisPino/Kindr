@@ -76,4 +76,5 @@ async function createDailyChallenge(req, res, next) {
   const newDeed = splitEm[1];
   const deedObj = { title: newTitle, description: newDeed, daily: true };
   Challenge.create(deedObj)
+  res.send(deedObj)
 }
