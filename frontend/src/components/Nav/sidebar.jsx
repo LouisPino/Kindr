@@ -41,7 +41,7 @@ export default function Sidenav() {
           {/* <button onClick={() => logout()}> LOGOUT</button> */}
           <div className={open ? "sidenav" : "sidenavClosed"}>
             <button className="menuBtn" onClick={toggleOpen}>
-              {open ? <img src="frontend/public/hamburger.svg" /> : <img src="frontend/public/hamburger.svg" />}
+              {open ? <img className="hamburger-open" src="https://res.cloudinary.com/dpsymdmyi/image/upload/v1694202631/hamburger_lththo.svg" /> : <img className="hamburger-closed" src="https://res.cloudinary.com/dpsymdmyi/image/upload/v1694202631/hamburger_lththo.svg" />}
             </button>
             {navData.map((item) => {
               return (
