@@ -69,5 +69,8 @@ hr {
   color: blue;
   margin: auto;
   margin-top: 1rem;
-  background-color: blue;
+  background-image: url("https://res.cloudinary.com/dpsymdmyi/image/upload/v1694216684/hr-line-white_mwvizb.svg");
+  background-repeat: repeat-x;
+  background-size: contain;
+  border: none;
 }
