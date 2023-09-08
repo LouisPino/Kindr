@@ -1,9 +1,31 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { createChallenge } from "../../utilities/challenge-service";
-
+import { useNavigate } from "react-router";
+import { useAuth0 } from "@auth0/auth0-react";
+import { findUserByEmail } from "../../utilities/user-service";
 
 // define the function boilerplate with export
-export default function NewChallengeForm({ updateChallenges }) {
+export default function NewChallengeForm() {
+  const navigate = useNavigate()
+  const { loginWithRedirect, logout, user } = useAuth0();
+  const [isLoading, setIsLoading] = useState(true);
+  const [userData, setUserData] = useState({});
+  useEffect(() => {
+    if (user) {
+      async function fillUserObj() {
+        const retrievedUserData = await findUserByEmail(user.email);
+        setUserData(retrievedUserData);
+      }
+      fillUserObj();
+    } else {
+      navigate("/");
+    }
+  }, []);
+
+
+
+
+
   const initState = {
     title: "",
     description: "",
@@ -13,9 +35,9 @@ export default function NewChallengeForm({ updateChallenges }) {
   const [newForm, setNewForm] = useState(initState);
   async function handleSubmit(e) {
     e.preventDefault();
-    updateChallenges();
     await createChallenge(newForm);
     setNewForm(initState);
+    navigate("/dashboard")
   }
 
   

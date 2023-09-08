@@ -8,7 +8,7 @@ import("./profile.css");
 
 
 export default function Profile() {
-  const { loginWithRedirect, logout, user} = useAuth0();
+  const { user } = useAuth0();
 const [isLoading, setIsLoading] = useState(true)
 const navigate = useNavigate()
 const [challengeObjs, setChallengeObjs] = useState([])
@@ -57,7 +57,7 @@ if(userData && !isLoading){
             <button>EDIT PROFILE</button>{" "}
           </Link>
         <h2 className="h2-header kindr-header">{userData.username ? `${userData.username}'s` : 'Your'} Deeds</h2>
-        <h3 className="h3-header kindr-header">Completed</h3>
+        {/* <h3 className="h3-header kindr-header">Completed</h3> */}
        {challengeObjs?.length ? <ChallengeList challenges={challengeObjs} location="profile"/> : <h1>LOADING</h1>} 
       </section>
     </>

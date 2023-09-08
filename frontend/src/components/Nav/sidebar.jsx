@@ -32,9 +32,9 @@ export default function Sidenav() {
 
   return (
     <header className="nav">
-      {!isLoading && !user && (
+      {/* {!isLoading && !user && (
         <button onClick={() => loginWithRedirect()}>LOGIN</button>
-      )}
+      )} */}
       {!isLoading && user && (
         <>
          {/* <h1 className="kindr-header kindr-nav">Kindr</h1> */}
