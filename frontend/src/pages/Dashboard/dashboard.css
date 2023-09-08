@@ -62,3 +62,15 @@
   font-size: 2.75rem;
   letter-spacing: 0.1rem;
 }
+
+hr {
+  width: 80%;
+  height: .3rem;
+  color: blue;
+  margin: auto;
+  margin-top: 1rem;
+  background-image: url("https://res.cloudinary.com/dpsymdmyi/image/upload/v1694216684/hr-line-white_mwvizb.svg");
+  background-repeat: repeat-x;
+  background-size: contain;
+  border: none;
+}

@@ -13,7 +13,7 @@ export default function Header() {
       )}
 
       {!isLoading && user && (
-            <h1 className="kindr-header kindr-nav">Kindr</h1>
+            <h1 className="kindr-header kindr-nav depth">Kindr</h1>
       )}
     </header>
   );

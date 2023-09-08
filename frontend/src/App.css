@@ -52,7 +52,7 @@
   background-image: url("https://res.cloudinary.com/dpsymdmyi/image/upload/v1694204679/cloud-header_uktbi1.svg");
   background-repeat: repeat-x;
   background-size: contain;
-  filter: drop-shadow(2px 0px 5px black);
+  filter: drop-shadow(2px 0px 10px #b12f28);
 }
 
 .routes{
