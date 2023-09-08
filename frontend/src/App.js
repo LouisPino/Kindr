@@ -8,11 +8,14 @@ import Profile from "./pages/Profile";
 import Challenge from "./pages/Challenge";
 import NewUser from "./pages/NewUser";
 import _404 from "./pages/404";
+import Sidenav from "./components/Nav/sidebar";
+
 
 function App() {
   return (
     <div className="App">
-      <Nav />
+      <Sidenav />
+      {/* <Nav /> */}
       <Routes>
         <Route exact path="/" element={<Welcome />} />
         <Route path="/dashboard" element={<Dashboard />} />
