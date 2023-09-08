@@ -75,7 +75,7 @@ export default function Dashboard() {
     <>
       <h1>{userData.username ? `${userData.username}'s` : 'Your'} Dashboard</h1>
       <DailyChallenge dailyChallenge = {dailyChallenge}/>
-      <ChallengeList challenges={challenges} />
+      <ChallengeList challenges={challenges} location={'dashboard'}/>
     </>
   );
 }
