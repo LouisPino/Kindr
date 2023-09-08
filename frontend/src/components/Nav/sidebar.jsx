@@ -45,7 +45,7 @@ export default function Sidenav() {
             </button>
             {navData.map((item) => {
               return (
-                <NavLink key={item.id} className="sideitem" to={item.link}>
+                <NavLink key={item.id} className={open ? "sideitem" : "sideitemClosed"} to={item.link}>
                   <span className={open ? "linkText" : "linkTextClosed"}>
                     {item.text}
                   </span>
