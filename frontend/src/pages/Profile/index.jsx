@@ -47,6 +47,10 @@ else{
 if(userData && !isLoading){
   return (
     <>
+    <Link to={"/newuser"}>
+            {" "}
+            <button>EDIT PROFILE</button>{" "}
+          </Link>
       <section className="profile-page">
         <img
           src={userData?.picture}
