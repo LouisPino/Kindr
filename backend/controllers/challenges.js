@@ -95,7 +95,7 @@ let gptConfig={
 
 const response = await fetch("https://api.openai.com/v1/chat/completions", {
   method: "POST",
-  credentials: "include",
+  // credentials: "include",
   headers: { Accept: "application/json",
   "Authorization": apiKey,
   "Content-Type": "application/json",
