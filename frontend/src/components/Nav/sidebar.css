@@ -9,6 +9,7 @@
 .sidenavClosed {
   transition: width 0.3s ease-in-out;
   width: 60px;
+  display: none;
 }
 
 .sideitem {
@@ -29,7 +30,8 @@
 }
 
 .sideitem:hover {
-  background-color: #244f7d1c;
+  background: linear-gradient(45deg, #fad95d, #ef4036);
+color: white;
 }
 
 .menuBtn {
