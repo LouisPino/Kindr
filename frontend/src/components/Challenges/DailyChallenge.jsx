@@ -7,17 +7,40 @@ import {
   createDailyChallenge,
   getChallenges,
 } from "../../utilities/challenge-service";
-import ChallengeList from "./ChallengeList";
 
 export default function DailyChallenge({dailyChallenge}) {
+  const { loginWithRedirect, logout, user } = useAuth0();
+  async function addComplete(e) {
+    e.preventDefault()
+    let userChallenges = userData.completedChallenges
 
+    userChallenges.push(e.target.id)
+
+    const newUserData = {...userData, [e.target.name]: userChallenges}
+    console.log('newUserData', newUserData)
+
+    updateUser(newUserData)
+    console.log('user', user)
+  }
+
+  const [userData, setUserData] = useState({});
+  useEffect(() => {
+    if (user) {
+      async function fillUserObj() {
+        const retrievedUserData = await findUserByEmail(user.email);
+        setUserData(retrievedUserData);
+      }
+      fillUserObj();
+    } else {
+      navigate("/");
+    }
+  }, []);
 
   const navigate = useNavigate();
 
   async function createNewDaily(e) {
     e.preventDefault();
     createDailyChallenge();
-    console.log('button clicked')
   }
 
   return (
@@ -32,11 +55,13 @@ export default function DailyChallenge({dailyChallenge}) {
         </h3>
         <p className="challenge-descr body-font">{dailyChallenge.description}</p>
         <p className="challenge-complete body-font">Completed?</p>
-        <button name="completedChallenges">&#10003;</button>
+        <button name="completedChallenges" id={dailyChallenge._id} onClick={addComplete}>
+            &#10003;
+          </button>
       </div>
-      <button className="challenge-block" onClick={createNewDaily}>
+      {/* <button className="challenge-block" onClick={createNewDaily}>
         create daily challenge
-      </button>
+      </button> */}
     </>
   );
 }
