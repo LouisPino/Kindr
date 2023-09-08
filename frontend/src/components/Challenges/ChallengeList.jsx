@@ -6,6 +6,14 @@ import { updateUser } from "../../utilities/user-service";
 
 export default function ChallengeList({ challenges, location }) {
  let showDaily= false
+let sortedChallenges = []
+let sortedChallengesidx = 0
+for(let i = challenges.length-1; i>=0; i--){
+sortedChallenges[sortedChallengesidx]=challenges[i]
+sortedChallengesidx ++
+}
+
+
 
 
  function showCondition(challenge){
@@ -62,7 +70,7 @@ export default function ChallengeList({ challenges, location }) {
       (
         <>
     <section className="challenge-list">
-      {challenges.map((challenge, idx) => {
+      {sortedChallenges.map((challenge, idx) => {
 
 
       if(showCondition(challenge))  {
