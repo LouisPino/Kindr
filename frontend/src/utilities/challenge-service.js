@@ -27,3 +27,13 @@ export async function createDailyChallenge(){
       return err
   }
 }
+
+export async function findChallengesByIds(){
+  try {
+      const data = await challengeAPI.createDailyChallenge()
+      return data
+  }catch(err){
+      return err
+  }
+}
+

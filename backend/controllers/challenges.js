@@ -11,7 +11,8 @@ module.exports = {
   show,
   update,
   delete: destroy,
-  createDailyChallenge
+  createDailyChallenge,
+  findChallengesByIds
 };
 
 async function create(req, res) {
@@ -102,4 +103,12 @@ const response = await fetch("https://api.openai.com/v1/chat/completions", {
   body: JSON.stringify(gptConfig)
 })
 res.send(response)
+}
+
+async function findChallengesByIds(req, res) {
+  try {
+    res.status(200).json(await Challenge.find({"_id": {$in: req.body}}));
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
 }

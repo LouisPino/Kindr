@@ -9,6 +9,8 @@ router.get('/daily', challengeCtrl.createDailyChallenge);
 //   res.send('test')
 // });
 router.post('/', challengeCtrl.create);
+router.post('/challenges/findbyid', challengeCtrl.findChallengesByIds);
+
 
 
 module.exports = router;
