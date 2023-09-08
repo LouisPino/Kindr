@@ -37,8 +37,8 @@ export default function Sidenav() {
       )}
       {!isLoading && user && (
         <>
-         <h1 className="kindr-header kindr-nav">Kindr</h1>
-          <button onClick={() => logout()}> LOGOUT</button>
+         {/* <h1 className="kindr-header kindr-nav">Kindr</h1> */}
+          {/* <button onClick={() => logout()}> LOGOUT</button> */}
           <div className={open ? "sidenav" : "sidenavClosed"}>
             <button className="menuBtn" onClick={toggleOpen}>
               {open ? <p>LEFT</p> : <p>RIGHT</p>}
