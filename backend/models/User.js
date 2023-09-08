@@ -7,7 +7,8 @@ const userSchema = new Schema({
   user_id: String,
   name: String,
   picture: String,
-  completedChallenges: {type:[Schema.Types.ObjectId], ref: "Challenge"}
+  completedChallenges: {type:[Schema.Types.ObjectId], ref: "Challenge"},
+  score: Number
 }, {
   timestamps: true
 });
