@@ -46,8 +46,9 @@ export default function ChallengeList({ challenges }) {
       (
         <>
     <section className="challenge-list">
-      {challenges.map((challenge, idx) => (
-        <div className="challenge-block" key={challenge._id}>
+      {challenges.map((challenge, idx) => {
+      if(!challenge.daily)  {
+    return    <div className="challenge-block" key={challenge._id}>
           <img
             className="challenge-picture"
             src="https://res.cloudinary.com/dpsymdmyi/image/upload/v1692365554/bebpthuftxhz18roqbwl.png"
@@ -61,7 +62,7 @@ export default function ChallengeList({ challenges }) {
             &#10003;
           </button>
         </div>
-      ))}
+          }  })}
     </section>
     </>
   );

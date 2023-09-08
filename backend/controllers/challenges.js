@@ -85,7 +85,6 @@ async function destroy(req, res) {
 // }
 
 
-
 async function createDailyChallenge(req, res, next) {
 let gptConfig={
   model: "gpt-3.5-turbo",
@@ -103,15 +102,11 @@ const response = await fetch("https://api.openai.com/v1/chat/completions", {
   body: JSON.stringify(gptConfig)
 })
 const resFormat = await response.json()
-console.log('resFormat', resFormat)
 const message = resFormat.choices[0].message;
-console.log('message', message)
 const dailyDeed = message.content;
-console.log('dailyDeed', dailyDeed)
 const splitEm = dailyDeed.split(": ")
-console.log('splitEm', splitEm)
-const deedObj = { title: splitEm[0], description: splitEm[1], daily: true }
-console.log('deedObj', deedObj)
+const deedObj = { title: splitEm[0], description: splitEm[1], daily: true}
+
 res.status(201).json(await Challenge.create(deedObj))
 }catch(err){
   console.log('err', err)

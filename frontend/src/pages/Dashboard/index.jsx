@@ -17,7 +17,7 @@ export default function Dashboard() {
   const navigate = useNavigate();
 
   const [challenges, setChallenges] = useState(null);
-
+  const [dailyChallenge, setDailyChallenge] = useState();
 
 
   const [userData, setUserData] = useState({})
@@ -48,6 +48,8 @@ export default function Dashboard() {
   }
   useEffect(() => {
     if (challenges) {
+      const dailyidx = challenges.findIndex((chal)=>chal.daily === true)
+      setDailyChallenge(challenges[dailyidx])
       setIsLoading(false);
     } 
   }, [challenges]);
@@ -72,7 +74,7 @@ export default function Dashboard() {
   ) : (
     <>
       <h1>{userData.username ? `${userData.username}'s` : 'Your'} Dashboard</h1>
-      <DailyChallenge />
+      <DailyChallenge dailyChallenge = {dailyChallenge}/>
       <ChallengeList challenges={challenges} />
     </>
   );
