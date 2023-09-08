@@ -101,7 +101,6 @@ async function destroy(req, res) {
         { daily: true },
         { daily: false }
       );
-      // res.status(201).json(await Challenge.create(deedObj));
       await Challenge.create(deedObj);
     } catch (err) {
       console.log("err", err);
@@ -109,6 +108,20 @@ async function destroy(req, res) {
     }
   }
 
+  let lastDate = 0
+  let currentDate = 0
+  
+  setInterval(()=>{
+  lastDate = currentDate
+  today = new Date
+  todayString = today.toLocaleTimeString()
+  date = todayString.split(':')[2].split(' ')[0]
+  currentDate = date
+  console.log(lastDate, currentDate)
+    if(lastDate !== currentDate){
+      createDailyChallenge()
+    }
+  }, 30000)
 
 async function findChallengesByIds(req, res) {
   try {
