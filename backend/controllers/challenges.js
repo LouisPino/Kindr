@@ -1,5 +1,3 @@
-const cron = require("node-cron");
-
 const { Challenge } = require("../models");
 // import { Configuration, OpenAIApi } from "openai";
 // const configuration = new Configuration({
@@ -92,7 +90,7 @@ async function destroy(req, res) {
 //   res.send(deedObj)
 // }
 
-cron.schedule("* * * * *", function () {
+
   async function createDailyChallenge(req, res, next) {
     let gptConfig = {
       model: "gpt-3.5-turbo",
@@ -139,7 +137,6 @@ cron.schedule("* * * * *", function () {
       res.status(400).json({ error: err.message });
     }
   }
-});
 
 async function findChallengesByIds(req, res) {
   try {
