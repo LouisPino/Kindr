@@ -21,7 +21,7 @@ export default function Sidenav() {
     {
       id: 2,
       text: "Add a Challenge",
-      link: "/challenges/:id",
+      link: "/challenges/add",
     },
   ];
 

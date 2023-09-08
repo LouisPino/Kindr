@@ -25,7 +25,7 @@ export default function Nav() {
             {" "}
             <button>PROFILE</button>{" "}
           </Link>
-          <Link to={"/challenges/1234"}>
+          <Link to={"/challenges/add"}>
             {" "}
             <button>ADD CHALLENGE</button>{" "}
           </Link>

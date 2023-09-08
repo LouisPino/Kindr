@@ -63,8 +63,6 @@ export default function ChallengeList({ challenges, location }) {
       {challenges.map((challenge, idx) => {
 
 
-
-
       if(showCondition(challenge))  {
     return    <div className="challenge-block" key={challenge._id}>
           <img
@@ -85,6 +83,7 @@ export default function ChallengeList({ challenges, location }) {
           <h1>YOU DID IT ALREADY</h1>
           </>
       }
+      <button onClick={()=> navigate(`/challenges/${challenge._id}`)}>VIEW CHALLENGE</button>
         </div>
           }  })}
     </section>
