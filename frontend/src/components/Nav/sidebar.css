@@ -9,7 +9,7 @@
 .sidenavClosed {
   transition: width 0.3s ease-in-out;
   width: 60px;
-  display: none;
+  /* display: none; */
 }
 
 .sideitem {
@@ -27,11 +27,12 @@
 
 .linkTextClosed {
   visibility: hidden;
+  display: none;
 }
 
 .sideitem:hover {
   background: linear-gradient(45deg, #fad95d, #ef4036);
-color: white;
+  color: white;
 }
 
 .menuBtn {
@@ -48,4 +49,9 @@ color: white;
 .hamburger-open,
 .hamburger-closed {
   width: 5rem;
+}
+
+.hamburger-closed {
+  margin-top: 1.7rem;
+  margin-left: 1.7rem;
 }
