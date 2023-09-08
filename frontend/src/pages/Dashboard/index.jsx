@@ -4,7 +4,11 @@ import { useParams } from "react-router";
 import { Link, useNavigate } from "react-router-dom";
 import { findUserByEmail, updateUser } from "../../utilities/user-service";
 import { getChallenges } from "../../utilities/challenge-service";
-import ChallengeList from "../Challenge/ChallengeList";
+import ChallengeList from "../../components/Challenges/ChallengeList";
+
+
+import "./dashboard.css"
+import DailyChallenge from "../../components/Challenges/DailyChallenge";
 
 export default function Dashboard() {
   const { user } = useAuth0();
@@ -36,7 +40,6 @@ export default function Dashboard() {
     const challengeResponse = await getChallenges();
 
     if (challengeResponse.length) {
-      console.log("challengersp", challengeResponse);
       setChallenges(challengeResponse);
     } else {
       console.log(challengeResponse);
@@ -46,7 +49,7 @@ export default function Dashboard() {
   useEffect(() => {
     if (challenges) {
       setIsLoading(false);
-    }
+    } 
   }, [challenges]);
 
   useEffect(() => {
@@ -68,7 +71,8 @@ export default function Dashboard() {
     </>
   ) : (
     <>
-      <h1>{userData.username}'s DASHBOARD</h1>
+      <h1>{userData.username ? `${userData.username}'s` : 'Your'} Dashboard</h1>
+      <DailyChallenge />
       <ChallengeList challenges={challenges} />
     </>
   );

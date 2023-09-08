@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { createChallenge } from "../../utilities/challenge-service";
 
-import("./challenge.css");
 
 // define the function boilerplate with export
 export default function NewChallengeForm({ updateChallenges }) {
@@ -9,7 +8,7 @@ export default function NewChallengeForm({ updateChallenges }) {
     title: "",
     description: "",
     images: [],
-    completed: true
+    daily: false
   };
   const [newForm, setNewForm] = useState(initState);
   async function handleSubmit(e) {

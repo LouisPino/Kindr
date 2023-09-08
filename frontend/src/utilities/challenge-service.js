@@ -18,3 +18,22 @@ export async function createChallenge(challengeData) {
         return err
     }
 }
+
+export async function createDailyChallenge(){
+  try {
+      const data = await challengeAPI.createDailyChallenge()
+      return data
+  }catch(err){
+      return err
+  }
+}
+
+export async function findChallengesByIds(array){
+  try {
+      const data = await challengeAPI.findChallengesByIds(array)
+      return data
+  }catch(err){
+      return err
+  }
+}
+
