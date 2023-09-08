@@ -125,7 +125,7 @@ async function destroy(req, res) {
 
 async function findChallengesByIds(req, res) {
   try {
-    res.status(200).json(await Challenge.find({ _id: { $in: req.body } }));
+    res.status(200).json(await Challenge.find({ _id: { $in: req.params.id } }));
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
