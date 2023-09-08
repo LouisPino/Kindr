@@ -1,10 +1,10 @@
 const { Challenge } = require("../models");
 // import { Configuration, OpenAIApi } from "openai";
 // const configuration = new Configuration({
-//   apiKey: process.env.OPENAI_API_KEY
-// })
-// const openai = new OpenAIApi(configuration);
-
+  // })
+  // const openai = new OpenAIApi(configuration);
+  
+    const apiKey= process.env.REACT_APP_OPENAI_API_KEY
 module.exports = {
   create,
   index,
@@ -81,4 +81,26 @@ async function createDailyChallenge(req, res, next) {
   const deedObj = { title: newTitle, description: newDeed, daily: true };
   Challenge.create(deedObj)
   res.send(deedObj)
+}
+
+
+
+async function createDailyChallenge(req, res, next) {
+let gptConfig={
+  "model": "gpt-3.5-turbo",
+  "messages": [{"role": "user", "content": "Say this is a test!"}],
+  "temperature": 0.7
+}
+
+
+const response = await fetch("https://api.openai.com/v1/chat/completions", {
+  method: "POST",
+  credentials: "include",
+  headers: { Accept: "application/json",
+  "Authorization": apiKey,
+  "Content-Type": "application/json",
+  "Access-Control-Allow-Credentials": true,},
+  body: JSON.stringify(gptConfig)
+})
+
 }
