@@ -34,6 +34,8 @@ export default function ChallengeList({ challenges, location }) {
       navigate("/");
     }
   }, []);
+
+  
   async function addComplete(e) {
     e.preventDefault()
     let userChallenges = userData.completedChallenges

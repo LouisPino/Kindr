@@ -1,9 +1,41 @@
-import { useParams } from "react-router"
+import { useNavigate, useParams } from "react-router"
 import { findChallengesByIds } from "../../utilities/challenge-service";
 import { useEffect, useState } from "react";
+import { useAuth0 } from "@auth0/auth0-react";
+import { findUserByEmail, updateUser } from "../../utilities/user-service";
+
 export default function ShowChallenge() {
+    const { loginWithRedirect, logout, user} = useAuth0();
+    const navigate = useNavigate()
 const { id } = useParams()
 const [challenge, setChallenge] = useState({})
+const [userData, setUserData] = useState({})
+  useEffect(()=>{
+    if(user){
+    async function fillUserObj(){
+      const retrievedUserData = await findUserByEmail(user.email)
+      setUserData(retrievedUserData)
+    }
+    fillUserObj()
+  }
+else{
+  navigate('/')
+}
+  }, [])
+
+  async function addComplete(e) {
+    e.preventDefault()
+    let userChallenges = userData.completedChallenges
+
+    userChallenges.push(e.target.id)
+
+    const newUserData = {...userData, [e.target.name]: userChallenges}
+    console.log('newUserData', newUserData)
+
+    updateUser(newUserData)
+    setUserData(newUserData)
+    console.log('user', user)
+  }
 
 useEffect(()=>{
    async function getChallenge(){
@@ -24,10 +56,16 @@ setChallenge(gotChallenge[0])
       {challenge.title}
     </h3>
     <p className="challenge-descr body-font">{challenge.description}</p>
-    {/* <p className="challenge-complete body-font">Completed?</p> */}
-    {/* <button name="completedChallenges" id={challenge._id} onClick={addComplete}>
+    {!userData?.completedChallenges?.includes(challenge._id) ? <>
+    <p className="challenge-complete body-font">Completed?</p>
+    <button name="completedChallenges" id={challenge._id} onClick={addComplete}>
       &#10003;
-    </button> */}
+    </button>
+    </> :
+    <>
+    <h1>YOU DID IT ALREADY</h1>
+    </>
+}
   </div>
-    )
+    )    
 }
