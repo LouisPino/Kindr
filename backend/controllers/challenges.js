@@ -68,7 +68,7 @@ async function destroy(req, res) {
         {
           role: "user",
           content:
-            "Generate a good deed that someone could achieve in less than 24 hours. Please come up with a title for the deed and a description no longer than 4 sentences explaining what the deed is. It should be formatted like this: (Deed Title): (Deed Description).",
+            "Generate a good deed that someone could achieve in less than 24 hours. Please come up with a title for the deed and a description no longer than 4 sentences explaining what the deed is. Do not repeat a deed you have done before. It should be formatted like this: (Deed Title): (Deed Description)." ,
         },
       ],
       temperature: 0.7,
@@ -112,16 +112,16 @@ async function destroy(req, res) {
   let currentDate = 0
   
   setInterval(()=>{
-  lastDate = currentDate
-  today = new Date
-  todayString = today.toLocaleTimeString()
-  date = todayString.split(':')[2].split(' ')[0]
-  currentDate = date
-  console.log(lastDate, currentDate)
-    if(lastDate !== currentDate){
-      createDailyChallenge()
-    }
-  }, 30000)
+    lastDate = currentDate
+    today = new Date
+    todayString = today.toLocaleDateString()
+    date = todayString.split('/')[1]
+    currentDate = date
+    console.log(lastDate, currentDate)
+      if(lastDate !== currentDate){
+        createDailyChallenge()
+      }
+    }, 1000*60*15)
 
 async function findChallengesByIds(req, res) {
   try {
