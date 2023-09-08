@@ -18,8 +18,7 @@
   grid-template-columns: 20% 80%;
   grid-template-rows: 20% 80%;
   align-items: center;
-  justify-content: center;
-  align-content: center;
+  /* justify-content: center; */
   justify-items: center;
 }
 
@@ -56,6 +55,7 @@
 .nav {
   grid-row: 1 / span 2;
   grid-column: 1 / span 1;
+  align-self: baseline;
 }
 
 .sidenav {
