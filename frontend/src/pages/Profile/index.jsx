@@ -11,8 +11,8 @@ export default function Profile() {
   const { loginWithRedirect, logout, user} = useAuth0();
 const [isLoading, setIsLoading] = useState(true)
 const navigate = useNavigate()
-const [userData, setUserData] = useState({})
 const [challengeObjs, setChallengeObjs] = useState([])
+const [userData, setUserData] = useState({})
   useEffect(()=>{
     if(user){
     async function fillUserObj(){
