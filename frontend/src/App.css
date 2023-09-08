@@ -40,6 +40,7 @@
 }
 
 .header-page {
+  display: grid;
   grid-row: 1 / span 1;
   grid-column: 1 / span 1;
   align-items: center;
@@ -47,7 +48,8 @@
   align-content: center;
   justify-items: center;
   width: 100%;
-  height: 100%;  background-image: url("https://res.cloudinary.com/dpsymdmyi/image/upload/v1694204679/cloud-header_uktbi1.svg");
+  height: 100%;  
+  background-image: url("https://res.cloudinary.com/dpsymdmyi/image/upload/v1694204679/cloud-header_uktbi1.svg");
   background-repeat: repeat-x;
   background-size: contain;
 }

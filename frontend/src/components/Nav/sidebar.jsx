@@ -25,7 +25,7 @@ export default function Sidenav() {
     },
   ];
 
-  const [open, setopen] = useState(true);
+  const [open, setopen] = useState(false);
   const toggleOpen = () => {
     setopen(!open);
   };
