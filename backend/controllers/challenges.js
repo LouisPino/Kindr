@@ -103,13 +103,16 @@ const response = await fetch("https://api.openai.com/v1/chat/completions", {
   body: JSON.stringify(gptConfig)
 })
 const resFormat = await response.json()
+console.log('resFormat', resFormat)
 const message = resFormat.data.choices[0].message;
+console.log('message', message)
 const dailyDeed = message.content;
+console.log('dailyDeed', dailyDeed)
 const splitEm = dailyDeed.split(": ")
+console.log('splitEm', splitEm)
 const deedObj = { title: splitEm[0], description: splitEm[1], daily: true }
-res.json(deedObj)
-const newChallenge = deedObj
-await Challenge.create(newChallenge)
+console.log('deedObj', deedObj)
+res.status(201).json(await Challenge.create(deedObj))
 }catch(err){
   console.log('err', err)
   res.status(400).json({ error: err.message });
