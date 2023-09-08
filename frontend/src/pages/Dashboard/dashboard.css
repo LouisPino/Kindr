@@ -20,9 +20,9 @@
   
   .challenge-block {
     display: grid;
-    grid-template-columns: 30% 50% 20%;
-    grid-template-rows: 30% 70%;
-    width: 60%;
+    grid-template-columns: 20% 70% 10%;
+    grid-template-rows: 10% 90%;
+    width: 90%;
     margin: auto;
     align-items: center;
     text-align: left;
@@ -34,12 +34,14 @@
   
   .h3-challenge {
       color: #F05151;
+      padding-left: 2rem;
   }
   
   .challenge-descr, .challenge-complete {
-    font-size: 3rem;
+    font-size: 2rem;
     margin: 0;
     color: #F05151;
+    padding: 0 2rem ;
   }
   
   .challenge-descr {

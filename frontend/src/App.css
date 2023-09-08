@@ -2,21 +2,22 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  border: 1px solid green;
+  /* border: 1px solid green; */
 }
 
 
 .App {
   background: linear-gradient(45deg, #fad95d, #ef4036);
-  min-height: 100vh;
+  /* min-height: 100vh; */
+  height: 100%;
   width: 100%;
   border: none;
   text-align: center;
-  padding: 0;
+  padding-bottom: 5rem;
   margin: 0;
   display: grid;
   grid-template-columns: 20% 80%;
-  grid-template-rows: 20% 80%;
+  grid-template-rows: 10rem 1fr;
   align-items: center;
   /* justify-content: center; */
   justify-items: center;
@@ -56,6 +57,8 @@
   grid-row: 1 / span 2;
   grid-column: 1 / span 1;
   align-self: baseline;
+  position: fixed;
+  left: 0;
 }
 
 .sidenav {
