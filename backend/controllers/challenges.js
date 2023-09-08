@@ -102,9 +102,14 @@ const response = await fetch("https://api.openai.com/v1/chat/completions", {
   "Access-Control-Allow-Credentials": true,},
   body: JSON.stringify(gptConfig)
 })
-const testVar = await response.json()
-console.log(testVar)
-res.json(testVar)
+const resFormat = await response.json()
+const message = resFormat.data.choices[0].message;
+const dailyDeed = message.content;
+const splitEm = dailyDeed.split(": ")
+const deedObj = { title: splitEm[0], description: splitEm[1], daily: true }
+res.json(deedObj)
+const newChallenge = deedObj
+await Challenge.create(newChallenge)
 }catch(err){
   console.log('err', err)
   res.status(400).json({ error: err.message });
