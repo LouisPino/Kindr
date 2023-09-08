@@ -1,6 +1,5 @@
 const { Challenge } = require("../models");
 
-import schedule from 'node-schedule'
 
 const apiKey = process.env.REACT_APP_OPENAI_API_KEY;
 module.exports = {
@@ -62,7 +61,6 @@ async function destroy(req, res) {
   }
 }
 
-schedule.scheduleJob('0 0 * * *', () => {
   async function createDailyChallenge(req, res, next) {
     let gptConfig = {
       model: "gpt-3.5-turbo",
@@ -103,13 +101,14 @@ schedule.scheduleJob('0 0 * * *', () => {
         { daily: true },
         { daily: false }
       );
-      res.status(201).json(await Challenge.create(deedObj));
+      // res.status(201).json(await Challenge.create(deedObj));
+      await Challenge.create(deedObj);
     } catch (err) {
       console.log("err", err);
-      res.status(400).json({ error: err.message });
+      // res.status(400).json({ error: err.message });
     }
   }
-})
+
 
 async function findChallengesByIds(req, res) {
   try {
@@ -118,3 +117,4 @@ async function findChallengesByIds(req, res) {
     res.status(400).json({ error: error.message });
   }
 }
+
