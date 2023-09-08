@@ -37,7 +37,7 @@ async function updateUser(req, res){
 
 async function findUsersByCompletedChalleneges(req, res){
   try {
-    res.status(201).json(await User.find({completedChallenges: req.params.id}));//////////////
+    res.status(201).json(await User.find({completedChallenges: req.params.id}));
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
