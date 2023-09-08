@@ -20,6 +20,7 @@ export default function DailyChallenge({dailyChallenge}) {
     console.log('newUserData', newUserData)
 
     updateUser(newUserData)
+    setUserData(newUserData)
     console.log('user', user)
   }
 
@@ -65,9 +66,9 @@ export default function DailyChallenge({dailyChallenge}) {
           </>
       }
       </div>
-      {/* <button className="challenge-block" onClick={createNewDaily}>
+      <button className="challenge-block" onClick={createNewDaily}>
         create daily challenge
-      </button> */}
+      </button>
     </>
   );
 }

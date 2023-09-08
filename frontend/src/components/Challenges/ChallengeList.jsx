@@ -6,7 +6,15 @@ import { updateUser } from "../../utilities/user-service";
 
 export default function ChallengeList({ challenges, location }) {
  let showDaily= false
-  if(location === 'profile'){showDaily = true}
+
+
+ function showCondition(challenge){
+   if(location === 'profile'){
+    return !!userData
+ }else{
+  return (!challenge.daily && userData)
+ }
+}
 
 
 
@@ -57,7 +65,7 @@ export default function ChallengeList({ challenges, location }) {
 
 
 
-      if(!challenge.daily && userData)  {
+      if(showCondition(challenge))  {
     return    <div className="challenge-block" key={challenge._id}>
           <img
             className="challenge-picture"
