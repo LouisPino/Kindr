@@ -49,7 +49,7 @@ sortedChallengesidx ++
 
     userChallenges.push(e.target.id)
 
-    const newUserData = {...userData, [e.target.name]: userChallenges, score: score+1}
+    const newUserData = {...userData, [e.target.name]: userChallenges, score: userData.score+1}
     console.log('newUserData', newUserData)
 
     updateUser(newUserData)
