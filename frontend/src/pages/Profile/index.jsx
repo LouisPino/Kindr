@@ -58,6 +58,7 @@ if(userData && !isLoading){
           </Link>
         <h2 className="h2-header kindr-header">{userData.username ? `${userData.username}'s` : 'Your'} Deeds</h2>
         {/* <h3 className="h3-header kindr-header">Completed</h3> */}
+        <h3 className="h3-header kindr-header">Good Deed Score: {userData.score}</h3>
        {challengeObjs?.length ? <ChallengeList challenges={challengeObjs} location="profile"/> : <h1>LOADING</h1>} 
       </section>
     </>
