@@ -4,22 +4,16 @@ import { Link } from "react-router-dom";
 
 import { useState } from "react";
 
-
-
-
-
 export default function Header() {
-    const { loginWithRedirect, logout, user, isLoading } = useAuth0();
+  const { loginWithRedirect, logout, user, isLoading } = useAuth0();
   return (
-    <header>
+    <header className="header-page">
       {!isLoading && !user && (
         <button onClick={() => loginWithRedirect()}>LOGIN</button>
       )}
 
       {!isLoading && user && (
-        <>
-          <h1 className="kindr-header kindr-nav">Kindr</h1>
-        </>
+            <h1 className="kindr-header kindr-nav">Kindr</h1>
       )}
     </header>
   );

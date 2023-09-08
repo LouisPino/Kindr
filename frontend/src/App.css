@@ -5,10 +5,7 @@
   border: 1px solid green;
 }
 
-.routes{
-  grid-row: 1 / span 2;
-  grid-column: 2 / span 1;
-}
+
 .App {
   background: linear-gradient(45deg, #fad95d, #ef4036);
   min-height: 100vh;
@@ -18,8 +15,11 @@
   padding: 0;
   margin: 0;
   display: grid;
-  grid-template-columns: 2;
-  grid-template-rows: 2;
+  grid-template-columns: 20% 80%;
+  grid-template-rows: 20% 80%;
+  align-items: center;
+  /* justify-content: center; */
+  justify-items: center;
 }
 
 @import url("https://use.typekit.net/tnt5bwz.css");
@@ -37,6 +37,26 @@
     font-style: normal;
 }
 
+.header-page {
+  grid-row: 1 / span 1;
+  grid-column: 2 / span 1;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  justify-items: center;
+}
+
+.routes{
+  grid-row: 2 / span 1;
+  grid-column: 2 / span 1;
+  align-self: baseline;
+}
+
+.nav {
+  grid-row: 1 / span 2;
+  grid-column: 1 / span 1;
+  align-self: baseline;
+}
 
 .sidenav {
   width: 250px;
@@ -44,8 +64,6 @@
   height: 100vh;
   background-color: rgb(10,25,41);
   padding-top: 28px;
-  grid-row: 1 / span 2;
-  grid-column: 2 / span 1;
 }
 
 .sidenavClosed {
@@ -72,7 +90,6 @@
 
 .sideitem:hover {
   background-color: #244f7d1c;
-
 }
 
 .menuBtn {
