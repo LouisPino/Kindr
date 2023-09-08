@@ -92,7 +92,7 @@ let gptConfig={
   messages: [{role: "user", content: "Say this is a test!"}],
   temperature: 0.7
 }
-
+try {
 const response = await fetch("https://api.openai.com/v1/chat/completions", {
   method: "POST",
   credentials: "include",
@@ -103,6 +103,9 @@ const response = await fetch("https://api.openai.com/v1/chat/completions", {
   body: JSON.stringify(gptConfig)
 })
 res.json(gptConfig)
+}catch(err){
+  res.status(400).json({ error: error.message });
+}
 }
 
 async function findChallengesByIds(req, res) {
