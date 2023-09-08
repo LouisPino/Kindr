@@ -4,7 +4,7 @@
   height: 100vh;
   background-color: white;
   padding-top: 28px;
-  filter: drop-shadow(5px 0px 20px #EF4036);
+  filter: drop-shadow(2px 0px 5px #ef4036);
 
 }
 
@@ -12,7 +12,8 @@
   height: 100vh;
   transition: width 0.3s ease-in-out;
   width: 0px;
- background-color: white;
+  background-color: white;
+
 }
 
 .sideitem {
@@ -58,3 +59,4 @@
   margin-top: 1.7rem;
   margin-left: 1.7rem;
 }
+

@@ -1,51 +1,64 @@
 .new-challenge-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2rem;
-  }
-  
-  .new-challenge-button {
-    width: 20rem;
-  }
-  
-  .challenge-picture {
-    width: 10em;
-    border-radius: 10%;
-    height: 10em;
-    object-fit: cover;
-    grid-column: 1 / span 1;
-    grid-row: 1 / span 2;
-  }
-  
-  .challenge-block {
-    display: grid;
-    grid-template-columns: 20% 70% 10%;
-    grid-template-rows: 10% 90%;
-    width: 90%;
-    margin: auto;
-    align-items: center;
-    text-align: left;
-    background-color: rgba(255,255,255, 0.7);
-    padding: 2rem;
-    border-radius: 2rem;
-    margin-top: 1rem;
-  }
-  
-  .h3-challenge {
-      color: #F05151;
-      padding-left: 2rem;
-  }
-  
-  .challenge-descr, .challenge-complete {
-    font-size: 2rem;
-    margin: 0;
-    color: #F05151;
-    padding: 0 2rem ;
-  }
-  
-  .challenge-descr {
-    grid-column: 2 / span 1;
-    grid-row: 2 / span 1;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.new-challenge-button {
+  width: 20rem;
+}
+
+.challenge-picture {
+  width: 10em;
+  border-radius: 10%;
+  height: 10em;
+  object-fit: cover;
+  grid-column: 1 / span 1;
+  grid-row: 1 / span 2;
+}
+
+.challenge-block {
+  display: grid;
+  grid-template-columns: 20% 70% 10%;
+  grid-template-rows: 10% 90%;
+  width: 90%;
+  margin: auto;
+  align-items: center;
+  text-align: left;
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: 2rem;
+  border-radius: 2rem;
+  margin-top: 1rem;
+}
+
+.h3-challenge {
+  color: #f05151;
+  padding-left: 2rem;
+}
+
+.challenge-descr,
+.challenge-complete {
+  font-size: 2rem;
+  margin: 0;
+  color: #f05151;
+  padding: 0 2rem;
+}
+
+.challenge-descr {
+  grid-column: 2 / span 1;
+  grid-row: 2 / span 1;
+}
+
+@import url("https://use.typekit.net/tnt5bwz.css");
+
+.dashboard-h1 {
+  padding: 3rem;
+  font-family: "asphalt", sans-serif;
+  font-weight: 800;
+  font-style: normal;
+  color: white;
+  font-stretch: extra-expanded;
+  font-size: 2.75rem;
+  letter-spacing: 0.1rem;
+}
