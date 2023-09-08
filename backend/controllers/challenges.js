@@ -95,14 +95,14 @@ let gptConfig={
 
 const response = await fetch("https://api.openai.com/v1/chat/completions", {
   method: "POST",
-  // credentials: "include",
+  credentials: "include",
   headers: { Accept: "application/json",
   "Authorization": apiKey,
   "Content-Type": "application/json",
   "Access-Control-Allow-Credentials": true,},
   body: JSON.stringify(gptConfig)
 })
-res.send(response)
+res.json(gitConfig)
 }
 
 async function findChallengesByIds(req, res) {
