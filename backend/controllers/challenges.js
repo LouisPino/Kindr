@@ -104,6 +104,7 @@ const response = await fetch("https://api.openai.com/v1/chat/completions", {
 })
 res.json(response)
 }catch(err){
+  console.log(err)
   res.status(400).json({ error: err.message });
 }
 }
