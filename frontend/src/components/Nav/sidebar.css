@@ -7,8 +7,10 @@
 }
 
 .sidenavClosed {
+  height: 100vh;
   transition: width 0.3s ease-in-out;
-  width: 60px;
+  width: 0px;
+  background-color: white;
 }
 
 .sideitem {
