@@ -1,8 +1,6 @@
 const { Challenge } = require("../models");
-// import { Configuration, OpenAIApi } from "openai";
-// const configuration = new Configuration({
-// })
-// const openai = new OpenAIApi(configuration);
+
+import schedule from 'node-schedule'
 
 const apiKey = process.env.REACT_APP_OPENAI_API_KEY;
 module.exports = {
@@ -64,33 +62,7 @@ async function destroy(req, res) {
   }
 }
 
-// async function createDailyChallenge(req, res, next) {
-//   const response = await openai.createChatCompletion({
-//     model: "gpt-3.5-turbo",
-//     messages: [
-//       {
-//         role: "system",
-//         content:
-//           'Generate a good deed that someone could achieve in less than 24 hours. Please come up with a title for the deed and a description no longer than 4 sentences explaining what the deed is. It should be formatted like this: (Deed Title): (Deed Description). Do not use the words "title" or "description".',
-//       },
-//     ],
-//     temperature: 0.7,
-//     max_tokens: 500,
-//     top_p: 1,
-//     frequency_penalty: 0,
-//     presence_penalty: 0,
-//   });
-//   const message = response.data.choices[0].message;
-//   const dailyDeed = message.content;
-//   const splitEm = dailyDeed.split(": ");
-//   const newTitle = splitEm[0];
-//   const newDeed = splitEm[1];
-//   const deedObj = { title: newTitle, description: newDeed, daily: true };
-//   Challenge.create(deedObj)
-//   res.send(deedObj)
-// }
-
-
+schedule.scheduleJob('0 0 * * *', () => {
   async function createDailyChallenge(req, res, next) {
     let gptConfig = {
       model: "gpt-3.5-turbo",
@@ -137,6 +109,7 @@ async function destroy(req, res) {
       res.status(400).json({ error: err.message });
     }
   }
+})
 
 async function findChallengesByIds(req, res) {
   try {
