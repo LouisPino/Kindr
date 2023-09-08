@@ -101,5 +101,5 @@ const response = await fetch("https://api.openai.com/v1/chat/completions", {
   "Access-Control-Allow-Credentials": true,},
   body: JSON.stringify(gptConfig)
 })
-response.json()
+res.json(response)
 }
