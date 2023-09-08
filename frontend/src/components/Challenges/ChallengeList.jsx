@@ -4,8 +4,21 @@ import { Link, useNavigate } from "react-router-dom";
 import { findUserByEmail } from "../../utilities/user-service";
 import { updateUser } from "../../utilities/user-service";
 
-export default function ChallengeList({ challenges }) {
-  let initState = {};
+export default function ChallengeList({ challenges, location }) {
+ let showDaily= false
+
+
+ function showCondition(challenge){
+   if(location === 'profile'){
+    return !!userData
+ }else{
+  return (!challenge.daily && userData)
+ }
+}
+
+
+
+
   const { loginWithRedirect, logout, user } = useAuth0();
   const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
@@ -48,7 +61,11 @@ export default function ChallengeList({ challenges }) {
         <>
     <section className="challenge-list">
       {challenges.map((challenge, idx) => {
-      if(!challenge.daily && userData)  {
+
+
+
+
+      if(showCondition(challenge))  {
     return    <div className="challenge-block" key={challenge._id}>
           <img
             className="challenge-picture"

@@ -20,6 +20,7 @@ export default function DailyChallenge({dailyChallenge}) {
     console.log('newUserData', newUserData)
 
     updateUser(newUserData)
+    setUserData(newUserData)
     console.log('user', user)
   }
 
@@ -54,14 +55,20 @@ export default function DailyChallenge({dailyChallenge}) {
         {dailyChallenge.title}
         </h3>
         <p className="challenge-descr body-font">{dailyChallenge.description}</p>
-        <p className="challenge-complete body-font">Completed?</p>
-        <button name="completedChallenges" id={dailyChallenge._id} onClick={addComplete}>
+        {!userData?.completedChallenges?.includes(dailyChallenge._id) ? <>
+          <p className="challenge-complete body-font">Completed?</p>
+          <button name="completedChallenges" id={dailyChallenge._id} onClick={addComplete}>
             &#10003;
           </button>
+          </> :
+          <>
+          <h1>YOU DID IT ALREADY</h1>
+          </>
+      }
       </div>
-      {/* <button className="challenge-block" onClick={createNewDaily}>
+      <button className="challenge-block" onClick={createNewDaily}>
         create daily challenge
-      </button> */}
+      </button>
     </>
   );
 }
