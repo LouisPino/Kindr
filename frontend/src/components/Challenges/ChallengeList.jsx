@@ -31,6 +31,7 @@ export default function ChallengeList({ challenges }) {
     console.log('newUserData', newUserData)
 
     updateUser(newUserData)
+    setUserData(newUserData)
     console.log('user', user)
   }
   
@@ -47,7 +48,7 @@ export default function ChallengeList({ challenges }) {
         <>
     <section className="challenge-list">
       {challenges.map((challenge, idx) => {
-      if(!challenge.daily)  {
+      if(!challenge.daily && userData)  {
     return    <div className="challenge-block" key={challenge._id}>
           <img
             className="challenge-picture"
@@ -57,10 +58,16 @@ export default function ChallengeList({ challenges }) {
             {challenge.title}
           </h3>
           <p className="challenge-descr body-font">{challenge.description}</p>
+          {!userData?.completedChallenges?.includes(challenge._id) ? <>
           <p className="challenge-complete body-font">Completed?</p>
           <button name="completedChallenges" id={challenge._id} onClick={addComplete}>
             &#10003;
           </button>
+          </> :
+          <>
+          <h1>YOU DID IT ALREADY</h1>
+          </>
+      }
         </div>
           }  })}
     </section>
