@@ -102,5 +102,14 @@ const response = await fetch("https://api.openai.com/v1/chat/completions", {
   "Access-Control-Allow-Credentials": true,},
   body: JSON.stringify(gptConfig)
 })
-res.send(response)
+
+const message = response.data.choices[0].message
+// const activityContent = message.content
+// const splitEm = activityContent.split(': ')
+// const newTitle = splitEm[0]
+// const newActivity = splitEm[1]
+// const activityObj = {name: newTitle, description: newActivity}
+
+
+res.send(message)
 }
