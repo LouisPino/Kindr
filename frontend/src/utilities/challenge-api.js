@@ -40,6 +40,7 @@ export async function index() {
   export async function createDailyChallenge() {
     const res = await fetch(`${BASE_URL}/challenges/daily`, {
       method: "GET",
+      // mode: "no-cors",
       credentials: "include",
       headers: {
         Accept: "application/json",
