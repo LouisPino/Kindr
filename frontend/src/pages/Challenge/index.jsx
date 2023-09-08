@@ -9,34 +9,7 @@ import ChallengeList from "../../components/Challenges/ChallengeList";
 
 export default function Challenge() {
 
-  const { id } = useParams();
+  return <NewChallengeForm />
+  
 
-  const [challenges, setChallenges] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
-
-  async function handleRequest() {
-    const challengeResponse = await getChallenges();
-
-    if (challengeResponse.length) {
-      setChallenges(challengeResponse);
-      setIsLoading(false);
-    } else {
-      console.log(challengeResponse);
-      // context update for error handling might be called
-    }
-  }
-
-  useEffect(() => {
-    handleRequest();
-  }, []);
-
-  return isLoading ? (
-    <>
-      <NewChallengeForm updateChallenges={handleRequest} />
-    </>
-  ) : (
-    <>
-      <NewChallengeForm updateChallenges={handleRequest} />
-    </>
-  );
 }

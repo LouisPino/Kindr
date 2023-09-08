@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { createChallenge } from "../../utilities/challenge-service";
-
+import { useNavigate } from "react-router";
 
 // define the function boilerplate with export
-export default function NewChallengeForm({ updateChallenges }) {
+export default function NewChallengeForm() {
+  const navigate = useNavigate()
   const initState = {
     title: "",
     description: "",
@@ -13,9 +14,9 @@ export default function NewChallengeForm({ updateChallenges }) {
   const [newForm, setNewForm] = useState(initState);
   async function handleSubmit(e) {
     e.preventDefault();
-    updateChallenges();
     await createChallenge(newForm);
     setNewForm(initState);
+    navigate("/dashboard")
   }
 
   
