@@ -4,6 +4,7 @@
   height: 100vh;
   background-color: white;
   padding-top: 28px;
+  filter: drop-shadow(5px 0px 20px #EF4036);
 
 }
 
