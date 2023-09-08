@@ -106,7 +106,7 @@ const message = resFormat.choices[0].message;
 const dailyDeed = message.content;
 const splitEm = dailyDeed.split(": ")
 const deedObj = { title: splitEm[0], description: splitEm[1], daily: true}
-
+const oldDaily = await Challenge.findOneAndUpdate({daily: true}, {daily: false})
 res.status(201).json(await Challenge.create(deedObj))
 }catch(err){
   console.log('err', err)
