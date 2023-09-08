@@ -26,8 +26,10 @@ export default function Sidenav() {
   ];
 
   const [open, setopen] = useState(false);
+  // const [left, setLeft] = useState(false)
   const toggleOpen = () => {
     setopen(!open);
+    // setFontWidth(!left)
   };
 
   return (

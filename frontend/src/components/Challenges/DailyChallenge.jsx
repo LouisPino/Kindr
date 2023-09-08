@@ -67,9 +67,10 @@ export default function DailyChallenge({dailyChallenge}) {
       }
       <button onClick={()=> navigate(`/challenges/${dailyChallenge._id}`)}>VIEW CHALLENGE</button>
       </div>
-      <button className="challenge-block" onClick={createNewDaily}>
+      {/* <button className="challenge-block" onClick={createNewDaily}>
         create daily challenge
-      </button>
+      </button> */}
+      <hr></hr>
     </>
   );
 }
