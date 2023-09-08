@@ -28,9 +28,9 @@ export async function createDailyChallenge(){
   }
 }
 
-export async function findChallengesByIds(){
+export async function findChallengesByIds(array){
   try {
-      const data = await challengeAPI.createDailyChallenge()
+      const data = await challengeAPI.findChallengesByIds(array)
       return data
   }catch(err){
       return err

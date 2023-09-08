@@ -68,9 +68,6 @@ export async function index() {
       },
       body: JSON.stringify(challengesArr)
     });
-  
-    console.log(res);
-  
     if (res.ok) {
       return res.json();
     } else {

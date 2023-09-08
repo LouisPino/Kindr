@@ -27,12 +27,16 @@ else{
   }, [])
 
   useEffect(()=>{
-
-
-    //GET OBJECTGS
+    async function getChallengesByIds(){
+    const gotChallenges =  await findChallengesByIds(userData.completedChallenges)
+    setChallengeObjs(gotChallenges)
+    console.log("IN GET CHALLENGESBIDS")
+    }
+    getChallengesByIds()
   }, [userData])
 
   useEffect(()=>{
+    console.log("CHALLENGE OBJS", challengeObjs)
     setIsLoading(false)
   }, [challengeObjs])
   
@@ -48,7 +52,6 @@ if(userData && !isLoading){
           src={userData?.picture}
           className="user-picture"
         />
-        {console.log('userdatea', userData.name)}
         <h2 className="h2-header kindr-header">{userData.username ? `${userData.username}'s` : 'Your'} Deeds</h2>
         <h3 className="h3-header kindr-header">Completed</h3>
         {/* <ChallengeList challenges={challengeObjs}/> */}
