@@ -89,7 +89,7 @@ sortedChallengesidx ++
           </button>
           </> :
           <>
-          <h1>YOU DID IT ALREADY</h1>
+          {location !== "profile" && <h1>YOU DID IT ALREADY</h1>}
           </>
       }
       <button onClick={()=> navigate(`/challenges/${challenge._id}`)}>VIEW CHALLENGE</button>
