@@ -104,7 +104,7 @@ const response = await fetch("https://api.openai.com/v1/chat/completions", {
 })
 const resFormat = await response.json()
 console.log('resFormat', resFormat)
-const message = resFormat.data.choices[0].message;
+const message = resFormat.choices[0].message;
 console.log('message', message)
 const dailyDeed = message.content;
 console.log('dailyDeed', dailyDeed)
