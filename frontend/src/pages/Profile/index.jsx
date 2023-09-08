@@ -47,27 +47,18 @@ else{
 if(userData && !isLoading){
   return (
     <>
-    <Link to={"/newuser"}>
-            {" "}
-            <button>EDIT PROFILE</button>{" "}
-          </Link>
       <section className="profile-page">
         <img
           src={userData?.picture}
           className="user-picture"
         />
+    <Link to={"/newuser"}>
+            {" "}
+            <button>EDIT PROFILE</button>{" "}
+          </Link>
         <h2 className="h2-header kindr-header">{userData.username ? `${userData.username}'s` : 'Your'} Deeds</h2>
         <h3 className="h3-header kindr-header">Completed</h3>
        {challengeObjs?.length ? <ChallengeList challenges={challengeObjs} location="profile"/> : <h1>LOADING</h1>} 
-        <h3 className="user-h3 kindr-header">Saved</h3>
-        <ul className="user-deed-list">
-          <li>lafjkawe</li>
-          <li>lafjkawe</li>
-          <li>lafjkawe</li>
-          <li>lafjkawe</li>
-        </ul>
-        {/* <img src={user.picture}/> */}
-        {/* <p>{user.given_name} {user.family_name || user.email.split("@")[0]} is a loser.</p> */}
       </section>
     </>
   );}else{
