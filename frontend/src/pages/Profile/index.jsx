@@ -54,7 +54,7 @@ if(userData && !isLoading){
         />
         <h2 className="h2-header kindr-header">{userData.username ? `${userData.username}'s` : 'Your'} Deeds</h2>
         <h3 className="h3-header kindr-header">Completed</h3>
-        {/* <ChallengeList challenges={challengeObjs}/> */}
+       {challengeObjs?.length ? <ChallengeList challenges={challengeObjs}/> : <h1>LOADING</h1>} 
         <h3 className="user-h3 kindr-header">Saved</h3>
         <ul className="user-deed-list">
           <li>lafjkawe</li>
