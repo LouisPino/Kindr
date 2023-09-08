@@ -57,3 +57,21 @@ export async function index() {
       return new Error("Invalid Request");
     }
   }
+  export async function findChallengesByIds(challengesArr) {
+    const res = await fetch(`${BASE_URL}/challenges/findbyid`, {
+      method: "POST",
+      credentials: "include",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": true,
+      },
+      body: JSON.stringify(challengesArr)
+    });
+    if (res.ok) {
+      return res.json();
+    } else {
+      return new Error("Invalid Request");
+    }
+  }
+
