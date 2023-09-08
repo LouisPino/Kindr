@@ -5,7 +5,14 @@ import { findUserByEmail } from "../../utilities/user-service";
 import { updateUser } from "../../utilities/user-service";
 
 export default function ChallengeList({ challenges, location }) {
- let showDaily= false
+let sortedChallenges = []
+let sortedChallengesidx = 0
+for(let i = challenges.length-1; i>=0; i--){
+sortedChallenges[sortedChallengesidx]=challenges[i]
+sortedChallengesidx ++
+}
+
+
 
 
  function showCondition(challenge){
@@ -19,7 +26,7 @@ export default function ChallengeList({ challenges, location }) {
 
 
 
-  const { loginWithRedirect, logout, user } = useAuth0();
+  const { user } = useAuth0();
   const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
   const [userData, setUserData] = useState({});
@@ -42,7 +49,7 @@ export default function ChallengeList({ challenges, location }) {
 
     userChallenges.push(e.target.id)
 
-    const newUserData = {...userData, [e.target.name]: userChallenges}
+    const newUserData = {...userData, [e.target.name]: userChallenges, score: userData.score+1}
     console.log('newUserData', newUserData)
 
     updateUser(newUserData)
@@ -62,7 +69,7 @@ export default function ChallengeList({ challenges, location }) {
       (
         <>
     <section className="challenge-list">
-      {challenges.map((challenge, idx) => {
+      {sortedChallenges.map((challenge, idx) => {
 
 
       if(showCondition(challenge))  {
