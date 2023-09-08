@@ -23,6 +23,7 @@ export default function Dashboard() {
   const [userData, setUserData] = useState({})
   
   useEffect(()=>{
+    console.log(user)
     if(user){
     async function fillUserObj(){
        const retrievedUserData = await findUserByEmail(user.email)
@@ -31,9 +32,21 @@ export default function Dashboard() {
     fillUserObj()
   }
     else{
+      console.log('hit')
       navigate('/')}
   }, [])
 
+  useEffect(() => {
+    if (user) {
+      async function fillUserObj() {
+        const userData = await findUserByEmail(user.email);
+        await handleRequest();
+      }
+      fillUserObj();
+    } else {
+      navigate("/");
+    }
+  }, []);
 
 
   async function handleRequest() {
@@ -54,18 +67,7 @@ export default function Dashboard() {
     } 
   }, [challenges]);
 
-  useEffect(() => {
-    if (user) {
-      async function fillUserObj() {
-        const userData = await findUserByEmail(user.email);
-        await handleRequest();
-      }
-
-      fillUserObj();
-    } else {
-      navigate("/");
-    }
-  }, []);
+  
 
   return isLoading ? (
     <>
