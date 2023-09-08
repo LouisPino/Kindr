@@ -88,9 +88,9 @@ async function destroy(req, res) {
 
 async function createDailyChallenge(req, res, next) {
 let gptConfig={
-  "model": "gpt-3.5-turbo",
-  "messages": [{"role": "user", "content": "Say this is a test!"}],
-  "temperature": 0.7
+  model: "gpt-3.5-turbo",
+  messages: [{role: "user", content: "Say this is a test!"}],
+  temperature: 0.7
 }
 
 const response = await fetch("https://api.openai.com/v1/chat/completions", {
