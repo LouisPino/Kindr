@@ -89,7 +89,7 @@ async function destroy(req, res) {
 async function createDailyChallenge(req, res, next) {
 let gptConfig={
   model: "gpt-3.5-turbo",
-  messages: [{role: "user", content: "Say this is a test!"}],
+  messages: [{role: "user", content: "Generate a good deed that someone could achieve in less than 24 hours. Please come up with a title for the deed and a description no longer than 4 sentences explaining what the deed is. It should be formatted like this: (Deed Title): (Deed Description)."}],
   temperature: 0.7
 }
 try {
