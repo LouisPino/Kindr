@@ -41,10 +41,11 @@ export default function Sidenav() {
         <>
          {/* <h1 className="kindr-header kindr-nav">Kindr</h1> */}
           {/* <button onClick={() => logout()}> LOGOUT</button> */}
-          <div className={open ? "sidenav" : "sidenavClosed"}>
-            <button className="menuBtn" onClick={toggleOpen}>
+          <button className="menuBtn" onClick={toggleOpen}>
               {open ? <img className="hamburger-open" src="https://res.cloudinary.com/dpsymdmyi/image/upload/v1694202631/hamburger_lththo.svg" /> : <img className="hamburger-closed" src="https://res.cloudinary.com/dpsymdmyi/image/upload/v1694202631/hamburger_lththo.svg" />}
             </button>
+          <div className={open ? "sidenav" : "sidenavClosed"}>
+
             {navData.map((item) => {
               return (
                 <NavLink key={item.id} className={open ? "sideitem" : "sideitemClosed"} to={item.link}>
