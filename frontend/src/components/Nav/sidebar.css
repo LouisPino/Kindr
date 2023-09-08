@@ -4,13 +4,14 @@
   height: 100vh;
   background-color: white;
   padding-top: 28px;
+
 }
 
 .sidenavClosed {
   height: 100vh;
   transition: width 0.3s ease-in-out;
   width: 0px;
-  backgrond-color: white;
+  background-color: white;
 }
 
 .sideitem {
