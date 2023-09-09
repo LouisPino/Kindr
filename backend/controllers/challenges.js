@@ -96,6 +96,7 @@ async function destroy(req, res) {
         title: splitEm[0],
         description: splitEm[1],
         daily: true,
+        category: 5
       };
       const oldDaily = await Challenge.findOneAndUpdate(
         { daily: true },
