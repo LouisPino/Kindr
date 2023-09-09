@@ -8,6 +8,8 @@ import {
   updateUser,
 } from "../../utilities/user-service";
 
+import "./showchallenge.css"
+
 export default function ShowChallenge() {
   const { loginWithRedirect, logout, user } = useAuth0();
   const navigate = useNavigate();
@@ -64,18 +66,14 @@ export default function ShowChallenge() {
         <p className="challenge-descr body-font">{challenge.description}</p>
         {!userData?.completedChallenges?.includes(challenge._id) ? (
           <>
-            <p className="challenge-complete body-font">Completed?</p>
-            <button
-              name="completedChallenges"
-              id={challenge._id}
-              onClick={addComplete}
-            >
-              &#10003;
-            </button>
+                  <div className="completed-and-check"><p className="body-font completed-righttop">Completed?</p>
+          <button className="checkmark-button" id={challenge._id} onClick={addComplete}>
+            &#10003;
+          </button></div>
           </>
         ) : (
           <>
-            <h1>YOU DID IT ALREADY</h1>
+           <h1 className="youdidit-righttop body-font">You did it!</h1>
           </>
         )}
       </div>
@@ -85,13 +83,16 @@ export default function ShowChallenge() {
           completedUsers.map((user) => {
             return (
               <div className="completed-user-card">
-                <h1>{user.username}</h1>
-                <img src={user.picture} alt="" />
+                <div className="completed-user-info">
+                <img className="completed-user-img"src={user.picture} alt="" />
+                <h1 className="h3-challenge h3-header kindr-header">{user.username}</h1>
+                </div>
+                <img className="completed-img"src={user.picture} alt="" />
               </div>
             );
           })
         ) : (
-          <h1>Be the first to complete this challenge!</h1>
+          <h1 className="h3-challenge h3-header kindr-header white">Be the first to complete this Deed!</h1>
         )}
       </div>
     </>

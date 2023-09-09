@@ -20,7 +20,7 @@ export default function Sidenav() {
     },
     {
       id: 2,
-      text: "Add a Challenge",
+      text: "Add a Deed",
       link: "/challenges/add",
     },
   ];
