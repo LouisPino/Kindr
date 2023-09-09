@@ -82,7 +82,9 @@ sortedChallengesidx ++
             //education icon:
             // src="https://res.cloudinary.com/dpsymdmyi/image/upload/v1694278673/education_poh8l8.svg"
             //animal icon:
-            src="https://res.cloudinary.com/dpsymdmyi/image/upload/v1694279455/pig_qm4uhw.svg"
+            // src="https://res.cloudinary.com/dpsymdmyi/image/upload/v1694279455/pig_qm4uhw.svg"
+            //sparkle/other icon:
+            src="https://res.cloudinary.com/dpsymdmyi/image/upload/v1694279771/sparkles-svgrepo-com_pwuurr.svg"
 
           />
           <h3 className="h3-challenge h3-header kindr-header">
