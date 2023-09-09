@@ -13,7 +13,8 @@ export default function Header() {
       )}
 
       {!isLoading && user && (
-            <h1 className="kindr-header kindr-nav depth">Kindr</h1>
+           <Link to={"/dashboard"}>
+           {" "} <h1 className="kindr-header kindr-nav depth">Kindr</h1> </Link>
       )}
     </header>
   );

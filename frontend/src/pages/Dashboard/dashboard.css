@@ -15,17 +15,17 @@
   height: 10em;
   object-fit: cover;
   grid-column: 1 / span 1;
-  grid-row: 1 / span 2;
+  grid-row: 1 / span 4;
 }
 
 .challenge-block {
   display: grid;
-  grid-template-columns: 20% 70% 10%;
-  grid-template-rows: 10% 90%;
+  grid-template-columns: 10rem 6fr 2fr;
+  grid-template-rows: 1.6rem 1rem 3fr 5fr;
   width: 90%;
   margin: auto;
   align-items: center;
-  text-align: left;
+  justify-content: center;
   background-color: rgba(255, 255, 255, 0.7);
   padding: 2rem;
   border-radius: 2rem;
@@ -35,19 +35,25 @@
 .h3-challenge {
   color: #f05151;
   padding-left: 2rem;
+  align-self: center;
+  text-align: left;
+  grid-row: 1 / span 1;
 }
 
 .challenge-descr,
 .challenge-complete {
-  font-size: 2rem;
+  font-size: 1.5rem;
   margin: 0;
   color: #f05151;
-  padding: 0 2rem;
 }
 
 .challenge-descr {
   grid-column: 2 / span 1;
-  grid-row: 2 / span 1;
+  grid-row: 2 / span 3;
+  align-self: baseline;
+  padding: 0 2rem;
+  padding-top: .5rem;
+  text-align: left;
 }
 
 @import url("https://use.typekit.net/tnt5bwz.css");
@@ -73,4 +79,67 @@ hr {
   background-repeat: repeat-x;
   background-size: contain;
   border: none;
+}
+
+.completed-righttop {
+  /* grid-row: 1 / span 2; */
+  font-size: 3rem;
+  margin: 0;
+  color: #F05151;
+  display: inline;
+}
+
+.completed-and-check {
+  grid-row: 1 / span 3;
+display: flex;
+flex-direction: row;
+align-items: center;
+justify-content: center;
+}
+
+.youdidit-righttop {
+  grid-row: 1 / span 3;
+  font-size: 3rem;
+  margin: 0;
+  color: #F05151;
+  font-family: "hobeaux", sans-serif;
+font-weight: 900;
+font-style: normal;
+}
+
+
+.viewchallenge-button, .checkmark-button {
+  /* padding: 15px 25px; */
+  /* font-size: 24px; */
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: #fff;
+  background-color: #F05151;
+  box-shadow: 0 5px  #c44242;
+  border: none;
+  border-radius: 15px;
+}
+
+.viewchallenge-button:active, .checkmark-button:active {
+  box-shadow: none;
+  transform: translateY(5px);
+}
+
+.viewchallenge-button {
+  padding: 1rem 0rem;
+  width: 70%;
+  margin: auto;
+  grid-row: 4 / span 1;
+  font-size: 1.2rem;
+}
+
+.checkmark-button {
+  /* padding: 1rem 1rem; */
+  width: 1rem;
+  height: 1rem;
+  margin-left: 1rem;
+  display: inline;
+  /* grid-row: 3 / span 1; */
+
 }

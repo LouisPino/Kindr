@@ -25,7 +25,6 @@ sortedChallengesidx ++
 
 
 
-
   const { user } = useAuth0();
   const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
@@ -83,17 +82,20 @@ sortedChallengesidx ++
           </h3>
           <p className="challenge-descr body-font">{challenge.description}</p>
           {!userData?.completedChallenges?.includes(challenge._id) ? <>
-          <p className="challenge-complete body-font">Completed?</p>
-          <button name="completedChallenges" id={challenge._id} onClick={addComplete}>
+          <div className="completed-and-check"><p className="body-font completed-righttop">Completed?</p>
+          <button className="checkmark-button" id={challenge._id} onClick={addComplete}>
             &#10003;
-          </button>
+          </button></div>
           </> :
           <>
-          {location !== "profile" && <h1>YOU DID IT ALREADY</h1>}
+
+          {location !== "profile" && <h1 className="youdidit-righttop body-font">You did it!</h1>}
+
           </>
       }
-      <button onClick={()=> navigate(`/challenges/${challenge._id}`)}>VIEW CHALLENGE</button>
-        </div>
+
+      {<button className="viewchallenge-button body-font"onClick={()=> navigate(`/challenges/${challenge._id}`)}>VIEW CHALLENGE</button> }
+      </div>
           }  })}
     </section>
     </>

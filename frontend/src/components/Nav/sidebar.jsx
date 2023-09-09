@@ -39,21 +39,42 @@ export default function Sidenav() {
       )} */}
       {!isLoading && user && (
         <>
-         {/* <h1 className="kindr-header kindr-nav">Kindr</h1> */}
+          {/* <h1 className="kindr-header kindr-nav">Kindr</h1> */}
           {/* <button onClick={() => logout()}> LOGOUT</button> */}
+          <button className="menuBtn" onClick={toggleOpen}>
+            {open ? (
+              <img
+                className="hamburger-open"
+                src="https://res.cloudinary.com/dpsymdmyi/image/upload/v1694202631/hamburger_lththo.svg"
+              />
+            ) : (
+              <img
+                className="hamburger-closed"
+                src="https://res.cloudinary.com/dpsymdmyi/image/upload/v1694202631/hamburger_lththo.svg"
+              />
+            )}
+          </button>
           <div className={open ? "sidenav" : "sidenavClosed"}>
-            <button className="menuBtn" onClick={toggleOpen}>
-              {open ? <img className="hamburger-open" src="https://res.cloudinary.com/dpsymdmyi/image/upload/v1694202631/hamburger_lththo.svg" /> : <img className="hamburger-closed" src="https://res.cloudinary.com/dpsymdmyi/image/upload/v1694202631/hamburger_lththo.svg" />}
-            </button>
-            {navData.map((item) => {
+           <div> {navData.map((item) => {
               return (
-                <NavLink key={item.id} className={open ? "sideitem" : "sideitemClosed"} to={item.link}>
+                <NavLink
+                  key={item.id}
+                  className={open ? "sideitem" : "sideitemClosed"}
+                  to={item.link}
+                >
                   <span className={open ? "linkText" : "linkTextClosed"}>
                     {item.text}
                   </span>
                 </NavLink>
               );
             })}
+            </div>
+            <div>
+            <button className="logout-button" onClick={() => logout()}>
+              {" "}
+              LOGOUT
+            </button>
+            </div>
           </div>
         </>
       )}
