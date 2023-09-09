@@ -1,3 +1,8 @@
+*{
+  /* border: 1px solid blue; */
+}
+
+
 .sidenav {
   width: 250px;
   transition: width 0.3s ease-in-out;
@@ -49,9 +54,6 @@
 }
 
 .menuBtn {
-  align-self: center;
-  align-self: flex-start;
-  justify-self: flex-end;
   color: #b2bac2;
   background-color: transparent;
   border: none;
