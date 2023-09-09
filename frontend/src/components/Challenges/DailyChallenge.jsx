@@ -57,16 +57,16 @@ export default function DailyChallenge({dailyChallenge}) {
         </h3>
         <p className="challenge-descr body-font">{dailyChallenge.description}</p>
         {!userData?.completedChallenges?.includes(dailyChallenge._id) ? <>
-          <p className="challenge-complete completed-righttop body-font">Completed?</p>
-          <button name="completedChallenges" id={dailyChallenge._id} onClick={addComplete}>
+          <div className="completed-and-check"><p className="body-font completed-righttop">Completed?</p>
+          <button className="checkmark-button" id={dailyChallenge._id} onClick={addComplete}>
             &#10003;
-          </button>
+          </button></div>
           </> :
           <>
           <h1 className="youdidit-righttop body-font">You did it!</h1>
           </>
       }
-      <button className="viewchallenge-button body-font" onClick={()=> navigate(`/challenges/${dailyChallenge._id}`)}>VIEW CHALLENGE</button>
+      <button className="viewchallenge-button body-font" onClick={()=> navigate(`/challenges/${dailyChallenge._id}`)}>VIEW DEED</button>
       </div>
       {/* <button className="challenge-block" onClick={createNewDaily}>
         create daily challenge
