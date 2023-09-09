@@ -50,7 +50,8 @@
 
 .sideitem:hover {
   background: linear-gradient(45deg, #fad95d, #ef4036);
-  color: white;
+  color: white;  
+  animation: animate 2s linear infinite;
 }
 
 .menuBtn {
@@ -68,4 +69,17 @@
 #logout-button {
   margin-bottom: 5rem;
   
+}
+
+
+@keyframes animate {
+  0%,
+  100% {
+    /* filter: contrast(100%); */
+    filter: hue-rotate(0deg)
+  }
+  50% {
+    /* filter: contrast(75%); */
+    filter: hue-rotate(-30deg)
+  }
 }

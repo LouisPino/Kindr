@@ -13,11 +13,11 @@ export default function NewChallengeForm() {
 
 
   const options = [
-    { label: "Community", value: "0" },
-    { label: "Nature", value: "1" },
-    { label: "Education", value: "2" },
-    { label: "Animals", value: "3" },
-    { label: "Other", value: "4" },
+    { label: "Community", value: 0 },
+    { label: "Nature", value: 1 },
+    { label: "Education", value: 2 },
+    { label: "Animals", value: 3 },
+    { label: "Other", value: 4 },
   ];
 
   const [value, setValue] = useState("Community");
