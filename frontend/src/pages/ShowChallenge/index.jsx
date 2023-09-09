@@ -77,7 +77,7 @@ export default function ShowChallenge() {
           </>
         ) : (
           <>
-            <h1>YOU DID IT ALREADY</h1>
+           <h1 className="youdidit-righttop body-font">You did it!</h1>
           </>
         )}
       </div>
