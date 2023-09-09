@@ -21,11 +21,13 @@
 
 .sideitem {
   display: flex;
-  align-items: center;
+  justify-content: center;
   padding: 10px 20px;
   cursor: pointer;
   color: #f05151;
   text-decoration: none;
+  font-family: "looking-flowers-caps", sans-serif;
+  font-size: 3rem;
 }
 
 .linkText {
@@ -38,7 +40,7 @@
   display: none;
   padding-left: -40px;
   transition: padding 0.3s ease-in-out;
-  
+  transition-delay: display 300ms; 
 }
 
 .sideitem:hover {
@@ -67,6 +69,7 @@
   margin-left: 1.7rem;
 }
 
-.logout-button {
+#logout-button {
   margin-bottom: 5rem;
+  
 }

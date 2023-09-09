@@ -70,10 +70,10 @@ export default function Sidenav() {
             })}
             </div>
             <div>
-            <button className="logout-button" onClick={() => logout()}>
+           {open &&<button id="logout-button" className="viewchallenge-button body-font" onClick={() => logout()}>
               {" "}
               LOGOUT
-            </button>
+            </button>}
             </div>
           </div>
         </>
