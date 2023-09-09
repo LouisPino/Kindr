@@ -1,9 +1,3 @@
-.new-challenge-form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2rem;
-}
 
 .new-challenge-button {
   width: 20rem;

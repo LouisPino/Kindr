@@ -55,11 +55,11 @@ export default function NewChallengeForm() {
   }
 
   return (
-    <section>
+    <section className="newchallenge-page">
       <h2 className="kindr-header h2-header">Submit a New Deed</h2>
       <form className="new-challenge-form" onSubmit={handleSubmit}>
-        <label htmlFor="title">
-          Title
+        <label className="chall-label" htmlFor="title">
+        <div className="labeltext">Title</div>
           <input
             type="text"
             name="title"
@@ -70,8 +70,8 @@ export default function NewChallengeForm() {
             required
           />
         </label>
-        <label htmlFor="description">
-          Description
+        <label className="chall-label" htmlFor="description">
+        <div className="labeltext">Description</div>
           <input
             type="text"
             name="description"
@@ -81,8 +81,8 @@ export default function NewChallengeForm() {
             placeholder="add challenge description"
           />
         </label>
-        <label htmlFor="category">
-          Select a category
+        <label className="chall-label" htmlFor="category">
+          <div className="labeltext">Select a category</div>
           <select name="category" value={newForm.value} onChange={handleChange}>
             {options.map((option) => (
               <option
