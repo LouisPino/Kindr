@@ -41,26 +41,30 @@ export default function Sidenav() {
         <>
           {/* <h1 className="kindr-header kindr-nav">Kindr</h1> */}
           {/* <button onClick={() => logout()}> LOGOUT</button> */}
+            {!open && (
           <button className="menuBtn" onClick={toggleOpen}>
-            {open ? (
               <img
                 className="hamburger-open"
                 src="https://res.cloudinary.com/dpsymdmyi/image/upload/v1694202631/hamburger_lththo.svg"
               />
-            ) : (
+          </button>
+            )}
+          <div className={open ? "sidenav" : "sidenavClosed"}>
+          <button className="menuBtn" onClick={toggleOpen}>
+            {open && (
               <img
                 className="hamburger-closed"
                 src="https://res.cloudinary.com/dpsymdmyi/image/upload/v1694202631/hamburger_lththo.svg"
               />
             )}
           </button>
-          <div className={open ? "sidenav" : "sidenavClosed"}>
            <div> {navData.map((item) => {
               return (
                 <NavLink
                   key={item.id}
                   className={open ? "sideitem" : "sideitemClosed"}
                   to={item.link}
+                  onClick={()=>setopen(false)}
                 >
                   <span className={open ? "linkText" : "linkTextClosed"}>
                     {item.text}
@@ -70,10 +74,10 @@ export default function Sidenav() {
             })}
             </div>
             <div>
-            <button className="logout-button" onClick={() => logout()}>
+           {open &&<button id="logout-button" className="viewchallenge-button body-font" onClick={() => logout()}>
               {" "}
               LOGOUT
-            </button>
+            </button>}
             </div>
           </div>
         </>

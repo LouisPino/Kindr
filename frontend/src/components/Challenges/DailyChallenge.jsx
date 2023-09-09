@@ -45,7 +45,7 @@ export default function DailyChallenge({dailyChallenge}) {
   }
 
   return (
-    <>
+    <div className="daily-challenge-component">
       <p className="completed-righttop body-font daily">Daily Deed</p>
       <div className="challenge-block">
         <img
@@ -71,7 +71,7 @@ export default function DailyChallenge({dailyChallenge}) {
       {/* <button className="challenge-block" onClick={createNewDaily}>
         create daily challenge
       </button> */}
-      <hr></hr>
-    </>
+      {/* <hr></hr> */}
+    </div>
   );
 }

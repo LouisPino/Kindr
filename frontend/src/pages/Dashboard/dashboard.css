@@ -1,3 +1,7 @@
+*{
+  /* border: 1px solid blue; */
+}
+
 .new-challenge-form {
   display: flex;
   flex-direction: column;
@@ -146,5 +150,10 @@ font-style: normal;
 
 .daily{
 color: white;
+}
 
+.daily-challenge-component{
+  border: 5px solid;
+  padding: 15px;
+  border-image: url("https://res.cloudinary.com/dpsymdmyi/image/upload/v1694216684/hr-line-white_mwvizb.svg") 200 round;
 }
