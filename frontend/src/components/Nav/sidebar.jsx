@@ -53,7 +53,7 @@ export default function Sidenav() {
           <button className="menuBtn" onClick={toggleOpen}>
             {open && (
               <img
-                className="hamburger-open"
+                className="hamburger-closed"
                 src="https://res.cloudinary.com/dpsymdmyi/image/upload/v1694202631/hamburger_lththo.svg"
               />
             )}
