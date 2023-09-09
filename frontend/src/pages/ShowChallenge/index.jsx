@@ -66,14 +66,10 @@ export default function ShowChallenge() {
         <p className="challenge-descr body-font">{challenge.description}</p>
         {!userData?.completedChallenges?.includes(challenge._id) ? (
           <>
-            <p className="challenge-complete body-font">Completed?</p>
-            <button
-              name="completedChallenges"
-              id={challenge._id}
-              onClick={addComplete}
-            >
-              &#10003;
-            </button>
+                  <div className="completed-and-check"><p className="body-font completed-righttop">Completed?</p>
+          <button className="checkmark-button" id={challenge._id} onClick={addComplete}>
+            &#10003;
+          </button></div>
           </>
         ) : (
           <>
