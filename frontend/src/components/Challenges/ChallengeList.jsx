@@ -83,13 +83,13 @@ sortedChallengesidx ++
           </h3>
           <p className="challenge-descr body-font">{challenge.description}</p>
           {!userData?.completedChallenges?.includes(challenge._id) ? <>
-          <p className="challenge-complete body-font">Completed?</p>
+          <p className="body-font challenge-righttop">Completed?</p>
           <button name="completedChallenges" id={challenge._id} onClick={addComplete}>
             &#10003;
           </button>
           </> :
           <>
-          <h1>YOU DID IT ALREADY</h1>
+          <h1 className="challenge-righttop">You did it!</h1>
           </>
       }
       <button onClick={()=> navigate(`/challenges/${challenge._id}`)}>VIEW CHALLENGE</button>
