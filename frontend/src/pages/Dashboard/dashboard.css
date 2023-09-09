@@ -13,7 +13,7 @@
   width: 10em;
   border-radius: 10%;
   height: 10em;
-  object-fit: cover;
+  object-fit: contain;
   grid-column: 1 / span 1;
   grid-row: 1 / span 4;
 }

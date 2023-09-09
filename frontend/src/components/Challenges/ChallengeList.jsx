@@ -75,7 +75,15 @@ sortedChallengesidx ++
     return    <div className="challenge-block" key={challenge._id}>
           <img
             className="challenge-picture"
-            src="https://res.cloudinary.com/dpsymdmyi/image/upload/v1692365554/bebpthuftxhz18roqbwl.png"
+            //community icon:
+            // src="https://res.cloudinary.com/dpsymdmyi/image/upload/v1694278247/community-red_c2yd4c.svg"
+            //nature icon:
+            // src="https://res.cloudinary.com/dpsymdmyi/image/upload/v1694278531/tree_h8n1mk.svg"
+            //education icon:
+            // src="https://res.cloudinary.com/dpsymdmyi/image/upload/v1694278673/education_poh8l8.svg"
+            //animal icon:
+            src="https://res.cloudinary.com/dpsymdmyi/image/upload/v1694279455/pig_qm4uhw.svg"
+
           />
           <h3 className="h3-challenge h3-header kindr-header">
             {challenge.title}
