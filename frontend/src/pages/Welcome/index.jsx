@@ -22,18 +22,10 @@ navigate("/dashboard")
           Kindr is an app where you can do good things and inspire others to do
           good. We're just a bunch of do-gooders 'round these parts.
         </p>
+
+        <button onClick={() => loginWithRedirect()}>LOGIN</button>
+
       </section>
     </>
   );
 }
-
-// <header className="welcome">
-// {!isLoading && !user && (
-//   <button onClick={() => loginWithRedirect()}>LOGIN</button>
-// )}
-// {!isLoading && user && (
-//   <>
-//     <button onClick={() => logout()}> LOGOUT</button>
-//   </>
-// )}
-// </header>
