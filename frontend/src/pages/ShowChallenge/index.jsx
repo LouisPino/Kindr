@@ -8,6 +8,8 @@ import {
   updateUser,
 } from "../../utilities/user-service";
 
+import "./showchallenge.css"
+
 export default function ShowChallenge() {
   const { loginWithRedirect, logout, user } = useAuth0();
   const navigate = useNavigate();
@@ -85,8 +87,11 @@ export default function ShowChallenge() {
           completedUsers.map((user) => {
             return (
               <div className="completed-user-card">
-                <h1>{user.username}</h1>
-                <img src={user.picture} alt="" />
+                <div className="completed-user-info">
+                <img className="completed-user-img"src={user.picture} alt="" />
+                <h1 className="h3-challenge h3-header kindr-header">{user.username}</h1>
+                </div>
+                <img className="completed-img"src={user.picture} alt="" />
               </div>
             );
           })
