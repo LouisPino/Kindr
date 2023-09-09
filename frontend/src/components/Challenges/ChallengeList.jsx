@@ -94,7 +94,7 @@ sortedChallengesidx ++
           </>
       }
 
-      {<button className="viewchallenge-button body-font"onClick={()=> navigate(`/challenges/${challenge._id}`)}>VIEW CHALLENGE</button> }
+      {<button className="viewchallenge-button body-font"onClick={()=> navigate(`/challenges/${challenge._id}`)}>VIEW DEED</button> }
       </div>
           }  })}
     </section>

@@ -49,10 +49,10 @@ export default function NewChallengeForm() {
 
   return (
     <section>
-      <h2 className="kindr-header h2-header">Submit a New Challenge</h2>
+      <h2 className="kindr-header h2-header">Submit a New Deed</h2>
       <form className="new-challenge-form" onSubmit={handleSubmit}>
         <label htmlFor="title">
-          Challenge Title
+          Title
           <input
             type="text"
             name="title"
@@ -77,7 +77,7 @@ export default function NewChallengeForm() {
         <input
           className="new-challenge-button"
           type="submit"
-          value="Create Challenge"
+          value="Create Deed"
         />
       </form>
     </section>

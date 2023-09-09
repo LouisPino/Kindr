@@ -96,7 +96,7 @@ export default function ShowChallenge() {
             );
           })
         ) : (
-          <h1>Be the first to complete this challenge!</h1>
+          <h1 className="h3-challenge h3-header kindr-header white">Be the first to complete this Deed!</h1>
         )}
       </div>
     </>
