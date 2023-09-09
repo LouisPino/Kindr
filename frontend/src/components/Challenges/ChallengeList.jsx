@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { findUserByEmail } from "../../utilities/user-service";
 import { updateUser } from "../../utilities/user-service";
 
+
 export default function ChallengeList({ challenges, location }) {
 let sortedChallenges = []
 let sortedChallengesidx = 0

@@ -1,8 +1,14 @@
+*{
+    border: 1px solid red
+  }
+
+
 .profile-page{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    min-width: 100vw;
 }
 .user-picture {
     width: 10rem;
@@ -28,4 +34,9 @@
 
 .white{
     color: white;
+}
+
+
+.profile-page>.challenge-list{
+    width: 60vw;
 }
