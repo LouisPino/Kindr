@@ -5,7 +5,7 @@ import { findUserByEmail } from "../../utilities/user-service";
 import { updateUser } from "../../utilities/user-service";
 
 
-export default function ChallengeList({ challenges, location }) {
+export default function ChallengeList({ challenges, location, setNavScore, userData, setUserData }) {
 let sortedChallenges = []
 let sortedChallengesidx = 0
 for(let i = challenges.length-1; i>=0; i--){
@@ -29,18 +29,18 @@ sortedChallengesidx ++
   const { user } = useAuth0();
   const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
-  const [userData, setUserData] = useState({});
-  useEffect(() => {
-    if (user) {
-      async function fillUserObj() {
-        const retrievedUserData = await findUserByEmail(user.email);
-        setUserData(retrievedUserData);
-      }
-      fillUserObj();
-    } else {
-      navigate("/");
-    }
-  }, []);
+  // const [userData, setUserData] = useState({});
+  // useEffect(() => {
+  //   if (user) {
+  //     async function fillUserObj() {
+  //       const retrievedUserData = await findUserByEmail(user.email);
+  //       setUserData(retrievedUserData);
+  //     }
+  //     fillUserObj();
+  //   } else {
+  //     navigate("/");
+  //   }
+  // }, []);
 
   
   async function addComplete(e) {
@@ -50,11 +50,9 @@ sortedChallengesidx ++
     userChallenges.push(e.target.id)
 
     const newUserData = {...userData, [e.target.name]: userChallenges, score: userData.score+1}
-    console.log('newUserData', newUserData)
-
+setNavScore(newUserData.score)
     updateUser(newUserData)
     setUserData(newUserData)
-    console.log('user', user)
   }
   
   useEffect(() => {

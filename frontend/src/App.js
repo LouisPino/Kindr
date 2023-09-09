@@ -11,14 +11,15 @@ import NewUser from "./pages/NewUser";
 import _404 from "./pages/404";
 import Sidenav from "./components/Nav/sidebar";
 import Header from "./components/Header/header";
-
+import { useState } from "react";
 
 function App() {
+const [navScore, setNavScore]= useState(0)
   const cloudImg = "https://res.cloudinary.com/dpsymdmyi/image/upload/v1694293421/bg-cloud_yx41el.svg"
   const cloudImg2 = "https://res.cloudinary.com/dpsymdmyi/image/upload/v1694293962/cloud-2_lqhxmy.svg"
   return (
     <div className="App">
-      <Header/>
+      <Header navScore={navScore}/>
       <Sidenav />
       <img className="bg-cloud" src={cloudImg} />
       <img className="bg-cloud2" src={cloudImg2} />
@@ -26,8 +27,8 @@ function App() {
       <div className="routes">
       <Routes>
         <Route exact path="/" element={<Welcome />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/challenges/:id" element={<ShowChallenge />} />
+        <Route path="/dashboard" element={<Dashboard setNavScore={setNavScore}/>} />
+        <Route path="/challenges/:id" element={<ShowChallenge setNavScore={setNavScore}/>} />
         <Route path="/challenges/add" element={<AddChallenge />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/newuser" element={<NewUser />} />

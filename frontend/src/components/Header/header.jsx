@@ -5,7 +5,7 @@ import './header.css'
 import { useEffect, useState } from "react";
 import { findUserByEmail } from "../../utilities/user-service";
 
-export default function Header() {
+export default function Header({navScore}) {
   const { loginWithRedirect, logout, user, isLoading } = useAuth0();
   const [userData, setUserData] = useState({})
     useEffect(()=>{
@@ -13,7 +13,6 @@ export default function Header() {
       async function fillUserObj(){
         const retrievedUserData = await findUserByEmail(user.email)
         setUserData(retrievedUserData)
-        console.log('hit nav user')
       }
       fillUserObj()
     }
@@ -26,7 +25,7 @@ export default function Header() {
            <Link to={"/profile"}>
            <img src="https://res.cloudinary.com/dpsymdmyi/image/upload/v1694278247/community-red_c2yd4c.svg"  />
             </Link>
-            <h2 className="user-header-score kindr-header kindr-nav depth">{userData.score}</h2>
+            <h2 className="user-header-score kindr-header kindr-nav depth">{navScore > 0 ? navScore : ''}</h2>
             </div>
     </header>
   );
