@@ -7,19 +7,20 @@ import { findUserByEmail } from "../../utilities/user-service";
 // define the function boilerplate with export
 export default function NewChallengeForm() {
   const navigate = useNavigate();
-  const { loginWithRedirect, logout, user } = useAuth0();
+  const { user } = useAuth0();
   const [isLoading, setIsLoading] = useState(true);
   const [userData, setUserData] = useState({});
 
+
   const options = [
-    { label: "Community", value: "Community" },
-    { label: "Nature", value: "Nature" },
-    { label: "Education", value: "Education" },
-    { label: "Animals", value: "Animals" },
-    { label: "Other", value: "Other" },
+    { label: "Community", value: "0" },
+    { label: "Nature", value: "1" },
+    { label: "Education", value: "2" },
+    { label: "Animals", value: "3" },
+    { label: "Other", value: "4" },
   ];
 
-  const [value, setValue] = useState("fruit");
+  const [value, setValue] = useState("Community");
 
   useEffect(() => {
     if (user) {
@@ -51,6 +52,7 @@ export default function NewChallengeForm() {
   function handleChange(e) {
     setValue(e.target.value)
     const updatedData = { ...newForm, [e.target.name]: e.target.value };
+    console.log('updatedData', updatedData)
     setNewForm(updatedData);
   }
 
@@ -91,7 +93,7 @@ export default function NewChallengeForm() {
                 // value={newForm.category}
                 value={option.value}
               >
-                {option.value}
+                {option.label}
               </option>
             ))}
           </select>
