@@ -47,7 +47,7 @@ export default function DailyChallenge({dailyChallenge}) {
 
   return (
     <div className="daily-challenge-component">
-      <p className="completed-righttop body-font daily">Daily Deed</p>
+      <p className="body-font daily">Daily Deed</p>
       <div className="challenge-block">
         <img
           className="challenge-picture"

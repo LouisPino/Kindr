@@ -18,14 +18,6 @@ export default function Header() {
       fillUserObj()
     }
     }, [user])
-  
-
-
-
-
-
-
-
   return (
     <header className="header-page">
            <Link to={"/dashboard"}>
