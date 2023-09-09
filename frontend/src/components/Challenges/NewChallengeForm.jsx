@@ -103,7 +103,7 @@ export default function NewChallengeForm() {
           value="Create Deed"
         />
       </form>
-      <UploadImage />
+
     </section>
   );
 }

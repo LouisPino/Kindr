@@ -2,6 +2,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { findUserByEmail, updateUser } from "../../utilities/user-service";
+import UploadImage from "../../components/UploadImage/UploadImage";
 import("./newuser.css");
 
 export default function NewUser() {
@@ -36,6 +37,7 @@ setIsLoading(false)
     e.preventDefault()
     updateUser(newForm)
     navigate('/profile')
+    console.log(newForm)
   }
 
 
@@ -93,6 +95,7 @@ setIsLoading(false)
             placeholder="add challenge description"
           />
         </label>
+        <UploadImage />
         <input
           className="new-challenge-button"
           type="submit"
@@ -104,6 +107,3 @@ setIsLoading(false)
     </>
   );
 }
-
-
-//update user info after form is submitted and redirect to profile

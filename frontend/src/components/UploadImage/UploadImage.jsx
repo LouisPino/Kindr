@@ -1,10 +1,10 @@
-const cloudName = "dpsymdmyi";
-const uploadPreset = "xy6vadhr"; // replace with your own upload preset
-const cloudinary = require("cloudinary").v2;
-const streamifier = require("streamifier");
-const { clConfig } = require("../config/cloudinary.js");
+// const cloudName = "dpsymdmyi";
+// const uploadPreset = "xy6vadhr"; // replace with your own upload preset
+// const cloudinary = require("cloudinary").v2;
+// const streamifier = require("streamifier");
+// const clConfig = require("../../config/cloudinary.js");
 
-cloudinary.config(clConfig);
+// cloudinary.config(clConfig);
 
 export default function UploadImage() {
 //   function streamUpload(req) {
@@ -21,19 +21,10 @@ export default function UploadImage() {
 //     });
 //   }
 
-console.log(e)
 
   return (
     <>
-      <form
-        class="img-form"
-        id="img-form"
-        method="POST"
-        autocomplete="off"
-        action="/vacations/<%=vacation._id%>/photos/single"
-        enctype="multipart/form-data"
-      >
-        <label id="add-photo-btn" class="photo-submit">
+      <label id="add-photo-btn" className="photo-submit">
           <input
             id="img-input"
             type="file"
@@ -45,7 +36,6 @@ console.log(e)
             UPLOAD PHOTO
           </p>
         </label>
-      </form>
     </>
   );
 }
@@ -53,10 +43,17 @@ console.log(e)
 
 
 
+//upload to cloudinary, get link back, set link as newFormData picture value
 
+//streamupload function sends photo to cloud and returns url in response
 
+//on upload photo, make request to service/api/backend to upload photo and return link
+//when it comes back, call handleChange with link as picture
 
+//or
 
+//upload directly to user on db
+//trigger regrab of user data and display new photo, separate from form
 
 
 // const myWidget = cloudinary.createUploadWidget(

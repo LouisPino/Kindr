@@ -40,3 +40,14 @@ export async function createUser(userData) {
       return err;
     }
   }
+  
+  export async function uploadPhoto(url) {
+    try {
+      const data = await userAPI.uploadPhoto(url);
+      console.log(data)
+      return data;
+    } catch (err) {
+      console.log(err);
+      return err;
+    }
+  }

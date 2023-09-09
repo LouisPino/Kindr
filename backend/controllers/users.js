@@ -5,9 +5,14 @@ addUser,
 findUserByEmail,
 updateUser,
 findUsersByCompletedChalleneges,
-uploadPicture
+uploadPhoto
 }
 
+const cloudinary = require("cloudinary").v2;
+const streamifier = require("streamifier");
+const { clConfig } = require("../config/cloudinary.js");
+
+cloudinary.config(clConfig);
 
 async function addUser(req, res){
     try {
@@ -44,3 +49,27 @@ async function findUsersByCompletedChalleneges(req, res){
   }
 }
 
+async function uploadPhoto(req, res){
+  try {
+    let response = await streamUpload(req);
+return response
+}catch(err) {
+  console.log(err);
+  next(Error(err));
+}
+}
+
+
+
+function streamUpload(req) {
+  return new Promise(function (resolve, reject) {
+    let stream = cloudinary.uploader.upload_stream((error, result) => {
+      if (result) {
+        resolve(result);
+      } else {
+        reject(error);
+      }
+    });
+    streamifier.createReadStream(req.file.buffer).pipe(stream);
+  });
+}

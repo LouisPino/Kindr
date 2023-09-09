@@ -63,3 +63,16 @@ export async function findUsersByCompletedChalleneges(challengeId){
         return new Error("Invalid Request");
       }
 }
+
+export async function uploadPhoto(data){
+  const response = await fetch(`${BASE_URL}/users/profile-photo`, {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(data)
+  })
+  if(response.ok){
+      return response.json()
+  }else{
+      return new Error("Invalid Request")
+  }
+}
