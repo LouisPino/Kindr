@@ -2,6 +2,7 @@
   "dependencies": {
     "@cloudinary/react": "^1.11.2",
     "@cloudinary/url-gen": "^1.11.2",
-    "cloudinary": "^1.40.0"
+    "cloudinary": "^1.40.0",
+    "streamifier": "^0.1.1"
   }
 }
