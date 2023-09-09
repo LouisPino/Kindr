@@ -63,7 +63,7 @@ sortedChallengesidx ++
 
   return isLoading ? (
     <>
-    <h1>LOADING</h1>
+    <h1 className="loading">LOADING...</h1>
     </>
       ) : 
       (
@@ -99,8 +99,11 @@ const picArr = ["https://res.cloudinary.com/dpsymdmyi/image/upload/v1694278247/c
 
           </>
       }
-
+      {location !== "profile" ? <>
       {<button className="viewchallenge-button body-font"onClick={()=> navigate(`/challenges/${challenge._id}`)}>VIEW DEED</button> }
+      </> :
+      <>{<button className="profile-viewchallenge"onClick={()=> navigate(`/challenges/${challenge._id}`)}>VIEW DEED</button> }</>}
+      
       </div>
           }  })}
     </section>

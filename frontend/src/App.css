@@ -74,3 +74,12 @@
   position: fixed;
   left: 0;
 }
+
+.loading {
+  font-family: "asphalt", sans-serif;
+  font-weight: 800;
+  font-style: normal;
+  color: white;
+  font-stretch: extra-expanded;
+  letter-spacing: .2rem;
+}
