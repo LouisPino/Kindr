@@ -111,8 +111,16 @@ font-weight: 900;
 font-style: normal;
 }
 
+.profile-viewchallenge {
+  grid-row: 1 / span 4;
+  padding: 1rem 0rem;
+  width: 70%;
+  margin: auto;
+  font-size: 1.2rem;
+}
 
-.viewchallenge-button, .checkmark-button {
+
+.viewchallenge-button, .checkmark-button, .profile-viewchallenge {
   /* padding: 15px 25px; */
   /* font-size: 24px; */
   text-align: center;
@@ -125,7 +133,7 @@ font-style: normal;
   border-radius: 15px;
 }
 
-.viewchallenge-button:active, .checkmark-button:active {
+.viewchallenge-button:active, .checkmark-button:active, .profile-viewchallenge:active {
   box-shadow: none;
   transform: translateY(5px);
 }

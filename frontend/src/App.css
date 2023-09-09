@@ -65,6 +65,7 @@
   grid-row: 2 / span 1;
   grid-column: 1 / span 1;
   align-self: baseline;
+  z-index: 1;
 }
 
 .nav {
@@ -73,4 +74,36 @@
   align-self: baseline;
   position: fixed;
   left: 0;
+  z-index: 2;
+}
+
+.loading {
+  font-family: "asphalt", sans-serif;
+  font-weight: 800;
+  font-style: normal;
+  color: white;
+  font-stretch: extra-expanded;
+  letter-spacing: .2rem;
+}
+
+.bg-cloud, .bg-cloud2 {
+  grid-row: 1 / span 2;
+  grid-column: 1 / span 1;
+  align-self: baseline;
+justify-self: baseline;
+position: fixed;
+z-index: 0;
+filter: drop-shadow(0px 2px 2px #b12f28);
+}
+
+.bg-cloud {
+width: 10rem;
+margin-top: 12rem;
+margin-left: 7vw;
+}
+
+.bg-cloud2 {
+width: 15rem;
+margin-top: 50vh;
+margin-left: 60vw;
 }

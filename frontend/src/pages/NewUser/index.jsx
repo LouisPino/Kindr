@@ -45,7 +45,7 @@ setIsLoading(false)
   }
   return isLoading ? (
 <>
-<h1>LOADING</h1>
+<h1 className="loading">LOADING</h1>
 </>
   ) : 
   (

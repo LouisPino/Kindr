@@ -63,7 +63,7 @@ if(userData && !isLoading){
       </section>
     </>
   );}else{
-    return <h1>LOADING</h1>
+    return <h1 className="loading">LOADING...</h1>
   }
 
 }
