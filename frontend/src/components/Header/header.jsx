@@ -6,6 +6,7 @@ import { useState } from "react";
 
 export default function Header() {
   const { loginWithRedirect, logout, user, isLoading } = useAuth0();
+  const userImage = ""
   return (
     <header className="header-page">
       {!isLoading && !user && (

@@ -150,10 +150,16 @@ font-style: normal;
 
 .daily{
 color: white;
+background-color: rgba(255, 255, 255, .2);
+width: 90%;
+font-size: 3rem;
+margin: auto;
+border-radius: 1rem;
+
 }
 
 .daily-challenge-component{
   border: 5px solid;
-  padding: 15px;
+  padding: 15px 0px;
   border-image: url("https://res.cloudinary.com/dpsymdmyi/image/upload/v1694216684/hr-line-white_mwvizb.svg") 200 round;
 }

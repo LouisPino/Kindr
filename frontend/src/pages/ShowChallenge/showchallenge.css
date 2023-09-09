@@ -25,6 +25,7 @@ margin-top: 20px;
 .completed-user-img{
     width: 125px;
     height: auto;
+    border-radius: rem;
 }
 .completed-user-card>h2{
     width: auto;
