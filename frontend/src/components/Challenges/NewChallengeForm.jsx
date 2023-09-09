@@ -22,10 +22,6 @@ export default function NewChallengeForm() {
     }
   }, []);
 
-
-
-
-
   const initState = {
     title: "",
     description: "",

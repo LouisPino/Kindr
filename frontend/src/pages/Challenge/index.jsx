@@ -5,11 +5,17 @@ import NewChallengeForm from "../../components/Challenges/NewChallengeForm";
 import { getChallenges } from "../../utilities/challenge-service";
 import { useEffect, useState } from "react";
 import ChallengeList from "../../components/Challenges/ChallengeList";
+import Options from "../../components/Challenges/ChallOptions";
 
 
 export default function Challenge() {
 
-  return <NewChallengeForm />
+  return (
+    <>
+  <NewChallengeForm />
+  <Options />
+  </>
+  )
   
 
 }
