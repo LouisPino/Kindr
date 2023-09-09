@@ -39,7 +39,7 @@ export default function NewChallengeForm() {
     description: "",
     images: [],
     daily: false,
-    category: "",
+    category: null,
   };
   const [newForm, setNewForm] = useState(initState);
   async function handleSubmit(e) {

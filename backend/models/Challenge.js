@@ -12,11 +12,11 @@ const imagesSchema = new Schema({
 
 
 const challengeSchema = new Schema({
-  title: {String, required: true},
-  description: {String, required: true},
+  title: {String, required: false},
+  description: {String, required: false},
   images: {type:[Schema.Types.ObjectId], ref: "Image"},
-  daily: {Boolean, required: true},
-  category: {Number, required: true},
+  daily: {Boolean, required: false},
+  category: {Number, required: false},
 }, {
   timestamps: true
 });
