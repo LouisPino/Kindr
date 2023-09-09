@@ -10,7 +10,7 @@ import ChallengeList from "../../components/Challenges/ChallengeList";
 import "./dashboard.css"
 import DailyChallenge from "../../components/Challenges/DailyChallenge";
 
-export default function Dashboard() {
+export default function Dashboard({setNavScore}) {
   const { user } = useAuth0();
   const { userId } = useParams();
   const [isLoading, setIsLoading] = useState(true);
@@ -27,7 +27,9 @@ export default function Dashboard() {
     if(user){
     async function fillUserObj(){
        const retrievedUserData = await findUserByEmail(user.email)
+      setNavScore(retrievedUserData.score)
       setUserData(retrievedUserData)
+      await handleRequest();
     }  
     fillUserObj()
   }
@@ -36,17 +38,6 @@ export default function Dashboard() {
       navigate('/')}
   }, [])
 
-  useEffect(() => {
-    if (user) {
-      async function fillUserObj() {
-        const userData = await findUserByEmail(user.email);
-        await handleRequest();
-      }
-      fillUserObj();
-    } else {
-      navigate("/");
-    }
-  }, []);
 
 
   async function handleRequest() {
@@ -76,8 +67,8 @@ export default function Dashboard() {
   ) : (
     <>
       <h1 className="dashboard-h1">{userData.username ? `${userData.username}'s` : 'Your'} Deed Dashboard</h1>
-      <DailyChallenge dailyChallenge = {dailyChallenge}/>
-      <ChallengeList challenges={challenges} location={'dashboard'}/>
+      <DailyChallenge dailyChallenge = {dailyChallenge} setNavScore={setNavScore} userData={userData} setUserData={setUserData}/>
+      <ChallengeList challenges={challenges} location={'dashboard'} setNavScore={setNavScore} userData={userData} setUserData={setUserData}/>
     </>
   );
 }

@@ -10,7 +10,7 @@ import {
 
 import "./showchallenge.css"
 
-export default function ShowChallenge() {
+export default function ShowChallenge({setNavScore}) {
   const { loginWithRedirect, logout, user } = useAuth0();
   const navigate = useNavigate();
   const { id } = useParams();
@@ -35,12 +35,10 @@ export default function ShowChallenge() {
 
     userChallenges.push(e.target.id);
 
-    const newUserData = { ...userData, [e.target.name]: userChallenges };
-    console.log("newUserData", newUserData);
-
-    updateUser(newUserData);
-    setUserData(newUserData);
-    console.log("user", user);
+    const newUserData = {...userData, [e.target.name]: userChallenges, score: userData.score+1}
+    setNavScore(newUserData.score)
+        updateUser(newUserData)
+        setUserData(newUserData)
   }
   useEffect(() => {
     async function getChallenge() {

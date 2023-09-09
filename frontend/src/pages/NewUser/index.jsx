@@ -104,6 +104,3 @@ setIsLoading(false)
     </>
   );
 }
-
-
-//update user info after form is submitted and redirect to profile

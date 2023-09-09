@@ -8,7 +8,7 @@ import {
   getChallenges,
 } from "../../utilities/challenge-service";
 
-export default function DailyChallenge({dailyChallenge}) {
+export default function DailyChallenge({dailyChallenge, setNavScore, userData, setUserData}) {
   const { loginWithRedirect, logout, user } = useAuth0();
   async function addComplete(e) {
     e.preventDefault()
@@ -16,26 +16,25 @@ export default function DailyChallenge({dailyChallenge}) {
 
     userChallenges.push(e.target.id)
 
-    const newUserData = {...userData, [e.target.name]: userChallenges}
-    console.log('newUserData', newUserData)
-
-    updateUser(newUserData)
-    setUserData(newUserData)
-    console.log('user', user)
+    const newUserData = {...userData, [e.target.name]: userChallenges, score: userData.score+1}
+    setNavScore(newUserData.score)
+        updateUser(newUserData)
+        setUserData(newUserData)
   }
 
-  const [userData, setUserData] = useState({});
-  useEffect(() => {
-    if (user) {
-      async function fillUserObj() {
-        const retrievedUserData = await findUserByEmail(user.email);
-        setUserData(retrievedUserData);
-      }
-      fillUserObj();
-    } else {
-      navigate("/");
-    }
-  }, []);
+  // const [userData, setUserData] = useState({});
+  // useEffect(() => {
+  //   if (user) {
+  //     async function fillUserObj() {
+  //       const retrievedUserData = await findUserByEmail(user.email);
+  //       setUserData(retrievedUserData);
+  //       setNavScore(retrievedUserData.score)
+  //     }
+  //     fillUserObj();
+  //   } else {
+  //     navigate("/");
+  //   }
+  // }, []);
 
   const navigate = useNavigate();
 
