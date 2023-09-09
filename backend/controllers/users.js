@@ -4,7 +4,8 @@ module.exports={
 addUser,
 findUserByEmail,
 updateUser,
-findUsersByCompletedChalleneges
+findUsersByCompletedChalleneges,
+uploadPicture
 }
 
 
@@ -42,3 +43,4 @@ async function findUsersByCompletedChalleneges(req, res){
     res.status(400).json({ error: error.message });
   }
 }
+

@@ -3,6 +3,7 @@ import { createChallenge } from "../../utilities/challenge-service";
 import { useNavigate } from "react-router";
 import { useAuth0 } from "@auth0/auth0-react";
 import { findUserByEmail } from "../../utilities/user-service";
+import UploadImage from "../UploadImage/UploadImage";
 
 // define the function boilerplate with export
 export default function NewChallengeForm() {
@@ -102,6 +103,7 @@ export default function NewChallengeForm() {
           value="Create Deed"
         />
       </form>
+      <UploadImage />
     </section>
   );
 }
