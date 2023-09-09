@@ -64,6 +64,7 @@ export default function Sidenav() {
                   key={item.id}
                   className={open ? "sideitem" : "sideitemClosed"}
                   to={item.link}
+                  onClick={()=>setopen(false)}
                 >
                   <span className={open ? "linkText" : "linkTextClosed"}>
                     {item.text}
