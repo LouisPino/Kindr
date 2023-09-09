@@ -52,13 +52,13 @@ export default function ShowChallenge() {
     }
     getChallenge();
   }, []);
-
+  const picArr = ["https://res.cloudinary.com/dpsymdmyi/image/upload/v1694278247/community-red_c2yd4c.svg", "https://res.cloudinary.com/dpsymdmyi/image/upload/v1694278531/tree_h8n1mk.svg", "https://res.cloudinary.com/dpsymdmyi/image/upload/v1694278673/education_poh8l8.svg", "https://res.cloudinary.com/dpsymdmyi/image/upload/v1694279455/pig_qm4uhw.svg", "https://res.cloudinary.com/dpsymdmyi/image/upload/v1694279771/sparkles-svgrepo-com_pwuurr.svg"]
   return (
     <>
       <div className="challenge-block" key={challenge._id}>
         <img
           className="challenge-picture"
-          src="https://res.cloudinary.com/dpsymdmyi/image/upload/v1692365554/bebpthuftxhz18roqbwl.png"
+          src={picArr[challenge.category]}
         />
         <h3 className="h3-challenge h3-header kindr-header">
           {challenge.title}
