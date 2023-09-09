@@ -50,8 +50,7 @@ export default function NewChallengeForm() {
   }
 
   function handleChange(e) {
-    setValue(e.target.value);
-    console.log('eeee', e.target.name)
+    setValue(e.target.value)
     const updatedData = { ...newForm, [e.target.name]: e.target.value };
     console.log('updatedData', updatedData)
     setNewForm(updatedData);
@@ -86,7 +85,7 @@ export default function NewChallengeForm() {
         </label>
         <label htmlFor="category">
           Select a category
-          <select name="category" value={newForm.value} onChange={handleChange}>
+          <select name="category" value={value} onChange={handleChange}>
             {options.map((option) => (
               <option
                 name="category"
