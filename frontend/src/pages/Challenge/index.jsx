@@ -9,7 +9,11 @@ import ChallengeList from "../../components/Challenges/ChallengeList";
 
 export default function Challenge() {
 
-  return <NewChallengeForm />
+  return (
+    <>
+  <NewChallengeForm />
+  </>
+  )
   
 
 }

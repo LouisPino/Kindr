@@ -6,10 +6,21 @@ import { findUserByEmail } from "../../utilities/user-service";
 
 // define the function boilerplate with export
 export default function NewChallengeForm() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const { loginWithRedirect, logout, user } = useAuth0();
   const [isLoading, setIsLoading] = useState(true);
   const [userData, setUserData] = useState({});
+
+  const options = [
+    { label: "Community", value: "Community" },
+    { label: "Nature", value: "Nature" },
+    { label: "Education", value: "Education" },
+    { label: "Animals", value: "Animals" },
+    { label: "Other", value: "Other" },
+  ];
+
+  const [value, setValue] = useState("fruit");
+
   useEffect(() => {
     if (user) {
       async function fillUserObj() {
@@ -22,25 +33,20 @@ export default function NewChallengeForm() {
     }
   }, []);
 
-
-
-
-
   const initState = {
     title: "",
     description: "",
     images: [],
-    daily: false
+    daily: false,
+    category: "",
   };
   const [newForm, setNewForm] = useState(initState);
   async function handleSubmit(e) {
     e.preventDefault();
     await createChallenge(newForm);
     setNewForm(initState);
-    navigate("/dashboard")
+    navigate("/dashboard");
   }
-
-  
 
   function handleChange(e) {
     const updatedData = { ...newForm, [e.target.name]: e.target.value };
@@ -73,6 +79,21 @@ export default function NewChallengeForm() {
             onChange={handleChange}
             placeholder="add challenge description"
           />
+        </label>
+        <label htmlFor="category">
+          Select a category
+          <select value={value} onChange={handleChange}>
+            {options.map((option) => (
+              <option
+                name="category"
+                id="category"
+                value={newForm.category}
+                // value={option.value}
+              >
+                {option.value}
+              </option>
+            ))}
+          </select>
         </label>
         <input
           className="new-challenge-button"
