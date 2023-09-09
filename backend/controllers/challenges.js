@@ -68,7 +68,7 @@ async function destroy(req, res) {
         {
           role: "user",
           content:
-            "Generate a good deed that someone could achieve in less than 24 hours. Please come up with a title for the deed and a description no longer than 4 sentences explaining what the deed is. Do not repeat a deed you have done before. It should be formatted like this: (Deed Title): (Deed Description)." ,
+            "Generate a good deed that someone could achieve in less than 24 hours. Please come up with a title for the deed and a description no longer than 4 sentences explaining what the deed is. Do not repeat a deed you have done before. Deed titles should be 3 words or less. It should be formatted like this: (Deed Title): (Deed Description)." ,
         },
       ],
       temperature: 0.7,
