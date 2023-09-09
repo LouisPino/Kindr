@@ -11,7 +11,6 @@ export default function Nav() {
       )}
       {!isLoading && user && (
         <>
-        {/* <img src = "https://res.cloudinary.com/dpsymdmyi/image/upload/v1694009830/cloud-svg_thl7os.svg" className="cloud-nav" alt="cloud-nav"/> */}
           <h1 className="kindr-header kindr-nav">Kindr</h1>
           <button onClick={() => logout()}> LOGOUT</button>
           <Link to={"/"}>
@@ -26,7 +25,7 @@ export default function Nav() {
             {" "}
             <button>PROFILE</button>{" "}
           </Link>
-          <Link to={"/challenges/1234"}>
+          <Link to={"/challenges/add"}>
             {" "}
             <button>ADD CHALLENGE</button>{" "}
           </Link>

@@ -4,9 +4,29 @@ import { Link, useNavigate } from "react-router-dom";
 import { findUserByEmail } from "../../utilities/user-service";
 import { updateUser } from "../../utilities/user-service";
 
-export default function ChallengeList({ challenges }) {
-  let initState = {};
-  const { loginWithRedirect, logout, user } = useAuth0();
+
+export default function ChallengeList({ challenges, location }) {
+let sortedChallenges = []
+let sortedChallengesidx = 0
+for(let i = challenges.length-1; i>=0; i--){
+sortedChallenges[sortedChallengesidx]=challenges[i]
+sortedChallengesidx ++
+}
+
+
+
+
+ function showCondition(challenge){
+   if(location === 'profile'){
+    return !!userData
+ }else{
+  return (!challenge.daily && userData)
+ }
+}
+
+
+
+  const { user } = useAuth0();
   const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
   const [userData, setUserData] = useState({});
@@ -21,16 +41,19 @@ export default function ChallengeList({ challenges }) {
       navigate("/");
     }
   }, []);
+
+  
   async function addComplete(e) {
     e.preventDefault()
     let userChallenges = userData.completedChallenges
 
     userChallenges.push(e.target.id)
 
-    const newUserData = {...userData, [e.target.name]: userChallenges}
+    const newUserData = {...userData, [e.target.name]: userChallenges, score: userData.score+1}
     console.log('newUserData', newUserData)
 
     updateUser(newUserData)
+    setUserData(newUserData)
     console.log('user', user)
   }
   
@@ -46,22 +69,40 @@ export default function ChallengeList({ challenges }) {
       (
         <>
     <section className="challenge-list">
-      {challenges.map((challenge, idx) => (
-        <div className="challenge-block" key={challenge._id}>
+      {sortedChallenges.map((challenge, idx) => {
+
+
+const picArr = ["https://res.cloudinary.com/dpsymdmyi/image/upload/v1694278247/community-red_c2yd4c.svg", "https://res.cloudinary.com/dpsymdmyi/image/upload/v1694278531/tree_h8n1mk.svg", "https://res.cloudinary.com/dpsymdmyi/image/upload/v1694278673/education_poh8l8.svg", "https://res.cloudinary.com/dpsymdmyi/image/upload/v1694279455/pig_qm4uhw.svg", "https://res.cloudinary.com/dpsymdmyi/image/upload/v1694279771/sparkles-svgrepo-com_pwuurr.svg", "https://res.cloudinary.com/dpsymdmyi/image/upload/v1694285543/exclamation_jkltnz.svg"]
+
+
+
+      if(showCondition(challenge))  {
+    return    <div className="challenge-block" key={challenge._id}>
           <img
             className="challenge-picture"
-            src="https://res.cloudinary.com/dpsymdmyi/image/upload/v1692365554/bebpthuftxhz18roqbwl.png"
+          src={picArr[challenge.category]}
+
           />
           <h3 className="h3-challenge h3-header kindr-header">
             {challenge.title}
           </h3>
           <p className="challenge-descr body-font">{challenge.description}</p>
-          <p className="challenge-complete body-font">Completed?</p>
-          <button name="completedChallenges" id={challenge._id} onClick={addComplete}>
+          {!userData?.completedChallenges?.includes(challenge._id) ? <>
+          <div className="completed-and-check"><p className="body-font completed-righttop">Completed?</p>
+          <button className="checkmark-button" id={challenge._id} onClick={addComplete}>
             &#10003;
-          </button>
-        </div>
-      ))}
+          </button></div>
+          </> :
+          <>
+
+          {location !== "profile" && <h1 className="youdidit-righttop body-font">You did it!</h1>}
+
+          </>
+      }
+
+      {<button className="viewchallenge-button body-font"onClick={()=> navigate(`/challenges/${challenge._id}`)}>VIEW DEED</button> }
+      </div>
+          }  })}
     </section>
     </>
   );

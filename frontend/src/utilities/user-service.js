@@ -19,6 +19,15 @@ export async function createUser(userData) {
       return err;
     }
   }
+  export async function findUsersByCompletedChalleneges(challengeId) {
+    try {
+      const data = await userAPI.findUsersByCompletedChalleneges(challengeId);
+      return data;
+    } catch (err) {
+      console.log(err);
+      return err;
+    }
+  }
   
   export async function updateUser(formData) {
     console.log(formData)

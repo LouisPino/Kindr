@@ -8,11 +8,11 @@ import("./profile.css");
 
 
 export default function Profile() {
-  const { loginWithRedirect, logout, user} = useAuth0();
+  const { user } = useAuth0();
 const [isLoading, setIsLoading] = useState(true)
 const navigate = useNavigate()
-const [userData, setUserData] = useState({})
 const [challengeObjs, setChallengeObjs] = useState([])
+const [userData, setUserData] = useState({})
   useEffect(()=>{
     if(user){
     async function fillUserObj(){
@@ -52,16 +52,14 @@ if(userData && !isLoading){
           src={userData?.picture}
           className="user-picture"
         />
+    <Link to={"/newuser"}>
+            {" "}
+            <button>EDIT PROFILE</button>{" "}
+          </Link>
         <h2 className="h2-header kindr-header">{userData.username ? `${userData.username}'s` : 'Your'} Deeds</h2>
-        <h3 className="h3-header kindr-header">Completed</h3>
-       {challengeObjs?.length ? <ChallengeList challenges={challengeObjs}/> : <h1>You haven't completed any challenges yet!</h1>} 
-        {/* <h3 className="user-h3 kindr-header">Saved</h3> */}
-        {/* <ul className="user-deed-list">
-          <li>lafjkawe</li>
-          <li>lafjkawe</li>
-          <li>lafjkawe</li>
-          <li>lafjkawe</li>
-        </ul> */}
+        {/* <h3 className="h3-header kindr-header">Completed</h3> */}
+        <h3 className="h3-header kindr-header white">Good Deed Score: {userData.score}</h3>
+       {challengeObjs?.length ? <ChallengeList challenges={challengeObjs} location="profile"/> : <h1 className="white">Get deedin'!</h1>} 
       </section>
     </>
   );}else{
