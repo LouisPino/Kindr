@@ -14,10 +14,14 @@ import Header from "./components/Header/header";
 
 
 function App() {
+  const cloudImg = "https://res.cloudinary.com/dpsymdmyi/image/upload/v1694293421/bg-cloud_yx41el.svg"
+  const cloudImg2 = "https://res.cloudinary.com/dpsymdmyi/image/upload/v1694293962/cloud-2_lqhxmy.svg"
   return (
     <div className="App">
       <Header/>
       <Sidenav />
+      <img className="bg-cloud" src={cloudImg} />
+      <img className="bg-cloud2" src={cloudImg2} />
       {/* <Nav /> */}
       <div className="routes">
       <Routes>
