@@ -24,7 +24,7 @@ export default function Header() {
            <h1 className="kindr-header kindr-nav depth">Kindr</h1></Link>
            <div className="user-header">
            <Link to={"/profile"}>
-           <img src="https://res.cloudinary.com/dpsymdmyi/image/upload/v1694278247/community-red_c2yd4c.svg"  />
+           <img src="https://res.cloudinary.com/dpsymdmyi/image/upload/v1694287417/user-icon_ejs4ww.svg"  />
             </Link>
             <h2 className="user-header-score kindr-header kindr-nav depth">{userData.score}</h2>
             </div>
