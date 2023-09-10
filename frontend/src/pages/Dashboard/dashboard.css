@@ -57,6 +57,11 @@
   grid-row: 1 / span 4;
 }
 
+.challenge-list{
+
+  width: 100%;
+}
+
 .challenge-block {
   display: grid;
   grid-template-columns: 10rem 6fr 2fr;
@@ -93,6 +98,7 @@
   padding: 0 2rem;
   padding-top: 0.5rem;
   text-align: left;
+  width: 500px;
 }
 
 @import url("https://use.typekit.net/tnt5bwz.css");

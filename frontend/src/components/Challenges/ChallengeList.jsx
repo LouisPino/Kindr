@@ -5,6 +5,8 @@ import { findUserByEmail } from "../../utilities/user-service";
 import { updateUser } from "../../utilities/user-service";
 import ReactPaginate from "react-paginate";
 
+import"../../pages/Dashboard/dashboard.css"
+
 export default function ChallengeList({
   challenges,
   location,
@@ -21,7 +23,7 @@ export default function ChallengeList({
 
   const [currentPage, setCurrentPage] = useState(0);
   const [totalPages, setTotalPages] = useState(0);
-  const itemsPerPage = 6;
+  const itemsPerPage = 2;
 
   const startIndex = currentPage * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
