@@ -4,10 +4,7 @@ const Schema = mongoose.Schema;
 
 const imagesSchema = new Schema({
     url: String,
-    caption: String,
     userId: String,
-    username: String,
-    challengeId: String
 })
 
 

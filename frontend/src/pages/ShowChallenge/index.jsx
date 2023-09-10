@@ -1,5 +1,8 @@
 import { useNavigate, useParams } from "react-router";
-import { findChallengesByIds, updateChallenge } from "../../utilities/challenge-service";
+import {
+  findChallengesByIds,
+  updateChallenge,
+} from "../../utilities/challenge-service";
 import { useEffect, useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import {
@@ -62,12 +65,15 @@ export default function ShowChallenge({ setNavScore }) {
 
   const setFileToBase = (file) => {
     const reader = new FileReader();
-    console.log('reader', reader)
+    console.log("reader", reader);
     reader.readAsDataURL(file);
     reader.onloadend = () => {
       // let fullChallenge = {...challenge}
-      const updatedChallenge = {...challenge};
-      updatedChallenge.images.push(reader.result)
+      const updatedChallenge = { ...challenge };
+      updatedChallenge.images.push({
+        url: reader.result,
+        userId: userData._id,
+      });
       setChallenge(updatedChallenge);
     };
   };
@@ -78,10 +84,10 @@ export default function ShowChallenge({ setNavScore }) {
 
   async function handleSubmit(e) {
     e.preventDefault();
+    console.log("handlesubmit", challenge);
     updateChallenge(challenge);
     // navigate("/challenges");
   }
-
 
   const picArr = [
     "https://res.cloudinary.com/dpsymdmyi/image/upload/v1694278247/community-red_c2yd4c.svg",
@@ -125,19 +131,20 @@ export default function ShowChallenge({ setNavScore }) {
         ) : (
           <>
             <h1 className="youdidit-righttop body-font">You did it!</h1>
-           <form onSubmit={handleSubmit}> <label htmlFor="images" className="chall-label">
-              <input type="file" name="images" onChange={handleImage} />
-            </label>
-            <input
-              className="viewchallenge-button body-font"
-              type="submit"
-              value="Upload Image"
-            />
+            <form onSubmit={handleSubmit}>
+              {" "}
+              <label htmlFor="images" className="chall-label">
+                <input type="file" name="images" onChange={handleImage} />
+              </label>
+              <input
+                className="viewchallenge-button body-font"
+                type="submit"
+                value="Upload Image"
+              />
             </form>
           </>
         )}
       </div>
-
 
       <div className="completed-users-ctr">
         {completedUsers.length ? (
