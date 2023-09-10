@@ -21,7 +21,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
 app.use(logger('dev'));
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: false, limit: "5mb", } ));
 app.use(express.json());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
@@ -32,11 +32,11 @@ app.use(cors({
   credentials: true,
 }))
 
-app.use(bodyParser.json({ limit: "5mb" }));
-app.use(bodyParser.urlencoded({
-    limit: "5mb",
-    extended: true
-}));
+// app.use(bodyParser.json({ limit: "5mb" }));
+// app.use(bodyParser.urlencoded({
+//     limit: "5mb",
+//     extended: true
+// }));
 
 
 app.use('/', indexRouter);
