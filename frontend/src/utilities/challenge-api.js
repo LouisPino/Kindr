@@ -75,7 +75,7 @@ export async function index() {
   }
 
   export async function updateChallenge(data){
-    const response = await fetch(`${BASE_URL}/challenges`, {
+    const response = await fetch(`${BASE_URL}/challenges/${data._id}`, {
         method: "PUT",
         headers: {
             Accept: "application/json",
