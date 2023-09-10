@@ -45,10 +45,11 @@ async function update(req, res) {
     res
       .status(200)
       .json(
-        await Challenge.findByIdAndUpdate(req.params.id, req.body, {
-          new: true,
-        })
-      );
+        // await Challenge.findByIdAndUpdate(req.params.id, req.body, {
+          await Challenge.findOneAndUpdate({_id: req.params._id}, {...req.body})
+          // new: true,
+        )
+      ;
   } catch (error) {
     console.log('errormessage', error.message)
     res.status(400).json({ error: error.message });
