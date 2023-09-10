@@ -8,16 +8,16 @@ import {
   updateUser,
 } from "../../utilities/user-service";
 
-import "./showchallenge.css"
+import "./showchallenge.css";
 
-export default function ShowChallenge({setNavScore}) {
+export default function ShowChallenge({ setNavScore }) {
   const { loginWithRedirect, logout, user } = useAuth0();
   const navigate = useNavigate();
   const { id } = useParams();
   const [challenge, setChallenge] = useState(null);
   const [userData, setUserData] = useState(null);
   const [completedUsers, setCompletedUsers] = useState([]);
-  const [isLoading, setIsLoading] = useState(true)
+  const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     if (user) {
       async function fillUserObj() {
@@ -34,10 +34,14 @@ export default function ShowChallenge({setNavScore}) {
     e.preventDefault();
     let userChallenges = userData.completedChallenges;
     userChallenges.push(e.target.id);
-    const newUserData = {...userData, [e.target.name]: userChallenges, score: userData.score+1}
-    setNavScore(newUserData.score)
-        updateUser(newUserData)
-        setUserData(newUserData)
+    const newUserData = {
+      ...userData,
+      [e.target.name]: userChallenges,
+      score: userData.score + 1,
+    };
+    setNavScore(newUserData.score);
+    updateUser(newUserData);
+    setUserData(newUserData);
   }
   useEffect(() => {
     async function getChallenge() {
@@ -50,15 +54,35 @@ export default function ShowChallenge({setNavScore}) {
     getChallenge();
   }, [userData]);
 
+  const handleImage = (e) => {
+    const file = e.target.files[0];
+    setFileToBase(file);
+    console.log(file);
+  };
 
-useEffect(()=>{
-if(completedUsers && challenge) setIsLoading(false)
-},[completedUsers])
+  const setFileToBase = (file) => {
+    const reader = new FileReader();
+    console.log('reader', reader)
+    reader.readAsDataURL(file);
+    reader.onloadend = () => {
+      const updatedChallenge = challenge.images.push(reader.result);
+      setChallenge(updatedChallenge);
+    };
+  };
 
+  useEffect(() => {
+    if (completedUsers && challenge) setIsLoading(false);
+  }, [completedUsers]);
 
-  const picArr = ["https://res.cloudinary.com/dpsymdmyi/image/upload/v1694278247/community-red_c2yd4c.svg", "https://res.cloudinary.com/dpsymdmyi/image/upload/v1694278531/tree_h8n1mk.svg", "https://res.cloudinary.com/dpsymdmyi/image/upload/v1694278673/education_poh8l8.svg", "https://res.cloudinary.com/dpsymdmyi/image/upload/v1694279455/pig_qm4uhw.svg", "https://res.cloudinary.com/dpsymdmyi/image/upload/v1694279771/sparkles-svgrepo-com_pwuurr.svg", "https://res.cloudinary.com/dpsymdmyi/image/upload/v1694285543/exclamation_jkltnz.svg"]
-  
-  
+  const picArr = [
+    "https://res.cloudinary.com/dpsymdmyi/image/upload/v1694278247/community-red_c2yd4c.svg",
+    "https://res.cloudinary.com/dpsymdmyi/image/upload/v1694278531/tree_h8n1mk.svg",
+    "https://res.cloudinary.com/dpsymdmyi/image/upload/v1694278673/education_poh8l8.svg",
+    "https://res.cloudinary.com/dpsymdmyi/image/upload/v1694279455/pig_qm4uhw.svg",
+    "https://res.cloudinary.com/dpsymdmyi/image/upload/v1694279771/sparkles-svgrepo-com_pwuurr.svg",
+    "https://res.cloudinary.com/dpsymdmyi/image/upload/v1694285543/exclamation_jkltnz.svg",
+  ];
+
   return isLoading ? (
     <>
       <h1 className="loading">LOADING...</h1>
@@ -66,27 +90,60 @@ if(completedUsers && challenge) setIsLoading(false)
   ) : (
     <>
       <div className="challenge-block" key={challenge._id}>
-        <img
-          className="challenge-picture"
-          src={picArr[challenge.category]}
-        />
-        {challenge.username &&  
-             <p className="challenge-creator body-font" >{challenge.category === 5 ? "" : "by"} {challenge.username}</p>}
+        <img className="challenge-picture" src={picArr[challenge.category]} />
+        {challenge.username && (
+          <p className="challenge-creator body-font">
+            {challenge.category === 5 ? "" : "by"} {challenge.username}
+          </p>
+        )}
         <h3 className="h3-challenge h3-header kindr-header">
           {challenge.title}
         </h3>
         <p className="challenge-descr body-font">{challenge.description}</p>
         {!userData?.completedChallenges?.includes(challenge._id) ? (
           <>
-                  <div className="completed-and-check"><p className="body-font completed-righttop">Completed?</p>
-          <button className="checkmark-button" id={challenge._id} onClick={addComplete}>
-            &#10003;
-          </button></div>
+            <div className="completed-and-check">
+              <p className="body-font completed-righttop">Completed?</p>
+              <button
+                className="checkmark-button"
+                id={challenge._id}
+                onClick={addComplete}
+              >
+                &#10003;
+              </button>
+            </div>
           </>
         ) : (
           <>
-           <h1 className="youdidit-righttop body-font">You did it!</h1>
+            <h1 className="youdidit-righttop body-font">You did it!</h1>
+            <label htmlFor="images" className="chall-label">
+              <input type="file" name="images" onChange={handleImage} />
+            </label>
+            <input
+              className="viewchallenge-button body-font"
+              type="submit"
+              value="Upload Image"
+            />
           </>
+        )}
+      </div>
+
+      <div className="completed-users-ctr">
+        {challenge.images?.length ? (
+          challenge.images.map((image) => {
+            return (
+              <div className="completed-user-card">
+                <div className="completed-user-info">
+                  <h1 className="h3-challenge h3-header kindr-header">
+                    {image}
+                  </h1>
+                </div>
+                <img className="completed-img" src={user.picture} alt="" />
+              </div>
+            );
+          })
+        ) : (
+          <></>
         )}
       </div>
 
@@ -96,15 +153,23 @@ if(completedUsers && challenge) setIsLoading(false)
             return (
               <div className="completed-user-card">
                 <div className="completed-user-info">
-                <img className="completed-user-img"src={user.picture} alt="" />
-                <h1 className="h3-challenge h3-header kindr-header">{user.username}</h1>
+                  <img
+                    className="completed-user-img"
+                    src={user.picture}
+                    alt=""
+                  />
+                  <h1 className="h3-challenge h3-header kindr-header">
+                    {user.username}
+                  </h1>
                 </div>
-                <img className="completed-img"src={user.picture} alt="" />
+                <img className="completed-img" src={user.picture} alt="" />
               </div>
             );
           })
         ) : (
-          <h1 className="h3-challenge h3-header kindr-header white">Be the first to complete this Deed!</h1>
+          <h1 className="h3-challenge h3-header kindr-header white">
+            Be the first to complete this Deed!
+          </h1>
         )}
       </div>
     </>
