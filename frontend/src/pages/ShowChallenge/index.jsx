@@ -65,8 +65,8 @@ export default function ShowChallenge({ setNavScore }) {
     console.log('reader', reader)
     reader.readAsDataURL(file);
     reader.onloadend = () => {
-      let fullChallenge = [...challenge.images]
-      const updatedChallenge = fullChallenge.push(reader.result);
+      // let fullChallenge = {...challenge}
+      const updatedChallenge = {...challenge, images: challenge.images.push(reader.result)};
       setChallenge(updatedChallenge);
     };
   };
@@ -78,7 +78,7 @@ export default function ShowChallenge({ setNavScore }) {
   async function handleSubmit(e) {
     e.preventDefault();
     updateChallenge(challenge);
-    navigate("/challenges");
+    // navigate("/challenges");
   }
 
 

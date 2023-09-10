@@ -75,7 +75,7 @@ export async function index() {
   }
 
   export async function updateChallenge(data){
-    const response = await fetch(`${BASE_URL}/challenges/findbyid`, {
+    const response = await fetch(`${BASE_URL}/challenges`, {
         method: "PUT",
         headers: {
             Accept: "application/json",
@@ -83,7 +83,7 @@ export async function index() {
             "Access-Control-Allow-Origin": true,
           },
         body: JSON.stringify(data)
-    })
+    });
     if(response.ok){
         return response.json()
     }else{
