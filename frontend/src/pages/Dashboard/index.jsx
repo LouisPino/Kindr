@@ -47,7 +47,6 @@ export default function Dashboard({setNavScore}) {
       setChallenges(challengeResponse);
     } else {
       console.log(challengeResponse);
-      // context update for error handling might be called
     }
   }
   useEffect(() => {

@@ -211,3 +211,22 @@ hr {
   border-image: url("https://res.cloudinary.com/dpsymdmyi/image/upload/v1694216684/hr-line-white_mwvizb.svg")
     200 round;
 }
+
+.pagination-container{
+  display: flex;
+  text-align: center;
+  justify-content: space-evenly;
+  width: 200px;
+  margin: 0 auto;
+  list-style: none;
+margin-top: 30px;
+}
+
+
+.active-page{
+  text-decoration: underline;
+}
+
+.pointer{
+  cursor: pointer
+}
