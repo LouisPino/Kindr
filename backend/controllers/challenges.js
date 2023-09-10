@@ -40,6 +40,7 @@ async function show(req, res) {
 }
 
 async function update(req, res) {
+  console.log('req.body', req.body)
   try {
     res
       .status(200)
