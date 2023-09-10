@@ -71,6 +71,25 @@
   
 }
 
+.hamburger-ctr{
+  position: relative;
+  width: 135px;
+  height: 120px;
+}
+
+.hamburger-open-bg{
+  position: absolute;
+left: 0;
+width: 100%;
+height: 100%;
+z-index: -1;
+}
+
+.hamburger-open{
+  margin: auto;
+  margin-top: 40px;
+}
+
 
 @keyframes animate {
   0%,

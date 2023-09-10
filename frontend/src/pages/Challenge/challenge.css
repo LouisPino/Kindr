@@ -1,6 +1,7 @@
 
-.new-challenge-button {
-  width: 20rem;
+#new-challenge-button{
+  /* width: 20rem;
+  font-size: 3rem; */
 }
 
 .challenge-picture {

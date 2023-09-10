@@ -10,12 +10,11 @@ import {
 
 export default function DailyChallenge({dailyChallenge, setNavScore, userData, setUserData}) {
   const { loginWithRedirect, logout, user } = useAuth0();
+  const [isLoading, setIsLoading] = useState(true);
   async function addComplete(e) {
     e.preventDefault()
     let userChallenges = userData.completedChallenges
-
     userChallenges.push(e.target.id)
-
     const newUserData = {...userData, [e.target.name]: userChallenges, score: userData.score+1}
     setNavScore(newUserData.score)
         updateUser(newUserData)
@@ -36,6 +35,8 @@ export default function DailyChallenge({dailyChallenge, setNavScore, userData, s
   //   }
   // }, []);
 
+
+
   const navigate = useNavigate();
 
   async function createNewDaily(e) {
@@ -44,7 +45,14 @@ export default function DailyChallenge({dailyChallenge, setNavScore, userData, s
   }
   const picArr = ["https://res.cloudinary.com/dpsymdmyi/image/upload/v1694278247/community-red_c2yd4c.svg", "https://res.cloudinary.com/dpsymdmyi/image/upload/v1694278531/tree_h8n1mk.svg", "https://res.cloudinary.com/dpsymdmyi/image/upload/v1694278673/education_poh8l8.svg", "https://res.cloudinary.com/dpsymdmyi/image/upload/v1694279455/pig_qm4uhw.svg", "https://res.cloudinary.com/dpsymdmyi/image/upload/v1694279771/sparkles-svgrepo-com_pwuurr.svg", "https://res.cloudinary.com/dpsymdmyi/image/upload/v1694285543/exclamation_jkltnz.svg"]
 
-  return (
+  return !dailyChallenge ? (
+    <>
+      <h1 className="loading">No Daily CHallenge Yet!</h1>
+      {/* <button className="challenge-block" onClick={createNewDaily}>
+        create daily challenge
+      </button> */}
+    </>
+  ) : (
     <div className="daily-challenge-component">
       <p className="body-font daily">Daily Deed</p>
       <div className="challenge-block">
@@ -52,6 +60,8 @@ export default function DailyChallenge({dailyChallenge, setNavScore, userData, s
           className="challenge-picture"
           src={picArr[dailyChallenge.category]}
         />
+        {dailyChallenge.username &&  
+             <p className="challenge-creator body-font" >{dailyChallenge.category === 5 ? "" : "by"} {dailyChallenge.username}</p>}
         <h3 className="h3-challenge h3-header kindr-header">
         {dailyChallenge.title}
         </h3>

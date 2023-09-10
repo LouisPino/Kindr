@@ -62,13 +62,14 @@ async function destroy(req, res) {
 }
 
   async function createDailyChallenge(req, res, next) {
+    const allChallenges = await res.json(await Challenge.find())
     let gptConfig = {
       model: "gpt-3.5-turbo",
       messages: [
         {
           role: "user",
           content:
-            "Generate a good deed that someone could achieve in less than 24 hours. Please come up with a title for the deed and a description no longer than 4 sentences explaining what the deed is. Do not repeat a deed you have done before. Deed titles should be 3 words or less. It should be formatted like this: (Deed Title): (Deed Description)." ,
+            `Generate a good deed that someone could achieve in less than 24 hours. Please come up with a title for the deed and a description no longer than 4 sentences explaining what the deed is. Do not repeat a deed you have done before - ${allChallenges}. Deed titles should be 3 words or less. It should be formatted like this: (Deed Title): (Deed Description).` ,
         },
       ],
       temperature: 0.7,
@@ -96,7 +97,8 @@ async function destroy(req, res) {
         title: splitEm[0],
         description: splitEm[1],
         daily: true,
-        category: 5
+        category: 5,
+        username: "Kindr Daily Challenge"
       };
       const oldDaily = await Challenge.findOneAndUpdate(
         { daily: true },

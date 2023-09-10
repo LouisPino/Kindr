@@ -32,13 +32,15 @@ export default function NewChallengeForm() {
       navigate("/");
     }
   }, []);
+  console.log(userData.username)
 
-  const initState = {
+  let initState = {
     title: "",
     description: "",
     images: [],
     daily: false,
     category: 0,
+    username: ""
   };
   const [newForm, setNewForm] = useState(initState);
   async function handleSubmit(e) {
@@ -49,8 +51,7 @@ export default function NewChallengeForm() {
   }
 
   function handleChange(e) {
-    const updatedData = { ...newForm, [e.target.name]: e.target.value };
-    console.log('updatedData', updatedData)
+    const updatedData = { ...newForm, [e.target.name]: e.target.value, username: userData.username };
     setNewForm(updatedData);
   }
 
@@ -97,7 +98,8 @@ export default function NewChallengeForm() {
           </select>
         </label>
         <input
-          className="new-challenge-button"
+        id="new-challenge-button"
+          className="viewchallenge-button body-font"
           type="submit"
           value="Create Deed"
         />

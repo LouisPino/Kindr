@@ -12,7 +12,7 @@ export default function NewUser() {
   const [newForm, setNewForm] = useState(initState);
   const [isLoading, setIsLoading] = useState(true)
   const navigate = useNavigate()
-const [userData, setUserData] = useState({})
+const [userData, setUserData] = useState(null)
   useEffect(()=>{
     if(user){
     async function fillUserObj(){
@@ -28,7 +28,7 @@ const [userData, setUserData] = useState({})
 
 
 useEffect(()=>{
-setIsLoading(false)
+  if(userData) setIsLoading(false)
 }, [userData])
 
 
@@ -38,6 +38,20 @@ setIsLoading(false)
     navigate('/profile')
   }
 
+  const handleImage = (e) =>{
+    const file = e.target.files[0];
+    setFileToBase(file);
+    console.log(file);
+}
+
+const setFileToBase = (file) =>{
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onloadend = () =>{
+      const updatedData = {...newForm, picture: reader.result}
+      setNewForm(updatedData)
+    }
+}
 
   function handleChange(e){
     const updatedData = { ...newForm, [e.target.name]: e.target.value }
@@ -52,14 +66,14 @@ setIsLoading(false)
     <>
       <section className="profile-page">
         <img
-          src={userData.picture}
+          src={newForm.picture}
           className="user-picture"
         />
         <h2 className="h2-header kindr-header">Edit Profile Info</h2>
 
     <section>
       <form className="new-challenge-form" onSubmit={handleSubmit}>
-        <label htmlFor="name">
+        <label htmlFor="name" className="chall-label">
           NAME
           <input
             type="text"
@@ -71,7 +85,7 @@ setIsLoading(false)
             required
           />
         </label>
-        <label htmlFor="username">
+        <label htmlFor="username" className="chall-label">
           USERNAME
           <input
             type="text"
@@ -82,7 +96,7 @@ setIsLoading(false)
             placeholder="add challenge description"
           />
         </label>
-                <label htmlFor="picture">
+                <label htmlFor="picture" className="chall-label">
           Photo (cloudinary later)
           <input
             type="text"
@@ -92,9 +106,12 @@ setIsLoading(false)
             onChange={handleChange}
             placeholder="add challenge description"
           />
-        </label>
+</label>
+        <label htmlFor="picture" className="chall-label">
+<input type="file" name = "picture" onChange={handleImage}/>
+</label>  
         <input
-          className="new-challenge-button"
+          className="viewchallenge-button body-font"
           type="submit"
           value="Update Profile"
         />
