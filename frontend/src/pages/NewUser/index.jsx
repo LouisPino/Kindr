@@ -5,70 +5,62 @@ import { findUserByEmail, updateUser } from "../../utilities/user-service";
 import("./newuser.css");
 
 export default function NewUser() {
-  let initState = {
-
-  }
+  let initState = {};
   const { loginWithRedirect, logout, user } = useAuth0();
   const [newForm, setNewForm] = useState(initState);
-  const [isLoading, setIsLoading] = useState(true)
-  const navigate = useNavigate()
-const [userData, setUserData] = useState(null)
-  useEffect(()=>{
-    if(user){
-    async function fillUserObj(){
-       const retrievedUserData = await findUserByEmail(user.email)
-      setNewForm(retrievedUserData)
-      setUserData(retrievedUserData)
-    }  
-    fillUserObj()
-  }
-    else{
-      navigate('/')}
-  }, [])
+  const [isLoading, setIsLoading] = useState(true);
+  const navigate = useNavigate();
+  const [userData, setUserData] = useState(null);
+  useEffect(() => {
+    if (user) {
+      async function fillUserObj() {
+        const retrievedUserData = await findUserByEmail(user.email);
+        setNewForm(retrievedUserData);
+        setUserData(retrievedUserData);
+      }
+      fillUserObj();
+    } else {
+      navigate("/");
+    }
+  }, []);
 
+  useEffect(() => {
+    if (userData) setIsLoading(false);
+  }, [userData]);
 
-useEffect(()=>{
-  if(userData) setIsLoading(false)
-}, [userData])
-
-
-  async function handleSubmit(e){
-    e.preventDefault()
-    updateUser(newForm)
-    navigate('/profile')
+  async function handleSubmit(e) {
+    e.preventDefault();
+    updateUser(newForm);
+    navigate("/profile");
   }
 
-  const handleImage = (e) =>{
+  const handleImage = (e) => {
     const file = e.target.files[0];
     setFileToBase(file);
     console.log(file);
-}
+  };
 
-const setFileToBase = (file) =>{
+  const setFileToBase = (file) => {
     const reader = new FileReader();
     reader.readAsDataURL(file);
-    reader.onloadend = () =>{
-      const updatedData = {...newForm, picture: reader.result}
-      setNewForm(updatedData)
-    }
-}
+    reader.onloadend = () => {
+      const updatedData = { ...newForm, picture: reader.result };
+      setNewForm(updatedData);
+    };
+  };
 
-  function handleChange(e){
-    const updatedData = { ...newForm, [e.target.name]: e.target.value }
-    setNewForm(updatedData)
+  function handleChange(e) {
+    const updatedData = { ...newForm, [e.target.name]: e.target.value };
+    setNewForm(updatedData);
   }
   return isLoading ? (
-<>
-<h1 className="loading">LOADING</h1>
-</>
-  ) : 
-  (
+    <>
+      <h1 className="loading">LOADING</h1>
+    </>
+  ) : (
     <>
       <section className="profile-page">
-        <img
-          src={newForm.picture}
-          className="user-picture"
-        />
+        <img src={newForm.picture} className="user-picture" />
         <h2 className="h2-header kindr-header">Edit Profile Info</h2>
 
     <section>
