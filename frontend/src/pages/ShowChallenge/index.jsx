@@ -56,6 +56,8 @@ export default function ShowChallenge({setNavScore}) {
           className="challenge-picture"
           src={picArr[challenge.category]}
         />
+        {challenge.username &&  
+             <p className="challenge-creator body-font" >{challenge.category === 5 ? "" : "by"} {challenge.username}</p>}
         <h3 className="h3-challenge h3-header kindr-header">
           {challenge.title}
         </h3>
