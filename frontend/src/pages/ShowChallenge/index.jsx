@@ -1,5 +1,5 @@
 import { useNavigate, useParams } from "react-router";
-import { findChallengesByIds } from "../../utilities/challenge-service";
+import { findChallengesByIds, updateChallenge } from "../../utilities/challenge-service";
 import { useEffect, useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import {
@@ -65,7 +65,8 @@ export default function ShowChallenge({ setNavScore }) {
     console.log('reader', reader)
     reader.readAsDataURL(file);
     reader.onloadend = () => {
-      const updatedChallenge = challenge.images.push(reader.result);
+      let fullChallenge = [...challenge.images]
+      const updatedChallenge = fullChallenge.push(reader.result);
       setChallenge(updatedChallenge);
     };
   };
@@ -73,6 +74,13 @@ export default function ShowChallenge({ setNavScore }) {
   useEffect(() => {
     if (completedUsers && challenge) setIsLoading(false);
   }, [completedUsers]);
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    updateChallenge(challenge);
+    navigate("/challenges");
+  }
+
 
   const picArr = [
     "https://res.cloudinary.com/dpsymdmyi/image/upload/v1694278247/community-red_c2yd4c.svg",
@@ -116,7 +124,7 @@ export default function ShowChallenge({ setNavScore }) {
         ) : (
           <>
             <h1 className="youdidit-righttop body-font">You did it!</h1>
-            <label htmlFor="images" className="chall-label">
+           <form onSubmit={handleSubmit}> <label htmlFor="images" className="chall-label">
               <input type="file" name="images" onChange={handleImage} />
             </label>
             <input
@@ -124,6 +132,7 @@ export default function ShowChallenge({ setNavScore }) {
               type="submit"
               value="Upload Image"
             />
+            </form>
           </>
         )}
       </div>

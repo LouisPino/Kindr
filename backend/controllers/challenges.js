@@ -9,7 +9,8 @@ module.exports = {
   update,
   delete: destroy,
   createDailyChallenge,
-  findChallengesByIds,
+  findChallengesByIds
+  // updateChallenge
 };
 
 async function create(req, res) {
@@ -134,3 +135,10 @@ async function findChallengesByIds(req, res) {
   }
 }
 
+// async function updateUser(req, res){
+//   try {
+//     res.status(201).json(await User.findOneAndUpdate({email: req.body.email}, {...req.body}));
+//   } catch (error) {
+//     res.status(400).json({ error: error.message });
+//   }
+// }
