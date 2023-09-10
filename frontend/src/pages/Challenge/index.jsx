@@ -8,7 +8,6 @@ import ChallengeList from "../../components/Challenges/ChallengeList";
 import"./challenge.css"
 
 export default function Challenge() {
-
   return (
     <>
   <NewChallengeForm />

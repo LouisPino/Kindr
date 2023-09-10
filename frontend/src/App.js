@@ -18,6 +18,7 @@ import { findUserByEmail } from "./utilities/user-service";
 function App() {
   
 
+  const [open, setOpen] = useState(false);
 const [navScore, setNavScore]= useState(0)
 
   const cloudImg = "https://res.cloudinary.com/dpsymdmyi/image/upload/v1694293421/bg-cloud_yx41el.svg"
@@ -26,18 +27,18 @@ const [navScore, setNavScore]= useState(0)
   return (
     <div className="App">
       <Header navScore={navScore}/>
-      <Sidenav />
+      <Sidenav open={open} setOpen={setOpen}/>
       <img className="bg-cloud" src={cloudImg} />
       <img className="bg-cloud2" src={cloudImg2} />
       {/* <Nav /> */}
       <div className="routes">
       <Routes>
         <Route exact path="/" element={<Welcome />} />
-        <Route path="/dashboard" element={<Dashboard setNavScore={setNavScore}/>} />
-        <Route path="/challenges/:id" element={<ShowChallenge setNavScore={setNavScore}/>} />
-        <Route path="/challenges/add" element={<AddChallenge />} />
-        <Route path="/profile" element={<Profile/>} />
-        <Route path="/newuser" element={<NewUser />} />
+        <Route path="/dashboard" element={<Dashboard setNavScore={setNavScore} setOpen={setOpen}/>} />
+        <Route path="/challenges/:id" element={<ShowChallenge setNavScore={setNavScore} setOpen={setOpen}/>} />
+        <Route path="/challenges/add" element={<AddChallenge/>} />
+        <Route path="/profile" element={<Profile setOpen={setOpen}/>} />
+        <Route path="/newuser" element={<NewUser setOpen={setOpen}/>} />
         <Route path="/*" element={<_404 />} />
       </Routes>
       </div>

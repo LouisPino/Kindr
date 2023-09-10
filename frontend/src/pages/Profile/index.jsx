@@ -7,7 +7,7 @@ import ChallengeList from "../../components/Challenges/ChallengeList"
 import("./profile.css");
 
 
-export default function Profile() {
+export default function Profile({ setOpen}) {
   const { user } = useAuth0();
 const [isLoading, setIsLoading] = useState(true)
 const navigate = useNavigate()
@@ -20,6 +20,7 @@ const [userData, setUserData] = useState({})
       setUserData(retrievedUserData)
     }
     fillUserObj()
+    setOpen(false)
   }
 else{
   navigate('/')

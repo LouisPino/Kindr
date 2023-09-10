@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { findUserByEmail, updateUser } from "../../utilities/user-service";
 import("./newuser.css");
 
-export default function NewUser() {
+export default function NewUser({ setOpen}) {
   let initState = {};
   const { loginWithRedirect, logout, user } = useAuth0();
   const [newForm, setNewForm] = useState(initState);
@@ -19,6 +19,7 @@ export default function NewUser() {
         setUserData(retrievedUserData);
       }
       fillUserObj();
+      setOpen(false)
     } else {
       navigate("/");
     }

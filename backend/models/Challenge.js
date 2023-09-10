@@ -21,4 +21,3 @@ const challengeSchema = new Schema({
 });
 
 module.exports = mongoose.model('Challenge', challengeSchema);
-

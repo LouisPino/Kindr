@@ -10,7 +10,7 @@ import ChallengeList from "../../components/Challenges/ChallengeList";
 import "./dashboard.css"
 import DailyChallenge from "../../components/Challenges/DailyChallenge";
 
-export default function Dashboard({setNavScore}) {
+export default function Dashboard({setNavScore, setOpen}) {
   const { user } = useAuth0();
   const { userId } = useParams();
   const [isLoading, setIsLoading] = useState(true);
@@ -31,6 +31,7 @@ export default function Dashboard({setNavScore}) {
       setUserData(retrievedUserData)
       await handleRequest();
     }  
+    setOpen(false)
     fillUserObj()
   }
     else{
