@@ -79,6 +79,7 @@ export default function ShowChallenge({ setNavScore }) {
   };
 
   useEffect(() => {
+    console.log('useeffect', challenge)
     if (completedUsers && challenge) setIsLoading(false);
   }, [completedUsers]);
 
