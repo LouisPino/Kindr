@@ -10,10 +10,10 @@ router.get('/daily', challengeCtrl.createDailyChallenge);
 // });
 router.post('/', challengeCtrl.create);
 router.post('/findbyid', challengeCtrl.findChallengesByIds);
-// router.put('/:id', challengeCtrl.update)
-router.put('/:id', (req, res) => {
-  res.send(req.params.id)
-});
+router.put('/:id', challengeCtrl.update)
+// router.put('/:id', (req, res) => {
+//   res.send(req.params.id)
+// });
 
 
 
