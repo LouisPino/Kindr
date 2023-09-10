@@ -23,9 +23,10 @@ margin-top: 20px;
 }
 
 .completed-user-img{
-    width: 125px;
-    height: auto;
-    border-radius: rem;
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    object-fit: cover;
 }
 .completed-user-card>h2{
     width: auto;
@@ -33,6 +34,6 @@ margin-top: 20px;
 }
 
 .completed-img{
-    width: 200px;
+    width: 100%;
     height: auto;
 }
