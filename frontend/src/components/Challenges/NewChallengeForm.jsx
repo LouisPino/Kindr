@@ -39,6 +39,7 @@ export default function NewChallengeForm() {
     images: [],
     daily: false,
     category: 0,
+    username: userData.username
   };
   const [newForm, setNewForm] = useState(initState);
   async function handleSubmit(e) {
