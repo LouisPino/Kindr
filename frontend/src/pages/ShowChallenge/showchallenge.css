@@ -8,6 +8,7 @@
 display: flex;
 justify-content: space-evenly;
 margin-top: 20px;
+flex-wrap: wrap;
 }
 
 .completed-user-card{
@@ -21,6 +22,7 @@ margin-top: 20px;
     width: 300px;
     height: 400px;
     overflow: hidden;
+    margin: 4px;
 }
 
 .completed-user-img{

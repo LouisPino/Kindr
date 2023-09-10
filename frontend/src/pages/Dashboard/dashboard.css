@@ -73,6 +73,7 @@
   padding: 2rem;
   border-radius: 2rem;
   margin-top: 1rem;
+  min-width: 600px;
 }
 
 .h3-challenge {
@@ -98,6 +99,7 @@
   padding-top: 0.5rem;
   text-align: left;
   width: auto;
+  margin-top: 2px;
 }
 
 @import url("https://use.typekit.net/tnt5bwz.css");
@@ -239,4 +241,13 @@ margin-top: 30px;
 
 .pointer{
   cursor: pointer
+}
+
+@media screen and (max-width: 700px){
+.challenge-descr{
+
+  margin-top: 12px;
+}
+
+
 }

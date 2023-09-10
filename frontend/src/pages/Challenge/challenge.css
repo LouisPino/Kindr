@@ -1,19 +1,23 @@
 
 #new-challenge-button{
-  /* width: 20rem;
-  font-size: 3rem; */
+min-width: 100px;
 }
 
-.challenge-picture {
+.newchallenge-page{
+min-width: 350px;
+
+}
+
+/* .challenge-picture {
   width: 10em;
   border-radius: 10%;
   height: 10em;
   object-fit: cover;
   grid-column: 1 / span 1;
   grid-row: 1 / span 2;
-}
+} */
 
-.challenge-block {
+/* .challenge-block {
   display: grid;
   grid-template-columns: 30% 50% 20%;
   grid-template-rows: 30% 70%;
@@ -25,19 +29,19 @@
   padding: 2rem;
   border-radius: 2rem;
   margin-top: 1rem;
-}
-
+} */
+/* 
 .h3-challenge {
     color: #F05151;
-}
+} */
 
-.challenge-descr, .challenge-complete {
+/* .challenge-descr, .challenge-complete {
   font-size: 3rem;
   margin: 0;
   color: #F05151;
-}
-
+} */
+/* 
 .challenge-descr {
   grid-column: 2 / span 1;
   grid-row: 2 / span 1;
-}
+} */

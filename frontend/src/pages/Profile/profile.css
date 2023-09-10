@@ -51,3 +51,7 @@
 .profile-viewchallenge{
 width: 150px;
 }
+
+.challenge-list{
+  min-width: 700px;
+}
