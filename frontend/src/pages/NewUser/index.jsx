@@ -51,8 +51,10 @@ const setFileToBase = (file) =>{
       const updatedData = {...newForm, picture: reader.result}
       setNewForm(updatedData)
     }
-console.log(newForm)
 }
+
+
+
 
 
 

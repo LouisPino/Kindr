@@ -32,12 +32,6 @@ app.use(cors({
   credentials: true,
 }))
 
-// app.use(bodyParser.json({ limit: "5mb" }));
-// app.use(bodyParser.urlencoded({
-//     limit: "5mb",
-//     extended: true
-// }));
-
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
