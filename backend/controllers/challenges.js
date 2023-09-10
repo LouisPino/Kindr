@@ -9,7 +9,8 @@ module.exports = {
   update,
   delete: destroy,
   createDailyChallenge,
-  findChallengesByIds,
+  findChallengesByIds
+  // updateChallenge
 };
 
 async function create(req, res) {
@@ -39,6 +40,8 @@ async function show(req, res) {
 }
 
 async function update(req, res) {
+  console.log('req.body', req.body)
+  console.log('reqparamsid', req.params.id)
   try {
     res
       .status(200)
@@ -48,6 +51,7 @@ async function update(req, res) {
         })
       );
   } catch (error) {
+    console.log('errormessage', error.message)
     res.status(400).json({ error: error.message });
   }
 }
@@ -134,3 +138,10 @@ async function findChallengesByIds(req, res) {
   }
 }
 
+// async function updateUser(req, res){
+//   try {
+//     res.status(201).json(await User.findOneAndUpdate({email: req.body.email}, {...req.body}));
+//   } catch (error) {
+//     res.status(400).json({ error: error.message });
+//   }
+// }

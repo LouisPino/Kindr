@@ -42,6 +42,7 @@ export default function NewUser() {
 
   const setFileToBase = (file) => {
     const reader = new FileReader();
+    console.log('reader', reader)
     reader.readAsDataURL(file);
     reader.onloadend = () => {
       const updatedData = { ...newForm, picture: reader.result };
