@@ -1,5 +1,5 @@
 *{
-    /* border: 1px solid red */
+    border: 1px solid red
   }
 
 
@@ -9,6 +9,7 @@
     justify-content: center;
     align-items: center;
     min-width: 100vw;
+
 }
 .user-picture {
     width: 10rem;
@@ -41,7 +42,12 @@
     width: 60vw;
 }
 
+
 .edit-profile{
     width: 100px;
     margin: 25px auto;
+}
+
+.profile-viewchallenge{
+width: 150px;
 }
