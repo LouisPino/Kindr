@@ -27,7 +27,7 @@ export default function ChallengeList({
 
   const startIndex = currentPage * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
-  const subset = challenges.slice(startIndex, endIndex);
+  const subset = sortedChallenges.slice(startIndex, endIndex);
 
   const handlePageChange = (selectedPage) => {
     setCurrentPage(selectedPage.selected);
@@ -60,9 +60,7 @@ export default function ChallengeList({
   async function addComplete(e) {
     e.preventDefault();
     let userChallenges = userData.completedChallenges;
-
     userChallenges.push(e.target.id);
-
     const newUserData = {
       ...userData,
       [e.target.name]: userChallenges,
