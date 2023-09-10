@@ -60,12 +60,11 @@ export default function ShowChallenge({ setNavScore }) {
   const handleImage = (e) => {
     const file = e.target.files[0];
     setFileToBase(file);
-    console.log(file);
+
   };
 
   const setFileToBase = (file) => {
     const reader = new FileReader();
-    console.log("reader", reader);
     reader.readAsDataURL(file);
     reader.onloadend = () => {
       // let fullChallenge = {...challenge}
@@ -79,13 +78,11 @@ export default function ShowChallenge({ setNavScore }) {
   };
 
   useEffect(() => {
-    console.log('useeffect', challenge)
     if (completedUsers && challenge) setIsLoading(false);
   }, [completedUsers]);
 
   async function handleSubmit(e) {
     e.preventDefault();
-    console.log("handlesubmit", challenge);
     updateChallenge(challenge);
     // navigate("/challenges");
   }
@@ -128,21 +125,17 @@ export default function ShowChallenge({ setNavScore }) {
                 &#10003;
               </button>
             </div>
+            <form onSubmit={handleSubmit}>
+     <input accept="image/*" id="icon-button-file" onChange={handleImage}
+        type="file" style={{ display: 'none' }} />
+      <label type="submit" htmlFor="icon-button-file">
+        <h1 onClick={addComplete}>camera</h1>
+      </label>
+      </form>
           </>
         ) : (
           <>
             <h1 className="youdidit-righttop body-font">You did it!</h1>
-            <form onSubmit={handleSubmit}>
-              {" "}
-              <label htmlFor="images" className="chall-label">
-                <input type="file" name="images" onChange={handleImage} />
-              </label>
-              <input
-                className="viewchallenge-button body-font"
-                type="submit"
-                value="Upload Image"
-              />
-            </form>
           </>
         )}
       </div>

@@ -4,6 +4,10 @@
 
 }
 
+
+.hidden {
+    visibility: hidden;
+}
 .completed-users-ctr{
 display: flex;
 justify-content: space-evenly;

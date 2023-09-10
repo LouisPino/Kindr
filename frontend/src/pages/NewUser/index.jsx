@@ -37,12 +37,10 @@ export default function NewUser() {
   const handleImage = (e) => {
     const file = e.target.files[0];
     setFileToBase(file);
-    console.log(file);
   };
 
   const setFileToBase = (file) => {
     const reader = new FileReader();
-    console.log('reader', reader)
     reader.readAsDataURL(file);
     reader.onloadend = () => {
       const updatedData = { ...newForm, picture: reader.result };

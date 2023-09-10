@@ -38,10 +38,8 @@ export async function findChallengesByIds(array){
 }
 
 export async function updateChallenge(formData) {
-  console.log(formData)
   try {
     const data = await challengeAPI.updateChallenge(formData);
-    console.log(data)
     return data;
   } catch (err) {
     console.log(err);
