@@ -62,7 +62,7 @@ async function destroy(req, res) {
 }
 
   async function createDailyChallenge(req, res, next) {
-    // const allChallenges = await index()
+    const allChallenges = await index()
     let gptConfig = {
       model: "gpt-3.5-turbo",
       messages: [
