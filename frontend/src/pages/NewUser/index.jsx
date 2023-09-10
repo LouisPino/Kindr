@@ -63,52 +63,53 @@ export default function NewUser() {
         <img src={newForm.picture} className="user-picture" />
         <h2 className="h2-header kindr-header">Edit Profile Info</h2>
 
-        <section>
-          <form className="new-challenge-form" onSubmit={handleSubmit}>
-            <label htmlFor="name" className="chall-label">
-              NAME
-              <input
-                type="text"
-                name="name"
-                id="title"
-                placeholder="add a title"
-                value={newForm.name}
-                onChange={handleChange}
-                required
-              />
-            </label>
-            <label htmlFor="username" className="chall-label">
-              USERNAME
-              <input
-                type="text"
-                name="username"
-                id="description"
-                value={newForm.username}
-                onChange={handleChange}
-                placeholder="add challenge description"
-              />
-            </label>
-            {/* <label htmlFor="picture" className="chall-label">
-              Photo (cloudinary later)
-              <input
-                type="text"
-                name="picture"
-                id="description"
-                value={newForm.picture}
-                onChange={handleChange}
-                placeholder="add challenge description"
-              />
-            </label> */}
-            <label htmlFor="picture" className="chall-label">
-              <input type="file" name="picture" onChange={handleImage} />
-            </label>
-            <input
-              className="viewchallenge-button body-font"
-              type="submit"
-              value="Update Profile"
-            />
-          </form>
-        </section>
+    <section>
+      <form className="new-challenge-form" onSubmit={handleSubmit}>
+        <label htmlFor="name" className="chall-label">
+        <div className="labeltext">NAME</div>
+          <input
+            type="text"
+            name="name"
+            id="title"
+            placeholder="add a title"
+            value={newForm.name}
+            onChange={handleChange}
+            required
+          />
+        </label>
+        <label htmlFor="username" className="chall-label">
+        <div className="labeltext">USERNAME</div>
+          <input
+            type="text"
+            name="username"
+            id="description"
+            value={newForm.username}
+            onChange={handleChange}
+            placeholder="add challenge description"
+          />
+        </label>
+                {/* <label htmlFor="picture" className="chall-label">
+          Photo (cloudinary later)
+          <input
+            type="text"
+            name="picture"
+            id="description"
+            value={newForm.picture}
+            onChange={handleChange}
+            placeholder="add challenge description"
+          />
+</label> */}
+                <label htmlFor="picture" className="chall-label">
+                <div className="labeltext">UPLOAD PHOTO</div>
+                <input type="file" name ="picture" onChange={handleImage}/>
+</label>  
+        <input
+          className="viewchallenge-button body-font"
+          type="submit"
+          value="Update Profile"
+        />
+      </form>
+    </section>
       </section>
     </>
   );
