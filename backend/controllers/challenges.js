@@ -49,6 +49,7 @@ async function update(req, res) {
         })
       );
   } catch (error) {
+    console.log('errormessage', error.message)
     res.status(400).json({ error: error.message });
   }
 }
