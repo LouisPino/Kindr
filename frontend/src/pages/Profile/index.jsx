@@ -53,13 +53,11 @@ if(userData && !isLoading){
           className="user-picture"
         />
     <Link to={"/newuser"}>
-            {" "}
-            <button>EDIT PROFILE</button>{" "}
+            <button className={"viewchallenge-button body-font edit-profile"}>EDIT PROFILE</button>
           </Link>
         <h2 className="h2-header kindr-header">{userData.username ? `${userData.username}'s` : 'Your'} Deeds</h2>
-        {/* <h3 className="h3-header kindr-header">Completed</h3> */}
         <h3 className="h3-header kindr-header white">Good Deed Score: {userData.score}</h3>
-       {challengeObjs?.length ? <ChallengeList challenges={challengeObjs} location="profile"/> : <h1 className="white">Get deedin'!</h1>} 
+       {challengeObjs?.length ? <ChallengeList challenges={challengeObjs} location="profile" userData={userData} setUserData={setUserData}/> : <h1 className="white">Get deedin'!</h1>} 
       </section>
     </>
   );}else{

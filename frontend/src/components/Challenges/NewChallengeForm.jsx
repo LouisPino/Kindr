@@ -97,7 +97,8 @@ export default function NewChallengeForm() {
           </select>
         </label>
         <input
-          className="new-challenge-button"
+        id="new-challenge-button"
+          className="viewchallenge-button body-font"
           type="submit"
           value="Create Deed"
         />

@@ -59,7 +59,7 @@ setIsLoading(false)
 
     <section>
       <form className="new-challenge-form" onSubmit={handleSubmit}>
-        <label htmlFor="name">
+        <label htmlFor="name" className="chall-label">
           NAME
           <input
             type="text"
@@ -71,7 +71,7 @@ setIsLoading(false)
             required
           />
         </label>
-        <label htmlFor="username">
+        <label htmlFor="username" className="chall-label">
           USERNAME
           <input
             type="text"
@@ -82,7 +82,7 @@ setIsLoading(false)
             placeholder="add challenge description"
           />
         </label>
-                <label htmlFor="picture">
+                <label htmlFor="picture" className="chall-label">
           Photo (cloudinary later)
           <input
             type="text"
@@ -91,10 +91,11 @@ setIsLoading(false)
             value={newForm.picture}
             onChange={handleChange}
             placeholder="add challenge description"
+            
           />
         </label>
         <input
-          className="new-challenge-button"
+          className="viewchallenge-button body-font"
           type="submit"
           value="Update Profile"
         />

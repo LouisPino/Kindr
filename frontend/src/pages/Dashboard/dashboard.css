@@ -46,10 +46,7 @@
   /* padding-right: 2rem; */
   align-self: center;
 }
-.new-challenge-button {
-  width: 20rem;
-  margin-top: 2rem;
-}
+
 
 .challenge-picture {
   width: 10em;
@@ -155,6 +152,8 @@ hr {
   width: 70%;
   margin: auto;
   font-size: 1.2rem;
+  font-family: "Pompiere", cursive;
+  
 }
 
 .viewchallenge-button,
