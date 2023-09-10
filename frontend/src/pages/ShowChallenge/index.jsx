@@ -138,24 +138,6 @@ export default function ShowChallenge({ setNavScore }) {
         )}
       </div>
 
-      <div className="completed-users-ctr">
-        {challenge.images?.length ? (
-          challenge.images.map((image) => {
-            return (
-              <div className="completed-user-card">
-                <div className="completed-user-info">
-                  <h1 className="h3-challenge h3-header kindr-header">
-                    {image}
-                  </h1>
-                </div>
-                <img className="completed-img" src={user.picture} alt="" />
-              </div>
-            );
-          })
-        ) : (
-          <></>
-        )}
-      </div>
 
       <div className="completed-users-ctr">
         {completedUsers.length ? (
