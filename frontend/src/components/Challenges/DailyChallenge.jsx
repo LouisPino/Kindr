@@ -48,9 +48,9 @@ export default function DailyChallenge({dailyChallenge, setNavScore, userData, s
   return !dailyChallenge ? (
     <>
       <h1 className="loading">No Daily CHallenge Yet!</h1>
-      {/* <button className="challenge-block" onClick={createNewDaily}>
+      <button className="challenge-block" onClick={createNewDaily}>
         create daily challenge
-      </button> */}
+      </button>
     </>
   ) : (
     <div className="daily-challenge-component">
@@ -78,6 +78,9 @@ export default function DailyChallenge({dailyChallenge, setNavScore, userData, s
       }
       <button className="viewchallenge-button body-font" onClick={()=> navigate(`/challenges/${dailyChallenge._id}`)}>VIEW DEED</button>
       </div>
+      <button className="challenge-block" onClick={createNewDaily}>
+        create daily challenge
+      </button>
       {/* <hr></hr> */}
     </div>
   );
