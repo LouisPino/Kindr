@@ -14,6 +14,7 @@ module.exports = {
 
 async function create(req, res) {
   try {
+    console.log(req.body)
     console.log("hit me");
     res.status(201).json(await Challenge.create(req.body));
   } catch (error) {
@@ -96,7 +97,8 @@ async function destroy(req, res) {
         title: splitEm[0],
         description: splitEm[1],
         daily: true,
-        category: 5
+        category: 5,
+        username: "Kindr Daily Challenge"
       };
       const oldDaily = await Challenge.findOneAndUpdate(
         { daily: true },

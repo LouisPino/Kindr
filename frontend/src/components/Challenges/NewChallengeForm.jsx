@@ -32,6 +32,7 @@ export default function NewChallengeForm() {
       navigate("/");
     }
   }, []);
+  console.log(userData.username)
 
   const initState = {
     title: "",
@@ -39,7 +40,7 @@ export default function NewChallengeForm() {
     images: [],
     daily: false,
     category: 0,
-    username: userData.username
+    username: "test"
   };
   const [newForm, setNewForm] = useState(initState);
   async function handleSubmit(e) {
@@ -51,7 +52,6 @@ export default function NewChallengeForm() {
 
   function handleChange(e) {
     const updatedData = { ...newForm, [e.target.name]: e.target.value };
-    console.log('updatedData', updatedData)
     setNewForm(updatedData);
   }
 
