@@ -38,6 +38,23 @@ setIsLoading(false)
     navigate('/profile')
   }
 
+  const handleImage = (e) =>{
+    const file = e.target.files[0];
+    setFileToBase(file);
+    console.log(file);
+}
+
+const setFileToBase = (file) =>{
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onloadend = () =>{
+      const updatedData = {...newForm, picture: reader.result}
+      setNewForm(updatedData)
+    }
+console.log(newForm)
+}
+
+
 
   function handleChange(e){
     const updatedData = { ...newForm, [e.target.name]: e.target.value }
@@ -52,7 +69,7 @@ setIsLoading(false)
     <>
       <section className="profile-page">
         <img
-          src={userData.picture}
+          src={newForm.picture}
           className="user-picture"
         />
         <h2 className="h2-header kindr-header">Edit Profile Info</h2>
@@ -91,9 +108,11 @@ setIsLoading(false)
             value={newForm.picture}
             onChange={handleChange}
             placeholder="add challenge description"
-            
           />
-        </label>
+</label>
+        <label htmlFor="picture" className="chall-label">
+<input type="file" name = "picture" onChange={handleImage}/>
+</label>  
         <input
           className="viewchallenge-button body-font"
           type="submit"
