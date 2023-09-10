@@ -32,9 +32,7 @@ export default function ShowChallenge({setNavScore}) {
   async function addComplete(e) {
     e.preventDefault();
     let userChallenges = userData.completedChallenges;
-
     userChallenges.push(e.target.id);
-
     const newUserData = {...userData, [e.target.name]: userChallenges, score: userData.score+1}
     setNavScore(newUserData.score)
         updateUser(newUserData)
@@ -49,7 +47,7 @@ export default function ShowChallenge({setNavScore}) {
       setCompletedUsers(gotUsers);
     }
     getChallenge();
-  }, []);
+  }, [userData]);
   const picArr = ["https://res.cloudinary.com/dpsymdmyi/image/upload/v1694278247/community-red_c2yd4c.svg", "https://res.cloudinary.com/dpsymdmyi/image/upload/v1694278531/tree_h8n1mk.svg", "https://res.cloudinary.com/dpsymdmyi/image/upload/v1694278673/education_poh8l8.svg", "https://res.cloudinary.com/dpsymdmyi/image/upload/v1694279455/pig_qm4uhw.svg", "https://res.cloudinary.com/dpsymdmyi/image/upload/v1694279771/sparkles-svgrepo-com_pwuurr.svg", "https://res.cloudinary.com/dpsymdmyi/image/upload/v1694285543/exclamation_jkltnz.svg"]
   return (
     <>
