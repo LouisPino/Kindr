@@ -148,7 +148,7 @@ export default function ChallengeList({
           );
         }
 })}
-          <ReactPaginate
+       {  totalPages > 1 && <ReactPaginate
             pageCount={totalPages}
             onPageChange={handlePageChange}
             forcePage={currentPage}
@@ -159,7 +159,7 @@ export default function ChallengeList({
             pageLinkClassName={"challenge-descr body-font pointer"}
             previousLinkClassName={"challenge-descr body-font pointer"}
             nextLinkClassName={"challenge-descr body-font pointer"}
-          />
+          />}
         </div>
 {/* 
         {sortedChallenges.map((challenge, idx) => {
