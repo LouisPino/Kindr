@@ -49,7 +49,6 @@ else{
 
 if(userData && !isLoading){
   return (
-    <>
       <section className="profile-page">
         <img
           src={userData?.picture}
@@ -63,7 +62,6 @@ if(userData && !isLoading){
        <hr />
        {challengeObjs?.length ? <ChallengeList challenges={challengeObjs} location="profile" userData={userData} setUserData={setUserData}/> : <h1 className="white">Get deedin'!</h1>} 
       </section>
-    </>
   );}else{
     return <h1 className="loading">LOADING...</h1>
   }
