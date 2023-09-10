@@ -4,7 +4,7 @@ var cors = require("cors")
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-
+const bodyParser = require('body-parser')
 require("dotenv").config();
 require('./config/database.js')
 
@@ -32,6 +32,11 @@ app.use(cors({
   credentials: true,
 }))
 
+app.use(bodyParser.json({ limit: "5mb" }));
+app.use(bodyParser.urlencoded({
+    limit: "5mb",
+    extended: true
+}));
 
 
 app.use('/', indexRouter);
