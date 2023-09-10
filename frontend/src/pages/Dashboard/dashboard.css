@@ -181,7 +181,7 @@ hr {
 .checkmark-button:active,
 .profile-viewchallenge:active {
   box-shadow: none;
-  transform: translateY(5px);
+  transform: translateY(5px)
 }
 
 .viewchallenge-button {
@@ -199,6 +199,12 @@ hr {
   margin-left: 1rem;
   display: inline;
   /* grid-row: 3 / span 1; */
+}
+
+.challenge-creator{
+  font-size: 1.5rem;
+  margin-top: 8px;
+  color: #f05151;
 }
 
 .daily {
