@@ -12,7 +12,7 @@ export default function NewUser() {
   const [newForm, setNewForm] = useState(initState);
   const [isLoading, setIsLoading] = useState(true)
   const navigate = useNavigate()
-const [userData, setUserData] = useState({})
+const [userData, setUserData] = useState(null)
   useEffect(()=>{
     if(user){
     async function fillUserObj(){
@@ -28,7 +28,7 @@ const [userData, setUserData] = useState({})
 
 
 useEffect(()=>{
-setIsLoading(false)
+  if(userData) setIsLoading(false)
 }, [userData])
 
 
@@ -52,11 +52,6 @@ const setFileToBase = (file) =>{
       setNewForm(updatedData)
     }
 }
-
-
-
-
-
 
   function handleChange(e){
     const updatedData = { ...newForm, [e.target.name]: e.target.value }

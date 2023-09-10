@@ -14,9 +14,10 @@ export default function ShowChallenge({setNavScore}) {
   const { loginWithRedirect, logout, user } = useAuth0();
   const navigate = useNavigate();
   const { id } = useParams();
-  const [challenge, setChallenge] = useState({});
-  const [userData, setUserData] = useState({});
+  const [challenge, setChallenge] = useState(null);
+  const [userData, setUserData] = useState(null);
   const [completedUsers, setCompletedUsers] = useState([]);
+  const [isLoading, setIsLoading] = useState(true)
   useEffect(() => {
     if (user) {
       async function fillUserObj() {
@@ -48,8 +49,21 @@ export default function ShowChallenge({setNavScore}) {
     }
     getChallenge();
   }, [userData]);
+
+
+useEffect(()=>{
+if(completedUsers && challenge) setIsLoading(false)
+},[completedUsers])
+
+
   const picArr = ["https://res.cloudinary.com/dpsymdmyi/image/upload/v1694278247/community-red_c2yd4c.svg", "https://res.cloudinary.com/dpsymdmyi/image/upload/v1694278531/tree_h8n1mk.svg", "https://res.cloudinary.com/dpsymdmyi/image/upload/v1694278673/education_poh8l8.svg", "https://res.cloudinary.com/dpsymdmyi/image/upload/v1694279455/pig_qm4uhw.svg", "https://res.cloudinary.com/dpsymdmyi/image/upload/v1694279771/sparkles-svgrepo-com_pwuurr.svg", "https://res.cloudinary.com/dpsymdmyi/image/upload/v1694285543/exclamation_jkltnz.svg"]
-  return (
+  
+  
+  return isLoading ? (
+    <>
+      <h1 className="loading">LOADING...</h1>
+    </>
+  ) : (
     <>
       <div className="challenge-block" key={challenge._id}>
         <img

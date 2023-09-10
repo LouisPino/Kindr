@@ -43,10 +43,16 @@ export default function Sidenav() {
           {/* <button onClick={() => logout()}> LOGOUT</button> */}
             {!open && (
           <button className="menuBtn" onClick={toggleOpen}>
+            <div className="hamburger-ctr">
               <img
                 className="hamburger-open"
                 src="https://res.cloudinary.com/dpsymdmyi/image/upload/v1694202631/hamburger_lththo.svg"
               />
+              <img
+                className="hamburger-open-bg"
+                src="https://res.cloudinary.com/dsvcyich1/image/upload/v1694368406/cloud_zpqj9o.png"
+              />
+              </div>
           </button>
             )}
           <div className={open ? "sidenav" : "sidenavClosed"}>

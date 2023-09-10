@@ -23,7 +23,7 @@ export default function Header({navScore}) {
            <h1 className="kindr-header kindr-nav depth">Kindr</h1></Link>
            <div className="user-header">
            <Link to={"/profile"}>
-           <img src="https://res.cloudinary.com/dpsymdmyi/image/upload/v1694278247/community-red_c2yd4c.svg"  />
+           <img src="https://res.cloudinary.com/dsvcyich1/image/upload/v1694368090/user-icon_no2nly.png"  />
             </Link>
             <h2 className="user-header-score kindr-header kindr-nav depth">{navScore > 0 ? navScore : ''}</h2>
             </div>
