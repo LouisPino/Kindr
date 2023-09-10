@@ -74,7 +74,7 @@ const setFileToBase = (file) =>{
     <section>
       <form className="new-challenge-form" onSubmit={handleSubmit}>
         <label htmlFor="name" className="chall-label">
-          NAME
+        <div className="labeltext">NAME</div>
           <input
             type="text"
             name="name"
@@ -86,7 +86,7 @@ const setFileToBase = (file) =>{
           />
         </label>
         <label htmlFor="username" className="chall-label">
-          USERNAME
+        <div className="labeltext">USERNAME</div>
           <input
             type="text"
             name="username"
@@ -96,7 +96,7 @@ const setFileToBase = (file) =>{
             placeholder="add challenge description"
           />
         </label>
-                <label htmlFor="picture" className="chall-label">
+                {/* <label htmlFor="picture" className="chall-label">
           Photo (cloudinary later)
           <input
             type="text"
@@ -106,9 +106,10 @@ const setFileToBase = (file) =>{
             onChange={handleChange}
             placeholder="add challenge description"
           />
-</label>
-        <label htmlFor="picture" className="chall-label">
-<input type="file" name = "picture" onChange={handleImage}/>
+</label> */}
+                <label htmlFor="picture" className="chall-label">
+                <div className="labeltext">UPLOAD PHOTO</div>
+                <input type="file" name ="picture" onChange={handleImage}/>
 </label>  
         <input
           className="viewchallenge-button body-font"
