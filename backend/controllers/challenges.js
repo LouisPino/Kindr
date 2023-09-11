@@ -58,6 +58,8 @@ async function destroy(req, res) {
   }
 }
 
+
+//GPT Challenge request
   async function createDailyChallenge(req, res, next) {
     const allChallenges = await res.json(await Challenge.find())
     let gptConfig = {
@@ -107,9 +109,10 @@ async function destroy(req, res) {
     }
   }
 
+
+//daily challenge autogeneration
   let lastDate = 0
   let currentDate = 0
-  
   setInterval(()=>{
     lastDate = currentDate
     today = new Date
@@ -120,6 +123,9 @@ async function destroy(req, res) {
         createDailyChallenge()
       }
     }, 1000*60*15)
+
+
+
 
 async function findChallengesByIds(req, res) {
   try {
