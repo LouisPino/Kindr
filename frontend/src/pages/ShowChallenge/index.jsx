@@ -21,6 +21,8 @@ export default function ShowChallenge({ setNavScore, setOpen }) {
   const [userData, setUserData] = useState(null);
   const [completedUsers, setCompletedUsers] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [imgUploaded, setImgUploaded] = useState(false);
+
   useEffect(() => {
     if (user) {
       async function fillUserObj() {
@@ -34,13 +36,12 @@ export default function ShowChallenge({ setNavScore, setOpen }) {
     }
   }, []);
 
-  async function addComplete(e) {
-    e.preventDefault();
+  async function addComplete() {
     let userChallenges = userData.completedChallenges;
-    userChallenges.push(e.target.id);
+    userChallenges.push(id);
     const newUserData = {
       ...userData,
-      [e.target.name]: userChallenges,
+      completedChallenges: userChallenges,
       score: userData.score + 1,
     };
     setNavScore(newUserData.score);
@@ -61,12 +62,11 @@ export default function ShowChallenge({ setNavScore, setOpen }) {
   const handleImage = (e) => {
     const file = e.target.files[0];
     setFileToBase(file);
-    console.log(file);
+
   };
 
   const setFileToBase = (file) => {
     const reader = new FileReader();
-    console.log("reader", reader);
     reader.readAsDataURL(file);
     reader.onloadend = () => {
       // let fullChallenge = {...challenge}
@@ -80,14 +80,14 @@ export default function ShowChallenge({ setNavScore, setOpen }) {
   };
 
   useEffect(() => {
-    console.log("useeffect", challenge);
     if (completedUsers && challenge) setIsLoading(false);
   }, [completedUsers]);
 
   async function handleSubmit(e) {
     e.preventDefault();
-    console.log("handlesubmit", challenge);
     updateChallenge(challenge);
+    addComplete()
+    setImgUploaded(true)
     // navigate("/challenges");
   }
 
@@ -103,6 +103,7 @@ export default function ShowChallenge({ setNavScore, setOpen }) {
   return isLoading ? (
     <>
       <h1 className="loading">LOADING...</h1>
+      <img src="https://res.cloudinary.com/dpsymdmyi/image/upload/v1694439817/loading-animation_nerskz.gif" alt="" />
     </>
   ) : (
     <>
@@ -121,19 +122,14 @@ export default function ShowChallenge({ setNavScore, setOpen }) {
           <>
             <div className="completed-and-check">
               <p className="body-font completed-righttop">Completed?</p>
-              <button
+          {imgUploaded ?  <button
                 className="checkmark-button"
                 id={challenge._id}
                 onClick={addComplete}
               >
                 &#10003;
-              </button>
-            </div>
-          </>
-        ) : (
-          <>
-            <h1 className="upload-righttop body-font">Upload a photo</h1>
-            <form className="submitphoto-Challenge" onSubmit={handleSubmit}>
+              </button> :
+            <form onSubmit={handleSubmit}>
               {" "}
               <label className="submitimg-label" htmlFor="images">
                 <input
@@ -146,68 +142,44 @@ export default function ShowChallenge({ setNavScore, setOpen }) {
               <input
                 className="viewchallenge-button body-font"
                 type="submit"
-                value="UPLOAD YOUR IMAGE!"
+                value="Complete Deed"
               />
-            </form>
+            </form>}
+            </div>
+          </>
+        ) : (
+          <>
+            <h1 className="youdidit-righttop body-font">You did it!</h1>
           </>
         )}
       </div>
 
       <div className="completed-users-ctr">
-          {challenge.images.length ? (
-           challenge.images.map((image) => {
-              return (
-                <div className="completed-user-card">
-                  <div className="completed-user-info">
-                    <img
-                      className="completed-user-img"
-                      src={image.url}
-                      alt=""
-                    />
-                    <h1 className="h3-challenge h3-header kindr-header">
-                      {user.username}
-                    </h1>
-                  </div>
-                  {/* <img className="completed-img" src={user.picture} alt="" /> */}
+        {completedUsers.length ? (
+          completedUsers.map((user) => {
+            return (
+              <div className="completed-user-card">
+                <div className="completed-user-info">
+                  <img
+                    className="completed-user-img"
+                    src={user.picture}
+                    alt=""
+                  />
+                  <h1 className="h3-challenge h3-header kindr-header">
+                    {user.username}
+                  </h1>
                 </div>
-              );
-            })
-          ) : (
-            <h1 className="h3-challenge h3-header kindr-header white">
-              Be the first to complete this Deed!
-            </h1>
-          )}
-        </div>
 
-      <div className="completedusers">
-        <h1 className="h3-challenge h3-header kindr-header white">
-          Users who have completed this deed:
-        </h1>
-        <div className="completed-users-ctr">
-          {completedUsers.length ? (
-            completedUsers.map((user) => {
-              return (
-                <div className="completed-user-card">
-                  <div className="completed-user-info">
-                    <img
-                      className="completed-user-img"
-                      src={user.picture}
-                      alt=""
-                    />
-                    <h1 className="h3-challenge h3-header kindr-header">
-                      {user.username}
-                    </h1>
-                  </div>
-                  <img className="completed-img" src={user.picture} alt="" />
-                </div>
-              );
-            })
-          ) : (
-            <h1 className="h3-challenge h3-header kindr-header white">
-              Be the first to complete this Deed!
-            </h1>
-          )}
-        </div>
+
+                <img className="completed-img" src={challenge.images[challenge.images.findIndex((img)=> img.userId === user._id)].url} alt="" />
+              </div>
+            );
+          })
+        ) : (
+          <h1 className="h3-challenge h3-header kindr-header white">
+            Be the first to complete this Deed!
+          </h1>
+        )}
       </div>
     </>
   );
