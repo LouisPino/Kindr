@@ -16,12 +16,15 @@ navigate("/dashboard")
   return (
     <>
       <section className="welcome-page">
-        <h2 className="h2-header kindr-header">Welcome!</h2>
+        <div className="tagline">
+        <h2 className="welcome-header">A good app.&nbsp;</h2>
+        <h2 className="welcome-header">A&nbsp;<div className="very">VERY</div>&nbsp;good app.</h2>
+        </div>
         <p className="body-font welcome-emphasize">
-          We're so glad you're here.
+          Welcome!
         </p>
         <p className="body-font welcome-body">
-          Kindr is an app where you can do good things and inspire others to do
+        We're so glad you're here.</p> <p className="body-font welcome-body">Kindr is an app where you can do good things and inspire others to do
           good. We're just a bunch of do-gooders 'round these parts.
         </p>
 
