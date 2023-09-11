@@ -42,3 +42,15 @@ flex-wrap: wrap;
     max-height: 80%;
     max-width: 100%;
 }
+
+.submitimg-label {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    font-family: "Pompiere", cursive;
+    font-size: 2rem;
+    color: white;
+    /* width: 40rem; */
+    text-align: right;
+    gap: 1rem;
+    /* padding-right: 6rem; */
+}

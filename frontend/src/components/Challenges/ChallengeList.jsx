@@ -5,7 +5,7 @@ import { findUserByEmail } from "../../utilities/user-service";
 import { updateUser } from "../../utilities/user-service";
 import ReactPaginate from "react-paginate";
 
-import"../../pages/Dashboard/dashboard.css"
+import "../../pages/Dashboard/dashboard.css";
 
 export default function ChallengeList({
   challenges,
@@ -60,6 +60,7 @@ export default function ChallengeList({
   async function addComplete(e) {
     e.preventDefault();
     let userChallenges = userData.completedChallenges;
+
     userChallenges.push(e.target.id);
     const newUserData = {
       ...userData,
@@ -69,6 +70,11 @@ export default function ChallengeList({
     setNavScore(newUserData.score);
     updateUser(newUserData);
     setUserData(newUserData);
+    function changePage(e) {
+      e.preventDefault();
+      navigate(`/challenges/${e.target.id}`)
+    };
+    changePage(e)
   }
 
   useEffect(() => {
@@ -84,84 +90,104 @@ export default function ChallengeList({
       <section className="challenge-list">
         <div>
           {subset.map((challenge) => {
-         if (showCondition(challenge)) {
-          return (
-            <div className="challenge-block" key={challenge._id}>
-              <img
-                className="challenge-picture"
-                src={picArr[challenge.category]}
-              />
-            {challenge.username &&  
-             <p className="challenge-creator body-font" >{challenge.category === 5 ? "" : "by"} {challenge.username}</p>}
-              <h3 className="h3-challenge h3-header kindr-header">
-                {challenge.title}
-              </h3>
-              <p className="challenge-descr body-font">
-                {challenge.description}
-              </p>
-              {!userData?.completedChallenges?.includes(challenge._id) ? (
-                <>
-                  <div className="completed-and-check">
-                    <p className="body-font completed-righttop">Completed?</p>
-                    <button
-                      className="checkmark-button"
-                      id={challenge._id}
-                      onClick={addComplete}
-                    >
-                      &#10003;
-                    </button>
-                  </div>
-                </>
-              ) : (
-                <>
-                  {location !== "profile" && (
-                    <h1 className="youdidit-righttop body-font">
-                      You did it!
-                    </h1>
+            if (showCondition(challenge)) {
+              return (
+                <div className="challenge-block" key={challenge._id}>
+                  <img
+                    className="challenge-picture"
+                    src={picArr[challenge.category]}
+                  />
+                  {challenge.username && (
+                    <p className="challenge-creator body-font">
+                      {challenge.category === 5 ? "" : "by"}{" "}
+                      {challenge.username}
+                    </p>
                   )}
-                </>
-              )}
-              {location !== "profile" ? (
-                <>
-                  {
-                    <button
-                      className="viewchallenge-button body-font"
-                      onClick={() => navigate(`/challenges/${challenge._id}`)}
-                    >
-                      VIEW DEED
-                    </button>
-                  }
-                </>
-              ) : (
-                <>
-                  {
-                    <button
-                      className="profile-viewchallenge"
-                      onClick={() => navigate(`/challenges/${challenge._id}`)}
-                    >
-                      VIEW DEED
-                    </button>
-                  }
-                </>
-              )}
-            </div>
-          );
-        }
-})}
-       {  totalPages > 1 && <ReactPaginate
-            pageCount={totalPages}
-            onPageChange={handlePageChange}
-            forcePage={currentPage}
-            previousLabel={"<<"}
-            nextLabel={">>"}
-            containerClassName={"pagination-container"}
-            activeLinkClassName={"active-page white pointer"}
-            pageLinkClassName={"challenge-descr body-font pointer"}
-            previousLinkClassName={"challenge-descr body-font pointer"}
-            nextLinkClassName={"challenge-descr body-font pointer"}
-          />}
+                  <h3 className="h3-challenge h3-header kindr-header">
+                    {challenge.title}
+                  </h3>
+                  <p className="challenge-descr body-font">
+                    {challenge.description}
+                  </p>
+                  {!userData?.completedChallenges?.includes(challenge._id) ? (
+                    <>
+                      <div className="completed-and-check">
+                        <p className="body-font completed-righttop">
+                          Completed?
+                        </p>
+                        <button
+                          className="checkmark-button"
+                          id={challenge._id}
+                          onClick={addComplete}
+                        >
+                          &#10003;
+                        </button>
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      {location !== "profile" && challenge.images.length > 0 ? (
+                        <>
+                          <h1 className="youdidit-righttop body-font">
+                            You did it!
+                          </h1>
+                        </>
+                      ) : (
+                        <>
+                          <h1 className="youdidit-righttop body-font">
+                            You awefdid it!
+                          </h1>
+                        </>
+                      )}
+                    </>
+                  )}
+                  {location !== "profile" ? (
+                    <>
+                      {
+                        <button
+                          className="viewchallenge-button body-font"
+                          onClick={() =>
+                            navigate(`/challenges/${challenge._id}`)
+                          }
+                        >
+                          VIEW DEED
+                        </button>
+                      }
+                    </>
+                  ) : (
+                    <>
+                      {
+                        <button
+                          className="profile-viewchallenge"
+                          onClick={() =>
+                            navigate(`/challenges/${challenge._id}`)
+                          }
+                        >
+                          VIEW DEED
+                        </button>
+                      }
+                    </>
+                  )}
+                </div>
+              );
+            }
+          })}
+          {totalPages > 1 && (
+            <ReactPaginate
+              pageCount={totalPages}
+              onPageChange={handlePageChange}
+              forcePage={currentPage}
+              previousLabel={"<<"}
+              nextLabel={">>"}
+              containerClassName={"pagination-container"}
+              activeLinkClassName={"active-page white pointer"}
+              pageLinkClassName={"challenge-descr body-font pointer"}
+              previousLinkClassName={"challenge-descr body-font pointer"}
+              nextLinkClassName={"challenge-descr body-font pointer"}
+            />
+          )}
         </div>
-{/* 
+        {/* 
         {sortedChallenges.map((challenge, idx) => {
           if (showCondition(challenge)) {
             return (
