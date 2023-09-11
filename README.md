@@ -38,8 +38,11 @@ Challenge Detail page
 
 ## Getting Started
 ### [Deployed App](https://graceful-pixie-5234dd.netlify.app)
-When you first visit Kindr, you'll be directed to the Welcome page, with a link to login. As it is your first time visiting the site, you will need to Sign Up and create a username and password. <br>
-Once logged in, you'll be directed to the Deed Dashboard. This showcases all Deeds: user-generated deeds and Daily Deeds generated via OpenAI. <br>
+When you first visit Kindr, you'll be directed to the **Welcome Page**
+- Click the **Log In** button <br>
+- As it is your first time visiting the site, you will need to **Sign Up** and create a username and password. <br>
+Once logged in, you'll be directed to the **Deed Dashboard**<br>
+- This showcases all Deeds: user-generated deeds and Daily Deeds generated via OpenAI. <br>
 To view the details of a deed (who has completed it), click "View Deed". <br>
 If you have completed a deed, you will need to upload photo proof in order to mark it complete. Once you have uploaded your photo and marked it complete, it will appear in the list of Completed Deeds in your profile. <br>
 To view your profile, you can either click the user icon in the header, or click "Profile" in the sidebar navigation. <br>
