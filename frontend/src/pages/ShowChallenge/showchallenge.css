@@ -68,3 +68,8 @@
         font-style: normal;
       }
      
+      .completedusers {
+        display: flex;
+        flex-direction: column;
+        margin-top: 1.5rem;
+      }

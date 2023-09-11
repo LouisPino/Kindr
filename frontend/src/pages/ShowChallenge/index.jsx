@@ -154,29 +154,60 @@ export default function ShowChallenge({ setNavScore, setOpen }) {
       </div>
 
       <div className="completed-users-ctr">
-        {completedUsers.length ? (
-          completedUsers.map((user) => {
-            return (
-              <div className="completed-user-card">
-                <div className="completed-user-info">
-                  <img
-                    className="completed-user-img"
-                    src={user.picture}
-                    alt=""
-                  />
-                  <h1 className="h3-challenge h3-header kindr-header">
-                    {user.username}
-                  </h1>
+          {challenge.images.length ? (
+           challenge.images.map((image) => {
+              return (
+                <div className="completed-user-card">
+                  <div className="completed-user-info">
+                    <img
+                      className="completed-user-img"
+                      src={image.url}
+                      alt=""
+                    />
+                    <h1 className="h3-challenge h3-header kindr-header">
+                      {user.username}
+                    </h1>
+                  </div>
+                  {/* <img className="completed-img" src={user.picture} alt="" /> */}
                 </div>
-                <img className="completed-img" src={user.picture} alt="" />
-              </div>
-            );
-          })
-        ) : (
-          <h1 className="h3-challenge h3-header kindr-header white">
-            Be the first to complete this Deed!
-          </h1>
-        )}
+              );
+            })
+          ) : (
+            <h1 className="h3-challenge h3-header kindr-header white">
+              Be the first to complete this Deed!
+            </h1>
+          )}
+        </div>
+
+      <div className="completedusers">
+        <h1 className="h3-challenge h3-header kindr-header white">
+          Users who have completed this deed:
+        </h1>
+        <div className="completed-users-ctr">
+          {completedUsers.length ? (
+            completedUsers.map((user) => {
+              return (
+                <div className="completed-user-card">
+                  <div className="completed-user-info">
+                    <img
+                      className="completed-user-img"
+                      src={user.picture}
+                      alt=""
+                    />
+                    <h1 className="h3-challenge h3-header kindr-header">
+                      {user.username}
+                    </h1>
+                  </div>
+                  <img className="completed-img" src={user.picture} alt="" />
+                </div>
+              );
+            })
+          ) : (
+            <h1 className="h3-challenge h3-header kindr-header white">
+              Be the first to complete this Deed!
+            </h1>
+          )}
+        </div>
       </div>
     </>
   );
