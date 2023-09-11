@@ -21,20 +21,6 @@ export default function DailyChallenge({dailyChallenge, setNavScore, userData, s
         setUserData(newUserData)
   }
 
-  // const [userData, setUserData] = useState({});
-  // useEffect(() => {
-  //   if (user) {
-  //     async function fillUserObj() {
-  //       const retrievedUserData = await findUserByEmail(user.email);
-  //       setUserData(retrievedUserData);
-  //       setNavScore(retrievedUserData.score)
-  //     }
-  //     fillUserObj();
-  //   } else {
-  //     navigate("/");
-  //   }
-  // }, []);
-
 
 
   const navigate = useNavigate();
