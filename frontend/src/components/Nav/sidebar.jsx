@@ -1,11 +1,9 @@
 import { NavLink } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
-import { Link } from "react-router-dom";
 import "./sidebar.css";
-import { useEffect, useState } from "react";
 
 export default function Sidenav({open, setOpen}) {
-  const { loginWithRedirect, logout, user, isLoading } = useAuth0();
+  const {logout, user, isLoading } = useAuth0();
 
   const navData = [
     {
@@ -25,22 +23,16 @@ export default function Sidenav({open, setOpen}) {
     },
   ];
 
-  // const [left, setLeft] = useState(false)
   const toggleOpen = () => {
     setOpen(!open);
-    // setFontWidth(!left)
   };
 
 
   return (
     <header className="nav">
-      {/* {!isLoading && !user && (
-        <button onClick={() => loginWithRedirect()}>LOGIN</button>
-      )} */}
+
       {!isLoading && user && (
         <>
-          {/* <h1 className="kindr-header kindr-nav">Kindr</h1> */}
-          {/* <button onClick={() => logout()}> LOGOUT</button> */}
             {!open && (
           <button className="menuBtn" onClick={toggleOpen}>
             <div className="hamburger-ctr">

@@ -2,7 +2,7 @@ import { useState } from 'react'
 import './sidebar.css'
 import { NavLink } from 'react-router-dom'
 
-
+//OLD SIDENAV FOR DEVELOPMENT ONLY
 
 export default function Sidenav() {
     const navData = [
