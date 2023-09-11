@@ -14,6 +14,7 @@ import Header from "./components/Header/header";
 import { useEffect, useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { findUserByEmail } from "./utilities/user-service";
+import UploadImage from "./UploadImage/upload";
 
 function App() {
   
@@ -35,7 +36,7 @@ const [navScore, setNavScore]= useState(0)
       <Routes>
         <Route exact path="/" element={<Welcome />} />
         <Route path="/dashboard" element={<Dashboard setNavScore={setNavScore} setOpen={setOpen}/>} />
-        <Route path="/challenges/:id" element={<ShowChallenge setNavScore={setNavScore} setOpen={setOpen}/>} />
+        <Route path="/challenges/:id" element={<UploadImage setNavScore={setNavScore} setOpen={setOpen}/>} />
         <Route path="/challenges/add" element={<AddChallenge/>} />
         <Route path="/profile" element={<Profile setOpen={setOpen}/>} />
         <Route path="/newuser" element={<NewUser setOpen={setOpen}/>} />
