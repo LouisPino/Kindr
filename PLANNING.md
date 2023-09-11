@@ -6,12 +6,18 @@ Kindr is a heartwarming mobile app designed to inspire and spread kindness in yo
 ☁️☀️☁️☀️☁️☀️☁️
 ## Links
 [Planning Doc](https://docs.google.com/spreadsheets/d/1kXggdpVkpJB4srXLQ7oCzz-bO5aigSFOcm3LXgskZB4/edit?usp=sharing)
+
+[Deployed Site](https://graceful-pixie-5234dd.netlify.app)
+
 ## Wireframes
-[Desktop Homepage](wireframes/desktop-welcomepage.jpg)
+[Welcome Page](wireframes/desktop-welcomepage.jpg)
 
-[Navbar Open](wireframes/mobile-sidebar-open.jpg)
+[Profile Page](wireframes/profile-page.jpg)
 
-[Navbar Closed](wireframes/userpage.jpg)
+[Profile Page with Sidebar Navigation expanded](wireframes/sidebar-expanded.jpg)
+
+[Challenge Detail page](wireframes/show-challenge.jpg)
+
 
 
 ## Component Tree

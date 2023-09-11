@@ -7,10 +7,20 @@ Kindr is a heartwarming mobile app designed to inspire and spread kindness in yo
 
 ## Select Wireframes
 ![Desktop Homepage](wireframes/desktop-welcomepage.jpg)
+Welcome Page
+<hr>
 
-![Navbar Open](wireframes/mobile-sidebar-open.jpg)
+![Profile Page](wireframes/profile-page.jpg)
+Profile Page
+<hr>
 
-![Navbar Closed](wireframes/userpage.jpg)
+![Profile Page](wireframes/sidebar-expanded.jpg)
+Profile Page with Sidebar Navigation expanded
+<hr>
+
+![Profile Page](wireframes/show-challenge.jpg)
+Challenge Detail page
+
 
 ## Technologies Used
 - React
@@ -27,7 +37,7 @@ Kindr is a heartwarming mobile app designed to inspire and spread kindness in yo
 
 
 ## Getting Started
-### Deployed App
+### [Deployed App](https://graceful-pixie-5234dd.netlify.app)
 ### [Project Planning](https://docs.google.com/spreadsheets/d/1kXggdpVkpJB4srXLQ7oCzz-bO5aigSFOcm3LXgskZB4/edit?usp=sharing)
 ## Planned Future Enhancements
 - Design a "Deed Streak" feature when users complete deeds every day
