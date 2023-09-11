@@ -21,6 +21,8 @@ export default function ShowChallenge({ setNavScore,  setOpen }) {
   const [userData, setUserData] = useState(null);
   const [completedUsers, setCompletedUsers] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [imgUploaded, setImgUploaded] = useState(false);
+
   useEffect(() => {
     if (user) {
       async function fillUserObj() {
@@ -34,13 +36,12 @@ export default function ShowChallenge({ setNavScore,  setOpen }) {
     }
   }, []);
 
-  async function addComplete(e) {
-    e.preventDefault();
+  async function addComplete() {
     let userChallenges = userData.completedChallenges;
-    userChallenges.push(e.target.id);
+    userChallenges.push(id);
     const newUserData = {
       ...userData,
-      [e.target.name]: userChallenges,
+      completedChallenges: userChallenges,
       score: userData.score + 1,
     };
     setNavScore(newUserData.score);
@@ -61,12 +62,11 @@ export default function ShowChallenge({ setNavScore,  setOpen }) {
   const handleImage = (e) => {
     const file = e.target.files[0];
     setFileToBase(file);
-    console.log(file);
+
   };
 
   const setFileToBase = (file) => {
     const reader = new FileReader();
-    console.log("reader", reader);
     reader.readAsDataURL(file);
     reader.onloadend = () => {
       // let fullChallenge = {...challenge}
@@ -80,14 +80,14 @@ export default function ShowChallenge({ setNavScore,  setOpen }) {
   };
 
   useEffect(() => {
-    console.log('useeffect', challenge)
     if (completedUsers && challenge) setIsLoading(false);
   }, [completedUsers]);
 
   async function handleSubmit(e) {
     e.preventDefault();
-    console.log("handlesubmit", challenge);
     updateChallenge(challenge);
+    addComplete()
+    setImgUploaded(true)
     // navigate("/challenges");
   }
 
@@ -121,18 +121,13 @@ export default function ShowChallenge({ setNavScore,  setOpen }) {
           <>
             <div className="completed-and-check">
               <p className="body-font completed-righttop">Completed?</p>
-              <button
+          {imgUploaded ?  <button
                 className="checkmark-button"
                 id={challenge._id}
                 onClick={addComplete}
               >
                 &#10003;
-              </button>
-            </div>
-          </>
-        ) : (
-          <>
-            <h1 className="youdidit-righttop body-font">You did it!</h1>
+              </button> :
             <form onSubmit={handleSubmit}>
               {" "}
               <label htmlFor="images" className="chall-label">
@@ -141,9 +136,14 @@ export default function ShowChallenge({ setNavScore,  setOpen }) {
               <input
                 className="viewchallenge-button body-font"
                 type="submit"
-                value="Upload Image"
+                value="Complete Deed"
               />
-            </form>
+            </form>}
+            </div>
+          </>
+        ) : (
+          <>
+            <h1 className="youdidit-righttop body-font">You did it!</h1>
           </>
         )}
       </div>
@@ -163,7 +163,9 @@ export default function ShowChallenge({ setNavScore,  setOpen }) {
                     {user.username}
                   </h1>
                 </div>
-                <img className="completed-img" src={user.picture} alt="" />
+
+
+                <img className="completed-img" src={challenge.images[challenge.images.findIndex((img)=> img.userId === user._id)].url} alt="" />
               </div>
             );
           })
