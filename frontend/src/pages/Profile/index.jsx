@@ -38,7 +38,6 @@ else{
   }, [userData])
 
   useEffect(()=>{
-    console.log("CHALLENGE OBJS", challengeObjs)
     if(challengeObjs){
     setIsLoading(false)
     }
