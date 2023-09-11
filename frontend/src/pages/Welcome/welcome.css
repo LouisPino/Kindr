@@ -8,17 +8,17 @@
 }
 
 .welcome-body {
-    font-size: 2rem;
+    font-size: 1.5rem;
     color: white;
     width: 60%;
-    margin: auto;
-    margin-top: 75px;
+    margin: 2rem auto 0 auto;
+    /* margin-top: 0; */
 }
 
 .welcome-emphasize {
-    font-size: 2.5rem;
+    font-size: 1.75rem;
     color: white;
-    margin-top: 25px;
+    margin-top: 3rem;
 }
 
 
