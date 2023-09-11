@@ -119,7 +119,7 @@ export default function DailyChallenge({
                 <form onSubmit={handleSubmit}>
                   {" "}
                   <label htmlFor="images" className="submitimg-label">
-                    <input type="file" name="images" onChange={handleImage} />
+                    <input className="submitimg-input" type="file" name="images" onChange={handleImage} />
                   </label>
                   <input
                     className="viewchallenge-button body-font"
