@@ -1,6 +1,4 @@
-* {
-  /* border: 1px solid blue; */
-}
+
 .newchallenge-page {
   width: 100vw;
   justify-content: center;
@@ -29,8 +27,6 @@
   text-align: right;
   gap: 1rem;
   padding-right: 6rem;
-  /* background-color: rgba(255, 255, 255, .2); */
-  /* padding: 1rem; */
 }
 
 .chall-label input, .chall-label select {
@@ -43,7 +39,6 @@
 }
 
 .labeltext {
-  /* padding-right: 2rem; */
   align-self: center;
 }
 
@@ -128,7 +123,6 @@ hr {
 }
 
 .completed-righttop {
-  /* grid-row: 1 / span 2; */
   font-size: 3rem;
   margin: 0;
   color: #f05151;
@@ -166,8 +160,6 @@ hr {
 .viewchallenge-button,
 .checkmark-button,
 .profile-viewchallenge {
-  /* padding: 15px 25px; */
-  /* font-size: 24px; */
   text-align: center;
   cursor: pointer;
   outline: none;
@@ -195,12 +187,10 @@ hr {
 }
 
 .checkmark-button {
-  /* padding: 1rem 1rem; */
   width: 1rem;
   height: 1rem;
   margin-left: 1rem;
   display: inline;
-  /* grid-row: 3 / span 1; */
 }
 
 .challenge-creator{
@@ -266,7 +256,6 @@ margin-top: 30px;
 }
 
 .submitChallenge-label {
-  /* background-color: blue; */
   margin-left: 30px;
 }
 

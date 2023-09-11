@@ -1,7 +1,6 @@
 import "./App.css";
-
-import { Link, Route, Routes, useNavigate } from "react-router-dom";
-import Nav from "./components/Nav";
+import "../src/components/Nav/nav.css"
+import { Route, Routes } from "react-router-dom";
 import Welcome from "./pages/Welcome";
 import Dashboard from "./pages/Dashboard";
 import Profile from "./pages/Profile";
@@ -11,18 +10,19 @@ import NewUser from "./pages/NewUser";
 import _404 from "./pages/404";
 import Sidenav from "./components/Nav/sidebar";
 import Header from "./components/Header/header";
-import { useEffect, useState } from "react";
-import { useAuth0 } from "@auth0/auth0-react";
-import { findUserByEmail } from "./utilities/user-service";
+import {useState } from "react";
 
 function App() {
   
-
-  const [open, setOpen] = useState(false);
+//state
+const [open, setOpen] = useState(false);
 const [navScore, setNavScore]= useState(0)
 
+//Global Background Cloud Images
   const cloudImg = "https://res.cloudinary.com/dpsymdmyi/image/upload/v1694293421/bg-cloud_yx41el.svg"
   const cloudImg2 = "https://res.cloudinary.com/dpsymdmyi/image/upload/v1694293962/cloud-2_lqhxmy.svg"
+
+
 
   return (
     <div className="App">
@@ -30,7 +30,6 @@ const [navScore, setNavScore]= useState(0)
       <Sidenav open={open} setOpen={setOpen}/>
       <img className="bg-cloud" src={cloudImg} />
       <img className="bg-cloud2" src={cloudImg2} />
-      {/* <Nav /> */}
       <div className="routes">
       <Routes>
         <Route exact path="/" element={<Welcome />} />
