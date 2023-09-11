@@ -10,12 +10,10 @@ module.exports = {
   delete: destroy,
   createDailyChallenge,
   findChallengesByIds
-  // updateChallenge
 };
 
 async function create(req, res) {
   try {
-    console.log("hit me");
     res.status(201).json(await Challenge.create(req.body));
   } catch (error) {
     res.status(400).json({ error: error.message });
@@ -32,7 +30,6 @@ async function index(req, res) {
 
 async function show(req, res) {
   try {
-    console.log("hit show control");
     res.status(200).json(await Challenge.findById(req.params.id));
   } catch (error) {
     res.status(400).json({ error: error.message });
@@ -40,8 +37,6 @@ async function show(req, res) {
 }
 
 async function update(req, res) {
-  console.log('req.body', req.body)
-  console.log('reqparamsid', req.params.id)
   try {
     res
       .status(200)
@@ -51,20 +46,20 @@ async function update(req, res) {
         })
       );
   } catch (error) {
-    console.log('errormessage', error.message)
     res.status(400).json({ error: error.message });
   }
 }
 
 async function destroy(req, res) {
   try {
-    console.log("hit delete control");
     res.status(200).json(await Challenge.findByIdAndDelete(req.params.id));
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
 }
 
+
+//GPT Challenge request
   async function createDailyChallenge(req, res, next) {
     const allChallenges = await res.json(await Challenge.find())
     let gptConfig = {
@@ -110,25 +105,27 @@ async function destroy(req, res) {
       );
       await Challenge.create(deedObj);
     } catch (err) {
-      console.log("err", err);
-      // res.status(400).json({ error: err.message });
+      res.status(400).json({ error: err.message });
     }
   }
 
+
+//daily challenge autogeneration
   let lastDate = 0
   let currentDate = 0
-  
   setInterval(()=>{
     lastDate = currentDate
     today = new Date
     todayString = today.toLocaleDateString()
     date = todayString.split('/')[1]
     currentDate = date
-    console.log(lastDate, currentDate)
       if(lastDate !== currentDate){
         createDailyChallenge()
       }
     }, 1000*60*15)
+
+
+
 
 async function findChallengesByIds(req, res) {
   try {
@@ -137,11 +134,3 @@ async function findChallengesByIds(req, res) {
     res.status(400).json({ error: error.message });
   }
 }
-
-// async function updateUser(req, res){
-//   try {
-//     res.status(201).json(await User.findOneAndUpdate({email: req.body.email}, {...req.body}));
-//   } catch (error) {
-//     res.status(400).json({ error: error.message });
-//   }
-// }

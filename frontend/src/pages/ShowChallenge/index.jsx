@@ -62,8 +62,7 @@ export default function ShowChallenge({ setNavScore, setOpen }) {
   const handleImage = (e) => {
     const file = e.target.files[0];
     setFileToBase(file);
-    setImgUploaded(true)
-
+    setImgUploaded(true);
   };
 
   const setFileToBase = (file) => {
@@ -87,8 +86,8 @@ export default function ShowChallenge({ setNavScore, setOpen }) {
   async function handleSubmit(e) {
     e.preventDefault();
     updateChallenge(challenge);
-    addComplete()
- 
+    addComplete();
+
     // navigate("/challenges");
   }
 
@@ -104,7 +103,10 @@ export default function ShowChallenge({ setNavScore, setOpen }) {
   return isLoading ? (
     <>
       <h1 className="loading">LOADING...</h1>
-      <img src="https://res.cloudinary.com/dpsymdmyi/image/upload/v1694439817/loading-animation_nerskz.gif" alt="" />
+      <img
+        src="https://res.cloudinary.com/dpsymdmyi/image/upload/v1694439817/loading-animation_nerskz.gif"
+        alt=""
+      />
     </>
   ) : (
     <>
@@ -122,20 +124,26 @@ export default function ShowChallenge({ setNavScore, setOpen }) {
         {!userData?.completedChallenges?.includes(challenge._id) ? (
           <>
             <div className="completed-and-check">
-              <p className="body-font completed-righttop">Completed?</p>
-         
-            <form onSubmit={handleSubmit}>
-            {!imgUploaded ? 
-            <label htmlFor="images" className="chall-label">
-            <input type="file" name="images" onChange={handleImage} />
-          </label>
-            :   
-              <input
-                className="viewchallenge-button body-font"
-                type="submit"
-                value="Complete Deed"
-              />}
-            </form>
+              <p className="upload-righttop body-font">Completed?</p>
+
+              <form onSubmit={handleSubmit}>
+                {!imgUploaded ? (
+                  <label htmlFor="images" className="submitimg-label">
+                    <input
+                      className="submitimg-input"
+                      type="file"
+                      name="images"
+                      onChange={handleImage}
+                    />
+                  </label>
+                ) : (
+                  <input
+                    className="viewchallenge-button body-font"
+                    type="submit"
+                    value="Complete Deed"
+                  />
+                )}
+              </form>
             </div>
           </>
         ) : (
@@ -144,6 +152,24 @@ export default function ShowChallenge({ setNavScore, setOpen }) {
           </>
         )}
       </div>
+
+      {/* <h1 className="upload-righttop body-font">Upload a photo</h1>
+            <form className="submitphoto-Challenge" onSubmit={handleSubmit}>
+              {" "}
+              <label className="submitimg-label" htmlFor="images">
+                <input
+                  className="submitimg-input"
+                  type="file"
+                  name="images"
+                  onChange={handleImage}
+                />
+              </label>
+              <input
+                className="viewchallenge-button body-font"
+                type="submit"
+                value="UPLOAD YOUR IMAGE!"
+              />
+            </form>*/}
 
       <div className="completed-users-ctr">
         {completedUsers.length ? (
@@ -161,7 +187,17 @@ export default function ShowChallenge({ setNavScore, setOpen }) {
                   </h1>
                 </div>
 
-                <img className="completed-img" src={challenge.images[challenge.images?.findIndex((img)=> img.userId === user._id)]?.url} alt="" />
+                <img
+                  className="completed-img"
+                  src={
+                    challenge.images[
+                      challenge.images?.findIndex(
+                        (img) => img.userId === user._id
+                      )
+                    ]?.url
+                  }
+                  alt=""
+                />
               </div>
             );
           })

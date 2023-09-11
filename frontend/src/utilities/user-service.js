@@ -30,10 +30,8 @@ export async function createUser(userData) {
   }
   
   export async function updateUser(formData) {
-    console.log(formData)
     try {
       const data = await userAPI.updateUser(formData);
-      console.log(data)
       return data;
     } catch (err) {
       console.log(err);

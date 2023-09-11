@@ -35,7 +35,6 @@ export default function NewChallengeForm() {
       navigate("/");
     }
   }, []);
-  console.log(userData.username)
 
   let initState = {
     title: "",
