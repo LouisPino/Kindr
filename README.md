@@ -54,3 +54,6 @@ To add a deed, select "add a deed" in the sidebar nav. Give your deed a title an
 - Integrate cloudinary for image uploads to save space in database
 - Add other users as friends
 - Make fully mobile-friendly
+
+## Resources
+- Cloud assets adapted from [freepik](Image by <a href="https://www.freepik.com/free-vector/hand-drawn-style-cloud-collection_16135259.htm">Freepik</a>)
