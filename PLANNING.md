@@ -21,6 +21,38 @@ Kindr is a heartwarming mobile app designed to inspire and spread kindness in yo
 ![JSON Sample](Planning-Doc/JSON.jpg)
 View Challenge
 
+## User Model
+| Property      | DataType |
+| ----------- | ----------- |
+| _id                   | ObjectId       |
+| username              | String         |
+| email                 | String         |
+| user_id               | String         |
+| name                  | String         |
+| picture               | String         |
+| completedChallenges   | {type: [Schema.Types.ObjectId],<br>ref: "Challenge"} |
+| score                 | Number         |
+| timestamps            | true           |
+
+## Challenge Model
+| Property      | DataType       |
+| -----------   | -----------    |
+| _id           | ObjectId       |
+| title         | String         |
+| description   | String         |
+| images        | [imagesSchema] |
+| daily         | Boolean        |
+| category      | Number         |
+| username      | String         |
+| timestamps    | true           |
+
+## Images Model
+| Property    | DataType    |
+| ----------- | ----------- |
+| _id         | ObjectId    |
+| url         | String      |
+| userId      | String      |
+
 ## User Stories
 ### MVP
 **As a user, I want to:**
