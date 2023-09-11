@@ -64,7 +64,11 @@ if(userData && !isLoading){
        {challengeObjs?.length ? <ChallengeList challenges={challengeObjs} location="profile" userData={userData} setUserData={setUserData}/> : <h1 className="white">Get deedin'!</h1>} 
       </section>
   );}else{
-    return <h1 className="loading">LOADING...</h1>
+    return (
+      <>
+    <h1 className="loading">LOADING...</h1>
+    <img src="https://res.cloudinary.com/dpsymdmyi/image/upload/v1694439817/loading-animation_nerskz.gif" alt="" />
+    </>)
   }
 
 }

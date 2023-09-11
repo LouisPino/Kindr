@@ -58,6 +58,7 @@ export default function NewUser({ setOpen}) {
   return isLoading ? (
     <>
       <h1 className="loading">LOADING</h1>
+      <img src="https://res.cloudinary.com/dpsymdmyi/image/upload/v1694439817/loading-animation_nerskz.gif" alt="" />
     </>
   ) : (
     <>
