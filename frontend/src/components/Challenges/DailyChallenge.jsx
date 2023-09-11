@@ -78,9 +78,9 @@ export default function DailyChallenge({dailyChallenge, setNavScore, userData, s
       }
       <button className="viewchallenge-button body-font" onClick={()=> navigate(`/challenges/${dailyChallenge._id}`)}>VIEW DEED</button>
       </div>
-      {/* <button className="challenge-block" onClick={createNewDaily}>
+      <button className="challenge-block" onClick={createNewDaily}>
         create daily challenge
-      </button> */}
+      </button>
       {/* <hr></hr> */}
     </div>
   );

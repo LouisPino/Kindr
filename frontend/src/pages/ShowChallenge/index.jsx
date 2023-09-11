@@ -35,18 +35,18 @@ export default function ShowChallenge({ setNavScore, setOpen }) {
   }, []);
 
   async function addComplete(e) {
-    e.preventDefault();
     let userChallenges = userData.completedChallenges;
     userChallenges.push(e.target.id);
     const newUserData = {
       ...userData,
-      [e.target.name]: userChallenges,
+      completedChallenges: userChallenges,
       score: userData.score + 1,
     };
     setNavScore(newUserData.score);
     updateUser(newUserData);
     setUserData(newUserData);
   }
+  
   useEffect(() => {
     async function getChallenge() {
       const ids = [id];
@@ -153,7 +153,7 @@ export default function ShowChallenge({ setNavScore, setOpen }) {
         )}
       </div>
 
-      <div className="completed-users-ctr">
+      {/* <div className="completed-users-ctr">
           {challenge.images.length ? (
            challenge.images.map((image) => {
               return (
@@ -168,7 +168,7 @@ export default function ShowChallenge({ setNavScore, setOpen }) {
                       {user.username}
                     </h1>
                   </div>
-                  {/* <img className="completed-img" src={user.picture} alt="" /> */}
+                  <img className="completed-img" src={user.picture} alt="" />
                 </div>
               );
             })
@@ -177,7 +177,7 @@ export default function ShowChallenge({ setNavScore, setOpen }) {
               Be the first to complete this Deed!
             </h1>
           )}
-        </div>
+        </div> */}
 
       <div className="completedusers">
         <h1 className="h3-challenge h3-header kindr-header white">
