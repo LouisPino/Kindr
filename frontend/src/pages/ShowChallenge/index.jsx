@@ -170,8 +170,7 @@ export default function ShowChallenge({ setNavScore, setOpen }) {
                   </h1>
                 </div>
 
-
-                <img className="completed-img" src={challenge.images[challenge.images.findIndex((img)=> img.userId === user._id)].url} alt="" />
+                <img className="completed-img" src={challenge.images[challenge.images?.findIndex((img)=> img.userId === user._id)].url} alt="" />
               </div>
             );
           })
