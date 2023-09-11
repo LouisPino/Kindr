@@ -136,7 +136,7 @@ export default function ShowChallenge({ setNavScore,  setOpen }) {
               <input
                 className="viewchallenge-button body-font"
                 type="submit"
-                value="Upload Image"
+                value="Complete Deed"
               />
             </form>}
             </div>
