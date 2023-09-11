@@ -7,17 +7,51 @@ Kindr is a heartwarming mobile app designed to inspire and spread kindness in yo
 ## Links
 [Planning Doc](https://docs.google.com/spreadsheets/d/1kXggdpVkpJB4srXLQ7oCzz-bO5aigSFOcm3LXgskZB4/edit?usp=sharing)
 ## Wireframes
-![Desktop Homepage](wireframes/desktop-welcomepage.jpg)
+[Desktop Homepage](wireframes/desktop-welcomepage.jpg)
 
-![Navbar Open](wireframes/mobile-sidebar-open.jpg)
+[Navbar Open](wireframes/mobile-sidebar-open.jpg)
 
-![Navbar Closed](wireframes/userpage.jpg)
+[Navbar Closed](wireframes/userpage.jpg)
 
 
 ## Component Tree
 ![Component Tree](Planning-Doc/Component-Hierarchy.jpg)
 
 ## JSON Sample
+![JSON Sample](Planning-Doc/JSON.jpg)
+View Challenge
+
+## User Model
+| Property      | DataType |
+| ----------- | ----------- |
+| _id                   | ObjectId       |
+| username              | String         |
+| email                 | String         |
+| user_id               | String         |
+| name                  | String         |
+| picture               | String         |
+| completedChallenges   | {type: [Schema.Types.ObjectId],<br>ref: "Challenge"} |
+| score                 | Number         |
+| timestamps            | true           |
+
+## Challenge Model
+| Property      | DataType       |
+| -----------   | -----------    |
+| _id           | ObjectId       |
+| title         | String         |
+| description   | String         |
+| images        | [imagesSchema] |
+| daily         | Boolean        |
+| category      | Number         |
+| username      | String         |
+| timestamps    | true           |
+
+## Images Model
+| Property    | DataType    |
+| ----------- | ----------- |
+| _id         | ObjectId    |
+| url         | String      |
+| userId      | String      |
 
 ## User Stories
 ### MVP
