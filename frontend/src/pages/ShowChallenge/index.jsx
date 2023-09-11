@@ -141,7 +141,7 @@ export default function ShowChallenge({ setNavScore, setOpen }) {
                 <form className="submitphoto-Challenge" onSubmit={handleSubmit}>
                   {" "}
                   <label className="submitimg-label" htmlFor="images">
-                    <input type="file" name="images" onChange={handleImage} />
+                    <input className="submitimg-input" type="file" name="images" onChange={handleImage} />
                   </label>
                   <input
                     className="viewchallenge-button body-font"
