@@ -23,7 +23,6 @@ export default function Dashboard({setNavScore, setOpen}) {
   const [userData, setUserData] = useState({})
   
   useEffect(()=>{
-    console.log(user)
     if(user){
     async function fillUserObj(){
        const retrievedUserData = await findUserByEmail(user.email)
@@ -35,7 +34,6 @@ export default function Dashboard({setNavScore, setOpen}) {
     fillUserObj()
   }
     else{
-      console.log('hit')
       navigate('/')}
   }, [])
 
@@ -46,8 +44,6 @@ export default function Dashboard({setNavScore, setOpen}) {
 
     if (challengeResponse.length) {
       setChallenges(challengeResponse);
-    } else {
-      console.log(challengeResponse);
     }
   }
   useEffect(() => {
