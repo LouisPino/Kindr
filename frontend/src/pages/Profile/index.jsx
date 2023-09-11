@@ -2,54 +2,68 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { findUserByEmail, updateUser } from "../../utilities/user-service";
-import ChallengeList from "../Challenge/ChallengeList";
-
+import { findChallengesByIds } from "../../utilities/challenge-service";
+import ChallengeList from "../../components/Challenges/ChallengeList"
 import("./profile.css");
 
-export default function Profile() {
-  const { loginWithRedirect, logout, user } = useAuth0();
-  const [isLoading, setIsLoading] = useState(true);
-  const navigate = useNavigate();
-  const [userData, setUserData] = useState({});
-  useEffect(() => {
-    if (user) {
-      async function fillUserObj() {
-        const retrievedUserData = await findUserByEmail(user.email);
-        setUserData(retrievedUserData);
-      }
-      fillUserObj();
-    } else {
-      navigate("/");
+
+export default function Profile({ setOpen}) {
+  const { user } = useAuth0();
+const [isLoading, setIsLoading] = useState(true)
+const navigate = useNavigate()
+const [challengeObjs, setChallengeObjs] = useState(null)
+const [userData, setUserData] = useState({})
+  useEffect(()=>{
+    if(user){
+    async function fillUserObj(){
+      const retrievedUserData = await findUserByEmail(user.email)
+      setUserData(retrievedUserData)
     }
-  }, []);
+    fillUserObj()
+    setOpen(false)
+  }
+else{
+  navigate('/')
+}
+  }, [])
 
-  useEffect(() => {
-    setIsLoading(false);
-  }, [userData]);
+  useEffect(()=>{
+    if(userData.completedChallenges){
+    async function getChallengesByIds(){
+    const gotChallenges =  await findChallengesByIds(userData.completedChallenges)
+    setChallengeObjs(gotChallenges)
+    }
+    getChallengesByIds()
+  }
+  }, [userData])
 
-  if (userData && !isLoading) {
-    return (
-      <>
-        <section className="profile-page">
-          <img src={userData?.picture} className="user-picture" />
-          <h2 className="h2-header kindr-header">
-          {userData.username ? `${userData.username}'s` : 'Your'}  Deeds
-          </h2>
-          <h3 className="h3-header kindr-header">Completed</h3>
-          {/* <ChallengeList challenges={userData.completedChallenges}/> */}
-          <h3 className="user-h3 kindr-header">Saved</h3>
-          <ul className="user-deed-list">
-            <li>lafjkawe</li>
-            <li>lafjkawe</li>
-            <li>lafjkawe</li>
-            <li>lafjkawe</li>
-          </ul>
-          {/* <img src={user.picture}/> */}
-          {/* <p>{user.given_name} {user.family_name || user.email.split("@")[0]} is a loser.</p> */}
-        </section>
-      </>
-    );
-  } else {
-    return <h1>LOADING</h1>;
+  useEffect(()=>{
+    console.log("CHALLENGE OBJS", challengeObjs)
+    if(challengeObjs){
+    setIsLoading(false)
+    }
+  }, [challengeObjs])
+  
+  
+
+
+
+if(userData && !isLoading){
+  return (
+      <section className="profile-page">
+        <img
+          src={userData?.picture}
+          className="user-picture"
+        />
+    <Link to={"/newuser"}>
+            <button className={"viewchallenge-button body-font edit-profile"}>EDIT PROFILE</button>
+          </Link>
+        <h3 className="h3-header kindr-header white">Good Deed Score: {userData.score}</h3>
+        <h2 className="profile-deeds h2-header kindr-header">{userData.username ? `${userData.username}'s` : 'Your'} Deeds</h2>
+       <hr />
+       {challengeObjs?.length ? <ChallengeList challenges={challengeObjs} location="profile" userData={userData} setUserData={setUserData}/> : <h1 className="white">Get deedin'!</h1>} 
+      </section>
+  );}else{
+    return <h1 className="loading">LOADING...</h1>
   }
 }

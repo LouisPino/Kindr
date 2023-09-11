@@ -47,9 +47,8 @@ export async function updateUser(data){
     }
 }
 
-export async function findChallengesById(challengeIds) {
-    
-    const res = await fetch(`${BASE_URL}/users/challenges`, {
+export async function findUsersByCompletedChalleneges(challengeId){
+    const res = await fetch(`${BASE_URL}/users/challenges/${challengeId}`, {
         method: "GET",
         credentials: "include",
         headers: {
@@ -57,9 +56,7 @@ export async function findChallengesById(challengeIds) {
           "Content-Type": "application/json",
           "Access-Control-Allow-Origin": true,
         },
-        body: JSON.stringify(challengeIds)
       });
-      console.log('user-api res', res)
       if (res.ok) {
         return res.json();
       } else {

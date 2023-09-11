@@ -1,8 +1,15 @@
+*{
+    /* border: 1px solid red */
+  }
+
+
 .profile-page{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    min-width: 100vw;
+
 }
 .user-picture {
     width: 10rem;
@@ -14,9 +21,37 @@
 .h2-header {
     font-size: 2rem;
     letter-spacing: 0.1rem;
+    color: white;
 }
 
 .h3-header {
     font-size: 1.5rem;
     letter-spacing: 0.1rem;
+    font-family: "hobeaux", sans-serif;
+    font-weight: 900;
+    font-style: normal;
+}
+
+
+.white{
+    color: white;
+}
+
+
+.profile-page>.challenge-list{
+    width: 60vw;
+}
+
+
+.edit-profile{
+    width: 100px;
+    margin: 25px auto;
+}
+
+.profile-viewchallenge{
+width: 150px;
+}
+
+.challenge-list{
+  min-width: 700px;
 }

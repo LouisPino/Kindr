@@ -1,28 +1,41 @@
-import { useAuth0 } from '@auth0/auth0-react';
-import { useParams } from 'react-router';
-import { Link } from 'react-router-dom';
+import { useAuth0 } from "@auth0/auth0-react";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router";
+import { Link, useNavigate } from "react-router-dom";
+import { findUserByEmail, updateUser } from "../../utilities/user-service";
+import { getChallenges } from "../../utilities/challenge-service";
+import ChallengeList from "../../components/Challenges/ChallengeList";
 
-export default function Dashboard() {
+
+import "./dashboard.css"
+import DailyChallenge from "../../components/Challenges/DailyChallenge";
+
+export default function Dashboard({setNavScore, setOpen}) {
   const { user } = useAuth0();
   const { userId } = useParams();
   const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
 
   const [challenges, setChallenges] = useState(null);
-
+  const [dailyChallenge, setDailyChallenge] = useState();
 
 
   const [userData, setUserData] = useState({})
   
   useEffect(()=>{
+    console.log(user)
     if(user){
     async function fillUserObj(){
        const retrievedUserData = await findUserByEmail(user.email)
+      setNavScore(retrievedUserData.score)
       setUserData(retrievedUserData)
+      await handleRequest();
     }  
+    setOpen(false)
     fillUserObj()
   }
     else{
+      console.log('hit')
       navigate('/')}
   }, [])
 
@@ -35,40 +48,27 @@ export default function Dashboard() {
       setChallenges(challengeResponse);
     } else {
       console.log(challengeResponse);
-      // context update for error handling might be called
     }
   }
   useEffect(() => {
     if (challenges) {
+      const dailyidx = challenges.findIndex((chal)=>chal.daily === true)
+      setDailyChallenge(challenges[dailyidx])
       setIsLoading(false);
-    }
+    } 
   }, [challenges]);
 
-  useEffect(() => {
-    if (user) {
-      async function fillUserObj() {
-        const userData = await findUserByEmail(user.email);
-        await handleRequest();
-      }
-
-      fillUserObj();
-    } else {
-      navigate("/");
-    }
-  }, []);
+  
 
   return isLoading ? (
     <>
-      <h1>LOADING</h1>
+      <h1 className="loading">LOADING...</h1>
     </>
   ) : (
     <>
-
-
-
-      <h1>{userData.username ? `${userData.username}'s` : 'Your'} Dashboard</h1>
-      <ChallengeList challenges={challenges} />
-      {/* <button onClick={createDailyChallenge}>daily challenge</button> */}
+      <h1 className="dashboard-h1">{userData.username ? `${userData.username}'s` : 'Your'} Deed Dashboard</h1>
+      <DailyChallenge dailyChallenge = {dailyChallenge} setNavScore={setNavScore} userData={userData} setUserData={setUserData}/>
+      <ChallengeList challenges={challenges} location={'dashboard'} setNavScore={setNavScore} userData={userData} setUserData={setUserData}/>
     </>
   );
 }

@@ -1,20 +1,25 @@
-*{
+* {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  /* border: 1px solid green; */
 }
-
 
 .App {
   background: linear-gradient(45deg, #fad95d, #ef4036);
   min-height: 100vh;
+  height: 100%;
   width: 100%;
   border: none;
   text-align: center;
-  padding: 0;
+  padding-bottom: 5rem;
   margin: 0;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 10rem 1fr;
+  align-items: center;
+  /* justify-content: center; */
+  justify-items: center;
 }
 
 @import url("https://use.typekit.net/tnt5bwz.css");
@@ -22,14 +27,78 @@
   font-family: "asphalt", sans-serif;
   font-weight: 800;
   font-style: normal;
+  color: #f05151;
+  font-stretch: extra-expanded;
+
+  /* align-self: center; */
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Pompiere&display=swap");
+
+.body-font {
+  font-family: "Pompiere", cursive;
+}
+
+.header-page {
+  display: grid;
+  grid-row: 1 / span 1;
+  grid-column: 1 / span 1;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  justify-items: center;
+  width: 100%;
+  height: 100%;
+  background-image: url("https://res.cloudinary.com/dpsymdmyi/image/upload/v1694204679/cloud-header_uktbi1.svg");
+  background-repeat: repeat-x;
+  background-size: contain;
+  filter: drop-shadow(2px 0px 10px #b12f28);
+  z-index: 3;
+}
+
+.routes {
+  grid-row: 2 / span 1;
+  grid-column: 1 / span 1;
+  align-self: baseline;
+  z-index: 1;
+}
+
+.nav {
+  grid-row: 1 / span 2;
+  grid-column: 1 / span 1;
+  align-self: baseline;
+  position: fixed;
+  left: 0;
+  z-index: 3;
+}
+
+.loading {
+  font-family: "asphalt", sans-serif;
+  font-weight: 800;
+  font-style: normal;
   color: white;
   font-stretch: extra-expanded;
+  letter-spacing: .2rem;
 }
 
-.body-font{
-    font-family: "looking-flowers-caps", sans-serif;
-    font-weight: 400;
-    font-style: normal;
+.bg-cloud, .bg-cloud2 {
+  grid-row: 1 / span 2;
+  grid-column: 1 / span 1;
+  align-self: baseline;
+justify-self: baseline;
+position: fixed;
+z-index: 0;
+filter: drop-shadow(0px 2px 2px #b12f28);
 }
 
+.bg-cloud {
+width: 10rem;
+margin-top: 12rem;
+margin-left: 7vw;
+}
 
+.bg-cloud2 {
+width: 15rem;
+margin-top: 50vh;
+margin-left: 60vw;
+}
