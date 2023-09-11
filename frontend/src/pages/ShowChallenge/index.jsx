@@ -145,6 +145,26 @@ export default function ShowChallenge({ setNavScore, setOpen }) {
         )}
       </div>
 
+      
+      {/* <h1 className="upload-righttop body-font">Upload a photo</h1>
+            <form className="submitphoto-Challenge" onSubmit={handleSubmit}>
+              {" "}
+              <label className="submitimg-label" htmlFor="images">
+                <input
+                  className="submitimg-input"
+                  type="file"
+                  name="images"
+                  onChange={handleImage}
+                />
+              </label>
+              <input
+                className="viewchallenge-button body-font"
+                type="submit"
+                value="UPLOAD YOUR IMAGE!"
+              />
+            </form>*/}
+
+
       <div className="completed-users-ctr">
         {completedUsers.length ? (
           completedUsers.map((user) => {
