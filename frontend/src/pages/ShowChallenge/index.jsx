@@ -36,13 +36,12 @@ export default function ShowChallenge({ setNavScore,  setOpen }) {
     }
   }, []);
 
-  async function addComplete(e) {
-    e.preventDefault();
+  async function addComplete() {
     let userChallenges = userData.completedChallenges;
-    userChallenges.push(e.target.id);
+    userChallenges.push(id);
     const newUserData = {
       ...userData,
-      [e.target.name]: userChallenges,
+      completedChallenges: userChallenges,
       score: userData.score + 1,
     };
     setNavScore(newUserData.score);
@@ -87,6 +86,7 @@ export default function ShowChallenge({ setNavScore,  setOpen }) {
   async function handleSubmit(e) {
     e.preventDefault();
     updateChallenge(challenge);
+    addComplete()
     setImgUploaded(true)
     // navigate("/challenges");
   }
