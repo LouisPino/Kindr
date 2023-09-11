@@ -13,7 +13,7 @@ import {
 
 import "./showchallenge.css";
 
-export default function ShowChallenge({ setNavScore,  setOpen }) {
+export default function ShowChallenge({ setNavScore, setOpen }) {
   const { loginWithRedirect, logout, user } = useAuth0();
   const navigate = useNavigate();
   const { id } = useParams();
@@ -28,7 +28,7 @@ export default function ShowChallenge({ setNavScore,  setOpen }) {
         setUserData(retrievedUserData);
       }
       fillUserObj();
-      setOpen(false)
+      setOpen(false);
     } else {
       navigate("/");
     }
@@ -80,7 +80,7 @@ export default function ShowChallenge({ setNavScore,  setOpen }) {
   };
 
   useEffect(() => {
-    console.log('useeffect', challenge)
+    console.log("useeffect", challenge);
     if (completedUsers && challenge) setIsLoading(false);
   }, [completedUsers]);
 
@@ -132,16 +132,21 @@ export default function ShowChallenge({ setNavScore,  setOpen }) {
           </>
         ) : (
           <>
-            <h1 className="youdidit-righttop body-font">You did it!</h1>
-            <form onSubmit={handleSubmit}>
+            <h1 className="upload-righttop body-font">Upload a photo</h1>
+            <form className="submitphoto-Challenge" onSubmit={handleSubmit}>
               {" "}
-              <label htmlFor="images" className="chall-label">
-                <input type="file" name="images" onChange={handleImage} />
+              <label className="submitimg-label" htmlFor="images">
+                <input
+                  className="submitimg-input"
+                  type="file"
+                  name="images"
+                  onChange={handleImage}
+                />
               </label>
               <input
                 className="viewchallenge-button body-font"
                 type="submit"
-                value="Upload Image"
+                value="UPLOAD YOUR IMAGE!"
               />
             </form>
           </>

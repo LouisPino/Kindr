@@ -1,44 +1,70 @@
 *{
-/* border: 1px solid blue; */
-
-
-}
-
-.completed-users-ctr{
-display: flex;
-justify-content: space-evenly;
-margin-top: 20px;
-flex-wrap: wrap;
-}
-
-.completed-user-card{
-    background-color: rgba(255, 255, 255, 0.7);
-    padding: 2rem;
-    border-radius: 2rem;
+    /* border: 1px solid blue; */
+    
+    
+    }
+    
+    .completed-users-ctr{
     display: flex;
-    flex-direction: column;
-    align-items: center;
     justify-content: space-evenly;
-    width: 300px;
-    height: 400px;
-    overflow: hidden;
-    margin: 4px;
-}
-
-.completed-user-img{
-    width: 75px;
-    height: 75px;
-    border-radius: 50%;
-    object-fit: cover;
-}
-.completed-user-card>h2{
-    width: auto;
-    height: auto;
-}
-
-.completed-img{
-    height: auto;
-    width: auto;
-    max-height: 80%;
-    max-width: 100%;
-}
+    margin-top: 20px;
+    flex-wrap: wrap;
+    }
+    
+    .completed-user-card{
+        background-color: rgba(255, 255, 255, 0.7);
+        padding: 2rem;
+        border-radius: 2rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+        width: 300px;
+        height: 400px;
+        overflow: hidden;
+        margin: 4px;
+    }
+    
+    .completed-user-img{
+        width: 75px;
+        height: 75px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+    .completed-user-card>h2{
+        width: auto;
+        height: auto;
+    }
+    
+    .completed-img{
+        height: auto;
+        width: auto;
+        max-height: 80%;
+        max-width: 100%;
+    }
+    
+    .submitimg-label {
+        display: grid;
+        font-family: "Pompiere", cursive;
+        font-size: 2rem;
+        color: white;
+        text-align: right;
+        align-self: right;
+        justify-self: right;
+    }
+    
+    .submitimg-input {
+        font-size: 1.22rem;
+    }
+    
+    .upload-righttop {
+        grid-row: 1 / span 1;
+        grid-column: 3 / span 1;
+        font-size: 2rem;
+        margin: 0;
+        color: #f05151;
+        font-family: "hobeaux", sans-serif;
+        font-weight: 900;
+        font-style: normal;
+      }
+     
