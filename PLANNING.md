@@ -18,8 +18,8 @@ Kindr is a heartwarming mobile app designed to inspire and spread kindness in yo
 ![Component Tree](Planning-Doc/Component-Hierarchy.jpg)
 
 ## JSON Sample
-![JSON Samp;e](Planning-Doc/JSON.jpg)
-*note: image url has been shortened to save space
+![JSON Sample](Planning-Doc/JSON.jpg)
+View Challenge
 
 ## User Stories
 ### MVP
