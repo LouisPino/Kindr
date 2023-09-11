@@ -2,7 +2,6 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { findUserByEmail, updateUser } from "../../utilities/user-service";
-import("./newuser.css");
 
 export default function NewUser({ setOpen}) {
   let initState = {};
@@ -58,6 +57,7 @@ export default function NewUser({ setOpen}) {
   return isLoading ? (
     <>
       <h1 className="loading">LOADING</h1>
+      <img src="https://res.cloudinary.com/dpsymdmyi/image/upload/v1694439817/loading-animation_nerskz.gif" alt="" />
     </>
   ) : (
     <>
