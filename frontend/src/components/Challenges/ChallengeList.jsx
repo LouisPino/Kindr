@@ -1,7 +1,6 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { findUserByEmail } from "../../utilities/user-service";
+import { useNavigate } from "react-router-dom";
 import { updateUser } from "../../utilities/user-service";
 import ReactPaginate from "react-paginate";
 import "../../pages/Dashboard/dashboard.css";
@@ -14,13 +13,22 @@ export default function ChallengeList({
   userData,
   setUserData,
 }) {
+//general state
+  const [isLoading, setIsLoading] = useState(true);
+  const navigate = useNavigate();
+
+
+//Sorts challenges in reverse time order
   let sortedChallenges = [];
   let sortedChallengesidx = 0;
   for (let i = challenges.length - 1; i >= 0; i--) {
     sortedChallenges[sortedChallengesidx] = challenges[i];
     sortedChallengesidx++;
   }
-  let challenge;
+
+
+
+  //Pagination
   const [currentPage, setCurrentPage] = useState(0);
   const [totalPages, setTotalPages] = useState(0);
   const itemsPerPage = 5;
@@ -37,6 +45,9 @@ export default function ChallengeList({
     setTotalPages(Math.ceil(challenges.length / itemsPerPage));
   }, []);
 
+
+
+//helps conditionally render certain elements based on where it is being viewed
   function showCondition(challenge) {
     if (location === "profile") {
       return !!userData;
@@ -45,6 +56,7 @@ export default function ChallengeList({
     }
   }
 
+  //array of challenge icons to display based on category listed in challenge object
   const picArr = [
     "https://res.cloudinary.com/dpsymdmyi/image/upload/v1694278247/community-red_c2yd4c.svg",
     "https://res.cloudinary.com/dpsymdmyi/image/upload/v1694278531/tree_h8n1mk.svg",
@@ -53,10 +65,42 @@ export default function ChallengeList({
     "https://res.cloudinary.com/dpsymdmyi/image/upload/v1694279771/sparkles-svgrepo-com_pwuurr.svg",
     "https://res.cloudinary.com/dpsymdmyi/image/upload/v1694285543/exclamation_jkltnz.svg",
   ];
-  const { user } = useAuth0();
-  const [isLoading, setIsLoading] = useState(true);
-  const navigate = useNavigate();
-  const [imgUploaded, setImgUploaded] = useState(false);
+
+  let challenge; // challenge variable for targeting specific challenges when uploading photos
+
+  
+
+ 
+
+//runs when image is chosen
+  const handleImage = (e) => {
+    const file = e.target.files[0];
+    setFileToBase(file);
+    challenge =
+      sortedChallenges[
+        sortedChallenges.findIndex((chal) => chal._id === e.target.id)
+      ];
+  };
+//called by above function, converts image to data
+  const setFileToBase = (file) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onloadend = () => {
+      const updatedChallenge = { ...challenge };
+      updatedChallenge.images.push({
+        url: reader.result,
+        userId: userData._id,
+      });
+    };
+  };
+
+  //updates challenge with image, updates user with challenge in completed challenges array
+  async function handleSubmit(e) {
+    e.preventDefault();
+    updateChallenge(challenge);
+    addComplete(e);
+  }
+
   async function addComplete(e) {
     let userChallenges = userData.completedChallenges;
     userChallenges.push(e.target.id);
@@ -70,37 +114,11 @@ export default function ChallengeList({
     setUserData(newUserData);
   }
 
+
+//finish loading
   useEffect(() => {
     setIsLoading(false);
   }, [userData]);
-
-  const handleImage = (e) => {
-    const file = e.target.files[0];
-    setFileToBase(file);
-    challenge =
-      sortedChallenges[
-        sortedChallenges.findIndex((chal) => chal._id === e.target.id)
-      ];
-  };
-
-  const setFileToBase = (file) => {
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onloadend = () => {
-      const updatedChallenge = { ...challenge };
-      updatedChallenge.images.push({
-        url: reader.result,
-        userId: userData._id,
-      });
-      // setChallenge(updatedChallenge);
-    };
-  };
-
-  async function handleSubmit(e) {
-    e.preventDefault();
-    updateChallenge(challenge);
-    addComplete(e);
-  }
 
   return isLoading ? (
     <>
