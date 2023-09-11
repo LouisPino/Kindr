@@ -99,7 +99,6 @@ let challenge
     e.preventDefault();
     updateChallenge(challenge);
     addComplete(e)
-    setImgUploaded(true)
   }
 
 
@@ -131,13 +130,7 @@ let challenge
                 <>
                   <div className="completed-and-check">
                     <p className="body-font completed-righttop">Completed?</p>
-                    {imgUploaded ?  <button
-                className="checkmark-button"
-                id={challenge._id}
-                onClick={addComplete}
-              >
-                &#10003;
-              </button> :
+    
             <form id={challenge._id} onSubmit={handleSubmit}>
               {" "}
               <label htmlFor="images" className="chall-label">
@@ -148,7 +141,8 @@ let challenge
                 type="submit"
                 value="Upload Image"
               />
-            </form>}
+            </form>
+            {/* } */}
                   </div>
                 </>
               ) : (
