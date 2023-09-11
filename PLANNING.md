@@ -7,17 +7,19 @@ Kindr is a heartwarming mobile app designed to inspire and spread kindness in yo
 ## Links
 [Planning Doc](https://docs.google.com/spreadsheets/d/1kXggdpVkpJB4srXLQ7oCzz-bO5aigSFOcm3LXgskZB4/edit?usp=sharing)
 ## Wireframes
-![Desktop Homepage](wireframes/desktop-welcomepage.jpg)
+[Desktop Homepage](wireframes/desktop-welcomepage.jpg)
 
-![Navbar Open](wireframes/mobile-sidebar-open.jpg)
+[Navbar Open](wireframes/mobile-sidebar-open.jpg)
 
-![Navbar Closed](wireframes/userpage.jpg)
+[Navbar Closed](wireframes/userpage.jpg)
 
 
 ## Component Tree
 ![Component Tree](Planning-Doc/Component-Hierarchy.jpg)
 
 ## JSON Sample
+![JSON Samp;e](Planning-Doc/JSON.jpg)
+*note: image url has been shortened to save space
 
 ## User Stories
 ### MVP
