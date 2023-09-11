@@ -24,7 +24,7 @@ Kindr is a heartwarming mobile app designed to inspire and spread kindness in yo
 ![Component Tree](Planning-Doc/Component-Hierarchy.jpg)
 
 ## JSON Sample
-![JSON Sample](Planning-Doc/JSON.jpg)
+![JSON Sample](Planning-Doc/JSON.png)
 View Challenge
 
 ## User Model
