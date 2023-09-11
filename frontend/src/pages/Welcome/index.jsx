@@ -5,8 +5,10 @@ import Sidenav from "../../components/Nav/sidebar";
 import("./welcome.css");
 
 export default function Welcome() {
-  const { loginWithRedirect, logout, user, isLoading } = useAuth0();
+const { loginWithRedirect, user } = useAuth0();
 const navigate = useNavigate()
+
+//redirect on login
 if(user){
 navigate("/dashboard")
 }

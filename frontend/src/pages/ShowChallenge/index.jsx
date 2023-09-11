@@ -14,15 +14,18 @@ import {
 import "./showchallenge.css";
 
 export default function ShowChallenge({ setNavScore, setOpen }) {
-  const { loginWithRedirect, logout, user } = useAuth0();
-  const navigate = useNavigate();
+  //general state
+  const { user } = useAuth0();
   const { id } = useParams();
   const [challenge, setChallenge] = useState(null);
   const [userData, setUserData] = useState(null);
   const [completedUsers, setCompletedUsers] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [imgUploaded, setImgUploaded] = useState(false);
+  const navigate = useNavigate();
+  
 
+  //get user data from db
   useEffect(() => {
     if (user) {
       async function fillUserObj() {
@@ -36,6 +39,48 @@ export default function ShowChallenge({ setNavScore, setOpen }) {
     }
   }, []);
 
+//get challenge data from db
+  useEffect(() => {
+    async function getChallenge() {
+      const ids = [id];
+      const gotChallenge = await findChallengesByIds(ids);
+      setChallenge(gotChallenge[0]);
+      const gotUsers = await findUsersByCompletedChalleneges(id);
+      setCompletedUsers(gotUsers);
+    }
+    getChallenge();
+  }, [userData]);
+
+
+
+//runs when image is chosen
+  const handleImage = (e) => {
+    const file = e.target.files[0];
+    setFileToBase(file);
+    setImgUploaded(true);
+  };
+
+//called by above function, converts image to data
+  const setFileToBase = (file) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onloadend = () => {
+      const updatedChallenge = { ...challenge };
+      updatedChallenge.images.push({
+        url: reader.result,
+        userId: userData._id,
+      });
+      setChallenge(updatedChallenge);
+    };
+  };
+
+  //updates challenge with image, updates user with challenge in completed challenges array
+  async function handleSubmit(e) {
+    e.preventDefault();
+    updateChallenge(challenge);
+    addComplete();
+  }
+
   async function addComplete() {
     let userChallenges = userData.completedChallenges;
     userChallenges.push(id);
@@ -48,49 +93,8 @@ export default function ShowChallenge({ setNavScore, setOpen }) {
     updateUser(newUserData);
     setUserData(newUserData);
   }
-  useEffect(() => {
-    async function getChallenge() {
-      const ids = [id];
-      const gotChallenge = await findChallengesByIds(ids);
-      setChallenge(gotChallenge[0]);
-      const gotUsers = await findUsersByCompletedChalleneges(id);
-      setCompletedUsers(gotUsers);
-    }
-    getChallenge();
-  }, [userData]);
 
-  const handleImage = (e) => {
-    const file = e.target.files[0];
-    setFileToBase(file);
-    setImgUploaded(true);
-  };
-
-  const setFileToBase = (file) => {
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onloadend = () => {
-      // let fullChallenge = {...challenge}
-      const updatedChallenge = { ...challenge };
-      updatedChallenge.images.push({
-        url: reader.result,
-        userId: userData._id,
-      });
-      setChallenge(updatedChallenge);
-    };
-  };
-
-  useEffect(() => {
-    if (completedUsers && challenge) setIsLoading(false);
-  }, [completedUsers]);
-
-  async function handleSubmit(e) {
-    e.preventDefault();
-    updateChallenge(challenge);
-    addComplete();
-
-    // navigate("/challenges");
-  }
-
+  //array of challenge icons to display based on category listed in challenge object
   const picArr = [
     "https://res.cloudinary.com/dpsymdmyi/image/upload/v1694278247/community-red_c2yd4c.svg",
     "https://res.cloudinary.com/dpsymdmyi/image/upload/v1694278531/tree_h8n1mk.svg",
@@ -99,6 +103,12 @@ export default function ShowChallenge({ setNavScore, setOpen }) {
     "https://res.cloudinary.com/dpsymdmyi/image/upload/v1694279771/sparkles-svgrepo-com_pwuurr.svg",
     "https://res.cloudinary.com/dpsymdmyi/image/upload/v1694285543/exclamation_jkltnz.svg",
   ];
+
+  //finish loading
+  useEffect(() => {
+    if (completedUsers && challenge) setIsLoading(false);
+  }, [completedUsers]);
+
 
   return isLoading ? (
     <>
@@ -152,24 +162,6 @@ export default function ShowChallenge({ setNavScore, setOpen }) {
           </>
         )}
       </div>
-
-      {/* <h1 className="upload-righttop body-font">Upload a photo</h1>
-            <form className="submitphoto-Challenge" onSubmit={handleSubmit}>
-              {" "}
-              <label className="submitimg-label" htmlFor="images">
-                <input
-                  className="submitimg-input"
-                  type="file"
-                  name="images"
-                  onChange={handleImage}
-                />
-              </label>
-              <input
-                className="viewchallenge-button body-font"
-                type="submit"
-                value="UPLOAD YOUR IMAGE!"
-              />
-            </form>*/}
 
       <div className="completed-users-ctr">
         {completedUsers.length ? (

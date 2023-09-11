@@ -5,25 +5,22 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { findUserByEmail } from "../../utilities/user-service";
 
 
-
-
-// define the function boilerplate with export
 export default function NewChallengeForm() {
+  //general state
   const navigate = useNavigate();
   const { user } = useAuth0();
-  const [isLoading, setIsLoading] = useState(true);
   const [userData, setUserData] = useState({});
+  let initState = {
+    title: "",
+    description: "",
+    images: [],
+    daily: false,
+    category: 0,
+    username: ""
+  };
+  const [newForm, setNewForm] = useState(initState);
 
-
-  const options = [
-    { label: "Community", value: 0 },
-    { label: "Nature", value: 1 },
-    { label: "Education", value: 2 },
-    { label: "Animals", value: 3 },
-    { label: "Other", value: 4 },
-  ];
-
-
+//run on render, grab user info from db if logged in, else redirect to welcome page
   useEffect(() => {
     if (user) {
       async function fillUserObj() {
@@ -36,15 +33,22 @@ export default function NewChallengeForm() {
     }
   }, []);
 
-  let initState = {
-    title: "",
-    description: "",
-    images: [],
-    daily: false,
-    category: 0,
-    username: ""
-  };
-  const [newForm, setNewForm] = useState(initState);
+  //select input options
+  const options = [
+    { label: "Community", value: 0 },
+    { label: "Nature", value: 1 },
+    { label: "Education", value: 2 },
+    { label: "Animals", value: 3 },
+    { label: "Other", value: 4 },
+  ];
+
+//control form input
+  function handleChange(e) {
+    const updatedData = { ...newForm, [e.target.name]: e.target.value, username: userData.username };
+    setNewForm(updatedData);
+  }
+
+  //submit form
   async function handleSubmit(e) {
     e.preventDefault();
     await createChallenge(newForm);
@@ -52,10 +56,7 @@ export default function NewChallengeForm() {
     navigate("/dashboard");
   }
 
-  function handleChange(e) {
-    const updatedData = { ...newForm, [e.target.name]: e.target.value, username: userData.username };
-    setNewForm(updatedData);
-  }
+
 
   return (
     <section className="newchallenge-page">
@@ -91,7 +92,6 @@ export default function NewChallengeForm() {
               <option
                 name="category"
                 id="category"
-                // value={newForm.category}
                 value={option.value}
               >
                 {option.label}

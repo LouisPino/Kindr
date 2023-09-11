@@ -6,7 +6,7 @@ export default function Dashboard() {
   const { user, isLoading } = useAuth0();
   return(
     <>
-      <h2>You fucked it big time</h2>
+      <h2>Not so kind after all</h2>
       </>
     )
 }

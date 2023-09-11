@@ -15,11 +15,58 @@ export default function DailyChallenge({
   userData,
   setUserData,
 }) {
-  const { loginWithRedirect, logout, user } = useAuth0();
-  const [isLoading, setIsLoading] = useState(true);
+  //general state
   const [imgUploaded, setImgUploaded] = useState(false);
+  const navigate = useNavigate();
 
-  let dailyChallengeNew;
+
+  let dailyChallengeNew; // variable used for updating daily challenge with photos
+
+
+  //for use in development only with commented out daily challenge button
+  async function createNewDaily(e) {
+    e.preventDefault();
+    createDailyChallenge();
+  }
+
+    //array of challenge icons to display based on category listed in challenge object
+  const picArr = [
+    "https://res.cloudinary.com/dpsymdmyi/image/upload/v1694278247/community-red_c2yd4c.svg",
+    "https://res.cloudinary.com/dpsymdmyi/image/upload/v1694278531/tree_h8n1mk.svg",
+    "https://res.cloudinary.com/dpsymdmyi/image/upload/v1694278673/education_poh8l8.svg",
+    "https://res.cloudinary.com/dpsymdmyi/image/upload/v1694279455/pig_qm4uhw.svg",
+    "https://res.cloudinary.com/dpsymdmyi/image/upload/v1694279771/sparkles-svgrepo-com_pwuurr.svg",
+    "https://res.cloudinary.com/dpsymdmyi/image/upload/v1694285543/exclamation_jkltnz.svg",
+  ];
+
+
+//runs when image is chosen
+  const handleImage = (e) => {
+    const file = e.target.files[0];
+    setFileToBase(file);
+  };
+
+  //called by above function, converts image to data
+  const setFileToBase = (file) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onloadend = () => {
+      const updatedChallenge = { ...dailyChallenge };
+      updatedChallenge.images.push({
+        url: reader.result,
+        userId: userData._id,
+      });
+      dailyChallengeNew = updatedChallenge;
+    };
+  };
+
+    //updates challenge with image, updates user with challenge in completed challenges array
+  async function handleSubmit(e) {
+    e.preventDefault();
+    updateChallenge(dailyChallengeNew);
+    addComplete();
+    setImgUploaded(true);
+  }
 
   async function addComplete() {
     let userChallenges = userData.completedChallenges;
@@ -34,51 +81,9 @@ export default function DailyChallenge({
     setUserData(newUserData);
   }
 
-  const navigate = useNavigate();
-
-  async function createNewDaily(e) {
-    e.preventDefault();
-    createDailyChallenge();
-  }
-  const picArr = [
-    "https://res.cloudinary.com/dpsymdmyi/image/upload/v1694278247/community-red_c2yd4c.svg",
-    "https://res.cloudinary.com/dpsymdmyi/image/upload/v1694278531/tree_h8n1mk.svg",
-    "https://res.cloudinary.com/dpsymdmyi/image/upload/v1694278673/education_poh8l8.svg",
-    "https://res.cloudinary.com/dpsymdmyi/image/upload/v1694279455/pig_qm4uhw.svg",
-    "https://res.cloudinary.com/dpsymdmyi/image/upload/v1694279771/sparkles-svgrepo-com_pwuurr.svg",
-    "https://res.cloudinary.com/dpsymdmyi/image/upload/v1694285543/exclamation_jkltnz.svg",
-  ];
-
-  const handleImage = (e) => {
-    const file = e.target.files[0];
-    setFileToBase(file);
-  };
-
-  const setFileToBase = (file) => {
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onloadend = () => {
-      // let fullChallenge = {...challenge}
-      const updatedChallenge = { ...dailyChallenge };
-      updatedChallenge.images.push({
-        url: reader.result,
-        userId: userData._id,
-      });
-      dailyChallengeNew = updatedChallenge;
-    };
-  };
-
-  async function handleSubmit(e) {
-    e.preventDefault();
-    updateChallenge(dailyChallengeNew);
-    addComplete();
-    setImgUploaded(true);
-    // navigate("/challenges");
-  }
-
   return !dailyChallenge ? (
     <>
-      <h1 className="loading">No Daily CHallenge Yet!</h1>
+      <h1 className="loading">No Daily Challenge Yet!</h1>
       {/* <button className="challenge-block" onClick={createNewDaily}>
         create daily challenge -for development / testing only-
       </button> */}
