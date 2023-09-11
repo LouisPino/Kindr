@@ -42,12 +42,14 @@ When you first visit Kindr, you'll be directed to the **Welcome Page**
 - Click the **Log In** button <br>
 - As it is your first time visiting the site, you will need to **Sign Up** and create a username and password. <br> <br>
 Once logged in, you'll be directed to the **Deed Dashboard**<br>
-- This showcases all Deeds: user-generated deeds and Daily Deeds generated via OpenAI. <br>
-To view the details of a deed (who has completed it), click "View Deed". <br>
-If you have completed a deed, you will need to upload photo proof in order to mark it complete. Once you have uploaded your photo and marked it complete, it will appear in the list of Completed Deeds in your profile. <br>
-To view your profile, you can either click the user icon in the header, or click "Profile" in the sidebar navigation. <br>
-If you would like to change your profile picture or username, you can click the "edit profile" button on the user page. <br>
-To add a deed, select "add a deed" in the sidebar nav. Give your deed a title and description, and select the applicable category from the dropdown menu. Once you add your deed, you will automatically be redirected to your dashboard, where you will see your new deed! <br>
+- This showcases all Deeds: user-generated deeds and Daily Deeds generated via OpenAI. <br><br>
+To view the details of a deed (who has completed it), click **View Deed** <br>
+- If you have completed a deed, you will need to upload photo proof in order to mark it complete.<br>
+Once you have uploaded your photo and marked it complete, it will appear in the list of **Completed Deeds** in your profile. <br><br>
+To **view your profile**, you can either click the user icon in the header, or click "Profile" in the sidebar navigation. <br>
+- If you would like to change your profile picture or username, you can click the "edit profile" button on the user page. <br><br>
+To **add a deed**, select "add a deed" in the sidebar nav. <br>
+- Give your deed a title and description, and select the applicable category from the dropdown menu. Once you add your deed, you will automatically be redirected to your dashboard, where you will see your new deed! <br><br>
 ### [Project Planning](https://docs.google.com/spreadsheets/d/1kXggdpVkpJB4srXLQ7oCzz-bO5aigSFOcm3LXgskZB4/edit?usp=sharing)
 ## Planned Future Enhancements
 - Design a "Deed Streak" feature when users complete deeds every day
