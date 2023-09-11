@@ -10,7 +10,6 @@ module.exports = {
   delete: destroy,
   createDailyChallenge,
   findChallengesByIds
-  // updateChallenge
 };
 
 async function create(req, res) {
@@ -110,8 +109,8 @@ async function destroy(req, res) {
       );
       await Challenge.create(deedObj);
     } catch (err) {
-      console.log("err", err);
-      // res.status(400).json({ error: err.message });
+      // console.log("err", err);      /////CHECK ME AFTER DEPLOYING
+      res.status(400).json({ error: err.message });
     }
   }
 
@@ -137,11 +136,3 @@ async function findChallengesByIds(req, res) {
     res.status(400).json({ error: error.message });
   }
 }
-
-// async function updateUser(req, res){
-//   try {
-//     res.status(201).json(await User.findOneAndUpdate({email: req.body.email}, {...req.body}));
-//   } catch (error) {
-//     res.status(400).json({ error: error.message });
-//   }
-// }
