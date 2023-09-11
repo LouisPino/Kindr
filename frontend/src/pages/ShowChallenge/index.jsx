@@ -144,17 +144,6 @@ export default function ShowChallenge({ setNavScore,  setOpen }) {
         ) : (
           <>
             <h1 className="youdidit-righttop body-font">You did it!</h1>
-            {/* <form onSubmit={handleSubmit}>
-              {" "}
-              <label htmlFor="images" className="chall-label">
-                <input type="file" name="images" onChange={handleImage} />
-              </label>
-              <input
-                className="viewchallenge-button body-font"
-                type="submit"
-                value="Upload Image"
-              />
-            </form> */}
           </>
         )}
       </div>
