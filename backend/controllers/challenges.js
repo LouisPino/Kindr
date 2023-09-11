@@ -14,7 +14,6 @@ module.exports = {
 
 async function create(req, res) {
   try {
-    console.log("hit me");
     res.status(201).json(await Challenge.create(req.body));
   } catch (error) {
     res.status(400).json({ error: error.message });
@@ -31,7 +30,6 @@ async function index(req, res) {
 
 async function show(req, res) {
   try {
-    console.log("hit show control");
     res.status(200).json(await Challenge.findById(req.params.id));
   } catch (error) {
     res.status(400).json({ error: error.message });
@@ -39,8 +37,6 @@ async function show(req, res) {
 }
 
 async function update(req, res) {
-  console.log('req.body', req.body)
-  console.log('reqparamsid', req.params.id)
   try {
     res
       .status(200)
@@ -50,14 +46,12 @@ async function update(req, res) {
         })
       );
   } catch (error) {
-    console.log('errormessage', error.message)
     res.status(400).json({ error: error.message });
   }
 }
 
 async function destroy(req, res) {
   try {
-    console.log("hit delete control");
     res.status(200).json(await Challenge.findByIdAndDelete(req.params.id));
   } catch (error) {
     res.status(400).json({ error: error.message });
@@ -109,7 +103,6 @@ async function destroy(req, res) {
       );
       await Challenge.create(deedObj);
     } catch (err) {
-      // console.log("err", err);      /////CHECK ME AFTER DEPLOYING
       res.status(400).json({ error: err.message });
     }
   }
@@ -123,7 +116,6 @@ async function destroy(req, res) {
     todayString = today.toLocaleDateString()
     date = todayString.split('/')[1]
     currentDate = date
-    console.log(lastDate, currentDate)
       if(lastDate !== currentDate){
         createDailyChallenge()
       }

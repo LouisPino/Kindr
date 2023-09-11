@@ -32,6 +32,7 @@ let dailyChallengeNew
 
   async function createNewDaily(e) {
     e.preventDefault();
+    console.log('clicked')
     createDailyChallenge();
   }
   const picArr = ["https://res.cloudinary.com/dpsymdmyi/image/upload/v1694278247/community-red_c2yd4c.svg", "https://res.cloudinary.com/dpsymdmyi/image/upload/v1694278531/tree_h8n1mk.svg", "https://res.cloudinary.com/dpsymdmyi/image/upload/v1694278673/education_poh8l8.svg", "https://res.cloudinary.com/dpsymdmyi/image/upload/v1694279455/pig_qm4uhw.svg", "https://res.cloudinary.com/dpsymdmyi/image/upload/v1694279771/sparkles-svgrepo-com_pwuurr.svg", "https://res.cloudinary.com/dpsymdmyi/image/upload/v1694285543/exclamation_jkltnz.svg"]
@@ -76,9 +77,9 @@ dailyChallengeNew = updatedChallenge
   return !dailyChallenge ? (
     <>
       <h1 className="loading">No Daily CHallenge Yet!</h1>
-      <button className="challenge-block" onClick={createNewDaily}>
-        create daily challenge
-      </button>
+      {/* <button className="challenge-block" onClick={createNewDaily}>
+        create daily challenge -for development / testing only-
+      </button> */}
     </>
   ) : (
     <div className="daily-challenge-component">
@@ -121,10 +122,6 @@ dailyChallengeNew = updatedChallenge
       }
       <button className="viewchallenge-button body-font" onClick={()=> navigate(`/challenges/${dailyChallenge._id}`)}>VIEW DEED</button>
       </div>
-      <button className="challenge-block" onClick={createNewDaily}>
-        create daily challenge
-      </button>
-      {/* <hr></hr> */}
     </div>
   );
 }
