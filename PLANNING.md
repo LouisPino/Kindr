@@ -10,5 +10,5 @@ Find our planning doc [here](https://docs.google.com/spreadsheets/d/1kXggdpVkpJB
 ![Navbar Closed](wireframes/prof-page.png)
 
 ## Component Tree
-![Component Tree](Planning-Doc/Kindr-CH.jpg)
+![Component Tree](Planning-Doc/Component-Hierarchy.jpg)
 ## JSON Sample
