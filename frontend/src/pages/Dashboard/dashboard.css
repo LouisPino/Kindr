@@ -191,6 +191,7 @@ hr {
   margin: auto;
   grid-row: 4 / span 1;
   font-size: 1.2rem;
+  margin-top: 1rem;
 }
 
 .checkmark-button {
@@ -206,6 +207,7 @@ hr {
   font-size: 1.5rem;
   margin-top: 8px;
   color: #f05151;
+  grid-column: 1 / span 1;
 }
 
 .daily {
@@ -250,4 +252,24 @@ margin-top: 30px;
 }
 
 
+}
+
+.submitphoto-Challenge {
+  grid-column: 3 / span 1;
+  grid-row: 1 / span 5;
+  text-align: center;
+  margin: 0;
+  align-self: center;
+  justify-self: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.submitChallenge-label {
+  /* background-color: blue; */
+  margin-left: 30px;
+}
+
+.submitchallenge-button {
+  background-color: green;
 }

@@ -13,7 +13,7 @@ import {
 
 import "./showchallenge.css";
 
-export default function ShowChallenge({ setNavScore,  setOpen }) {
+export default function ShowChallenge({ setNavScore, setOpen }) {
   const { loginWithRedirect, logout, user } = useAuth0();
   const navigate = useNavigate();
   const { id } = useParams();
@@ -30,7 +30,7 @@ export default function ShowChallenge({ setNavScore,  setOpen }) {
         setUserData(retrievedUserData);
       }
       fillUserObj();
-      setOpen(false)
+      setOpen(false);
     } else {
       navigate("/");
     }
