@@ -11,15 +11,10 @@
     color: white;
     width: 60%;
     margin: 2rem auto 0 auto;
-    /* margin-top: 0; */
 }
 
 .welcome-emphasize {
     font-size: 1.75rem;
     color: white;
     margin-top: 3rem;
-}
-
-.login{
-    /* margin-top: 250px; */
 }
