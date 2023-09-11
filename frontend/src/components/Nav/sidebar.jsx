@@ -2,9 +2,9 @@ import { NavLink } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Link } from "react-router-dom";
 import "./sidebar.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-export default function Sidenav() {
+export default function Sidenav({open, setOpen}) {
   const { loginWithRedirect, logout, user, isLoading } = useAuth0();
 
   const navData = [
@@ -25,12 +25,12 @@ export default function Sidenav() {
     },
   ];
 
-  const [open, setopen] = useState(false);
   // const [left, setLeft] = useState(false)
   const toggleOpen = () => {
-    setopen(!open);
+    setOpen(!open);
     // setFontWidth(!left)
   };
+
 
   return (
     <header className="nav">
@@ -43,10 +43,16 @@ export default function Sidenav() {
           {/* <button onClick={() => logout()}> LOGOUT</button> */}
             {!open && (
           <button className="menuBtn" onClick={toggleOpen}>
+            <div className="hamburger-ctr">
               <img
                 className="hamburger-open"
                 src="https://res.cloudinary.com/dpsymdmyi/image/upload/v1694202631/hamburger_lththo.svg"
               />
+              <img
+                className="hamburger-open-bg"
+                src="https://res.cloudinary.com/dsvcyich1/image/upload/v1694368406/cloud_zpqj9o.png"
+              />
+              </div>
           </button>
             )}
           <div className={open ? "sidenav" : "sidenavClosed"}>
@@ -64,7 +70,7 @@ export default function Sidenav() {
                   key={item.id}
                   className={open ? "sideitem" : "sideitemClosed"}
                   to={item.link}
-                  onClick={()=>setopen(false)}
+                  onClick={()=>setOpen(false)}
                 >
                   <span className={open ? "linkText" : "linkTextClosed"}>
                     {item.text}

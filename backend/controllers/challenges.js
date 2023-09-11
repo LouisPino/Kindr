@@ -9,7 +9,8 @@ module.exports = {
   update,
   delete: destroy,
   createDailyChallenge,
-  findChallengesByIds,
+  findChallengesByIds
+  // updateChallenge
 };
 
 async function create(req, res) {
@@ -39,6 +40,8 @@ async function show(req, res) {
 }
 
 async function update(req, res) {
+  console.log('req.body', req.body)
+  console.log('reqparamsid', req.params.id)
   try {
     res
       .status(200)
@@ -48,6 +51,7 @@ async function update(req, res) {
         })
       );
   } catch (error) {
+    console.log('errormessage', error.message)
     res.status(400).json({ error: error.message });
   }
 }
@@ -62,13 +66,14 @@ async function destroy(req, res) {
 }
 
   async function createDailyChallenge(req, res, next) {
+    const allChallenges = await res.json(await Challenge.find())
     let gptConfig = {
       model: "gpt-3.5-turbo",
       messages: [
         {
           role: "user",
           content:
-            "Generate a good deed that someone could achieve in less than 24 hours. Please come up with a title for the deed and a description no longer than 4 sentences explaining what the deed is. Do not repeat a deed you have done before. Deed titles should be 3 words or less. It should be formatted like this: (Deed Title): (Deed Description)." ,
+            `Generate a good deed that someone could achieve in less than 24 hours. Please come up with a title for the deed and a description no longer than 4 sentences explaining what the deed is. Do not repeat a deed you have done before - ${allChallenges}. Deed titles should be 3 words or less. It should be formatted like this: (Deed Title): (Deed Description).` ,
         },
       ],
       temperature: 0.7,
@@ -96,7 +101,8 @@ async function destroy(req, res) {
         title: splitEm[0],
         description: splitEm[1],
         daily: true,
-        category: 5
+        category: 5,
+        username: "Kindr Daily Challenge"
       };
       const oldDaily = await Challenge.findOneAndUpdate(
         { daily: true },
@@ -132,3 +138,10 @@ async function findChallengesByIds(req, res) {
   }
 }
 
+// async function updateUser(req, res){
+//   try {
+//     res.status(201).json(await User.findOneAndUpdate({email: req.body.email}, {...req.body}));
+//   } catch (error) {
+//     res.status(400).json({ error: error.message });
+//   }
+// }

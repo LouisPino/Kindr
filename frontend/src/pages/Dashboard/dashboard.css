@@ -46,10 +46,7 @@
   /* padding-right: 2rem; */
   align-self: center;
 }
-.new-challenge-button {
-  width: 20rem;
-  margin-top: 2rem;
-}
+
 
 .challenge-picture {
   width: 10em;
@@ -58,6 +55,10 @@
   object-fit: contain;
   grid-column: 1 / span 1;
   grid-row: 1 / span 4;
+}
+
+.challenge-list{
+  width: 100%;
 }
 
 .challenge-block {
@@ -72,6 +73,7 @@
   padding: 2rem;
   border-radius: 2rem;
   margin-top: 1rem;
+  min-width: 600px;
 }
 
 .h3-challenge {
@@ -96,6 +98,8 @@
   padding: 0 2rem;
   padding-top: 0.5rem;
   text-align: left;
+  width: auto;
+  margin-top: 2px;
 }
 
 @import url("https://use.typekit.net/tnt5bwz.css");
@@ -155,6 +159,8 @@ hr {
   width: 70%;
   margin: auto;
   font-size: 1.2rem;
+  font-family: "Pompiere", cursive;
+  
 }
 
 .viewchallenge-button,
@@ -176,7 +182,7 @@ hr {
 .checkmark-button:active,
 .profile-viewchallenge:active {
   box-shadow: none;
-  transform: translateY(5px);
+  transform: translateY(5px)
 }
 
 .viewchallenge-button {
@@ -185,6 +191,7 @@ hr {
   margin: auto;
   grid-row: 4 / span 1;
   font-size: 1.2rem;
+  margin-top: 1rem;
 }
 
 .checkmark-button {
@@ -194,6 +201,13 @@ hr {
   margin-left: 1rem;
   display: inline;
   /* grid-row: 3 / span 1; */
+}
+
+.challenge-creator{
+  font-size: 1.5rem;
+  margin-top: 8px;
+  color: #f05151;
+  grid-column: 1 / span 1;
 }
 
 .daily {
@@ -210,4 +224,52 @@ hr {
   padding: 15px 0px;
   border-image: url("https://res.cloudinary.com/dpsymdmyi/image/upload/v1694216684/hr-line-white_mwvizb.svg")
     200 round;
+}
+
+.pagination-container{
+  display: flex;
+  text-align: center;
+  justify-content: space-evenly;
+  width: 200px;
+  margin: 0 auto;
+  list-style: none;
+margin-top: 30px;
+}
+
+
+.active-page{
+  text-decoration: underline;
+}
+
+.pointer{
+  cursor: pointer
+}
+
+@media screen and (max-width: 700px){
+.challenge-descr{
+
+  margin-top: 12px;
+}
+
+
+}
+
+.submitphoto-Challenge {
+  grid-column: 3 / span 1;
+  grid-row: 1 / span 5;
+  text-align: center;
+  margin: 0;
+  align-self: center;
+  justify-self: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.submitChallenge-label {
+  /* background-color: blue; */
+  margin-left: 30px;
+}
+
+.submitchallenge-button {
+  background-color: green;
 }

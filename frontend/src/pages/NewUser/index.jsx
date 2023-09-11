@@ -2,65 +2,73 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { findUserByEmail, updateUser } from "../../utilities/user-service";
-import("./newuser.css");
 
-export default function NewUser() {
-  let initState = {
-
-  }
+export default function NewUser({ setOpen}) {
+  let initState = {};
   const { loginWithRedirect, logout, user } = useAuth0();
   const [newForm, setNewForm] = useState(initState);
-  const [isLoading, setIsLoading] = useState(true)
-  const navigate = useNavigate()
-const [userData, setUserData] = useState({})
-  useEffect(()=>{
-    if(user){
-    async function fillUserObj(){
-       const retrievedUserData = await findUserByEmail(user.email)
-      setNewForm(retrievedUserData)
-      setUserData(retrievedUserData)
-    }  
-    fillUserObj()
+  const [isLoading, setIsLoading] = useState(true);
+  const navigate = useNavigate();
+  const [userData, setUserData] = useState(null);
+  useEffect(() => {
+    if (user) {
+      async function fillUserObj() {
+        const retrievedUserData = await findUserByEmail(user.email);
+        setNewForm(retrievedUserData);
+        setUserData(retrievedUserData);
+      }
+      fillUserObj();
+      setOpen(false)
+    } else {
+      navigate("/");
+    }
+  }, []);
+
+  useEffect(() => {
+    if (userData) setIsLoading(false);
+  }, [userData]);
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    updateUser(newForm);
+    navigate("/profile");
   }
-    else{
-      navigate('/')}
-  }, [])
 
+  const handleImage = (e) => {
+    const file = e.target.files[0];
+    setFileToBase(file);
+    console.log(file);
+  };
 
-useEffect(()=>{
-setIsLoading(false)
-}, [userData])
+  const setFileToBase = (file) => {
+    const reader = new FileReader();
+    console.log('reader', reader)
+    reader.readAsDataURL(file);
+    reader.onloadend = () => {
+      const updatedData = { ...newForm, picture: reader.result };
+      setNewForm(updatedData);
+    };
+  };
 
-
-  async function handleSubmit(e){
-    e.preventDefault()
-    updateUser(newForm)
-    navigate('/profile')
-  }
-
-
-  function handleChange(e){
-    const updatedData = { ...newForm, [e.target.name]: e.target.value }
-    setNewForm(updatedData)
+  function handleChange(e) {
+    const updatedData = { ...newForm, [e.target.name]: e.target.value };
+    setNewForm(updatedData);
   }
   return isLoading ? (
-<>
-<h1 className="loading">LOADING</h1>
-</>
-  ) : 
-  (
+    <>
+      <h1 className="loading">LOADING</h1>
+      <img src="https://res.cloudinary.com/dpsymdmyi/image/upload/v1694439817/loading-animation_nerskz.gif" alt="" />
+    </>
+  ) : (
     <>
       <section className="profile-page">
-        <img
-          src={userData.picture}
-          className="user-picture"
-        />
+        <img src={newForm.picture} className="user-picture" />
         <h2 className="h2-header kindr-header">Edit Profile Info</h2>
 
     <section>
       <form className="new-challenge-form" onSubmit={handleSubmit}>
-        <label htmlFor="name">
-          NAME
+        <label htmlFor="name" className="chall-label">
+        <div className="labeltext">NAME</div>
           <input
             type="text"
             name="name"
@@ -71,8 +79,8 @@ setIsLoading(false)
             required
           />
         </label>
-        <label htmlFor="username">
-          USERNAME
+        <label htmlFor="username" className="chall-label">
+        <div className="labeltext">USERNAME</div>
           <input
             type="text"
             name="username"
@@ -82,7 +90,7 @@ setIsLoading(false)
             placeholder="add challenge description"
           />
         </label>
-                <label htmlFor="picture">
+                {/* <label htmlFor="picture" className="chall-label">
           Photo (cloudinary later)
           <input
             type="text"
@@ -92,9 +100,13 @@ setIsLoading(false)
             onChange={handleChange}
             placeholder="add challenge description"
           />
-        </label>
+</label> */}
+                <label htmlFor="picture" className="chall-label">
+                <div className="labeltext">UPLOAD PHOTO</div>
+                <input type="file" name ="picture" onChange={handleImage}/>
+</label>  
         <input
-          className="new-challenge-button"
+          className="viewchallenge-button body-font"
           type="submit"
           value="Update Profile"
         />
@@ -104,6 +116,3 @@ setIsLoading(false)
     </>
   );
 }
-
-
-//update user info after form is submitted and redirect to profile

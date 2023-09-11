@@ -23,7 +23,7 @@ navigate("/dashboard")
           good. We're just a bunch of do-gooders 'round these parts.
         </p>
 
-        <button onClick={() => loginWithRedirect()}>LOGIN</button>
+        <button className="viewchallenge-button body-font login" onClick={() => loginWithRedirect()}>LOGIN</button>
 
       </section>
     </>
