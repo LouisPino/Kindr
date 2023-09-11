@@ -186,8 +186,8 @@ hr {
 }
 
 .viewchallenge-button {
-  padding: 1rem 0rem;
-  width: 70%;
+  padding: 1rem 1rem;
+  width: auto;
   margin: auto;
   grid-row: 4 / span 1;
   font-size: 1.2rem;
