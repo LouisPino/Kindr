@@ -43,7 +43,6 @@ export default function Dashboard({setNavScore, setOpen}) {
 
   async function handleRequest() {
     const challengeResponse = await getChallenges();
-
     if (challengeResponse.length) {
       setChallenges(challengeResponse);
     } else {

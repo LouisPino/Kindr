@@ -30,7 +30,7 @@ export default function ShowChallenge({ setNavScore, setOpen }) {
       fillUserObj();
       setOpen(false);
     } else {
-      navigate("/");
+      // navigate("/");
     }
   }, []);
 
@@ -61,12 +61,10 @@ export default function ShowChallenge({ setNavScore, setOpen }) {
   const handleImage = (e) => {
     const file = e.target.files[0];
     setFileToBase(file);
-    console.log(file);
   };
 
   const setFileToBase = (file) => {
     const reader = new FileReader();
-    console.log("reader", reader);
     reader.readAsDataURL(file);
     reader.onloadend = () => {
       // let fullChallenge = {...challenge}
@@ -85,7 +83,6 @@ export default function ShowChallenge({ setNavScore, setOpen }) {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    console.log("handlesubmit", challenge);
     updateChallenge(challenge);
     // navigate("/challenges");
   }

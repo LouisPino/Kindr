@@ -60,7 +60,6 @@ export default function ChallengeList({
   async function addComplete(e) {
     e.preventDefault();
     let userChallenges = userData.completedChallenges;
-
     userChallenges.push(e.target.id);
     const newUserData = {
       ...userData,
@@ -70,11 +69,11 @@ export default function ChallengeList({
     setNavScore(newUserData.score);
     updateUser(newUserData);
     setUserData(newUserData);
-    function changePage(e) {
-      e.preventDefault();
-      navigate(`/challenges/${e.target.id}`)
-    };
-    changePage(e)
+    // function changePage(e) {
+    //   e.preventDefault();
+    //   navigate(`/challenges/${e.target.id}`);
+    // }
+    // changePage(e);
   }
 
   useEffect(() => {
@@ -135,7 +134,7 @@ export default function ChallengeList({
                       ) : (
                         <>
                           <h1 className="youdidit-righttop body-font">
-                            You awefdid it!
+                            You did it!
                           </h1>
                         </>
                       )}
