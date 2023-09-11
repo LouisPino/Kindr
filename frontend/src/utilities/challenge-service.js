@@ -5,7 +5,6 @@ export async function createChallenge(challengeData) {
       const data = await challengeAPI.create(challengeData);
       return data;
     } catch (err) {
-      console.log(err);
       return err;
     }
   }
@@ -38,13 +37,10 @@ export async function findChallengesByIds(array){
 }
 
 export async function updateChallenge(formData) {
-  console.log(formData)
   try {
     const data = await challengeAPI.updateChallenge(formData);
-    console.log(data)
     return data;
   } catch (err) {
-    console.log(err);
     return err;
   }
 }

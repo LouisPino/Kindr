@@ -76,9 +76,9 @@ dailyChallengeNew = updatedChallenge
   return !dailyChallenge ? (
     <>
       <h1 className="loading">No Daily CHallenge Yet!</h1>
-      <button className="challenge-block" onClick={createNewDaily}>
-        create daily challenge
-      </button>
+      {/* <button className="challenge-block" onClick={createNewDaily}>
+        create daily challenge -for development / testing only-
+      </button> */}
     </>
   ) : (
     <div className="daily-challenge-component">
@@ -121,10 +121,6 @@ dailyChallengeNew = updatedChallenge
       }
       <button className="viewchallenge-button body-font" onClick={()=> navigate(`/challenges/${dailyChallenge._id}`)}>VIEW DEED</button>
       </div>
-      <button className="challenge-block" onClick={createNewDaily}>
-        create daily challenge
-      </button>
-      {/* <hr></hr> */}
     </div>
   );
 }

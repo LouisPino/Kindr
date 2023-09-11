@@ -1,5 +1,4 @@
 const BASE_URL= process.env.REACT_APP_BASE_URL
-console.log(BASE_URL)
 
 export async function create(data){
   const response = await fetch(`${BASE_URL}/challenges`, {
@@ -27,8 +26,7 @@ export async function index() {
         "Access-Control-Allow-Origin": true,
       },
     });
-  
-    console.log(res);
+
   
     if (res.ok) {
       return res.json();
@@ -48,7 +46,7 @@ export async function index() {
       },
     });
   
-    // console.log(res);
+
   
     if (res.ok) {
       return res.json();
