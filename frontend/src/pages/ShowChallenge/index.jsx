@@ -122,12 +122,12 @@ export default function ShowChallenge({ setNavScore, setOpen }) {
         {!userData?.completedChallenges?.includes(challenge._id) ? (
           <>
             <div className="completed-and-check">
-              <p className="body-font completed-righttop">Completed?</p>
+              <p className="upload-righttop body-font">Completed?</p>
          
             <form onSubmit={handleSubmit}>
             {!imgUploaded ? 
-            <label htmlFor="images" className="chall-label">
-            <input type="file" name="images" onChange={handleImage} />
+            <label htmlFor="images" className="submitimg-label">
+            <input className="submitimg-input" type="file" name="images" onChange={handleImage} />
           </label>
             :   
               <input
