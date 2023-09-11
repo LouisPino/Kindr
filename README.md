@@ -58,3 +58,4 @@ To add a deed, select "add a deed" in the sidebar nav. Give your deed a title an
 ## Resources
 - Cloud assets adapted from [freepik](https://www.freepik.com/free-vector/hand-drawn-style-cloud-collection_16135259.htm)
 - Icon assets adapted from SVG Repo ([sparkles](https://www.svgrepo.com/svg/400756/sparkles), [pig](https://www.svgrepo.com/svg/481669/pig-illustration), [books](https://www.svgrepo.com/svg/383225/education-books-apple), [tree](https://www.svgrepo.com/svg/427554/nature-plant-tree))
+- [Starburst assets](https://www.freepik.com/free-vector/linear-flat-sunburst-collection_15694439.htm) were adapted to create other website assets
