@@ -50,28 +50,37 @@ export default function UploadImage({ setNavScore, setOpen }) {
     e.preventDefault();
     let userChallenges = userData.completedChallenges;
     userChallenges.push(e.target.id);
+    console.log("4. addcomplete userchallenges", userChallenges);
+
+    console.log("5. addcomplete challenge", challenge);
+
     const newUserData = {
       ...userData,
-      [e.target.name]: userChallenges,
+      completedChallenges: userChallenges,
       score: userData.score + 1,
     };
     setNavScore(newUserData.score);
     updateUser(newUserData);
+    console.log("addcomplete user", user);
     setUserData(newUserData);
+    console.log("6. e", e);
+
+    // handleSubmit(e)
   }
 
   const handleImage = (e) => {
     const file = e.target.files[0];
     setFileToBase(file);
-    console.log("eeeeee", file);
+    console.log("1. handle image - file", file);
+    console.log("3. handle image challenge", challenge);
 
-    addComplete(e);
-    // handleSubmit(e);
+    handleSubmit(e);
   };
 
-  async function handleSubmit() {
-    // e.preventDefault();
-    console.log("handlesubmit", challenge);
+  async function handleSubmit(e) {
+    addComplete(e);
+    e.preventDefault(e);
+    console.log("handlesubmit - challenge", challenge);
     updateChallenge(challenge);
     // navigate("/challenges");
   }
@@ -86,12 +95,9 @@ export default function UploadImage({ setNavScore, setOpen }) {
         userId: userData._id,
       });
       setChallenge(updatedChallenge);
+      console.log("2. setfiletobase setchallenge - challenge", challenge);
     };
   };
-
-  useEffect(() => {
-    updateChallenge(challenge)
-  }, [challenge]);
 
   useEffect(() => {
     console.log("useeffect", challenge);
@@ -129,21 +135,25 @@ export default function UploadImage({ setNavScore, setOpen }) {
             <div className="completed-and-check">
               <p className="body-font completed-righttop">Completed?</p>
               <div>
-                <input
-                  accept="image/*"
-                  id={challenge._id}
-                  type="file"
-                  style={{ display: "none" }}
-                  onChange={handleImage}
-                  className="viewchallenge-button body-font"
-                  // value="Upload Image"
-                  name="images"
-                  htmlFor="images"
-                />
-                <label htmlFor={challenge._id}>
-                  <h1>&#10003;</h1>
-                </label>
+                <form>
+                  <input
+                    accept="image/*"
+                    id={challenge._id}
+                    type="file"
+                    style={{ display: "none" }}
+                    onChange={handleImage}
+                    className="viewchallenge-button body-font"
+                    // value="Upload Image"
+                    name="images"
+                    htmlFor="images"
+                  />
+                  <label type="submit" htmlFor={challenge._id}>
+                    <h1>&#10003;</h1>
+                  </label>
+                </form>
               </div>
+
+
 
               {/* <button
                 className="checkmark-button"
@@ -168,6 +178,16 @@ export default function UploadImage({ setNavScore, setOpen }) {
                 value="Upload Image"
               />
             </form>
+            <form>
+                <input
+                  className="imgur"
+                  type="file"
+                  accept="image/*"
+                  name="fileToUpload"
+                  id="fileToUpload"
+                />
+                <input type="submit" value="Submit" name="submit" />
+              </form>
           </>
         )}
       </div>

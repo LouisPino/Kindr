@@ -41,7 +41,7 @@ export async function updateChallenge(formData) {
   console.log(formData)
   try {
     const data = await challengeAPI.updateChallenge(formData);
-    console.log(data)
+    console.log('challengeserver', data)
     return data;
   } catch (err) {
     console.log(err);
