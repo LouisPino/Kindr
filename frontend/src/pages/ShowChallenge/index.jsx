@@ -62,6 +62,7 @@ export default function ShowChallenge({ setNavScore,  setOpen }) {
   const handleImage = (e) => {
     const file = e.target.files[0];
     setFileToBase(file);
+    setImgUploaded(true)
 
   };
 
@@ -87,7 +88,7 @@ export default function ShowChallenge({ setNavScore,  setOpen }) {
     e.preventDefault();
     updateChallenge(challenge);
     addComplete()
-    setImgUploaded(true)
+ 
     // navigate("/challenges");
   }
 
@@ -122,24 +123,19 @@ export default function ShowChallenge({ setNavScore,  setOpen }) {
           <>
             <div className="completed-and-check">
               <p className="body-font completed-righttop">Completed?</p>
-          {imgUploaded ?  <button
-                className="checkmark-button"
-                id={challenge._id}
-                onClick={addComplete}
-              >
-                &#10003;
-              </button> :
+         
             <form onSubmit={handleSubmit}>
-              {" "}
-              <label htmlFor="images" className="chall-label">
-                <input type="file" name="images" onChange={handleImage} />
-              </label>
+            {!imgUploaded ? 
+            <label htmlFor="images" className="chall-label">
+            <input type="file" name="images" onChange={handleImage} />
+          </label>
+            :   
               <input
                 className="viewchallenge-button body-font"
                 type="submit"
                 value="Complete Deed"
-              />
-            </form>}
+              />}
+            </form>
             </div>
           </>
         ) : (
@@ -165,7 +161,7 @@ export default function ShowChallenge({ setNavScore,  setOpen }) {
                   </h1>
                 </div>
 
-                <img className="completed-img" src={challenge.images[challenge.images?.findIndex((img)=> img.userId === user._id)].url} alt="" />
+                <img className="completed-img" src={challenge.images[challenge.images?.findIndex((img)=> img.userId === user._id)]?.url} alt="" />
               </div>
             );
           })
