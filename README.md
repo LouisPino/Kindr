@@ -1,7 +1,7 @@
 # Kindr
 ☁️☀️☁️☀️☁️☀️☁️
 ### Kindr is an app. It is very good. VERY good.
-Kindr is a heartwarming mobile app designed to inspire and spread kindness in your community and beyond. With Kindr, you can create and share meaningful good deeds for others to undertake, fostering a culture of compassion and positivity. Users can participate by completing deeds posted by fellow members or by taking on the daily challenge, making each day an opportunity to make the world a better place, one act of kindness at a time.
+Kindr is a heartwarming app designed to inspire and spread kindness in your community and beyond. With Kindr, you can create and share meaningful good deeds for others to undertake, fostering a culture of compassion and positivity. Users can participate by completing deeds posted by fellow members or by taking on the daily challenge, making each day an opportunity to make the world a better place, one act of kindness at a time.
 
 ☁️☀️☁️☀️☁️☀️☁️
 
