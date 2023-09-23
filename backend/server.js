@@ -27,7 +27,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(cors({
-  origin: '*',
+  origin: FRONTENDURL,
   methods: "GET, POST, PUT, DELETE",
   credentials: true,
 }))
