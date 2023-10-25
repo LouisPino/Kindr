@@ -1,4 +1,4 @@
-.profile-page{
+.profile-page {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -6,6 +6,7 @@
     min-width: 100vw;
 
 }
+
 .user-picture {
     width: 10rem;
     height: 10rem;
@@ -28,25 +29,16 @@
 }
 
 
-.white{
+.white {
     color: white;
 }
 
 
-.profile-page>.challenge-list{
-    width: 60vw;
-}
-
-
-.edit-profile{
+.edit-profile {
     width: 100px;
     margin: 25px auto;
 }
 
-.profile-viewchallenge{
-width: 150px;
-}
-
-.challenge-list{
-  min-width: 700px;
+.profile-viewchallenge {
+    width: 150px;
 }

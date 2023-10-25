@@ -1,5 +1,18 @@
 @import url("https://use.typekit.net/tnt5bwz.css");
 
+.header-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background-image: url("https://res.cloudinary.com/dpsymdmyi/image/upload/v1694204679/cloud-header_uktbi1.svg");
+  background-repeat: repeat-x;
+  background-size: contain;
+  filter: drop-shadow(2px 0px 10px #b12f28);
+  z-index: 3;
+}
+
 .kindr-nav {
   font-size: 4rem;
   letter-spacing: 0.1rem;
@@ -32,7 +45,7 @@ header img {
   padding: 0;
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 1100px) {
   #user-header-score {
     font-size: 24px
   }
@@ -42,8 +55,19 @@ header img {
   }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 750px) {
   #kindr-header-title {
     font-size: 2.5rem;
+  }
+}
+
+
+@media screen and (max-width: 500px) {
+  #kindr-header-title {
+    font-size: 1.5rem;
+  }
+
+  .user-header {
+    flex-direction: column;
   }
 }
