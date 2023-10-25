@@ -18,6 +18,7 @@
   grid-template-rows: 10rem 1fr;
   align-items: center;
   justify-items: center;
+  overflow: hidden;
 }
 
 @import url("https://use.typekit.net/tnt5bwz.css");
