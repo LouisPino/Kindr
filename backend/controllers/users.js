@@ -38,7 +38,7 @@ async function updateUser(req, res) {
     score,
   } = req.body;
   try {
-    const result = await cloudinary.uploader.upload(image, {
+    const result = await cloudinary.uploader.upload(picture, {
       folder: "user_img",
       width: 300,
       crop: "scale",
