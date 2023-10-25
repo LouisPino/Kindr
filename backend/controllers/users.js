@@ -27,7 +27,6 @@ async function findUserByEmail(req, res){
 
 async function updateUser(req, res){
   try {
-    console.log('body', req.body)
     res.status(201).json(await User.findOneAndUpdate({email: req.body.email}, {...req.body}));
   } catch (error) {
     res.status(400).json({ error: error.message });
