@@ -1,31 +1,28 @@
 const { User } = require("../models");
-const cloudinary = require('../utils/cloudinary.js');
+const cloudinary = require("../utils/cloudinary.js");
 
-module.exports={
-addUser,
-findUserByEmail,
-updateUser,
-findUsersByCompletedChalleneges
-}
+module.exports = {
+  addUser,
+  findUserByEmail,
+  updateUser,
+  findUsersByCompletedChalleneges,
+};
 
-
-async function addUser(req, res){
-    try {
-        res.status(201).json(await User.create(req.body));
-      } catch (error) {
-        res.status(400).json({ error: error.message });
-      }
-}
-
-
-async function findUserByEmail(req, res){
+async function addUser(req, res) {
   try {
-    res.status(201).json(await User.findOne({email: req.params.email}));
+    res.status(201).json(await User.create(req.body));
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
 }
 
+async function findUserByEmail(req, res) {
+  try {
+    res.status(201).json(await User.findOne({ email: req.params.email }));
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+}
 
 async function updateUser(req, res) {
   const {
@@ -43,29 +40,30 @@ async function updateUser(req, res) {
       width: 300,
       crop: "scale",
     });
-    res
-      .status(201)
-      .json(
-        await User.findOneAndUpdate({ email: req.body.email }, { username,
-          email,
-          user_id,
-          name,
+    res.status(201).json(
+      await User.findOneAndUpdate(
+        { email: req.body.email },
+        {
+          ...req.body,
+
           picture: {
             public_id: result.public_id,
-            url: result.secure_url
+            url: result.secure_url,
             // public id + url come from cloudinary
           },
-          completedChallenges,
-          score, })
-      );
+        }
+      )
+    );
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
 }
 
-async function findUsersByCompletedChalleneges(req, res){
+async function findUsersByCompletedChalleneges(req, res) {
   try {
-    res.status(201).json(await User.find({completedChallenges: req.params.id}));
+    res
+      .status(201)
+      .json(await User.find({ completedChallenges: req.params.id }));
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
