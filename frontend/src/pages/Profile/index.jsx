@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { findUserByEmail } from "../../utilities/user-service";
 import { findChallengesByIds } from "../../utilities/challenge-service";
 import ChallengeList from "../../components/Challenges/ChallengeList"
+import Imgupload from "../../components/UploadImage/Upload";
 import("./profile.css");
 
 
@@ -62,6 +63,7 @@ if(userData && !isLoading){
         <h3 className="h3-header kindr-header white">Good Deed Score: {userData.score}</h3>
         <h2 className="profile-deeds h2-header kindr-header">{userData.username ? `${userData.username}'s` : 'Your'} Deeds</h2>
        <hr />
+      <Imgupload />
        {challengeObjs?.length ? <ChallengeList challenges={challengeObjs} location="profile" userData={userData} setUserData={setUserData}/> : <h1 className="white">Get deedin'!</h1>} 
       </section>
   );}else{
