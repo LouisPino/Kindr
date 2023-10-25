@@ -38,12 +38,12 @@
   display: none;
   padding-left: -40px;
   transition: padding 0.3s ease-in-out;
-  transition-delay: display 300ms; 
+  transition-delay: display 300ms;
 }
 
 .sideitem:hover {
   background: linear-gradient(45deg, #fad95d, #ef4036);
-  color: white;  
+  color: white;
   animation: animate 2s linear infinite;
 }
 
@@ -60,18 +60,19 @@
 .hamburger-closed {
   width: 5rem;
 }
+
 #logout-button {
   margin-bottom: 5rem;
-  
+
 }
 
-.hamburger-ctr{
+.hamburger-ctr {
   position: relative;
   width: 135px;
   height: 120px;
 }
 
-.hamburger-open-bg{
+.hamburger-open-bg {
   position: absolute;
   left: 0;
   width: 100%;
@@ -79,18 +80,34 @@
   z-index: -1;
 }
 
-.hamburger-open{
+.hamburger-open {
   margin: auto;
   margin-top: 40px;
 }
 
 
 @keyframes animate {
+
   0%,
   100% {
     filter: hue-rotate(0deg)
   }
+
   50% {
     filter: hue-rotate(-30deg)
+  }
+}
+
+@media screen and (max-width: 450px) {
+
+  .hamburger-ctr {
+    width: 67px;
+    height: 60px;
+  }
+
+  .hamburger-open {
+    width: 40px;
+    margin-top: 20px;
+
   }
 }

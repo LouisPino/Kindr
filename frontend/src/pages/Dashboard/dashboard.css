@@ -1,48 +1,3 @@
-
-.newchallenge-page {
-  width: 100vw;
-  justify-content: center;
-  display: flex;
-  flex-direction: column;
-}
-
-.new-challenge-form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: .5rem;
-  padding: 2rem;
-  width: 60%;
-  margin: auto;
-}
-
-.chall-label {
-  display: grid;
-  grid-template-columns: 50% 50%;
-  font-family: "Pompiere", cursive;
-  font-size: 2rem;
-  color: white;
-  width: 40rem;
-  text-align: right;
-  gap: 1rem;
-  padding-right: 6rem;
-}
-
-.chall-label input, .chall-label select {
-  border-radius: 2rem;
-  border: none;
-  padding: 1rem;
-  width: 15rem;
-  font-family: "Pompiere", cursive;
-  font-size: 1.5rem;
-}
-
-.labeltext {
-  align-self: center;
-}
-
-
 .challenge-picture {
   width: 10em;
   border-radius: 10%;
@@ -52,15 +7,15 @@
   grid-row: 1 / span 4;
 }
 
-.challenge-list{
-  width: 100%;
+.challenge-list {
+  width: 100vw;
 }
 
 .challenge-block {
   display: grid;
   grid-template-columns: 10rem 6fr 2fr;
   grid-template-rows: 1.6rem 1rem 3fr 5fr;
-  width: 90%;
+  width: 90vw;
   margin: auto;
   align-items: center;
   justify-content: center;
@@ -68,7 +23,7 @@
   padding: 2rem;
   border-radius: 2rem;
   margin-top: 1rem;
-  min-width: 600px;
+  min-width: 40px;
 }
 
 .h3-challenge {
@@ -154,7 +109,7 @@ hr {
   margin: auto;
   font-size: 1.2rem;
   font-family: "Pompiere", cursive;
-  
+
 }
 
 .viewchallenge-button,
@@ -193,7 +148,7 @@ hr {
   display: inline;
 }
 
-.challenge-creator{
+.challenge-creator {
   font-size: 1.5rem;
   margin-top: 8px;
   color: #f05151;
@@ -212,36 +167,32 @@ hr {
 .daily-challenge-component {
   border: 5px solid;
   padding: 15px 0px;
-  border-image: url("https://res.cloudinary.com/dpsymdmyi/image/upload/v1694216684/hr-line-white_mwvizb.svg")
-    200 round;
+  border-image: url("https://res.cloudinary.com/dpsymdmyi/image/upload/v1694216684/hr-line-white_mwvizb.svg") 200 round;
 }
 
-.pagination-container{
+.pagination-container {
   display: flex;
   text-align: center;
   justify-content: space-evenly;
   width: 200px;
   margin: 0 auto;
   list-style: none;
-margin-top: 30px;
+  margin-top: 30px;
 }
 
 
-.active-page{
+.active-page {
   text-decoration: underline;
 }
 
-.pointer{
+.pointer {
   cursor: pointer
 }
 
-@media screen and (max-width: 700px){
-.challenge-descr{
-
-  margin-top: 12px;
-}
-
-
+@media screen and (max-width: 700px) {
+  .challenge-descr {
+    margin-top: 12px;
+  }
 }
 
 .submitphoto-Challenge {
