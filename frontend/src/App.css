@@ -21,6 +21,7 @@
 }
 
 @import url("https://use.typekit.net/tnt5bwz.css");
+
 .kindr-header {
   font-family: "asphalt", sans-serif;
   font-weight: 800;
@@ -98,34 +99,4 @@
   width: 15rem;
   margin-top: 50vh;
   margin-left: 60vw;
-}
-
-.welcome-header {
-  font-family: "Pompiere", cursive;
-  color: #f05151;
-  font-stretch: extra-expanded;
-  font-size: 2rem;
-  letter-spacing: 0.1rem;
-  color: white;
-  display: flex;
-  flex-direction: row;
-  align-items: end;
-
-}
-
-.very {
-  font-family: "asphalt", sans-serif;
-  font-weight: 800;
-  font-style: normal;
-  color: white;
-  font-stretch: extra-expanded;
-  font-size: 2.5rem;
-}
-
-.tagline {
-  display: flex;
-  flex-direction: row;
-  text-align: center;
-  justify-content: center;
-  align-items: end;
 }
