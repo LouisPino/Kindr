@@ -1,19 +1,22 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { findUserByEmail, updateUser } from "../../utilities/user-service";
+import { findUserByEmail } from "../../utilities/user-service";
 import { findChallengesByIds } from "../../utilities/challenge-service";
 import ChallengeList from "../../components/Challenges/ChallengeList"
 import("./profile.css");
 
 
 export default function Profile({ setOpen}) {
-  const { user } = useAuth0();
+  //general state
+const { user } = useAuth0();
 const [isLoading, setIsLoading] = useState(true)
-const navigate = useNavigate()
 const [challengeObjs, setChallengeObjs] = useState(null)
 const [userData, setUserData] = useState({})
-  useEffect(()=>{
+const navigate = useNavigate()
+ 
+//get user data from db
+useEffect(()=>{
     if(user){
     async function fillUserObj(){
       const retrievedUserData = await findUserByEmail(user.email)
@@ -27,6 +30,7 @@ else{
 }
   }, [])
 
+  //get users completed challenges
   useEffect(()=>{
     if(userData.completedChallenges){
     async function getChallengesByIds(){
@@ -37,15 +41,12 @@ else{
   }
   }, [userData])
 
+  //finish loading
   useEffect(()=>{
-    console.log("CHALLENGE OBJS", challengeObjs)
     if(challengeObjs){
     setIsLoading(false)
     }
   }, [challengeObjs])
-  
-  
-
 
 
 if(userData && !isLoading){
@@ -64,6 +65,10 @@ if(userData && !isLoading){
        {challengeObjs?.length ? <ChallengeList challenges={challengeObjs} location="profile" userData={userData} setUserData={setUserData}/> : <h1 className="white">Get deedin'!</h1>} 
       </section>
   );}else{
-    return <h1 className="loading">LOADING...</h1>
+    return (
+      <>
+    <h1 className="loading">LOADING...</h1>
+    <img src="https://res.cloudinary.com/dpsymdmyi/image/upload/v1694439817/loading-animation_nerskz.gif" alt="" />
+    </>)
   }
 }

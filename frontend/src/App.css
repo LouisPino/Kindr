@@ -2,7 +2,6 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  /* border: 1px solid green; */
 }
 
 .App {
@@ -18,7 +17,6 @@
   grid-template-columns: 100%;
   grid-template-rows: 10rem 1fr;
   align-items: center;
-  /* justify-content: center; */
   justify-items: center;
 }
 
@@ -29,8 +27,6 @@
   font-style: normal;
   color: #f05151;
   font-stretch: extra-expanded;
-
-  /* align-self: center; */
 }
 
 @import url("https://fonts.googleapis.com/css2?family=Pompiere&display=swap");
@@ -78,27 +74,58 @@
   font-style: normal;
   color: white;
   font-stretch: extra-expanded;
-  letter-spacing: .2rem;
+  letter-spacing: 0.2rem;
 }
 
-.bg-cloud, .bg-cloud2 {
+.bg-cloud,
+.bg-cloud2 {
   grid-row: 1 / span 2;
   grid-column: 1 / span 1;
   align-self: baseline;
-justify-self: baseline;
-position: fixed;
-z-index: 0;
-filter: drop-shadow(0px 2px 2px #b12f28);
+  justify-self: baseline;
+  position: fixed;
+  z-index: 0;
+  filter: drop-shadow(0px 2px 2px #b12f28);
 }
 
 .bg-cloud {
-width: 10rem;
-margin-top: 12rem;
-margin-left: 7vw;
+  width: 10rem;
+  margin-top: 12rem;
+  margin-left: 7vw;
 }
 
 .bg-cloud2 {
-width: 15rem;
-margin-top: 50vh;
-margin-left: 60vw;
+  width: 15rem;
+  margin-top: 50vh;
+  margin-left: 60vw;
+}
+
+.welcome-header {
+  font-family: "Pompiere", cursive;
+  color: #f05151;
+  font-stretch: extra-expanded;
+  font-size: 2rem;
+  letter-spacing: 0.1rem;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  align-items: end;
+
+}
+
+.very {
+  font-family: "asphalt", sans-serif;
+  font-weight: 800;
+  font-style: normal;
+  color: white;
+  font-stretch: extra-expanded;
+  font-size: 2.5rem;
+}
+
+.tagline {
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  justify-content: center;
+  align-items: end;
 }

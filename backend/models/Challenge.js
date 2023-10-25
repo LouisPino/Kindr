@@ -11,7 +11,6 @@ const imagesSchema = new Schema({
 const challengeSchema = new Schema({
   title: String,
   description: String,
-  // images: {type:[Schema.Types.ObjectId], ref: "Image"},
   images: [imagesSchema],
   daily: Boolean,
   category: Number,

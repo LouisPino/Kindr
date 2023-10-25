@@ -1,29 +1,23 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router";
-import { Link, useNavigate } from "react-router-dom";
-import { findUserByEmail, updateUser } from "../../utilities/user-service";
+import { useNavigate } from "react-router-dom";
+import { findUserByEmail } from "../../utilities/user-service";
 import { getChallenges } from "../../utilities/challenge-service";
 import ChallengeList from "../../components/Challenges/ChallengeList";
-
-
-import "./dashboard.css"
 import DailyChallenge from "../../components/Challenges/DailyChallenge";
+import "./dashboard.css"
 
 export default function Dashboard({setNavScore, setOpen}) {
+  //general state
   const { user } = useAuth0();
-  const { userId } = useParams();
   const [isLoading, setIsLoading] = useState(true);
-  const navigate = useNavigate();
-
   const [challenges, setChallenges] = useState(null);
   const [dailyChallenge, setDailyChallenge] = useState();
-
-
   const [userData, setUserData] = useState({})
+  const navigate = useNavigate();
   
+  //grab user data from db
   useEffect(()=>{
-    console.log(user)
     if(user){
     async function fillUserObj(){
        const retrievedUserData = await findUserByEmail(user.email)
@@ -35,21 +29,19 @@ export default function Dashboard({setNavScore, setOpen}) {
     fillUserObj()
   }
     else{
-      console.log('hit')
       navigate('/')}
   }, [])
 
-  // createDailyChallenge()
 
+//index challenges on render
   async function handleRequest() {
     const challengeResponse = await getChallenges();
-
     if (challengeResponse.length) {
       setChallenges(challengeResponse);
-    } else {
-      console.log(challengeResponse);
     }
   }
+
+  //find daily challenge, finish loading
   useEffect(() => {
     if (challenges) {
       const dailyidx = challenges.findIndex((chal)=>chal.daily === true)
@@ -59,10 +51,10 @@ export default function Dashboard({setNavScore, setOpen}) {
   }, [challenges]);
 
   
-
   return isLoading ? (
     <>
       <h1 className="loading">LOADING...</h1>
+      <img src="https://res.cloudinary.com/dpsymdmyi/image/upload/v1694439817/loading-animation_nerskz.gif" alt="" />
     </>
   ) : (
     <>

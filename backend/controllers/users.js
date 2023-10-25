@@ -11,7 +11,6 @@ findUsersByCompletedChalleneges
 async function addUser(req, res){
     try {
         res.status(201).json(await User.create(req.body));
-        console.log(req.body)
       } catch (error) {
         res.status(400).json({ error: error.message });
       }
@@ -21,7 +20,6 @@ async function addUser(req, res){
 async function findUserByEmail(req, res){
   try {
     res.status(201).json(await User.findOne({email: req.params.email}));
-    console.log(req.body)
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
