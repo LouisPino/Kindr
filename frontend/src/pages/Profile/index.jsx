@@ -4,7 +4,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { findUserByEmail } from "../../utilities/user-service";
 import { findChallengesByIds } from "../../utilities/challenge-service";
 import ChallengeList from "../../components/Challenges/ChallengeList"
-import Imgupload from "../../components/UploadImage/Upload";
 import("./profile.css");
 
 
