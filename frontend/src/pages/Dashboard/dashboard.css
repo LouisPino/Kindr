@@ -1,4 +1,3 @@
-
 .newchallenge-page {
   width: 100vw;
   justify-content: center;
@@ -29,7 +28,8 @@
   padding-right: 6rem;
 }
 
-.chall-label input, .chall-label select {
+.chall-label input,
+.chall-label select {
   border-radius: 2rem;
   border: none;
   padding: 1rem;
@@ -52,7 +52,7 @@
   grid-row: 1 / span 4;
 }
 
-.challenge-list{
+.challenge-list {
   width: 100%;
 }
 
@@ -60,7 +60,7 @@
   display: grid;
   grid-template-columns: 10rem 6fr 2fr;
   grid-template-rows: 1.6rem 1rem 3fr 5fr;
-  width: 90%;
+  width: 60vw;
   margin: auto;
   align-items: center;
   justify-content: center;
@@ -68,7 +68,7 @@
   padding: 2rem;
   border-radius: 2rem;
   margin-top: 1rem;
-  min-width: 600px;
+  min-width: 40px;
 }
 
 .h3-challenge {
@@ -154,7 +154,7 @@ hr {
   margin: auto;
   font-size: 1.2rem;
   font-family: "Pompiere", cursive;
-  
+
 }
 
 .viewchallenge-button,
@@ -193,7 +193,7 @@ hr {
   display: inline;
 }
 
-.challenge-creator{
+.challenge-creator {
   font-size: 1.5rem;
   margin-top: 8px;
   color: #f05151;
@@ -212,34 +212,33 @@ hr {
 .daily-challenge-component {
   border: 5px solid;
   padding: 15px 0px;
-  border-image: url("https://res.cloudinary.com/dpsymdmyi/image/upload/v1694216684/hr-line-white_mwvizb.svg")
-    200 round;
+  border-image: url("https://res.cloudinary.com/dpsymdmyi/image/upload/v1694216684/hr-line-white_mwvizb.svg") 200 round;
 }
 
-.pagination-container{
+.pagination-container {
   display: flex;
   text-align: center;
   justify-content: space-evenly;
   width: 200px;
   margin: 0 auto;
   list-style: none;
-margin-top: 30px;
+  margin-top: 30px;
 }
 
 
-.active-page{
+.active-page {
   text-decoration: underline;
 }
 
-.pointer{
+.pointer {
   cursor: pointer
 }
 
-@media screen and (max-width: 700px){
-.challenge-descr{
+@media screen and (max-width: 700px) {
+  .challenge-descr {
 
-  margin-top: 12px;
-}
+    margin-top: 12px;
+  }
 
 
 }
