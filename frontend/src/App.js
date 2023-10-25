@@ -11,7 +11,6 @@ import _404 from "./pages/404";
 import Sidenav from "./components/Nav/sidebar";
 import Header from "./components/Header/header";
 import {useState } from "react";
-import TestTwo from "./pages/NewUser/test2";
 
 function App() {
   
@@ -38,7 +37,7 @@ const [navScore, setNavScore]= useState(0)
         <Route path="/challenges/:id" element={<ShowChallenge setNavScore={setNavScore} setOpen={setOpen}/>} />
         <Route path="/challenges/add" element={<AddChallenge/>} />
         <Route path="/profile" element={<Profile setOpen={setOpen}/>} />
-        <Route path="/newuser" element={<TestTwo setOpen={setOpen}/>} />
+        <Route path="/newuser" element={<NewUser setOpen={setOpen}/>} />
         <Route path="/*" element={<_404 />} />
       </Routes>
       </div>

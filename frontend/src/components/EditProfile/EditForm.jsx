@@ -28,7 +28,7 @@ export default function EditForm({newForm, setNewForm, handleImage}) {
     setNewForm(updatedData);
   }
   return (
-    <form className="new-challenge-form" >
+    <form className="new-challenge-form" onSubmit={handleSubmit}>
       <label htmlFor="name" className="chall-label">
         <div className="labeltext">NAME</div>
         <input
