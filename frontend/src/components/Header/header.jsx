@@ -1,9 +1,12 @@
 import { Link } from "react-router-dom";
 import './header.css'
+import Sidenav from "../Nav/sidebar";
+import { useState } from "react";
 export default function Header({ navScore }) {
-  console.log(window.location.pathname)
+  const [open, setOpen] = useState(false);
   return (
     <header className="header-page">
+      <Sidenav open={open} setOpen={setOpen} />
       <Link to={"/dashboard"}>
         <h1 id="kindr-header-title" className="kindr-header kindr-nav depth ">Kindr</h1></Link>
       <div className="user-header">
