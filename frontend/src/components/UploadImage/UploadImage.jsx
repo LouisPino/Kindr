@@ -3,7 +3,7 @@ import { createContext, useEffect, useState } from "react";
 // Create a context to manage the script loading state
 const CloudinaryScriptContext = createContext();
 
-function CloudinaryUploadWidget({ uwConfig, setPublicId, newForm, setNewForm, handleImage }) {
+function CloudinaryUploadWidget({ uwConfig, setPublicId, newForm, setNewForm }) {
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
@@ -25,7 +25,7 @@ function CloudinaryUploadWidget({ uwConfig, setPublicId, newForm, setNewForm, ha
     }
   }, [loaded]);
 
-  const initializeCloudinaryWidget = (e) => {
+  const initializeCloudinaryWidget = () => {
     if (loaded) {
       var myWidget = window.cloudinary.createUploadWidget(
         uwConfig,
@@ -40,14 +40,27 @@ function CloudinaryUploadWidget({ uwConfig, setPublicId, newForm, setNewForm, ha
       document.getElementById("upload_widget").addEventListener(
         "click",
         function () {
-          myWidget.open();          
+          myWidget.open();
+        
+          
         },
         false
       );
     }
   };
 
-
+  const handleImage = (e) => {
+    const file = e.target.files[0];
+    setFileToBase(file);
+  };
+  const setFileToBase = (file) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onloadend = () => {
+      const updatedData = { ...newForm, picture: reader.result };
+      setNewForm(updatedData);
+    };
+  };
 
   return (
     <CloudinaryScriptContext.Provider value={{ loaded }}>
@@ -55,6 +68,7 @@ function CloudinaryUploadWidget({ uwConfig, setPublicId, newForm, setNewForm, ha
         id="upload_widget"
         className="cloudinary-button"
         onClick={initializeCloudinaryWidget}
+        onChange={handleImage}
       >
         Upload
       </button>

@@ -16,11 +16,11 @@ export default function EditForm({newForm, setNewForm, handleImage}) {
     if (userData) setIsLoading(false);
   }, [userData]);
 
-  // async function handleSubmit(e) {
-  //   e.preventDefault();
-  //   updateUser(newForm);
-  //   navigate("/profile");
-  // }
+  async function handleSubmit(e) {
+    e.preventDefault();
+    updateUser(newForm);
+    navigate("/profile");
+  }
 
 
   function handleChange(e) {
