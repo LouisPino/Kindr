@@ -2,13 +2,11 @@ import { useState } from "react";
 import CloudinaryUploadWidget from "./UploadImage";
 import { Cloudinary } from "@cloudinary/url-gen";
 import { AdvancedImage, responsive, placeholder } from "@cloudinary/react";
-
+import './upload.css'
 
 export default function ImgUpload() {
   const [publicId, setPublicId] = useState("");
-  // Replace with your own cloud name
   const [cloudName] = useState("dpsymdmyi");
-  // Replace with your own upload preset
   const [uploadPreset] = useState("xy6vadhr");
 
 
@@ -39,27 +37,11 @@ export default function ImgUpload() {
 
   return (
     <div className="App">
-      <h3>Cloudinary Upload Widget Example</h3>
       <CloudinaryUploadWidget uwConfig={uwConfig} setPublicId={setPublicId} />
-      <p>
-        <a
-          href="https://cloudinary.com/documentation/upload_widget"
-          target="_blank"
-        >
-          Upload Widget User Guide
-        </a>
-      </p>
-      <p>
-        <a
-          href="https://cloudinary.com/documentation/upload_widget_reference"
-          target="_blank"
-        >
-          Upload Widget Reference
-        </a>
-      </p>
       <div style={{ width: "800px" }}>
         <AdvancedImage
           style={{ maxWidth: "100%" }}
+          className="uploadedimage"
           cldImg={myImage}
           plugins={[responsive(), placeholder()]}
         />
