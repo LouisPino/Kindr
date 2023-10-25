@@ -180,7 +180,6 @@ hr {
   margin-top: 30px;
 }
 
-
 .active-page {
   text-decoration: underline;
 }
@@ -190,9 +189,10 @@ hr {
 }
 
 @media screen and (max-width: 700px) {
-  .challenge-descr {
-    margin-top: 12px;
+  .dashboard-h1 {
+    font-size: 2.25rem;
   }
+
 }
 
 .submitphoto-Challenge {
