@@ -57,7 +57,7 @@ async function updateUser(req, res) {
     }
 
     res.status(201).json(
-        await User.findOneAndUpdate({ email: req.body.email }, { ...req.body })
+        await User.findOneAndUpdate({ email: req.body.email }, data)
       );
   } catch (error) {
     res.status(400).json({ error: error.message });
