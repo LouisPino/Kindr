@@ -25,37 +25,46 @@ async function findUserByEmail(req, res) {
 }
 
 async function updateUser(req, res) {
-  const {
-    username,
-    email,
-    user_id,
-    name,
-    picture,
-    completedChallenges,
-    score,
-  } = req.body;
   try {
-    console.log('body', req.body)
-    const result = await cloudinary.uploader.upload(picture, {
-      folder: "user_img",
-      width: 300,
-      crop: "scale",
-    });
-    res.status(201).json(
-      await User.findOneAndUpdate(
-        { email: req.body.email },
-        {
-          ...req.body,
+    const currentUser = await User.findById(req.params.id);
+    const data = {
+      username: req.body.username,
+      email: req.body.email,
+      user_id: req.body.user_id,
+      name: req.body.name,
+      completedChallenges: req.body.completedChallenges,
+      score: req.body.score,
+    };
 
-          picture: {
-            public_id: result.public_id,
-            url: result.secure_url,
-            // public id + url come from cloudinary
-          },
-        }
-      )
-    );
+    // modify image conditionally
+
+    if (req.body.picture !== "") {
+      const ImgId = currentUser.image.public_id;
+      if (ImgId) {
+        await cloudinary.uploader.destroy(ImgId);
+      }
+
+      const newImage = await cloudinary.uploader.upload(req.body.picture, {
+        folder: "userimages",
+        width: 300,
+        crop: "scale"
+      });
+
+      data.picture = {
+        public_id: newImage.public_id,
+        url: newImage.secure_url
+      }
+    }
+
+    const userUpdate = await User.findOneAndUpdate({ email: req.body.email }, {data}, {new:true})
+
+    res.status(200).json({
+      success: true,
+      userUpdate
+    })
+
   } catch (error) {
+    console.log(error)
     res.status(400).json({ error: error.message });
   }
 }
