@@ -3,27 +3,32 @@
   border-radius: 10%;
   height: 10em;
   object-fit: contain;
-  grid-column: 1 / span 1;
-  grid-row: 1 / span 4;
 }
 
-.challenge-list {
-  width: 100vw;
-}
 
 .challenge-block {
-  display: grid;
-  grid-template-columns: 10rem 6fr 2fr;
-  grid-template-rows: 1.6rem 1rem 3fr 5fr;
+  display: flex;
   width: 90vw;
-  margin: auto;
+  margin: 0 auto;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   background-color: rgba(255, 255, 255, 0.7);
   padding: 2rem;
   border-radius: 2rem;
   margin-top: 1rem;
-  min-width: 40px;
+  position: relative;
+}
+
+.chall-1 {
+  width: fit-content
+}
+
+.chall-2 {
+  width: 60%;
+}
+
+.chall-3 {
+  width: 20%
 }
 
 .h3-challenge {
@@ -31,7 +36,6 @@
   padding-left: 2rem;
   align-self: center;
   text-align: left;
-  grid-row: 1 / span 1;
 }
 
 .challenge-descr,
@@ -42,8 +46,6 @@
 }
 
 .challenge-descr {
-  grid-column: 2 / span 1;
-  grid-row: 2 / span 3;
   align-self: baseline;
   padding: 0 2rem;
   padding-top: 0.5rem;
@@ -85,7 +87,6 @@ hr {
 }
 
 .completed-and-check {
-  grid-row: 1 / span 5;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -93,7 +94,6 @@ hr {
 }
 
 .youdidit-righttop {
-  grid-row: 1 / span 3;
   font-size: 3rem;
   margin: 0;
   color: #f05151;
@@ -103,7 +103,6 @@ hr {
 }
 
 .profile-viewchallenge {
-  grid-row: 1 / span 4;
   padding: 1rem 0rem;
   width: 70%;
   margin: auto;
@@ -136,7 +135,6 @@ hr {
   padding: 1rem 1rem;
   width: auto;
   margin: auto;
-  grid-row: 4 / span 1;
   font-size: 1.2rem;
   margin-top: 1rem;
 }
@@ -152,7 +150,6 @@ hr {
   font-size: 1.5rem;
   margin-top: 8px;
   color: #f05151;
-  grid-column: 1 / span 1;
 }
 
 .daily {
@@ -193,11 +190,18 @@ hr {
     font-size: 2.25rem;
   }
 
+  .challenge-block {
+    flex-direction: column;
+  }
+
+  .chall-3,
+  .chall-2 {
+    width: 100%;
+  }
+
 }
 
 .submitphoto-Challenge {
-  grid-column: 3 / span 1;
-  grid-row: 1 / span 5;
   text-align: center;
   margin: 0;
   align-self: center;

@@ -13,12 +13,12 @@ export default function ChallengeList({
   userData,
   setUserData,
 }) {
-//general state
+  //general state
   const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
 
 
-//Sorts challenges in reverse time order
+  //Sorts challenges in reverse time order
   let sortedChallenges = [];
   let sortedChallengesidx = 0;
   for (let i = challenges.length - 1; i >= 0; i--) {
@@ -47,7 +47,7 @@ export default function ChallengeList({
 
 
 
-//helps conditionally render certain elements based on where it is being viewed
+  //helps conditionally render certain elements based on where it is being viewed
   function showCondition(challenge) {
     if (location === "profile") {
       return !!userData;
@@ -68,20 +68,20 @@ export default function ChallengeList({
 
   let challenge; // challenge variable for targeting specific challenges when uploading photos
 
-  
 
- 
 
-//runs when image is chosen
+
+
+  //runs when image is chosen
   const handleImage = (e) => {
     const file = e.target.files[0];
     setFileToBase(file);
     challenge =
       sortedChallenges[
-        sortedChallenges.findIndex((chal) => chal._id === e.target.id)
+      sortedChallenges.findIndex((chal) => chal._id === e.target.id)
       ];
   };
-//called by above function, converts image to data
+  //called by above function, converts image to data
   const setFileToBase = (file) => {
     const reader = new FileReader();
     reader.readAsDataURL(file);
@@ -115,7 +115,7 @@ export default function ChallengeList({
   }
 
 
-//finish loading
+  //finish loading
   useEffect(() => {
     setIsLoading(false);
   }, [userData]);
@@ -136,84 +136,90 @@ export default function ChallengeList({
             if (showCondition(challenge)) {
               return (
                 <div className="challenge-block" key={challenge._id}>
-                  <img
-                    className="challenge-picture"
-                    src={picArr[challenge.category]}
-                  />
-                  {challenge.username && (
-                    <p className="challenge-creator body-font">
-                      {challenge.category === 5 ? "" : "by"}{" "}
-                      {challenge.username}
+                  <div className="chall-1">
+                    <img
+                      className="challenge-picture"
+                      src={picArr[challenge.category]}
+                    />
+                    {challenge.username && (
+                      <p className="challenge-creator body-font">
+                        {challenge.category === 5 ? "" : "by"}{" "}
+                        {challenge.username}
+                      </p>
+                    )}
+                  </div>
+                  <div className="chall-2">
+                    <h3 className="h3-challenge h3-header kindr-header">
+                      {challenge.title}
+                    </h3>
+                    <p className="challenge-descr body-font">
+                      {challenge.description}
                     </p>
-                  )}
-                  <h3 className="h3-challenge h3-header kindr-header">
-                    {challenge.title}
-                  </h3>
-                  <p className="challenge-descr body-font">
-                    {challenge.description}
-                  </p>
-                  {!userData?.completedChallenges?.includes(challenge._id) ? (
-                    <>
-                      <div className="completed-and-check">
-                        <p className="body-font upload-righttop">
-                          Completed?
-                        </p>
+                  </div>
+                  <div className="chall-3">
+                    {!userData?.completedChallenges?.includes(challenge._id) ? (
+                      <>
+                        <div className="completed-and-check">
+                          <p className="body-font upload-righttop">
+                            Completed?
+                          </p>
 
-                        <form id={challenge._id} onSubmit={handleSubmit}>
-                          {" "}
-                          <label htmlFor="images" className="submitimg-label">
+                          <form id={challenge._id} onSubmit={handleSubmit}>
+                            {" "}
+                            <label htmlFor="images" className="submitimg-label">
+                              <input
+                                type="file"
+                                name="images"
+                                className="submitimg-input"
+                                id={challenge._id}
+                                onChange={handleImage}
+                              />
+                            </label>
                             <input
-                              type="file"
-                              name="images"
-                              className="submitimg-input"
-                              id={challenge._id}
-                              onChange={handleImage}
+                              className="viewchallenge-button body-font"
+                              type="submit"
+                              value="Complete Deed"
                             />
-                          </label>
-                          <input
+                          </form>
+                        </div>
+                      </>
+                    ) : (
+                      <>
+                        {location !== "profile" && (
+                          <h1 className="youdidit-righttop body-font">
+                            You did it!
+                          </h1>
+                        )}
+                      </>
+                    )}
+                    {location !== "profile" ? (
+                      <>
+                        {
+                          <button
                             className="viewchallenge-button body-font"
-                            type="submit"
-                            value="Complete Deed"
-                          />
-                        </form>
-                      </div>
-                    </>
-                  ) : (
-                    <>
-                      {location !== "profile" && (
-                        <h1 className="youdidit-righttop body-font">
-                          You did it!
-                        </h1>
-                      )}
-                    </>
-                  )}
-                  {location !== "profile" ? (
-                    <>
-                      {
-                        <button
-                          className="viewchallenge-button body-font"
-                          onClick={() =>
-                            navigate(`/challenges/${challenge._id}`)
-                          }
-                        >
-                          VIEW DEED
-                        </button>
-                      }
-                    </>
-                  ) : (
-                    <>
-                      {
-                        <button
-                          className="profile-viewchallenge"
-                          onClick={() =>
-                            navigate(`/challenges/${challenge._id}`)
-                          }
-                        >
-                          VIEW DEED
-                        </button>
-                      }
-                    </>
-                  )}
+                            onClick={() =>
+                              navigate(`/challenges/${challenge._id}`)
+                            }
+                          >
+                            VIEW DEED
+                          </button>
+                        }
+                      </>
+                    ) : (
+                      <>
+                        {
+                          <button
+                            className="profile-viewchallenge"
+                            onClick={() =>
+                              navigate(`/challenges/${challenge._id}`)
+                            }
+                          >
+                            VIEW DEED
+                          </button>
+                        }
+                      </>
+                    )}
+                  </div>
                 </div>
               );
             }
