@@ -56,7 +56,7 @@ async function updateUser(req, res) {
       }
     }
 
-    const userUpdate = await User.findOneAndUpdate({ email: req.body.email }, data)
+    const userUpdate = await User.findOneAndUpdate({ email: req.body.email }, ...data)
 
     res.status(200).json({
       success: true,
