@@ -27,6 +27,11 @@ async function findUserByEmail(req, res) {
 async function updateUser(req, res) {
   try {
     const currentUser = await User.findById(req.body.id);
+    const newImage = await cloudinary.uploader.upload(req.body.picture, {
+      folder: "userimages",
+      width: 300,
+      crop: "scale"
+    });
     const data = {
       username: req.body.username,
       email: req.body.email,
@@ -34,6 +39,10 @@ async function updateUser(req, res) {
       name: req.body.name,
       completedChallenges: req.body.completedChallenges,
       score: req.body.score,
+      picture = {
+        public_id: newImage.public_id,
+        url: newImage.secure_url
+      }
     };
 
     // modify image conditionally
@@ -44,16 +53,8 @@ async function updateUser(req, res) {
         await cloudinary.uploader.destroy(ImgId);
       }
 
-      const newImage = await cloudinary.uploader.upload(req.body.picture, {
-        folder: "userimages",
-        width: 300,
-        crop: "scale"
-      });
 
-      data.picture = {
-        public_id: newImage.public_id,
-        url: newImage.secure_url
-      }
+  
     }
 
     res.status(201).json(
