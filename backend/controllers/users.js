@@ -26,7 +26,7 @@ async function findUserByEmail(req, res) {
 
 async function updateUser(req, res) {
   try {
-    const currentUser = await User.findById(req.params.id);
+    const currentUser = await User.findById(req.body.id);
     const data = {
       username: req.body.username,
       email: req.body.email,
