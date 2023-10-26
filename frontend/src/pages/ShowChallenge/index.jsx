@@ -23,7 +23,7 @@ export default function ShowChallenge({ setNavScore, setOpen }) {
   const [isLoading, setIsLoading] = useState(true);
   const [imgUploaded, setImgUploaded] = useState(false);
   const navigate = useNavigate();
-  
+
 
   //get user data from db
   useEffect(() => {
@@ -39,7 +39,7 @@ export default function ShowChallenge({ setNavScore, setOpen }) {
     }
   }, []);
 
-//get challenge data from db
+  //get challenge data from db
   useEffect(() => {
     async function getChallenge() {
       const ids = [id];
@@ -53,14 +53,14 @@ export default function ShowChallenge({ setNavScore, setOpen }) {
 
 
 
-//runs when image is chosen
+  //runs when image is chosen
   const handleImage = (e) => {
     const file = e.target.files[0];
     setFileToBase(file);
     setImgUploaded(true);
   };
 
-//called by above function, converts image to data
+  //called by above function, converts image to data
   const setFileToBase = (file) => {
     const reader = new FileReader();
     reader.readAsDataURL(file);
@@ -121,46 +121,52 @@ export default function ShowChallenge({ setNavScore, setOpen }) {
   ) : (
     <>
       <div className="challenge-block" key={challenge._id}>
-        <img className="challenge-picture" src={picArr[challenge.category]} />
-        {challenge.username && (
-          <p className="challenge-creator body-font">
-            {challenge.category === 5 ? "" : "by"} {challenge.username}
-          </p>
-        )}
-        <h3 className="h3-challenge h3-header kindr-header">
-          {challenge.title}
-        </h3>
-        <p className="challenge-descr body-font">{challenge.description}</p>
-        {!userData?.completedChallenges?.includes(challenge._id) ? (
-          <>
-            <div className="completed-and-check">
-              <p className="upload-righttop body-font">Completed?</p>
+        <div className="chall-1">
+          <img className="challenge-picture" src={picArr[challenge.category]} />
+          {challenge.username && (
+            <p className="challenge-creator body-font">
+              {challenge.category === 5 ? "" : "by"} {challenge.username}
+            </p>
+          )}
+        </div>
+        <div className="chall-2">
+          <h3 className="h3-challenge h3-header kindr-header">
+            {challenge.title}
+          </h3>
+          <p className="challenge-descr body-font">{challenge.description}</p>
+        </div>
+        <div className="chall-3">
+          {!userData?.completedChallenges?.includes(challenge._id) ? (
+            <>
+              <div className="completed-and-check">
+                <p className="upload-righttop body-font">Completed?</p>
 
-              <form onSubmit={handleSubmit}>
-                {!imgUploaded ? (
-                  <label htmlFor="images" className="submitimg-label">
+                <form onSubmit={handleSubmit}>
+                  {!imgUploaded ? (
+                    <label htmlFor="images" className="submitimg-label">
+                      <input
+                        className="submitimg-input"
+                        type="file"
+                        name="images"
+                        onChange={handleImage}
+                      />
+                    </label>
+                  ) : (
                     <input
-                      className="submitimg-input"
-                      type="file"
-                      name="images"
-                      onChange={handleImage}
+                      className="viewchallenge-button body-font"
+                      type="submit"
+                      value="Complete Deed"
                     />
-                  </label>
-                ) : (
-                  <input
-                    className="viewchallenge-button body-font"
-                    type="submit"
-                    value="Complete Deed"
-                  />
-                )}
-              </form>
-            </div>
-          </>
-        ) : (
-          <>
-            <h1 className="youdidit-righttop body-font">You did it!</h1>
-          </>
-        )}
+                  )}
+                </form>
+              </div>
+            </>
+          ) : (
+            <>
+              <h1 className="youdidit-righttop body-font">You did it!</h1>
+            </>
+          )}
+        </div>
       </div>
 
       <div className="completed-users-ctr">

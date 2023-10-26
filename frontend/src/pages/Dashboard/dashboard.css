@@ -7,23 +7,35 @@
   grid-row: 1 / span 4;
 }
 
-.challenge-list {
-  width: 100vw;
-}
 
 .challenge-block {
-  display: grid;
-  grid-template-columns: 10rem 6fr 2fr;
-  grid-template-rows: 1.6rem 1rem 3fr 5fr;
+  display: flex;
   width: 90vw;
-  margin: auto;
+  margin: 0 auto;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   background-color: rgba(255, 255, 255, 0.7);
   padding: 2rem;
   border-radius: 2rem;
   margin-top: 1rem;
-  min-width: 40px;
+  /* min-width: 300px; */
+  position: relative;
+}
+
+.challenge-block * {
+  /* border: 1px solid red; */
+}
+
+.chall-1 {
+  width: fit-content
+}
+
+.chall-2 {
+  width: 60%;
+}
+
+.chall-3 {
+  width: 20%
 }
 
 .h3-challenge {
@@ -191,6 +203,15 @@ hr {
 @media screen and (max-width: 700px) {
   .dashboard-h1 {
     font-size: 2.25rem;
+  }
+
+  .challenge-block {
+    flex-direction: column;
+  }
+
+  .chall-3,
+  .chall-2 {
+    width: 100%;
   }
 
 }

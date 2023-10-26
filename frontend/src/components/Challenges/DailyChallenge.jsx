@@ -29,7 +29,7 @@ export default function DailyChallenge({
     createDailyChallenge();
   }
 
-    //array of challenge icons to display based on category listed in challenge object
+  //array of challenge icons to display based on category listed in challenge object
   const picArr = [
     "https://res.cloudinary.com/dpsymdmyi/image/upload/v1694278247/community-red_c2yd4c.svg",
     "https://res.cloudinary.com/dpsymdmyi/image/upload/v1694278531/tree_h8n1mk.svg",
@@ -40,7 +40,7 @@ export default function DailyChallenge({
   ];
 
 
-//runs when image is chosen
+  //runs when image is chosen
   const handleImage = (e) => {
     const file = e.target.files[0];
     setFileToBase(file);
@@ -60,7 +60,7 @@ export default function DailyChallenge({
     };
   };
 
-    //updates challenge with image, updates user with challenge in completed challenges array
+  //updates challenge with image, updates user with challenge in completed challenges array
   async function handleSubmit(e) {
     e.preventDefault();
     updateChallenge(dailyChallengeNew);
@@ -90,62 +90,71 @@ export default function DailyChallenge({
     </>
   ) : (
     <div className="daily-challenge-component">
+      {/* <button className="challenge-block" onClick={createNewDaily}>
+        create daily challenge -for development / testing only-
+      </button> */}
       <p className="body-font daily">Daily Deed</p>
       <div className="challenge-block">
-        <img
-          className="challenge-picture"
-          src={picArr[dailyChallenge.category]}
-        />
-        {dailyChallenge.username && (
-          <p className="challenge-creator body-font">
-            {dailyChallenge.category === 5 ? "" : "by"}{" "}
-            {dailyChallenge.username}
+        <div className="chall-1">
+          <img
+            className="challenge-picture"
+            src={picArr[dailyChallenge.category]}
+          />
+          {dailyChallenge.username && (
+            <p className="challenge-creator body-font">
+              {dailyChallenge.category === 5 ? "" : "by"}{" "}
+              {dailyChallenge.username}
+            </p>
+          )}
+        </div>
+        <div className="chall-2">
+          <h3 className="h3-challenge h3-header kindr-header">
+            {dailyChallenge.title}
+          </h3>
+          <p className="challenge-descr body-font">
+            {dailyChallenge.description}
           </p>
-        )}
-        <h3 className="h3-challenge h3-header kindr-header">
-          {dailyChallenge.title}
-        </h3>
-        <p className="challenge-descr body-font">
-          {dailyChallenge.description}
-        </p>
-        {!userData?.completedChallenges?.includes(dailyChallenge._id) ? (
-          <>
-            <div className="completed-and-check">
-              <p className="body-font upload-righttop">Completed?</p>
-              {imgUploaded ? (
-                <button
-                  className="checkmark-button"
-                  id={dailyChallenge._id}
-                  onClick={addComplete}
-                >
-                  &#10003;
-                </button>
-              ) : (
-                <form onSubmit={handleSubmit}>
-                  {" "}
-                  <label htmlFor="images" className="submitimg-label">
-                    <input className="submitimg-input" type="file" name="images" onChange={handleImage} />
-                  </label>
-                  <input
-                    className="viewchallenge-button body-font"
-                    type="submit"
-                    value="Complete Deed"
-                  />
-                </form>
-              )}
-            </div>
-          </>
-        ) : (
-          <>
-            <h1 className="youdidit-righttop body-font">You did it!</h1>
-          </>
-        )}
-        <button
-          className="viewchallenge-button body-font"
-          onClick={() => navigate(`/challenges/${dailyChallenge._id}`)}
-        >
-          VIEW DEED
-        </button>
+        </div>
+        <div className="chall-3">
+          {!userData?.completedChallenges?.includes(dailyChallenge._id) ? (
+            <>
+              <div className="completed-and-check">
+                <p className="body-font upload-righttop">Completed?</p>
+                {imgUploaded ? (
+                  <button
+                    className="checkmark-button"
+                    id={dailyChallenge._id}
+                    onClick={addComplete}
+                  >
+                    &#10003;
+                  </button>
+                ) : (
+                  <form onSubmit={handleSubmit}>
+                    {" "}
+                    <label htmlFor="images" className="submitimg-label">
+                      <input className="submitimg-input" type="file" name="images" onChange={handleImage} />
+                    </label>
+                    <input
+                      className="viewchallenge-button body-font"
+                      type="submit"
+                      value="Complete Deed"
+                    />
+                  </form>
+                )}
+              </div>
+            </>
+          ) : (
+            <>
+              <h1 className="youdidit-righttop body-font">You did it!</h1>
+            </>
+          )}
+          <button
+            className="viewchallenge-button body-font"
+            onClick={() => navigate(`/challenges/${dailyChallenge._id}`)}
+          >
+            VIEW DEED
+          </button>
+        </div>
       </div>
     </div>
   );
