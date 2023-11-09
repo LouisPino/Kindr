@@ -37,7 +37,7 @@ Challenge Detail page
 
 
 ## Getting Started
-### [Deployed App](https://graceful-pixie-5234dd.netlify.app)
+### [Deployed App](https://itskindr.netlify.app/)
 When you first visit Kindr, you'll be directed to the **Welcome Page**
 - Click the **Log In** button <br>
 - As it is your first time visiting the site, you will need to **Sign Up** and create a username and password.
